@@ -4,7 +4,7 @@ const themeButton=$('#theme-toggle');
 function setTheme(theme){document.documentElement.dataset.theme=theme;const light=theme==='light';document.querySelectorAll('.wordmark img,.loader-mark img').forEach(img=>img.src=light?'brand/kareem-icon-dark.png':'brand/kareem-icon.png');themeButton.setAttribute('aria-pressed',String(light));themeButton.setAttribute('aria-label',light?'Switch to dark mode':'Switch to light mode');themeButton.querySelector('.theme-label').textContent=light?'DARK':'LIGHT';document.querySelector('meta[name="theme-color"]').content=light?'#f4f3ee':'#111210';try{localStorage.setItem('kareem-theme',theme)}catch(e){}}
 themeButton.onclick=()=>setTheme(document.documentElement.dataset.theme==='light'?'dark':'light');setTheme(document.documentElement.dataset.theme||'dark');
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const projects=await fetch('./data.json?v=8').then(r=>{if(!r.ok)throw Error('Project data unavailable');return r.json()});
+const projects=await fetch('./data.json?v=two-projects1').then(r=>{if(!r.ok)throw Error('Project data unavailable');return r.json()});
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const total=projects.length,wrap=n=>(n%total+total)%total;
 let active=0,target=0,position=0,currentView='work',renderer,scene,camera,planes=[],textures=new Map(),raf,dragging=false,downY=0,lastY=0,moved=false,ready=false;
