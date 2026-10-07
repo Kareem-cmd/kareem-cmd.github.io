@@ -1,0 +1,78 @@
+/* ============================================================
+   KIRA — Motion layer (GSAP-driven, progressive enhancement)
+   Targets are pre-hidden by SELECTOR under html.js (set inline in
+   <head>) so there is no first-paint flash. GSAP animates them in;
+   if GSAP/JS is unavailable, motion.js adds .is-visible (CSS fade),
+   and reduced-motion shows everything instantly.
+   ============================================================ */
+
+html.js .hero__inner > *,
+html.js .page-hero__inner > *,
+html.js .article-hero__inner > *,
+html.js .section__head,
+html.js .intro__label,
+html.js .intro__body,
+html.js .edge__list,
+html.js .featured,
+html.js .creed__inner,
+html.js .quote__inner,
+html.js .cta__inner,
+html.js .apply__panel,
+html.js .join__panel,
+html.js .signature,
+html.js .verdict-box,
+html.js .services__grid > *,
+html.js .work__grid > *,
+html.js .feed > *,
+html.js .tenets > *,
+html.js .tiers > *,
+html.js .dispatch-grid > *,
+html.js .receive > *,
+html.js .terms__grid > *,
+html.js .stats-band__row > *,
+html.js .related__grid > *,
+html.js .s-hero__inner > *,
+html.js .work-wall > *,
+html.js .s-services > *,
+html.js .values > *,
+html.js .process-steps > *,
+html.js .svc-row,
+html.js .contact-grid,
+html.js .s-stats > * {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+/* Fallback reveal (no GSAP) — motion.js adds .is-visible */
+html.js .is-visible {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+/* Scroll-progress thread (storytelling) */
+.scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 9998;
+  background: var(--primary); transform: scaleX(0); transform-origin: 0 50%; pointer-events: none;
+  box-shadow: 0 0 12px var(--glow-crimson); }
+
+/* Header solidifies once you leave the very top */
+.site-header-bar { transition: box-shadow 0.35s var(--ease-out), background 0.35s var(--ease-out); }
+.site-header-bar.is-scrolled {
+  box-shadow: var(--shadow-md);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .hero__inner > *, html.js .page-hero__inner > *, html.js .article-hero__inner > *,
+  html.js .section__head, html.js .intro__label, html.js .intro__body, html.js .edge__list,
+  html.js .featured, html.js .creed__inner, html.js .quote__inner, html.js .cta__inner,
+  html.js .apply__panel, html.js .join__panel, html.js .signature, html.js .verdict-box,
+  html.js .services__grid > *, html.js .work__grid > *, html.js .feed > *, html.js .tenets > *,
+  html.js .tiers > *, html.js .dispatch-grid > *, html.js .receive > *, html.js .terms__grid > *,
+  html.js .stats-band__row > *, html.js .related__grid > *,
+  html.js .s-hero__inner > *, html.js .work-wall > *, html.js .s-services > *,
+  html.js .values > *, html.js .process-steps > *, html.js .svc-row, html.js .contact-grid, html.js .s-stats > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jilbada — Always Inspiring · دَوْماً مُلْهِمَة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <img class="loader-mark" src="assets/submark-cream.png" alt="" />
+  <div class="loader-text">دَوْماً مُلْهِمَة</div>
+</div>
+
+<!-- DUA POPUP -->
+<div class="dua-overlay" id="duaOverlay">
+  <div class="dua-modal">
+    <img class="dua-butterfly" src="assets/submark-green.png" alt="" />
+    <div class="dua-label ltr-only">A Prayer Upon Entering the Marketplace</div>
+    <div class="dua-label rtl-only">دُعاءُ دُخولِ السّوقِ</div>
+    <div class="dua-text-arabic">
+      لا إلهَ إلاّ اللهُ وحْدَهُ لا شريكَ لهُ،<br/>
+      لهُ الملكُ ولهُ الحَمدُ، يُحيي ويُميتُ،<br/>
+      وهو حيٌّ لا يموتُ، بيدِهِ الخيرُ،<br/>
+      وهو على كلِّ شيءٍ قدير
+    </div>
+    <div class="dua-divider"></div>
+    <p class="dua-translation ltr-only">
+      There is no god but Allah alone, without partner. To Him belongs all sovereignty
+      and praise. He gives life and causes death, and He is living and does not die.
+      In His hand is all good, and He has power over all things.
+    </p>
+    <button class="dua-amen" onclick="closeDua()">
+      <span class="ltr-only">Ameen — Enter</span>
+      <span class="rtl-only">آمين — ادخلي</span>
+    </button>
+    <div class="dua-corners-bottom"></div>
+  </div>
+</div>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div class="bar-side">
+    <span class="ltr-only">Free shipping over EGP 5,000</span>
+    <span class="rtl-only">شحن مجاني للطلبات فوق ٥٠٠٠ ج.م</span>
+  </div>
+  <div class="marquee">
+    <span class="ltr-only">Slow Fashion · Crafted with care · 100% natural fabrics · Shari'ah compliant · Always inspiring · Made in Egypt · </span>
+    <span class="rtl-only">حشمة بلا تنازلات · خامات طبيعية · ٪١٠٠ شرعي · دوماً ملهمة · صُنع في مصر · </span>
+  </div>
+  <div class="lang-toggle">
+    <button id="langEn" class="active">EN</button>
+    <span class="divider">/</span>
+    <button id="langAr">ع</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="main-nav" id="mainNav">
+  <nav class="nav-left">
+    <a class="nav-link active" data-page="home"><span class="ltr-only">Home</span><span class="rtl-only">الرئيسية</span></a>
+    <a class="nav-link" data-page="collection"><span class="ltr-only">Muhajirat</span><span class="rtl-only">المهاجرات</span></a>
+    <a class="nav-link locked"><span class="ltr-only">Mathaba</span><span class="rtl-only">المثابة</span></a>
+    <a class="nav-link locked"><span class="ltr-only">Mutmainna</span><span class="rtl-only">المطمئنة</span></a>
+  </nav>
+  <a data-page="home" style="cursor:pointer">
+    <img class="wordmark-img" src="assets/wordmark-green.png" alt="Jilbada" />
+  </a>
+  <nav class="nav-right">
+    <a class="nav-link" data-page="about"><span class="ltr-only">Story</span><span class="rtl-only">قصتنا</span></a>
+    <a class="nav-link"><span class="ltr-only">Journal</span><span class="rtl-only">المدونة</span></a>
+    <a class="nav-link"><span class="ltr-only">Contact</span><span class="rtl-only">تواصل</span></a>
+    <div class="nav-icons">
+      <button title="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button title="Account">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </button>
+      <button title="Cart" style="position:relative">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count">2</span>
+      </button>
+    </div>
+  </nav>
+  <button class="mobile-menu-btn" onclick="toggleMobile()">☰</button>
+</header>
+
+<div class="mobile-overlay" id="mobileOverlay">
+  <button class="close-mobile" onclick="toggleMobile()">×</button>
+  <a data-page="home" onclick="toggleMobile()"><span class="ltr-only">Home</span><span class="rtl-only">الرئيسية</span></a>
+  <a data-page="collection" onclick="toggleMobile()"><span class="ltr-only">Muhajirat</span><span class="rtl-only">المهاجرات</span></a>
+  <a data-page="about" onclick="toggleMobile()"><span class="ltr-only">Our Story</span><span class="rtl-only">قصتنا</span></a>
+</div>
+
+<!-- ============ PAGE 1: HOME ============ -->
+<section class="page active" id="page-home">
+
+<div class="hero">
+  <div class="hero-slides">
+    <div class="hero-slide hero-slide-1 active"><div class="hero-img"></div></div>
+    <div class="hero-slide hero-slide-2"><div class="hero-img"></div></div>
+    <div class="hero-slide hero-slide-3"><div class="hero-img"></div></div>
+  </div>
+  <div class="hero-vignette"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="line"></span>
+      <span class="ltr-only">A New Beginning · From Andalusia</span>
+      <span class="rtl-only">بداية جديدة · من الأندلس</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="ltr-only">Devised<br/><em>Modesty.</em></span>
+      <span class="rtl-only">حشمةٌ<br/>بلا تنازلات</span>
+    </h1>
+    <p class="hero-tagline">
+      <span class="ltr-only">A sanctuary of dignity, woven from the soul of Andalusia. Loose-fitting, Shari'ah-compliant attire — never compromising on faith, never sacrificing grace.</span>
+      <span class="rtl-only">حصنٌ من الحشمة، ورايةٌ من الأناقة. زيٌّ شرعيٌّ فضفاضٌ بلا تنازلات على قواعد الدين، ولا على رقيّ الذوق.</span>
+    </p>
+    <div class="hero-cta-row">
+      <a class="btn btn-primary" data-page="collection" style="cursor:pointer">
+        <span><span class="ltr-only">Discover Muhajirat</span><span class="rtl-only">اكتشفي المهاجرات</span></span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="btn btn-ghost" data-page="about" style="cursor:pointer">
+        <span class="ltr-only">Our Story</span>
+        <span class="rtl-only">حكايتنا</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-pagination">
+    <button class="active" data-slide="0"><span class="dot"></span><span>01 / Muhajirat</span></button>
+    <button data-slide="1"><span class="dot"></span><span>02 / Mathaba</span></button>
+    <button data-slide="2"><span class="dot"></span><span>03 / Mutmainna</span></button>
+  </div>
+
+  <div class="hero-scroll-indicator">
+    <span class="ltr-only">Scroll</span>
+    <span class="rtl-only">انزلي</span>
+    <div class="line"></div>
+  </div>
+</div>
+
+<div class="tagline-strip">
+  <img class="submark-deco" src="assets/submark-cream.png" alt="" />
+  <div class="ar">دَوْماً مُلْهِمَة</div>
+  <div class="en ltr-only">— Always Inspiring —</div>
+  <div class="en rtl-only">— شعارُ البراند —</div>
+</div>
+
+<section class="stages-section">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">
+      <span class="line"></span>
+      <span class="ltr-only">A Journey in Three Stations</span>
+      <span class="rtl-only">رحلةٌ في ثلاث محطّات</span>
+      <span class="line"></span>
+    </div>
+    <h2 class="section-title">
+      <span class="ltr-only">Three chapters of a single<br/><em>spiritual ascent.</em></span>
+      <span class="rtl-only">ثلاثُ مراحلَ<br/>لرحلةٍ روحيّةٍ واحدة</span>
+    </h2>
+    <p class="section-sub">
+      <span class="ltr-only">Each collection is a chapter — a milestone in a woman's quiet journey from intention to certainty. Begin where your heart calls.</span>
+      <span class="rtl-only">كلُّ مجموعةٍ منزلةٌ في رحلةٍ صامتةٍ من النيّة إلى اليقين. ابدئي من حيثُ يهتفُ قلبكِ.</span>
+    </p>
+  </div>
+
+  <div class="stages-grid">
+    <a class="stage-card stage-1 reveal" data-page="collection" style="cursor:pointer">
+      <div class="stage-bg"></div>
+      <div class="stage-overlay"></div>
+      <div class="stage-content">
+        <div><div class="stage-number">— 01</div></div>
+        <div>
+          <div class="stage-name">
+            <span class="ltr-only">Muhajirat</span>
+            <span class="rtl-only">المهاجرات</span>
+          </div>
+          <div class="stage-arabic ltr-only">— المهاجرات —</div>
+          <p class="stage-desc">
+            <span class="ltr-only">For every soul that hears the call. The first brave step toward a higher self.</span>
+            <span class="rtl-only">لكلِّ مَن سمعت النداء. الخطوةُ الأولى الشّجاعةُ نحو الذات الأرقى.</span>
+          </p>
+          <div class="stage-status">
+            <span class="status-dot"></span>
+            <span class="ltr-only">Now Available</span>
+            <span class="rtl-only">متوفّرة الآن</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <div class="stage-card stage-2 reveal" style="transition-delay:.15s">
+      <div class="stage-bg"></div>
+      <div class="stage-overlay"></div>
+      <div class="stage-locked-icon">◊</div>
+      <div class="stage-content">
+        <div><div class="stage-number">— 02</div></div>
+        <div>
+          <div class="stage-name">
+            <span class="ltr-only">Mathaba</span>
+            <span class="rtl-only">المثابة</span>
+          </div>
+          <div class="stage-arabic ltr-only">— المثابة —</div>
+          <p class="stage-desc">
+            <span class="ltr-only">The sanctuary to which you return. Where commitment becomes celebration.</span>
+            <span class="rtl-only">الملاذُ الذي إليه تعودين. حيث يصيرُ الالتزامُ احتفالاً.</span>
+          </p>
+          <div class="stage-status">
+            <span class="status-dot locked"></span>
+            <span class="ltr-only">Awaits its hour</span>
+            <span class="rtl-only">في انتظار وقتها</span>
+          </div>
+          <div class="stage-verse">
+            «وَأَنِيبُوا إِلَىٰ رَبِّكُمْ»
+            <div class="stage-verse-source">— الزمر ٥٤ —</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stage-card stage-3 reveal" style="transition-delay:.3s">
+      <div class="stage-bg"></div>
+      <div class="stage-overlay"></div>
+      <div class="stage-locked-icon">◊</div>
+      <div class="stage-content">
+        <div><div class="stage-number">— 03</div></div>
+        <div>
+          <div class="stage-name">
+            <span class="ltr-only">Mutmainna</span>
+            <span class="rtl-only">المطمئنّة</span>
+          </div>
+          <div class="stage-arabic ltr-only">— المطمئنّة —</div>
+          <p class="stage-desc">
+            <span class="ltr-only">The soul at peace. Where outer modesty and inner light merge into one.</span>
+            <span class="rtl-only">النّفسُ المطمئنّة. حيث تتّحدُ الحشمةُ الظّاهرةُ والنّورُ الباطن.</span>
+          </p>
+          <div class="stage-status">
+            <span class="status-dot locked"></span>
+            <span class="ltr-only">Awaits its hour</span>
+            <span class="rtl-only">في انتظار وقتها</span>
+          </div>
+          <div class="stage-verse">
+            «يَا أَيَّتُهَا النَّفْسُ الْمُطْمَئِنَّةُ»
+            <div class="stage-verse-source">— الفجر ٢٧ —</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="philosophy">
+  <div class="phil-image"></div>
+  <div class="phil-content">
+    <div class="phil-eyebrow">
+      <span class="line"></span>
+      <span class="ltr-only">Our Philosophy</span>
+      <span class="rtl-only">فلسفتنا</span>
+    </div>
+    <h2 class="phil-title">
+      <span class="ltr-only">Our beginning starts<br/>where the fall began.</span>
+      <span class="rtl-only">بدايتُنا<br/>من حيثُ بدأ السّقوط</span>
+    </h2>
+    <p class="phil-text">
+      <span class="ltr-only">To understand our destination, we looked to our past — to Andalusia, where we reached the zenith of our prosperity. From its silenced gardens and forgotten light, we draw a new beginning. Not nostalgia, but inheritance.</span>
+      <span class="rtl-only">لنفهمَ وجهتنا، نظرنا إلى ماضينا — إلى الأندلس، حيث بلغنا ذروةَ ازدهارنا. ومن حدائقها المُكوّمةِ ونورها المنسيّ، نستلهمُ بدايةً جديدة. ليس حنيناً، بل ميراثاً.</span>
+    </p>
+    <div class="phil-pillars">
+      <div class="pillar">
+        <div class="pillar-num">— 01</div>
+        <div class="pillar-name"><span class="ltr-only">Elegance</span><span class="rtl-only">الأناقة</span></div>
+        <div class="pillar-desc"><span class="ltr-only">Refinement of soul, expressed through cloth.</span><span class="rtl-only">رقيُّ الروح، مُترجَماً قماشاً.</span></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">— 02</div>
+        <div class="pillar-name"><span class="ltr-only">Practicality</span><span class="rtl-only">العملية</span></div>
+        <div class="pillar-desc"><span class="ltr-only">For her daily life and her acts of worship.</span><span class="rtl-only">لحياتها اليومية وعباداتها.</span></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">— 03</div>
+        <div class="pillar-name"><span class="ltr-only">Support</span><span class="rtl-only">السند</span></div>
+        <div class="pillar-desc"><span class="ltr-only">A companion on the path, never a stranger.</span><span class="rtl-only">رفيقةٌ على الطّريق، لا غريبة.</span></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">— 04</div>
+        <div class="pillar-name"><span class="ltr-only">Commitment</span><span class="rtl-only">الالتزام</span></div>
+        <div class="pillar-desc"><span class="ltr-only">A moral compass guiding every stitch.</span><span class="rtl-only">بوصلةٌ أخلاقيةٌ في كلِّ غُرزة.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cinematic-break">
+  <div class="cinematic-content">
+    <div class="cinematic-quote">
+      <span class="ltr-only">When your heart whispers, "the time has come,"<br/>you have made the brave decision to set forth.</span>
+      <span class="rtl-only">حينَ يهمسُ القلبُ: قد آنَ الأوان،<br/>تكونينَ قد اخترتِ الشّجاعة.</span>
+    </div>
+    <div class="cinematic-attribution">— Jilbada —</div>
+  </div>
+</div>
+
+</section>
+
+<!-- ============ PAGE 2: COLLECTION ============ -->
+<section class="page" id="page-collection">
+
+<div class="collection-hero">
+  <img class="submark-deco" src="assets/submark-green.png" alt="" />
+  <div class="collection-breadcrumb">
+    <a data-page="home" style="cursor:pointer">Jilbada</a>
+    <span style="margin:0 .5em">/</span>
+    <span class="ltr-only">Collections</span><span class="rtl-only">المجموعات</span>
+    <span style="margin:0 .5em">/</span>
+    <span style="color:var(--green-deep)"><span class="ltr-only">Muhajirat</span><span class="rtl-only">المهاجرات</span></span>
+  </div>
+  <h1 class="collection-name">
+    <span class="ltr-only">Muhajirat</span>
+    <span class="rtl-only">المهاجرات</span>
+  </h1>
+  <div class="collection-arabic">— ٠١ المرحلة الأولى —</div>
+  <p class="collection-intro">
+    <span class="ltr-only">For every soul that hears the call. The first step is not a migration of place, but of self — toward focus, toward certainty, toward Allah. Simple, practical, and quietly luminous.</span>
+    <span class="rtl-only">لكلِّ نفسٍ سمعت النداء. الخطوةُ الأولى ليست هجرةَ مكانٍ، بل هجرة ذاتٍ — نحو التركيز، نحو اليقين، نحو الله. بسيطةٌ، عمليّةٌ، ومُضيئةٌ في صمت.</span>
+  </p>
+  <div class="collection-meta">
+    <span><span class="ltr-only">Pieces</span><span class="rtl-only">القطع</span> · 04</span>
+    <span class="sep">◊</span>
+    <span><span class="ltr-only">Slow Fashion</span><span class="rtl-only">سلو فاشن</span></span>
+    <span class="sep">◊</span>
+    <span><span class="ltr-only">Made in Egypt</span><span class="rtl-only">صُنع في مصر</span></span>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-group">
+    <button class="active"><span class="ltr-only">All Pieces</span><span class="rtl-only">الكلّ</span></button>
+    <button><span class="ltr-only">Daily</span><span class="rtl-only">يوميّ</span></button>
+    <button><span class="ltr-only">Prayer</span><span class="rtl-only">صلاة</span></button>
+    <button><span class="ltr-only">Outerwear</span><span class="rtl-only">خارجيّ</span></button>
+  </div>
+  <div class="filter-group">
+    <button><span class="ltr-only">Sort</span><span class="rtl-only">ترتيب</span> ↓</button>
+  </div>
+</div>
+
+<div class="products-grid">
+  <a class="product-card mood-green reveal" data-page="product" style="cursor:pointer">
+    <div class="product-image">
+      <div class="product-image-bg"></div>
+      <div class="product-tag">New</div>
+      <div class="product-quick-view">
+        <span class="ltr-only">Quick View</span>
+        <span class="rtl-only">عرض سريع</span>
+        <span>→</span>
+      </div>
+    </div>
+    <div class="product-info">
+      <h3 class="product-name">
+        <span class="ltr-only">The Andalusian Jilbab</span>
+        <span class="rtl-only">جلباب الأندلس</span>
+      </h3>
+      <p class="product-detail">
+        <span class="ltr-only">Two-piece · Linen · Free-flow</span>
+        <span class="rtl-only">قطعتان · كتّان · فضفاض</span>
+      </p>
+      <div class="product-bottom">
+        <span class="product-price">EGP 3,200</span>
+        <div class="product-colors">
+          <span class="color-dot" style="background:#184835"></span>
+          <span class="color-dot" style="background:#e5ddce"></span>
+          <span class="color-dot" style="background:#452f27"></span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <a class="product-card mood-cream reveal" data-page="product" style="cursor:pointer;transition-delay:.1s">
+    <div class="product-image">
+      <div class="product-image-bg"></div>
+      <div class="product-quick-view">
+        <span class="ltr-only">Quick View</span>
+        <span class="rtl-only">عرض سريع</span>
+        <span>→</span>
+      </div>
+    </div>
+    <div class="product-info">
+      <h3 class="product-name">
+        <span class="ltr-only">The Granada Khimar</span>
+        <span class="rtl-only">خمار غرناطة</span>
+      </h3>
+      <p class="product-detail">
+        <span class="ltr-only">Single-piece · Cotton · Knee-length</span>
+        <span class="rtl-only">قطعة · قطن · لطول الرّكبة</span>
+      </p>
+      <div class="product-bottom">
+        <span class="product-price">EGP 2,650</span>
+        <div class="product-colors">
+          <span class="color-dot" style="background:#e5ddce"></span>
+          <span class="color-dot" style="background:#184835"></span>
+          <span class="color-dot" style="background:#121212"></span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <a class="product-card mood-rich reveal" data-page="product" style="cursor:pointer;transition-delay:.2s">
+    <div class="product-image">
+      <div class="product-image-bg"></div>
+      <div class="product-tag limited">Limited</div>
+      <div class="product-quick-view">
+        <span class="ltr-only">Quick View</span>
+        <span class="rtl-only">عرض سريع</span>
+        <span>→</span>
+      </div>
+    </div>
+    <div class="product-info">
+      <h3 class="product-name">
+        <span class="ltr-only">The Cordoba Wrap</span>
+        <span class="rtl-only">عباءة قُرطُبة</span>
+      </h3>
+      <p class="product-detail">
+        <span class="ltr-only">Outerwear · Wool blend · Floor-length</span>
+        <span class="rtl-only">خارجيّة · صوف · للأرض</span>
+      </p>
+      <div class="product-bottom">
+        <span class="product-price">EGP 4,100</span>
+        <div class="product-colors">
+          <span class="color-dot" style="background:#452f27"></span>
+          <span class="color-dot" style="background:#184835"></span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <a class="product-card mood-stilllife reveal" data-page="product" style="cursor:pointer;transition-delay:.3s">
+    <div class="product-image">
+      <div class="product-image-bg"></div>
+      <div class="product-quick-view">
+        <span class="ltr-only">Quick View</span>
+        <span class="rtl-only">عرض سريع</span>
+        <span>→</span>
+      </div>
+    </div>
+    <div class="product-info">
+      <h3 class="product-name">
+        <span class="ltr-only">The Seville Prayer Set</span>
+        <span class="rtl-only">طقم صلاة إشبيلية</span>
+      </h3>
+      <p class="product-detail">
+        <span class="ltr-only">Two-piece · Crepe · Travel-friendly</span>
+        <span class="rtl-only">قطعتان · كريب · للسّفر</span>
+      </p>
+      <div class="product-bottom">
+        <span class="product-price">EGP 2,950</span>
+        <div class="product-colors">
+          <span class="color-dot" style="background:#121212"></span>
+          <span class="color-dot" style="background:#e5ddce"></span>
+          <span class="color-dot" style="background:#184835"></span>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<div class="andalusian-divider">
+  <span class="line"></span>
+  <img class="submark-mini" src="assets/submark-green.png" alt="" />
+  <span class="line"></span>
+</div>
+
+<div class="product-story">
+  <div class="product-story-inner">
+    <img class="submark-mark" src="assets/submark-cream.png" alt="" />
+    <div class="product-story-eyebrow">
+      <span class="ltr-only">— A Word from the Atelier —</span>
+      <span class="rtl-only">— من المَشغل —</span>
+    </div>
+    <h2>
+      <span class="ltr-only">"Behind every piece of cloth, a story.<br/>Behind every jilbab, a woman."</span>
+      <span class="rtl-only">«خلفَ كلِّ قماشٍ حكاية،<br/>وخلفَ كلِّ جلبابٍ امرأة»</span>
+    </h2>
+    <p>
+      <span class="ltr-only">Every piece in Muhajirat is conceived as a companion to that quiet whisper — light enough to live in, sincere enough to pray in, dignified enough to carry into any room you enter.</span>
+      <span class="rtl-only">كلُّ قطعةٍ من المهاجرات صُنعت لتكونَ رفيقةَ تلك الهمسة الهادئة — خفيفةٌ لتُعاش، صادقةٌ لتُصلّى فيها، وقورةٌ لتدخلي بها كلَّ مكان.</span>
+    </p>
+  </div>
+</div>
+
+</section>
+
+<!-- ============ PAGE 3: PRODUCT DETAIL ============ -->
+<section class="page" id="page-product">
+
+<div class="product-detail-page">
+  <div class="collection-breadcrumb" style="padding:2.5rem 0 0">
+    <a data-page="home" style="cursor:pointer">Jilbada</a> /
+    <a data-page="collection" style="cursor:pointer"><span class="ltr-only">Muhajirat</span><span class="rtl-only">المهاجرات</span></a> /
+    <span style="color:var(--green-deep)"><span class="ltr-only">The Andalusian Jilbab</span><span class="rtl-only">جلباب الأندلس</span></span>
+  </div>
+
+  <div class="pdp-grid">
+    <div class="pdp-gallery">
+      <div class="pdp-main-image"></div>
+      <div class="pdp-thumbs">
+        <div class="pdp-thumb active"></div>
+        <div class="pdp-thumb"></div>
+        <div class="pdp-thumb"></div>
+        <div class="pdp-thumb"></div>
+      </div>
+    </div>
+
+    <div class="pdp-info">
+      <div class="pdp-tag">
+        ◊ <span class="ltr-only">Muhajirat · Stage 01</span><span class="rtl-only">المهاجرات · المرحلة الأولى</span>
+      </div>
+      <h1 class="pdp-name">
+        <span class="ltr-only">The Andalusian<br/>Jilbab</span>
+        <span class="rtl-only">جلباب<br/>الأندلس</span>
+      </h1>
+      <div class="pdp-arabic-name ltr-only">— جلباب الأندلس —</div>
+      <div class="pdp-price">EGP 3,200<span class="currency">— EGP</span></div>
+      <p class="pdp-description">
+        <span class="ltr-only">A two-piece jilbab inspired by the silence of Andalusian gardens. Cut from breathable Egyptian linen, it falls in generous, undescribed folds — the kind of garment that makes you forget you're wearing it, and remember why you chose to.</span>
+        <span class="rtl-only">جلبابٌ من قطعتين، مستوحى من سكونِ حدائقِ الأندلس. مفصّلٌ من كتّانٍ مصريٍّ قابلٍ للتنفّس، يتدلّى في طيّاتٍ سخيّةٍ غيرِ واصفة — من ذلك النّوع الذي يجعلكِ تنسين أنّكِ ترتدينه، وتتذكّرين لمَ اخترتِه.</span>
+      </p>
+
+      <div class="pdp-section">
+        <div class="pdp-section-label">
+          <span class="ltr-only">Color · Andalusian Green</span>
+          <span class="rtl-only">اللّون · أخضر أندلسيّ</span>
+        </div>
+        <div class="color-options">
+          <div class="color-option selected" style="background:#184835"></div>
+          <div class="color-option" style="background:#e5ddce"></div>
+          <div class="color-option" style="background:#452f27"></div>
+          <div class="color-option" style="background:#121212"></div>
+        </div>
+      </div>
+
+      <div class="pdp-section">
+        <div class="pdp-section-label">
+          <span class="ltr-only">Size</span>
+          <span class="rtl-only">المقاس</span>
+        </div>
+
+        <div class="size-disclaimer">
+          <span style="font-size:1.1rem;line-height:1">◊</span>
+          <div>
+            <span class="ltr-only"><strong>Sizes run larger than standard.</strong> Our Medium fits like a regular XL — designed intentionally for free movement and dignified looseness.</span>
+            <span class="rtl-only"><strong>مقاساتنا أوسع من المعتاد.</strong> الميديوم عندنا كالـ XL العالميّ — مُصمَّمٌ لاتّساعٍ كريمٍ وحركةٍ حرّة.</span>
+          </div>
+        </div>
+
+        <div class="size-options">
+          <button class="size-btn">XS</button>
+          <button class="size-btn">S</button>
+          <button class="size-btn selected">M</button>
+          <button class="size-btn">L</button>
+          <button class="size-btn">XL</button>
+          <button class="size-btn">XXL</button>
+        </div>
+
+        <div class="size-tools">
+          <button onclick="openRecommender()">
+            <span class="ltr-only">Find My Size</span>
+            <span class="rtl-only">احسبي مقاسكِ</span>
+          </button>
+          <button>
+            <span class="ltr-only">Size Guide</span>
+            <span class="rtl-only">دليل المقاسات</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="add-cart-row">
+        <div class="qty-selector">
+          <button>−</button>
+          <input type="text" value="1" />
+          <button>+</button>
+        </div>
+        <button class="add-to-cart">
+          <span class="ltr-only">Add to Cart</span>
+          <span class="rtl-only">أضيفي إلى السّلة</span>
+          <span>—</span>
+          <span>EGP 3,200</span>
+        </button>
+      </div>
+
+      <div class="pdp-features">
+        <div class="feature">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 2 L 4 6 V 12 C 4 17 12 22 12 22 S 20 17 20 12 V 6 Z"/></svg>
+          <div><span class="ltr-only">Shari'ah<br/>Compliant</span><span class="rtl-only">شرعيٌّ<br/>كاملاً</span></div>
+        </div>
+        <div class="feature">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="10"/><path d="M12 6 V 12 L 16 14"/></svg>
+          <div><span class="ltr-only">Slow<br/>Fashion</span><span class="rtl-only">سلو<br/>فاشن</span></div>
+        </div>
+        <div class="feature">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 12 Q 7 4 12 12 Q 17 20 21 12"/><path d="M3 12 Q 7 20 12 12 Q 17 4 21 12"/></svg>
+          <div><span class="ltr-only">100% Natural<br/>Linen</span><span class="rtl-only">٪١٠٠ كتّان<br/>طبيعيّ</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-story" style="margin-top:4rem">
+    <div class="product-story-inner">
+      <img class="submark-mark" src="assets/submark-cream.png" alt="" />
+      <div class="product-story-eyebrow">
+        <span class="ltr-only">— The Story of the Stitch —</span>
+        <span class="rtl-only">— حكايةُ الغُرزة —</span>
+      </div>
+      <h2>
+        <span class="ltr-only">Sewn slowly, by hands<br/>that understand its purpose.</span>
+        <span class="rtl-only">يُخاطُ ببطء،<br/>بأيدٍ تفهمُ غايته.</span>
+      </h2>
+      <p>
+        <span class="ltr-only">The linen is washed three times before cutting — to soften, to settle, to remember the shape of stillness. Each piece is a quiet vow: between us and you, and between you and your faith.</span>
+        <span class="rtl-only">الكتّانُ يُغسلُ ثلاث مرّاتٍ قبلَ القصّ — ليُلانَ، ليستقرَّ، ليتذكّر شكلَ السّكون. كلُّ قطعةٍ عهدٌ صامت: بيننا وبينكِ، وبينكِ وبينَ إيمانكِ.</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- ============ PAGE 4: ABOUT ============ -->
+<section class="page" id="page-about">
+
+<div class="about-hero">
+  <div class="about-hero-content">
+    <div class="about-eyebrow">
+      <span class="line"></span>
+      <span class="ltr-only">Our Story</span>
+      <span class="rtl-only">حكايتنا</span>
+      <span class="line"></span>
+    </div>
+    <h1>
+      <span class="ltr-only">From a forgotten<br/><em>Andalusian dawn.</em></span>
+      <span class="rtl-only">من فجرٍ أندلسيٍّ<br/>مَنسيّ.</span>
+    </h1>
+    <p>
+      <span class="ltr-only">A new beginning, carried on the wind from where the fall began. This is the story of Jilbada — and of every woman who chooses to walk it.</span>
+      <span class="rtl-only">بدايةٌ جديدةٌ تحملها الرّيح من حيثُ بدأ السّقوط. هذه حكايةُ جِلبادا — وحكايةُ كلِّ امرأةٍ اختارت أن تمشيَ معها.</span>
+    </p>
+  </div>
+</div>
+
+<div class="story-section">
+  <div class="story-grid reveal">
+    <div class="story-visual alhambra"></div>
+    <div class="story-text">
+      <div class="number">— Chapter 01</div>
+      <h2>
+        <span class="ltr-only">Where the fall began,<br/>we begin again.</span>
+        <span class="rtl-only">من حيثُ بدأ السّقوط،<br/>نبدأُ من جديد.</span>
+      </h2>
+      <p class="lead">
+        <span class="ltr-only">To understand our destination, we looked to our past — to Andalusia, where we reached the zenith of our prosperity, and where the silence began.</span>
+        <span class="rtl-only">لنفهمَ وجهتنا، نظرنا إلى ماضينا — إلى الأندلس، حيثُ بلغنا ذُرى ازدهارنا، ومن حيثُ بدأ الصَّمت.</span>
+      </p>
+      <p>
+        <span class="ltr-only">Jilbada is not just another fashion product. It is a response to the call of the Muslim woman who seeks a fortress of modesty and a banner of elegance — without sacrificing practicality. The name itself bridges two worlds: from the Spanish Holgado meaning "loose-fitting," and the divine command of Jilbab.</span>
+        <span class="rtl-only">جِلبادا ليست منتجَ موضةٍ آخر. إنّها استجابةٌ لنداء المرأة المسلمة التي تنشدُ حصناً من الحشمة، ورايةً من الأناقة — دون التّضحية بالعمليّة. الاسمُ نفسُه جسرٌ بين عالمَين: من الإسبانيّة Holgado بمعنى "الفضفاض"، ومن الأمرِ الإلهيّ بالجِلباب.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="story-grid reverse reveal">
+    <div class="story-visual fabric"></div>
+    <div class="story-text">
+      <div class="number">— Chapter 02</div>
+      <h2>
+        <span class="ltr-only">Modesty that inspires,<br/>morals that illuminate.</span>
+        <span class="rtl-only">حشمةٌ تُلهم،<br/>وأخلاقٌ تُضيء.</span>
+      </h2>
+      <p>
+        <span class="ltr-only">Behind every piece of cloth, there is a story. Behind every jilbab, there is a woman carrying within her a profound journey of transformation. We see this journey in all its complexity — and decided not to be merely a brand that produces clothing, but to become her devoted companion.</span>
+        <span class="rtl-only">خلفَ كلِّ قطعةِ قماشٍ حكاية. وخلفَ كلِّ جلبابٍ امرأةٌ تحملُ في داخلها رحلةَ تحوّلٍ عميقة. نحن نرى هذه الرّحلة بكلّ تعقيدها وجمالها — لذا قرّرنا ألاّ نكونَ مجرّد علامةٍ تُنتجُ ملابس، بل أن نكونَ رفيقتها المُخلصة.</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="story-grid reveal">
+    <div class="story-visual olives"></div>
+    <div class="story-text">
+      <div class="number">— Chapter 03</div>
+      <h2>
+        <span class="ltr-only">The butterfly effect<br/>of one woman's grace.</span>
+        <span class="rtl-only">أثرُ الفراشة<br/>في رقيِّ امرأة.</span>
+      </h2>
+      <p>
+        <span class="ltr-only">Our submark — the Andalusian Butterfly — is no accident. We believe that one woman's principled elegance creates ripples of inspiration. Her quiet commitment becomes someone else's permission to begin. This is the world we are building: a community of women, each a light unto the next.</span>
+        <span class="rtl-only">سمتنا الفرعيّة — الفراشة الأندلسيّة — ليست صُدفة. نؤمن بأنّ أناقةَ امرأةٍ واحدةٍ ذاتَ مبدأ تُحدثُ موجاتٍ من الإلهام. التزامها الصّامتُ يصيرُ إذناً لأخرى أن تبدأ. هذا هو العالمُ الذي نبنيه: مجتمعٌ من النّساء، كلٌّ منهنّ نورٌ للأخرى.</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="journey-section">
+  <div class="journey-header reveal">
+    <div class="section-eyebrow">
+      <span class="line"></span>
+      <span class="ltr-only">A Journey, Together</span>
+      <span class="rtl-only">رحلةٌ معاً</span>
+      <span class="line"></span>
+    </div>
+    <h2>
+      <span class="ltr-only">Three stations on a single ascent.</span>
+      <span class="rtl-only">ثلاثُ محطّاتٍ في رحلةٍ واحدة.</span>
+    </h2>
+    <p>
+      <span class="ltr-only">Our collections are not seasons. They are stages of a quiet, lifelong journey — and we walk each one with you.</span>
+      <span class="rtl-only">مجموعاتنا ليست مواسمَ موضة. إنّها محطّاتٌ في رحلةٍ هادئةٍ تستمرُّ العمر — ونحن نمشي كلَّ واحدةٍ معكِ.</span>
+    </p>
+  </div>
+
+  <div class="journey-timeline">
+    <div class="journey-step reveal">
+      <div class="text right">
+        <h3><span class="ltr-only">Muhajirat</span><span class="rtl-only">المهاجرات</span></h3>
+        <div class="ar-name ltr-only">— المهاجرات —</div>
+        <p>
+          <span class="ltr-only">When the heart whispers, "the time has come." Simple, elegant pieces for the brave first step.</span>
+          <span class="rtl-only">حين يهمسُ القلبُ: قد آن الأوان. قطعٌ بسيطةٌ أنيقةٌ للخطوةِ الأولى الشّجاعة.</span>
+        </p>
+      </div>
+      <div class="center"><div class="journey-marker current">01</div></div>
+      <div></div>
+    </div>
+
+    <div class="journey-step reveal">
+      <div></div>
+      <div class="center"><div class="journey-marker">02</div></div>
+      <div class="text left">
+        <h3><span class="ltr-only">Mathaba</span><span class="rtl-only">المثابة</span></h3>
+        <div class="ar-name ltr-only">— المثابة —</div>
+        <p>
+          <span class="ltr-only">The sanctuary of return. Longer, wider, more intricate — quiet luxury for an elevated standing.</span>
+          <span class="rtl-only">ملاذُ العودة. أطولُ، أوسع، أكثرُ عمقاً — رفاهيةٌ صامتةٌ لمكانةٍ عالية.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="journey-step reveal">
+      <div class="text right">
+        <h3><span class="ltr-only">Mutmainna</span><span class="rtl-only">المطمئنّة</span></h3>
+        <div class="ar-name ltr-only">— المطمئنّة —</div>
+        <p>
+          <span class="ltr-only">The soul at peace. Where commitment becomes a silent inspiration, and presence speaks louder than words.</span>
+          <span class="rtl-only">النّفسُ المطمئنّة. حيث يصيرُ الالتزامُ إلهاماً صامتاً، ويتكلّمُ الحضورُ أعلى من الكلام.</span>
+        </p>
+      </div>
+      <div class="center"><div class="journey-marker">03</div></div>
+      <div></div>
+    </div>
+  </div>
+</div>
+
+<div class="pledge-section">
+  <div class="pledge-header reveal">
+    <div class="section-eyebrow">
+      <span class="line"></span>
+      <span class="ltr-only">The Slow Fashion Pledge</span>
+      <span class="rtl-only">عهدُ السلو فاشن</span>
+      <span class="line"></span>
+    </div>
+    <h2 class="section-title">
+      <span class="ltr-only">True elegance<br/>means responsibility.</span>
+      <span class="rtl-only">الأناقةُ الحقيقيّة<br/>مسؤوليّة.</span>
+    </h2>
+  </div>
+
+  <div class="pledges-grid">
+    <div class="pledge reveal">
+      <div class="pledge-num">— 01</div>
+      <h4>
+        <span class="ltr-only">Timeless quality<br/>over quantity.</span>
+        <span class="rtl-only">جودةٌ تَخلُد<br/>لا كثرةٌ تُستهلَك.</span>
+      </h4>
+      <p>
+        <span class="ltr-only">We reject the rush of seasonal trends. Only a few timeless pieces each year — crafted to endure, not to expire.</span>
+        <span class="rtl-only">نرفضُ سباقَ موضات الفصول. قطعٌ قليلةٌ خالدةٌ كلَّ عام — مصنوعةٌ لتدوم، لا لتنتهي.</span>
+      </p>
+    </div>
+
+    <div class="pledge reveal" style="transition-delay:.15s">
+      <div class="pledge-num">— 02</div>
+      <h4>
+        <span class="ltr-only">The purity<br/>of materials.</span>
+        <span class="rtl-only">طُهرُ<br/>الخامة.</span>
+      </h4>
+      <p>
+        <span class="ltr-only">Only 100% natural fabrics — pure cotton and breathable linen. Comfort for the body, gentleness for the earth.</span>
+        <span class="rtl-only">خاماتٌ طبيعيّةٌ ٪١٠٠ — قطنٌ خالصٌ وكتّانٌ يتنفّس. راحةٌ للجسد، ورفقٌ بالأرض.</span>
+      </p>
+    </div>
+
+    <div class="pledge reveal" style="transition-delay:.3s">
+      <div class="pledge-num">— 03</div>
+      <h4>
+        <span class="ltr-only">Ethical production,<br/>uncompromised.</span>
+        <span class="rtl-only">إنتاجٌ أخلاقيّ<br/>بلا تنازلات.</span>
+      </h4>
+      <p>
+        <span class="ltr-only">Every Jilbada piece is made in a safe, fair workplace — free from child labor or exploitation.</span>
+        <span class="rtl-only">كلُّ قطعة جِلبادا تُصنعُ في مكان عملٍ آمنٍ عادل — خالٍ من عمالة الأطفال والاستغلال.</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- SIZE RECOMMENDER MODAL -->
+<div class="modal-overlay" id="recommenderModal">
+  <div class="size-recommender">
+    <button class="modal-close" onclick="closeRecommender()">×</button>
+    <div class="recommender-header">
+      <img class="submark-mark" src="assets/submark-green.png" alt="" />
+      <h3>
+        <span class="ltr-only">Find your size</span>
+        <span class="rtl-only">احسبي مقاسكِ</span>
+      </h3>
+      <p>
+        <span class="ltr-only">Our sizing runs larger than standard. Tell us about you — we'll recommend the size that lets you breathe and move with grace.</span>
+        <span class="rtl-only">مقاساتنا أوسع من المعتاد. أخبرينا عنكِ — وسنرشّحُ لكِ المقاسَ الذي يمنحُكِ راحةً وحركةً برشاقة.</span>
+      </p>
+    </div>
+    <div class="recommender-form">
+      <div class="form-group">
+        <label><span class="ltr-only">Height</span><span class="rtl-only">الطّول</span></label>
+        <input type="number" id="height" placeholder="165" />
+        <div class="unit">cm</div>
+      </div>
+      <div class="form-group">
+        <label><span class="ltr-only">Weight</span><span class="rtl-only">الوزن</span></label>
+        <input type="number" id="weight" placeholder="60" />
+        <div class="unit">kg</div>
+      </div>
+      <div class="form-group">
+        <label><span class="ltr-only">Bust</span><span class="rtl-only">الصّدر</span></label>
+        <input type="number" id="bust" placeholder="92" />
+        <div class="unit">cm</div>
+      </div>
+      <div class="form-group">
+        <label><span class="ltr-only">Waist</span><span class="rtl-only">الخصر</span></label>
+        <input type="number" id="waist" placeholder="74" />
+        <div class="unit">cm</div>
+      </div>
+    </div>
+    <button class="recommend-btn" onclick="calculateSize()">
+      <span class="ltr-only">Recommend My Size</span>
+      <span class="rtl-only">رشّحي مقاسي</span>
+    </button>
+    <div class="recommend-result" id="recommendResult">
+      <div class="label">
+        <span class="ltr-only">Your recommended size</span>
+        <span class="rtl-only">المقاس المُرشَّح لكِ</span>
+      </div>
+      <div class="size" id="recommendedSize">M</div>
+      <div class="equiv">
+        <span class="ltr-only">Equivalent to a regular <strong>XL</strong> in standard sizing</span>
+        <span class="rtl-only">يعادل <strong>XL</strong> في المقاسات العالميّة المعتادة</span>
+      </div>
+      <button class="recommend-btn" onclick="closeRecommender()">
+        <span class="ltr-only">Got it — Continue Shopping</span>
+        <span class="rtl-only">شُكراً — تابعي التسوّق</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="assets/wordmark-cream.png" alt="Jilbada" />
+      <p>
+        <span class="ltr-only">A sanctuary of dignity and grace, woven from the soul of Andalusia. Always inspiring.</span>
+        <span class="rtl-only">حصنٌ من الكرامة والأناقة، منسوجٌ من روح الأندلس. دوماً ملهمة.</span>
+      </p>
+      <div class="footer-tagline">دَوْماً مُلْهِمَة</div>
+    </div>
+    <div class="footer-col">
+      <h5><span class="ltr-only">Collections</span><span class="rtl-only">المجموعات</span></h5>
+      <ul>
+        <li><a data-page="collection"><span class="ltr-only">Muhajirat</span><span class="rtl-only">المهاجرات</span></a></li>
+        <li><a style="opacity:.6"><span class="ltr-only">Mathaba (soon)</span><span class="rtl-only">المثابة (قريباً)</span></a></li>
+        <li><a style="opacity:.6"><span class="ltr-only">Mutmainna (soon)</span><span class="rtl-only">المطمئنة (قريباً)</span></a></li>
+        <li><a><span class="ltr-only">Size Guide</span><span class="rtl-only">دليل المقاسات</span></a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5><span class="ltr-only">Sanctuary</span><span class="rtl-only">المنزل</span></h5>
+      <ul>
+        <li><a data-page="about"><span class="ltr-only">Our Story</span><span class="rtl-only">حكايتنا</span></a></li>
+        <li><a><span class="ltr-only">Slow Fashion Pledge</span><span class="rtl-only">عهد السلو فاشن</span></a></li>
+        <li><a><span class="ltr-only">Care & Repair</span><span class="rtl-only">العناية</span></a></li>
+        <li><a><span class="ltr-only">Contact</span><span class="rtl-only">تواصل</span></a></li>
+      </ul>
+    </div>
+    <div class="footer-col newsletter">
+      <h5><span class="ltr-only">Letters from Andalusia</span><span class="rtl-only">رسائل من الأندلس</span></h5>
+      <p style="font-family:var(--serif);font-size:.92rem;color:rgba(229,221,206,.7);font-style:italic;margin-bottom:1rem">
+        <span class="ltr-only">A quiet correspondence. New pieces, journal entries, and the occasional dua.</span>
+        <span class="rtl-only">مراسلةٌ هادئة. قطعٌ جديدة، حكاياتٌ، ودعاءٌ بين الحين والحين.</span>
+      </p>
+      <input type="email" placeholder="your@email.com" />
+      <button><span class="ltr-only">Subscribe →</span><span class="rtl-only">← اشتركي</span></button>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2025 Jilbada · <span class="ltr-only">Cairo, Egypt</span><span class="rtl-only">القاهرة، مصر</span></div>
+    <div class="social">
+      <a>Instagram</a><a>Pinterest</a><a>Threads</a><a>Facebook</a>
+    </div>
+    <div><span class="ltr-only">Privacy · Terms · Returns</span><span class="rtl-only">خصوصيّة · شروط · إرجاع</span></div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

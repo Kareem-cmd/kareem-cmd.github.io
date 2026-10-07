@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wasel Agency Design System</title>
+    <meta
+      name="description"
+      content="Animated responsive design system for Wasel Agency brand identity."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" data-reveal>
+      <a class="brand" href="#overview" aria-label="Wasel home">
+        <img src="public/assets/mark-large.png" alt="" />
+        <span>Wasel<small>Agency</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#foundations">Foundations</a>
+        <a href="#components">Components</a>
+        <a href="#motion">Motion</a>
+        <a href="#responsive">Responsive</a>
+      </nav>
+      <a class="nav-cta" href="#handoff">
+        <span>Use System</span>
+        <span aria-hidden="true">-></span>
+      </a>
+    </header>
+
+    <main>
+      <section id="overview" class="hero section-shell">
+        <div class="hero-copy" data-reveal>
+          <span class="eyebrow"><span></span> Growth Marketing Agency</span>
+          <h1>We connect brands to <em>growth</em>.</h1>
+          <p>
+            A practical design system for Wasel Agency: bold purple surfaces,
+            lime growth signals, clean white workspaces, and animated upward
+            paths that turn strategy into momentum.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#foundations">
+              Explore tokens
+              <span aria-hidden="true">-></span>
+            </a>
+            <a class="button button-ghost" href="#components">
+              View components
+              <span aria-hidden="true">-></span>
+            </a>
+          </div>
+          <div class="trust-row" aria-label="Brand metrics">
+            <div>
+              <strong>120+</strong>
+              <span>Projects delivered</span>
+            </div>
+            <div>
+              <strong>85+</strong>
+              <span>Happy clients</span>
+            </div>
+            <div>
+              <strong>250%</strong>
+              <span>Average growth</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-stage" data-reveal>
+          <img class="hero-mark" src="public/assets/mark-3d.png" alt="" />
+          <svg class="growth-path" viewBox="0 0 740 420" aria-hidden="true">
+            <path
+              class="path-shadow"
+              d="M38 356 C160 418 213 170 346 227 C466 278 479 95 606 126 C663 140 673 83 704 48"
+            />
+            <path
+              class="path-line"
+              d="M38 356 C160 418 213 170 346 227 C466 278 479 95 606 126 C663 140 673 83 704 48"
+            />
+          </svg>
+          <div class="glass-panel service-stack">
+            <article>
+              <span>01</span>
+              <div>
+                <h3>Strategy</h3>
+                <p>Data-driven plans</p>
+              </div>
+            </article>
+            <article>
+              <span>02</span>
+              <div>
+                <h3>Creative</h3>
+                <p>Scroll-stopping ideas</p>
+              </div>
+            </article>
+            <article>
+              <span>03</span>
+              <div>
+                <h3>Performance</h3>
+                <p>Campaigns that convert</p>
+              </div>
+            </article>
+            <article>
+              <span>04</span>
+              <div>
+                <h3>Analytics</h3>
+                <p>Insights that scale</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="foundations" class="section-shell foundations">
+        <div class="section-heading" data-reveal>
+          <span class="kicker">01 / Foundations</span>
+          <h2>Identity rules extracted from the PDF and assets.</h2>
+          <p>
+            Wasel should feel energetic, clear, and performance-led. The system
+            uses a small palette, large confident type, and a repeating growth
+            arrow motif.
+          </p>
+        </div>
+
+        <div class="analysis-grid">
+          <article class="insight-card purple" data-reveal>
+            <h3>Core signal</h3>
+            <p>
+              Purple owns the brand. Use it for hero areas, navigation, badges,
+              icons, and campaign surfaces.
+            </p>
+          </article>
+          <article class="insight-card lime" data-reveal>
+            <h3>Growth cue</h3>
+            <p>
+              Lime is the action color. Reserve it for CTAs, highlights,
+              progress, and arrow-led motion.
+            </p>
+          </article>
+          <article class="insight-card white" data-reveal>
+            <h3>Workspace</h3>
+            <p>
+              White gives the system breathing room. Use it for service cards,
+              dashboards, forms, and content-heavy views.
+            </p>
+          </article>
+        </div>
+
+        <div class="token-board" data-reveal>
+          <div class="token-card swatch-purple">
+            <span>Wasel Purple</span>
+            <strong>#704EF0</strong>
+            <small>Primary brand, icons, active state</small>
+          </div>
+          <div class="token-card swatch-lime">
+            <span>Growth Lime</span>
+            <strong>#D8FF33</strong>
+            <small>CTA, highlight, growth path</small>
+          </div>
+          <div class="token-card swatch-white">
+            <span>Pure White</span>
+            <strong>#FFFFFF</strong>
+            <small>Surfaces, content fields, contrast</small>
+          </div>
+          <div class="token-card swatch-ink">
+            <span>Performance Ink</span>
+            <strong>#17122F</strong>
+            <small>Headlines and dense text</small>
+          </div>
+        </div>
+
+        <div class="type-spec" data-reveal>
+          <div>
+            <span class="kicker">Typography</span>
+            <h3>Ara Hamah 1982 for brand feel. Poppins for UI clarity.</h3>
+            <p>
+              The PDF names Ara Hamah 1982, while the application mockups use a
+              Poppins-like UI rhythm. This build keeps the round, open spacing
+              while using a reliable web stack.
+            </p>
+          </div>
+          <div class="type-scale">
+            <p class="display">Growth</p>
+            <p class="headline">We connect brands to growth</p>
+            <p class="body-copy">
+              Strategy, creative content, performance marketing, and analytics
+              work together as one system.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="asset-strip section-shell" aria-label="Brand assets">
+        <img src="public/assets/brand-board.png" alt="Wasel identity board" data-reveal />
+        <div class="asset-notes" data-reveal>
+          <span class="kicker">Asset usage</span>
+          <h2>Use the 3D mark as a campaign hero, not as a tiny icon.</h2>
+          <p>
+            The flat mark works for compact navigation and product UI. The 3D
+            mark should anchor social posts, launch visuals, pitch covers, and
+            animated growth moments.
+          </p>
+        </div>
+      </section>
+
+      <section id="components" class="section-shell components">
+        <div class="section-heading" data-reveal>
+          <span class="kicker">02 / Components</span>
+          <h2>Production-ready building blocks.</h2>
+          <p>
+            Buttons, cards, metrics, navigation, forms, and service modules are
+            shaped around clear action and fast scanning.
+          </p>
+        </div>
+
+        <div class="component-lab">
+          <article class="lab-panel dark-panel" data-reveal>
+            <div class="panel-topline">
+              <div class="panel-brand">
+                <img src="public/assets/mark-large.png" alt="" />
+                <span>Wasel<small>Agency</small></span>
+              </div>
+              <button class="icon-button" aria-label="Open menu">
+                <span></span><span></span><span></span>
+              </button>
+            </div>
+            <h3>Campaign header</h3>
+            <p>
+              Purple shell, lime CTA, translucent metric cards, and motion path
+              in the background.
+            </p>
+            <a class="button button-primary" href="#motion">
+              Animate path
+              <span aria-hidden="true">-></span>
+            </a>
+          </article>
+
+          <article class="lab-panel light-panel" data-reveal>
+            <span class="kicker">Service card</span>
+            <div class="service-icon">↗</div>
+            <h3>Performance Marketing</h3>
+            <p>
+              ROI-focused campaigns across Meta, TikTok, Google, Snapchat, and
+              growth channels.
+            </p>
+            <button class="mini-link" type="button">Open details</button>
+          </article>
+
+          <article class="lab-panel form-panel" data-reveal>
+            <span class="kicker">Lead form</span>
+            <label>
+              Project goal
+              <input value="Scale e-commerce growth" />
+            </label>
+            <label>
+              Monthly budget
+              <select>
+                <option>$10k - $25k</option>
+                <option>$25k - $50k</option>
+                <option>$50k+</option>
+              </select>
+            </label>
+            <button class="button button-primary" type="button">Start project</button>
+          </article>
+
+          <article class="lab-panel metric-panel" data-reveal>
+            <span class="kicker">Case metric</span>
+            <strong>+320%</strong>
+            <p>Revenue growth after a full-funnel campaign sprint.</p>
+            <div class="mini-chart" aria-hidden="true">
+              <span style="height: 32%"></span>
+              <span style="height: 46%"></span>
+              <span style="height: 39%"></span>
+              <span style="height: 64%"></span>
+              <span style="height: 58%"></span>
+              <span style="height: 88%"></span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="motion" class="section-shell motion">
+        <div class="section-heading" data-reveal>
+          <span class="kicker">03 / Motion language</span>
+          <h2>Movement should draw growth, not decorate the page.</h2>
+          <p>
+            Motion rules are based on the brand arrow: curves, lifts, reveals,
+            progress, and confident upward transitions.
+          </p>
+        </div>
+
+        <div class="method-map" data-reveal>
+          <svg viewBox="0 0 1000 360" aria-hidden="true">
+            <path
+              class="method-line"
+              d="M35 250 C155 70 238 338 366 180 C488 30 540 310 660 185 C760 76 795 270 940 92"
+            />
+          </svg>
+          <div class="method-step step-1">
+            <span>01</span>
+            <strong>Discover</strong>
+          </div>
+          <div class="method-step step-2">
+            <span>02</span>
+            <strong>Strategize</strong>
+          </div>
+          <div class="method-step step-3">
+            <span>03</span>
+            <strong>Create</strong>
+          </div>
+          <div class="method-step step-4">
+            <span>04</span>
+            <strong>Launch</strong>
+          </div>
+          <div class="method-step step-5">
+            <span>05</span>
+            <strong>Optimize</strong>
+          </div>
+          <div class="method-step step-6">
+            <span>06</span>
+            <strong>Scale</strong>
+          </div>
+        </div>
+
+        <div class="motion-rules">
+          <article data-reveal>
+            <h3>Reveal</h3>
+            <p>Fade in with 16px upward lift. Duration 600ms.</p>
+          </article>
+          <article data-reveal>
+            <h3>Path draw</h3>
+            <p>Stroke draws from left to right. Duration 1600ms.</p>
+          </article>
+          <article data-reveal>
+            <h3>Hover</h3>
+            <p>Move 4px up and intensify the lime or purple glow.</p>
+          </article>
+          <article data-reveal>
+            <h3>Reduced motion</h3>
+            <p>Keep state changes visible without continuous animation.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="responsive" class="section-shell responsive">
+        <div class="section-heading" data-reveal>
+          <span class="kicker">04 / Responsive system</span>
+          <h2>Desktop depth, mobile focus.</h2>
+          <p>
+            Desktop can carry layered hero visuals and service stacks. Mobile
+            should prioritize brand mark, headline, CTA, and one action at a
+            time.
+          </p>
+        </div>
+
+        <div class="device-grid">
+          <article class="device desktop-device" data-reveal>
+            <div class="device-screen">
+              <img src="public/assets/hero-page.png" alt="Desktop Wasel page preview" />
+            </div>
+            <h3>Desktop</h3>
+            <p>Wide hero, split content, visible metrics, and layered services.</p>
+          </article>
+          <article class="device mobile-device" data-reveal>
+            <div class="phone-screen">
+              <img src="public/assets/mark-large.png" alt="Wasel mobile mark preview" />
+              <p>Grow with precision</p>
+              <span></span>
+            </div>
+            <h3>Mobile</h3>
+            <p>Single-column flow, large CTA, compact cards, and fewer overlays.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="handoff" class="section-shell handoff">
+        <div class="handoff-card" data-reveal>
+          <img src="public/assets/mark-3d.png" alt="" />
+          <div>
+            <span class="kicker">System summary</span>
+            <h2>Wasel should look fast, clean, and growth-obsessed.</h2>
+            <p>
+              Keep purple as the world, lime as the action, white as the work
+              surface, and the arrow path as the recurring brand gesture.
+            </p>
+          </div>
+          <a class="button button-primary" href="#overview">
+            Back to top
+            <span aria-hidden="true">-></span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

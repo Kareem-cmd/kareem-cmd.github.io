@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" role="img" aria-label="Roman Dahy" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Allura&amp;display=swap');
+      .signature {
+        font-family: 'Allura', 'Apple Chancery', 'Lucida Handwriting', cursive;
+        font-size: 160px;
+        font-weight: 400;
+        fill: #FFFFFF;
+        letter-spacing: 0;
+      }
+      .glow {
+        filter: drop-shadow(0 0 24px rgba(91, 46, 255, 0.55));
+      }
+    </style>
+  </defs>
+  <text x="450" y="160" text-anchor="middle" class="signature glow">Roman Dahy</text>
+</svg>

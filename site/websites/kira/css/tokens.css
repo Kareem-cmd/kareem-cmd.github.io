@@ -1,0 +1,233 @@
+/* ============================================================
+   KIRA STUDIO — Design Tokens (single source of truth)
+   Dark theme is the default. [data-theme="light"] overrides semantics.
+
+   Layers:
+     1. Brand core (immutable)      4. Type
+     2. Color ramps                 5. Space / radius / border
+     3. Semantic color              6. Elevation / motion / layout / z
+   Components read SEMANTIC + scale tokens only — never raw ramp values.
+   ============================================================ */
+
+:root {
+  /* ───────── 1 · BRAND CORE (immutable) ───────── */
+  --kira-crimson: #af1221;   /* Main   */
+  --kira-black:   #000000;   /* Second */
+  --kira-white:   #ffffff;   /* Third  */
+  --kira-cobalt:  #0100bd;   /* Accent */
+
+  /* ───────── 2 · COLOR RAMPS ───────── */
+  /* Crimson */
+  --crimson-900: #410710;
+  --crimson-800: #66091a;
+  --crimson-700: #880d1d;
+  --crimson-600: #9c1020;
+  --crimson-500: #af1221;   /* = brand */
+  --crimson-400: #c8202f;
+  --crimson-300: #e03c49;
+  --crimson-200: #ef6f78;
+  --crimson-100: #f8a9ad;
+
+  /* Cobalt (accent — used sparingly) */
+  --cobalt-700: #010085;
+  --cobalt-600: #0100a4;
+  --cobalt-500: #0100bd;   /* = brand */
+  --cobalt-400: #2a2ee2;
+  --cobalt-300: #5a5cf3;
+  --cobalt-200: #9698f9;
+
+  /* Noir — warm, faintly red-shifted darks */
+  --noir-1000: #000000;
+  --noir-975:  #070506;
+  --noir-950:  #0b0809;
+  --noir-900:  #110c0e;
+  --noir-850:  #171012;
+  --noir-800:  #1d1518;
+  --noir-700:  #281d20;
+  --noir-600:  #35262a;
+  --noir-500:  #4b383d;
+  --noir-400:  #6c5359;
+
+  /* Bone — warm lights */
+  --bone-050: #faf6f3;
+  --bone-100: #f1eae5;
+  --bone-200: #e3dad3;
+  --bone-300: #cabfb8;
+  --ash-400:  #a3958f;
+  --ash-500:  #7e706b;
+  --ash-600:  #5b4e4b;
+
+  /* ───────── 3 · SEMANTIC · DARK (default) ───────── */
+  --bg:             var(--noir-950);
+  --bg-sunken:      var(--noir-975);
+  --bg-raised:      var(--noir-900);
+  --surface:        var(--noir-850);
+  --surface-2:      var(--noir-800);
+  --surface-3:      var(--noir-700);
+
+  --border:         rgba(250, 246, 243, 0.09);
+  --border-strong:  rgba(250, 246, 243, 0.18);
+  --border-crimson: rgba(175, 18, 33, 0.55);
+
+  --text:           var(--bone-050);
+  --text-secondary: var(--bone-300);
+  --text-muted:     var(--ash-400);
+  --text-disabled:  var(--ash-600);
+  --text-inverse:   var(--noir-900);
+
+  --primary:        var(--crimson-500);
+  --primary-hover:  var(--crimson-400);
+  --primary-press:  var(--crimson-600);
+  --on-primary:     var(--kira-white);
+  --primary-text:   var(--crimson-300);   /* crimson legible as text on dark */
+
+  --accent:         var(--cobalt-400);
+  --accent-text:    var(--cobalt-300);
+  --on-accent:      var(--kira-white);
+
+  --focus:          var(--crimson-300);
+  --selection-bg:   rgba(175, 18, 33, 0.34);
+  --scrim:          rgba(4, 2, 3, 0.74);
+  --glow-crimson:   rgba(175, 18, 33, 0.45);
+
+  /* ───────── 4 · TYPE ───────── */
+  --font-display:     "Death Note", "Bell MT", Georgia, serif;
+  --font-display-alt: "Death Font", "Bell MT", Georgia, serif;
+  --font-blackletter: "Cloister Black", "UnifrakturCook", serif;
+  --font-serif:       "Bell MT", "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-sans:        "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:        ui-monospace, "SF Mono", "JetBrains Mono", "Roboto Mono", Menlo, Consolas, monospace;
+
+  --text-2xs: 0.6875rem;
+  --text-xs:  0.75rem;
+  --text-sm:  0.875rem;
+  --text-base:1rem;
+  --text-md:  1.125rem;
+  --text-lg:  clamp(1.25rem, 1.10rem + 0.55vw, 1.5rem);
+  --text-xl:  clamp(1.5rem,  1.28rem + 0.95vw, 2rem);
+  --text-2xl: clamp(2rem,    1.62rem + 1.75vw, 2.75rem);
+  --text-3xl: clamp(2.5rem,  1.92rem + 2.9vw,  3.75rem);
+  --text-4xl: clamp(3.25rem, 2.25rem + 4.6vw,  5rem);
+  --text-5xl: clamp(4rem,    2.55rem + 6.8vw,  7rem);
+  --text-display: clamp(5rem, 2.9rem + 10.5vw, 11rem);
+
+  --leading-none:    1;
+  --leading-tight:   1.08;
+  --leading-snug:    1.22;
+  --leading-normal:  1.55;
+  --leading-relaxed: 1.75;
+
+  --tracking-tighter: -0.035em;
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.06em;
+  --tracking-label:   0.22em;
+  --tracking-mega:    0.36em;
+
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ───────── 5 · SPACE / RADIUS / BORDER ───────── */
+  --space-0:  0;
+  --space-px: 1px;
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.5rem;
+  --space-6:  2rem;
+  --space-7:  3rem;
+  --space-8:  4rem;
+  --space-9:  6rem;
+  --space-10: 8rem;
+  --space-11: 12rem;
+  --space-12: 16rem;
+
+  --radius-none: 0;
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   14px;
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  --border-width: 1px;
+  --border-width-thick: 2px;
+
+  /* ───────── 6 · ELEVATION / MOTION / LAYOUT / Z ───────── */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 54px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 32px 84px rgba(0, 0, 0, 0.7);
+  --glow-sm: 0 0 0 1px var(--border-crimson), 0 0 20px -6px var(--glow-crimson);
+  --glow-md: 0 0 34px -8px var(--glow-crimson);
+  --glow-lg: 0 0 66px -10px var(--glow-crimson);
+
+  --dur-instant:   80ms;
+  --dur-fast:      150ms;
+  --dur-base:      240ms;
+  --dur-slow:      420ms;
+  --dur-slower:    680ms;
+  --dur-cinematic: 1200ms;
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --container:        1280px;
+  --container-wide:   1480px;
+  --container-narrow: 720px;
+  --gutter:    clamp(1.25rem, 4vw, 4rem);
+  --section-y: clamp(4rem, 10vw, 10rem);
+
+  --z-below:   -1;
+  --z-base:    0;
+  --z-raised:  10;
+  --z-sticky:  100;
+  --z-header:  200;
+  --z-overlay: 300;
+  --z-modal:   400;
+  --z-toast:   500;
+  --z-max:     999;
+
+  color-scheme: dark;
+}
+
+/* ───────── SEMANTIC · LIGHT (museum-paper inversion) ───────── */
+[data-theme="light"] {
+  --bg:             var(--bone-100);
+  --bg-sunken:      var(--bone-200);
+  --bg-raised:      #ffffff;
+  --surface:        #ffffff;
+  --surface-2:      var(--bone-100);
+  --surface-3:      var(--bone-200);
+
+  --border:         rgba(17, 12, 14, 0.12);
+  --border-strong:  rgba(17, 12, 14, 0.26);
+  --border-crimson: rgba(175, 18, 33, 0.5);
+
+  --text:           var(--noir-900);
+  --text-secondary: var(--noir-700);
+  --text-muted:     var(--ash-600);
+  --text-disabled:  var(--bone-300);
+  --text-inverse:   var(--bone-050);
+
+  --primary:        var(--crimson-600);
+  --primary-hover:  var(--crimson-500);
+  --primary-press:  var(--crimson-700);
+  --on-primary:     var(--kira-white);
+  --primary-text:   var(--crimson-700);
+
+  --accent:         var(--cobalt-500);
+  --accent-text:    var(--cobalt-600);
+
+  --focus:          var(--crimson-600);
+  --selection-bg:   rgba(175, 18, 33, 0.18);
+  --scrim:          rgba(17, 12, 14, 0.45);
+  --glow-crimson:   rgba(175, 18, 33, 0.22);
+
+  color-scheme: light;
+}

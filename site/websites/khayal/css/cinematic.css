@@ -1,0 +1,93 @@
+/* ============== CINEMATIC BREAK ============== */
+.cinematic {
+  position: relative;
+  min-height: 92vh;
+  background: var(--ink);
+  overflow: hidden;
+  isolation: isolate;
+}
+.cinematic__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.cinematic__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  transform: scale(1.12);
+  will-change: transform;
+  filter: saturate(.95) contrast(1.04);
+}
+.cinematic__media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(120% 100% at 50% 50%, rgba(17,17,17,.25) 0%, rgba(17,17,17,.6) 70%, rgba(17,17,17,.86) 100%),
+    linear-gradient(180deg, rgba(17,17,17,.92) 0%, rgba(17,17,17,0) 25%, rgba(17,17,17,0) 75%, rgba(17,17,17,.92) 100%);
+  z-index: 1;
+}
+
+.cinematic__inner {
+  position: relative;
+  z-index: 2;
+  min-height: 92vh;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+  padding: 120px var(--gutter);
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+}
+.cinematic__index {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .32em;
+  color: var(--copper);
+  margin-bottom: 36px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.cinematic__index::before,
+.cinematic__index::after {
+  content: ""; width: 28px; height: 1px; background: var(--copper);
+}
+.cinematic__quote {
+  font-family: var(--f-editorial);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(36px, 4.4vw, 76px);
+  line-height: 1.04;
+  color: var(--text-on-dark);
+  max-width: 18ch;
+  letter-spacing: -.012em;
+}
+.cinematic__quote .word { display: inline-block; overflow: hidden; }
+.cinematic__quote .word > span { display: inline-block; transform: translateY(105%); }
+
+.cinematic__attr {
+  margin-top: 40px;
+  font-size: 11px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.cinematic__attr .dot { width: 4px; height: 4px; background: var(--copper); border-radius: 99px; }
+
+/* corner brackets shared with hero */
+.cinematic__brackets b {
+  position: absolute;
+  width: 32px; height: 32px;
+  border: 1px solid rgba(214,196,162,.45);
+  z-index: 3;
+}
+.cinematic__brackets b:nth-child(1){ top: 40px; left: var(--gutter); border-right: 0; border-bottom: 0; }
+.cinematic__brackets b:nth-child(2){ top: 40px; right: var(--gutter); border-left: 0; border-bottom: 0; }
+.cinematic__brackets b:nth-child(3){ bottom: 40px; left: var(--gutter); border-right: 0; border-top: 0; }
+.cinematic__brackets b:nth-child(4){ bottom: 40px; right: var(--gutter); border-left: 0; border-top: 0; }

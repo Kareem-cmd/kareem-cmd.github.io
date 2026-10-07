@@ -1,0 +1,193 @@
+/* ============================================================
+   KHAYAL — Gateway (branch entry)
+   Shown BEFORE the site: the studio's three branches —
+   Interiors · Kitchens · Furniture. Full-screen split, each
+   panel routes into its section. Black / ivory / champagne.
+   ============================================================ */
+.gateway {
+  position: relative;
+  min-height: 100svh;
+  background: var(--ink);
+  color: var(--text-on-dark);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* faint fluted texture behind everything */
+.gateway::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(90deg, transparent 0 39px, rgba(214,196,162,.02) 39px 40px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---- top bar ---- */
+.gateway__head {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: clamp(22px, 3vw, 40px) var(--gutter) 0;
+}
+.gateway__mark { height: 40px; width: auto; display: block; }
+.gateway__wm {
+  font-family: var(--f-brand);
+  font-size: 26px;
+  letter-spacing: .01em;
+  line-height: 1;
+  display: inline-flex; align-items: baseline; gap: .34em;
+}
+.gateway__wm .ar { font-family: var(--f-arabic); font-size: .56em; color: var(--copper); letter-spacing: 0; }
+.gateway__tag {
+  margin-left: auto;
+  font-family: var(--f-editorial);
+  font-style: italic;
+  color: var(--copper);
+  font-size: 15px;
+}
+
+/* ---- panels ---- */
+.gateway__panels {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+.gw-panel {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(28px, 3.4vw, 56px);
+  overflow: hidden;
+  border-left: 1px solid var(--line-dark);
+  text-decoration: none;
+  color: var(--text-on-dark);
+  transition: flex-grow .85s var(--ease-out);
+  opacity: 0;
+  transform: translateY(40px);
+  animation: gwIn 1s var(--ease-out) forwards;
+}
+.gw-panel:first-child { border-left: 0; }
+.gw-panel:nth-child(1) { animation-delay: .15s; }
+.gw-panel:nth-child(2) { animation-delay: .30s; }
+.gw-panel:nth-child(3) { animation-delay: .45s; }
+@keyframes gwIn { to { opacity: 1; transform: none; } }
+
+/* image + veil */
+.gw-panel::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(.35) brightness(.46) contrast(1.02);
+  transform: scale(1.06);
+  transition: transform 1.3s var(--ease-out), filter 1.3s var(--ease-out);
+  z-index: 0;
+}
+.gw-panel::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(17,17,17,.12) 0%, rgba(17,17,17,.55) 55%, rgba(17,17,17,.92) 100%);
+  z-index: 1;
+}
+.gw-panel > * { position: relative; z-index: 2; }
+
+.gw-panel__no {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: auto;
+}
+.gw-panel__ar {
+  font-family: var(--f-arabic);
+  font-size: clamp(16px, 1.5vw, 20px);
+  color: var(--copper-hi);
+  opacity: .9;
+  margin-bottom: 4px;
+  display: block;
+}
+.gw-panel__title {
+  font-family: var(--f-brand);
+  font-size: clamp(34px, 4.4vw, 64px);
+  line-height: .98;
+  letter-spacing: .005em;
+  display: block;
+}
+.gw-panel__title::after {
+  content: "";
+  display: block;
+  width: 46px; height: 2px;
+  margin-top: 18px;
+  background: var(--copper);
+  transition: width .6s var(--ease-out);
+}
+.gw-panel__cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  font-family: var(--f-sans);
+  font-size: 10.5px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .5s var(--ease-out), transform .5s var(--ease-out), color .3s var(--ease-out);
+}
+.gw-panel__cue svg { width: 24px; height: 8px; }
+
+/* desktop hover: hovered branch expands, others recede */
+@media (hover: hover) and (min-width: 901px) {
+  .gateway__panels:hover .gw-panel { flex-grow: .7; }
+  .gw-panel:hover { flex-grow: 2.2; }
+  .gw-panel:hover::before { transform: scale(1); filter: grayscale(0) brightness(.6) contrast(1.05); }
+  .gw-panel:hover .gw-panel__no { color: var(--copper-hi); }
+  .gw-panel:hover .gw-panel__title::after { width: 120px; }
+  .gw-panel:hover .gw-panel__cue { opacity: 1; transform: none; color: var(--copper); }
+}
+
+/* ---- foot ---- */
+.gateway__foot {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: clamp(16px, 2vw, 28px) var(--gutter) clamp(20px, 2.4vw, 34px);
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--text-mute-dk);
+}
+.gateway__skip { color: var(--copper); }
+.gateway__skip:hover { color: var(--copper-hi); }
+
+/* ---- mobile: stack the three branches ---- */
+@media (max-width: 900px) {
+  .gateway { min-height: auto; }
+  .gateway__panels { flex-direction: column; }
+  .gw-panel {
+    border-left: 0;
+    border-top: 1px solid var(--line-dark);
+    min-height: 33svh;
+    padding: 26px 22px;
+    opacity: 1; transform: none; animation: none;   /* avoid off-screen stagger on mobile */
+  }
+  .gw-panel:first-child { border-top: 0; }
+  .gw-panel__cue { opacity: 1; transform: none; color: var(--copper); }
+  .gateway__head { flex-wrap: wrap; gap: 10px; }
+  .gateway__tag { margin-left: 0; flex-basis: 100%; font-size: 13px; }
+}

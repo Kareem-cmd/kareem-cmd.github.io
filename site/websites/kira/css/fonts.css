@@ -1,0 +1,59 @@
+/* ============================================================
+   KIRA STUDIO — Typefaces
+   Local brand fonts + system-safe fallback stacks.
+
+   ⚠ Bell MT is a Monotype commercial font. The local files are fine for
+   internal/design use, but embedding it on a PUBLIC site needs a webfont
+   licence. The serif token below falls back to EB Garamond → Georgia, so
+   the design holds even without Bell MT licensed.
+   ============================================================ */
+
+/* — Display / signature (hero moments only) — */
+@font-face {
+  font-family: "Death Note";
+  src: url("../Assets/Fonts/Death-Note.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* — Display alternate (stencil/distressed, numerals & accents) — */
+@font-face {
+  font-family: "Death Font";
+  src: url("../Assets/Fonts/death-font.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* — Blackletter accent (drop-caps, numerals, rare flourishes) — */
+@font-face {
+  font-family: "Cloister Black";
+  src: url("../Assets/Fonts/CloisterBlack.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* — Secondary serif (editorial headings & body) — */
+@font-face {
+  font-family: "Bell MT";
+  src: url("../Assets/Fonts/BELL.TTF") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bell MT";
+  src: url("../Assets/Fonts/BELLB.TTF") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bell MT";
+  src: url("../Assets/Fonts/BELLI.TTF") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}

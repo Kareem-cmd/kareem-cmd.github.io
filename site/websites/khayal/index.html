@@ -1,0 +1,1577 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#111111" />
+  <title>KHAYAL Designs — Interior Atelier</title>
+  <meta name="description" content="KHAYAL Designs (خيال) is an interior atelier turning architectural intent into livable, executed space. Studio practice, four signature styles, full turnkey execution." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/brand/khayal-mark.svg" />
+  <link rel="preload" as="image" href="assets/hero/hero-main.webp" fetchpriority="high" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter+Tight:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Amiri:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/gateway.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/cinematic.css" />
+  <link rel="stylesheet" href="css/portfolio.css" />
+  <link rel="stylesheet" href="css/process.css" />
+  <link rel="stylesheet" href="css/extras.css" />
+  <link rel="stylesheet" href="css/booking.css" />
+  <link rel="stylesheet" href="css/mobile.css" />
+</head>
+<body class="surface-dark">
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ====== NAV ====== -->
+  <header class="nav" id="nav" data-theme="dark">
+    <div class="container">
+      <div class="nav-row">
+        <a href="#top" class="nav-brand" aria-label="Khayal Designs home">
+          <img class="nav-brand-img mark-gold" src="assets/brand/khayal-mark.svg" alt="Khayal Designs" />
+          <img class="nav-brand-img mark-ink" src="assets/brand/khayal-mark-ink.svg" alt="" aria-hidden="true" />
+          <span class="nav-brand__wm"><b>Khayal</b><i>Designs</i></span>
+        </a>
+
+        <nav class="nav-menu" aria-label="Primary">
+          <a href="#studio">Studio</a>
+          <a href="#styles">Kitchens</a>
+          <a href="#furniture">Furniture</a>
+          <a href="#interior">Interiors</a>
+          <a href="#showcase">3D</a>
+          <a href="#process">Process</a>
+          <a href="#booking">Booking</a>
+        </nav>
+
+        <div class="nav-cta-wrap">
+          <a href="#booking" class="btn btn-solid">
+            Book a consultation
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="navMobile">
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== MOBILE NAV DRAWER ====== -->
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <div class="nav-mobile__bg" aria-hidden="true"></div>
+    <div class="nav-mobile__head">
+      <span class="nav-mobile__brand">
+        <img src="assets/brand/khayal-mark.svg" alt="Khayal Designs" />
+        <span class="nav-brand__wm"><b>Khayal</b><i>Designs</i></span>
+      </span>
+      <button class="nav-mobile__close" id="navClose" aria-label="Close menu"></button>
+    </div>
+
+    <nav class="nav-mobile__links" aria-label="Mobile primary">
+      <a class="nav-mobile__link" href="#studio">Studio<span class="num">/ 01</span></a>
+      <a class="nav-mobile__link" href="#styles">Kitchens<span class="num">/ 02</span></a>
+      <a class="nav-mobile__link" href="#furniture">Furniture<span class="num">/ 03</span></a>
+      <a class="nav-mobile__link" href="#interior">Interiors<span class="num">/ 04</span></a>
+      <a class="nav-mobile__link" href="#showcase">3D Visualisation<span class="num">/ 05</span></a>
+      <a class="nav-mobile__link" href="#process">Process<span class="num">/ 06</span></a>
+      <a class="nav-mobile__link" href="#booking">Booking<span class="num">/ 07</span></a>
+    </nav>
+
+    <div class="nav-mobile__foot">
+      <span>6th of October City · Egypt</span>
+      <a href="mailto:ziady5420@gmail.com">ziady5420@gmail.com</a>
+      <a href="tel:+201027066772">+20 102 706 6772</a>
+      <a href="#booking" class="cta">
+        Book a consultation
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- floating scroll rail -->
+  <aside class="scroll-rail" aria-hidden="true">
+    <a href="#hero" class="rail-step is-active" data-section="hero">Cover</a>
+    <a href="#studio" class="rail-step" data-section="studio">Studio</a>
+    <a href="#styles" class="rail-step" data-section="styles">Kitchens</a>
+    <a href="#furniture" class="rail-step" data-section="furniture">Furniture</a>
+    <a href="#interior" class="rail-step" data-section="interior">Interiors</a>
+    <a href="#showcase" class="rail-step" data-section="showcase">3D</a>
+    <a href="#process" class="rail-step" data-section="process">Process</a>
+    <a href="#booking" class="rail-step" data-section="booking">Booking</a>
+  </aside>
+
+  <main id="top">
+
+    <!-- ====== GATEWAY · THREE BRANCHES ====== -->
+    <section class="gateway" id="gateway" aria-label="Khayal Designs — our three branches">
+      <div class="gateway__head">
+        <img class="gateway__mark" src="assets/brand/khayal-mark.svg" alt="" aria-hidden="true" />
+        <span class="gateway__wm">Khayal <span class="ar">خيال</span></span>
+        <span class="gateway__tag">Crafting spaces beyond imagination</span>
+      </div>
+
+      <div class="gateway__panels">
+        <a class="gw-panel" href="#interior" style="--img:url('../assets/interior/int-01.webp')">
+          <span class="gw-panel__no">/ 01 — Branch</span>
+          <span class="gw-panel__ar">تصميم داخلي</span>
+          <span class="gw-panel__title">Interiors</span>
+          <span class="gw-panel__cue">Enter <svg viewBox="0 0 24 8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M0 4h22M18 1l4 3-4 3"/></svg></span>
+        </a>
+        <a class="gw-panel" href="#styles" style="--img:url('../assets/kits/modern/1.webp')">
+          <span class="gw-panel__no">/ 02 — Branch</span>
+          <span class="gw-panel__ar">مطابخ</span>
+          <span class="gw-panel__title">Kitchens</span>
+          <span class="gw-panel__cue">Enter <svg viewBox="0 0 24 8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M0 4h22M18 1l4 3-4 3"/></svg></span>
+        </a>
+        <a class="gw-panel" href="#furniture" style="--img:url('../assets/furniture/furn-01.webp')">
+          <span class="gw-panel__no">/ 03 — Branch</span>
+          <span class="gw-panel__ar">أثاث</span>
+          <span class="gw-panel__title">Furniture</span>
+          <span class="gw-panel__cue">Enter <svg viewBox="0 0 24 8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M0 4h22M18 1l4 3-4 3"/></svg></span>
+        </a>
+      </div>
+
+      <div class="gateway__foot">
+        <span>Three branches · one studio</span>
+        <a class="gateway__skip" href="#hero">Scroll to enter ↓</a>
+      </div>
+    </section>
+
+    <!-- ====== HERO ====== -->
+    <section id="hero" class="hero surface-dark" data-rail="hero">
+      <div class="hero__media" aria-hidden="true">
+        <img id="heroImg" src="assets/hero/hero-main.webp" alt="" decoding="async" fetchpriority="high" />
+        <span class="haze" aria-hidden="true"></span>
+      </div>
+
+      <div class="hero__brackets" aria-hidden="true"><b></b><b></b><b></b><b></b></div>
+
+      <div class="hero__inner">
+
+        <div class="hero__meta">
+          <div>
+            <span class="eyebrow">Khayal&nbsp;·&nbsp;Atelier of Interior</span>
+          </div>
+          <div class="right">
+            <span>6th of October City</span><br>
+            <b>Now booking — Q3 / Q4 2026</b>
+          </div>
+        </div>
+
+        <div class="hero__title-wrap">
+          <div class="spacer" aria-hidden="true"></div>
+          <div class="content">
+            <h1 class="hero__title">
+              <span class="line"><span>Spaces that</span></span>
+              <span class="line"><span class="ital">hold</span></span>
+              <span class="line"><span>their silence.</span></span>
+            </h1>
+
+            <div class="hero__sub-col">
+              <p>
+                Khayal is an interior atelier turning architectural intent into livable, executed space. One studio drawing the line, choosing the stone, supervising the trades — until the door is keyed and handed back.
+              </p>
+              <div class="cta-row">
+                <a href="#booking" class="btn btn-solid">
+                  Book a consultation
+                  <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square">
+                    <path d="M5 12h14M13 6l6 6-6 6"/>
+                  </svg>
+                </a>
+                <a href="#styles" class="ghost-link">See the work</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__bottom">
+          <div class="hero__scroll">
+            <span class="ln"></span>
+            <span>Scroll to enter the studio</span>
+          </div>
+          <div class="hero__counter">
+            01 — STUDIO BRIEF&nbsp;&nbsp;/&nbsp;&nbsp;<b>2026</b>
+          </div>
+          <div class="hero__mini">
+            Residential&nbsp;·&nbsp;Hospitality&nbsp;·&nbsp;Boutique Retail
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== MARQUEE ====== -->
+    <div class="hero-marquee" aria-hidden="true">
+      <div class="hero-marquee__track">
+        <span>Architecture of intention</span>
+        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg>
+        <span>Drawn line, chosen stone</span>
+        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg>
+        <span>Designed, drawn, built by one studio</span>
+        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg>
+        <span>Residential · Hospitality · Boutique retail</span>
+        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg>
+        <span>Architecture of intention</span>
+        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg>
+        <span>Drawn line, chosen stone</span>
+        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg>
+        <span>Designed, drawn, built by one studio</span>
+        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg>
+        <span>Residential · Hospitality · Boutique retail</span>
+        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+    </div>
+
+    <!-- ====== ABOUT / STUDIO ====== -->
+    <section id="studio" class="about surface-light" data-rail="studio">
+      <div class="container">
+        <div class="about__grid">
+
+          <div class="about__head">
+            <span class="eyebrow">02 — Studio Brief</span>
+            <h2>
+              A studio practice <span class="ital">drawing the line</span> from first sketch to final keying.
+            </h2>
+          </div>
+
+          <div class="about__body">
+            <p>
+              <span class="lead">Khayal is not a contractor with a moodboard or a designer with a subcontractor list.</span> We are the studio that holds the project from the concept board to the day the client first sits in the finished room. Architecture, interiors, fabrication oversight — handled under one roof, with the same hand on the pencil and the file.
+            </p>
+
+            <blockquote class="pulled">
+              "We measure a room by what it asks of you when you stop talking."
+            </blockquote>
+
+            <p>
+              We build slowly on purpose. Every detail — the radius on a stone edge, the depth of a reveal, the warmth of a fixture — is decided on paper, mocked on site, then specified before a single trade is briefed. The result is a room that holds together at close range and at distance.
+            </p>
+
+            <div class="about__stats">
+              <div class="about__stat">
+                <span class="num">06</span>
+                <span class="lbl">Years in practice</span>
+              </div>
+              <div class="about__stat">
+                <span class="num">47</span>
+                <span class="lbl">Residences delivered</span>
+              </div>
+              <div class="about__stat">
+                <span class="num">04</span>
+                <span class="lbl">Signature style systems</span>
+              </div>
+            </div>
+
+            <div class="about__pillars">
+              <article class="about__pillar">
+                <span class="pill-no">/ 01</span>
+                <svg class="pill-ico" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 41V15L24 7l16 8v26M8 41h32M18 41V28h12v13M14.5 21h6M27.5 21h6"/></svg>
+                <h4>Architectural eye</h4>
+                <p>Every interior begins with a plan. Walls move, ceilings are reshaped, daylight is re-routed — drawn before a material is chosen.</p>
+              </article>
+              <article class="about__pillar">
+                <span class="pill-no">/ 02</span>
+                <svg class="pill-ico" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 7 6 15l18 8 18-8-18-8zM6 24l18 8 18-8M6 33l18 8 18-8"/></svg>
+                <h4>Material library</h4>
+                <p>A curated palette of stone, plaster, wood and brass that ages with the room. Sourced and tested, not catalogued from a screen.</p>
+              </article>
+              <article class="about__pillar">
+                <span class="pill-no">/ 03</span>
+                <svg class="pill-ico" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9h30v30H9zM17 24l5 5 11-13"/></svg>
+                <h4>Site supervision</h4>
+                <p>Our trades work to our shop drawings. We walk the site weekly and sign every detail before it is set.</p>
+              </article>
+              <article class="about__pillar">
+                <span class="pill-no">/ 04</span>
+                <svg class="pill-ico" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="7" width="20" height="34"/><path d="M12 41h24"/><circle cx="29.5" cy="24" r="1.5"/></svg>
+                <h4>Quiet handover</h4>
+                <p>You walk in once. The pots in the kitchen, the linens on the bed, the music we picked for that first afternoon.</p>
+              </article>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== CINEMATIC BREAK ====== -->
+    <section class="cinematic surface-dark" data-rail="studio" aria-label="Cinematic pause">
+      <div class="cinematic__media" aria-hidden="true">
+        <img src="assets/hero/about-atmosphere.webp" alt="" decoding="async" loading="lazy" />
+      </div>
+      <div class="cinematic__brackets" aria-hidden="true"><b></b><b></b><b></b><b></b></div>
+      <div class="cinematic__inner">
+        <span class="cinematic__index">/ Interlude</span>
+        <p class="cinematic__quote">
+          <span class="word"><span>A</span></span> <span class="word"><span>room</span></span> <span class="word"><span>is</span></span> <span class="word"><span>the</span></span> <span class="word"><span>longest</span></span> <span class="word"><span>conversation</span></span> <span class="word"><span>between</span></span> <span class="word"><span>a</span></span> <span class="word"><span>person</span></span> <span class="word"><span>and</span></span> <span class="word"><span>a</span></span> <span class="word"><span>wall.</span></span>
+        </p>
+        <div class="cinematic__attr">
+          <span class="dot"></span>
+          <span>Khayal Field Notes</span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== PORTFOLIO ====== -->
+    <section id="styles" class="portfolio surface-light" data-rail="styles">
+
+      <!-- intro -->
+      <div class="portfolio__intro">
+        <div>
+          <span class="eyebrow">03 — Signature Styles</span>
+          <h2>Four ways to <span class="ital">live with</span> stillness.</h2>
+        </div>
+        <div>
+          <p>
+            Every Khayal residence begins with a chosen grammar. Four signature systems — each a calibrated palette of stone, plaster, wood and metal, drawn in plan and rendered before a single trade is briefed. Where intention meets the trades.
+          </p>
+          <div class="meta-row">
+            <span>Documented Plans <b>·  09</b></span>
+            <span>Material Sets <b>·  54</b></span>
+            <span>Pin to scroll horizontally <b>·  →</b></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- pinned horizontal track -->
+      <div class="portfolio__pin" id="portfolioPin">
+        <div class="portfolio__track" id="portfolioTrack">
+
+          <!-- KIT 01 — MODERN A -->
+          <article class="kit-panel" data-kit="modern">
+            <div class="kit-panel__image-well">
+              <img src="assets/kits/modern/1.webp" alt="Modern kitchen — Khayal case study board" loading="lazy" />
+              <div class="kit-panel__big-num">CASE&nbsp;/&nbsp;<b>01</b> · MODERN</div>
+            </div>
+            <div class="kit-panel__info">
+              <div class="kit-panel__head">
+                <span class="idx">/ 01 of 09</span>
+                <span>6th of October · 2024</span>
+              </div>
+              <h3 class="kit-panel__name">
+                Modern
+                <span class="ital">Warm restraint.</span>
+              </h3>
+              <p class="kit-panel__desc">
+                Dark walnut volumes anchor a warm taupe ground. The kitchen reads as architecture, not cabinetry — minimal lines, deep reveals, brass softly catching the under-cabinet light. A working palette built for daily use.
+              </p>
+              <div class="kit-panel__pal">
+                <span class="kit-panel__pal-label">Materials &amp; Finishes</span>
+                <div class="kit-panel__swatches">
+                  <span class="kit-panel__swatch" style="--c:#3a2a1f" data-label="Walnut"></span>
+                  <span class="kit-panel__swatch" style="--c:#a89878" data-label="Soft taupe"></span>
+                  <span class="kit-panel__swatch" style="--c:#cdb898" data-label="Lacquered"></span>
+                  <span class="kit-panel__swatch" style="--c:#8a7252" data-label="Brass"></span>
+                  <span class="kit-panel__swatch" style="--c:#1d1f22" data-label="Matte"></span>
+                  <span class="kit-panel__swatch" style="--c:#d4cabb" data-label="Micro"></span>
+                </div>
+              </div>
+              <div class="kit-panel__cta">
+                <span class="kit-panel__floor">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="4" width="26" height="24"/><line x1="3" y1="14" x2="20" y2="14"/><line x1="20" y1="14" x2="20" y2="28"/><line x1="10" y1="4" x2="10" y2="14"/></svg>
+                  Plan · 4.30 × 3.60 m
+                </span>
+                <a href="#booking" class="more">
+                  View case study
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- KIT 02 — MODERN B -->
+          <article class="kit-panel" data-kit="modern">
+            <div class="kit-panel__image-well">
+              <img src="assets/kits/modern/2.webp" alt="Modern kitchen — second case study board" loading="lazy" />
+              <div class="kit-panel__big-num">CASE&nbsp;/&nbsp;<b>02</b> · MODERN</div>
+            </div>
+            <div class="kit-panel__info">
+              <div class="kit-panel__head">
+                <span class="idx">/ 02 of 09</span>
+                <span>6th of October · 2025</span>
+              </div>
+              <h3 class="kit-panel__name">
+                Modern
+                <span class="ital">Quiet contrast.</span>
+              </h3>
+              <p class="kit-panel__desc">
+                A second take on the modern grammar — walnut paired with a wider warm-stone island, integrated appliances, brass touch-points pulled back to a whisper. Bigger room, same restraint.
+              </p>
+              <div class="kit-panel__pal">
+                <span class="kit-panel__pal-label">Materials &amp; Finishes</span>
+                <div class="kit-panel__swatches">
+                  <span class="kit-panel__swatch" style="--c:#3a2a1f" data-label="Walnut"></span>
+                  <span class="kit-panel__swatch" style="--c:#a89878" data-label="Soft taupe"></span>
+                  <span class="kit-panel__swatch" style="--c:#cdb898" data-label="Warm stone"></span>
+                  <span class="kit-panel__swatch" style="--c:#8a7252" data-label="Brass"></span>
+                  <span class="kit-panel__swatch" style="--c:#1d1f22" data-label="Matte"></span>
+                  <span class="kit-panel__swatch" style="--c:#d4cabb" data-label="Micro"></span>
+                </div>
+              </div>
+              <div class="kit-panel__cta">
+                <span class="kit-panel__floor">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="4" width="26" height="24"/><line x1="3" y1="14" x2="20" y2="14"/><line x1="20" y1="14" x2="20" y2="28"/><line x1="10" y1="4" x2="10" y2="14"/></svg>
+                  Plan · 4.10 × 3.40 m
+                </span>
+                <a href="#booking" class="more">
+                  View case study
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- KIT 03 — CLASSIC A -->
+          <article class="kit-panel" data-kit="classic">
+            <div class="kit-panel__image-well">
+              <img src="assets/kits/classic/1.webp" alt="Classic kitchen — Khayal case study board" loading="lazy" />
+              <div class="kit-panel__big-num">CASE&nbsp;/&nbsp;<b>03</b> · CLASSIC</div>
+            </div>
+            <div class="kit-panel__info">
+              <div class="kit-panel__head">
+                <span class="idx">/ 03 of 09</span>
+                <span>6th of October · 2024</span>
+              </div>
+              <h3 class="kit-panel__name">
+                Classic
+                <span class="ital">Timeless composition.</span>
+              </h3>
+              <p class="kit-panel__desc">
+                Cream shaker cabinetry tempered with walnut accents, brass hardware and a warm stone counter. A confident traditional structure — efficient layout, sensitive proportion, finishes that mature with use.
+              </p>
+              <div class="kit-panel__pal">
+                <span class="kit-panel__pal-label">Materials &amp; Finishes</span>
+                <div class="kit-panel__swatches">
+                  <span class="kit-panel__swatch" style="--c:#ebe2cf" data-label="Cream"></span>
+                  <span class="kit-panel__swatch" style="--c:#5b4632" data-label="Walnut"></span>
+                  <span class="kit-panel__swatch" style="--c:#7a8b6c" data-label="Olive"></span>
+                  <span class="kit-panel__swatch" style="--c:#a78443" data-label="Brass"></span>
+                  <span class="kit-panel__swatch" style="--c:#dddacc" data-label="Marble"></span>
+                  <span class="kit-panel__swatch" style="--c:#c8baa3" data-label="Beige"></span>
+                </div>
+              </div>
+              <div class="kit-panel__cta">
+                <span class="kit-panel__floor">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="4" width="26" height="24"/><line x1="3" y1="14" x2="20" y2="14"/><line x1="20" y1="14" x2="20" y2="28"/><line x1="10" y1="4" x2="10" y2="14"/></svg>
+                  Plan · 4.30 × 3.70 m
+                </span>
+                <a href="#booking" class="more">
+                  View case study
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- KIT 04 — CLASSIC B -->
+          <article class="kit-panel" data-kit="classic">
+            <div class="kit-panel__image-well">
+              <img src="assets/kits/classic/2.webp" alt="Classic kitchen — second case study board" loading="lazy" />
+              <div class="kit-panel__big-num">CASE&nbsp;/&nbsp;<b>04</b> · CLASSIC</div>
+            </div>
+            <div class="kit-panel__info">
+              <div class="kit-panel__head">
+                <span class="idx">/ 04 of 09</span>
+                <span>6th of October · 2026</span>
+              </div>
+              <h3 class="kit-panel__name">
+                Classic
+                <span class="ital">Soft tradition.</span>
+              </h3>
+              <p class="kit-panel__desc">
+                Wider plan, deeper walnut island, marble waterfall on a single edge, soft cream framing the perimeter. The brass hardware steps slightly forward — older silhouettes, modern hand.
+              </p>
+              <div class="kit-panel__pal">
+                <span class="kit-panel__pal-label">Materials &amp; Finishes</span>
+                <div class="kit-panel__swatches">
+                  <span class="kit-panel__swatch" style="--c:#ebe2cf" data-label="Cream"></span>
+                  <span class="kit-panel__swatch" style="--c:#5b4632" data-label="Walnut"></span>
+                  <span class="kit-panel__swatch" style="--c:#a78443" data-label="Brass"></span>
+                  <span class="kit-panel__swatch" style="--c:#dddacc" data-label="Marble"></span>
+                  <span class="kit-panel__swatch" style="--c:#c8baa3" data-label="Beige"></span>
+                  <span class="kit-panel__swatch" style="--c:#8a7252" data-label="Antique"></span>
+                </div>
+              </div>
+              <div class="kit-panel__cta">
+                <span class="kit-panel__floor">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="4" width="26" height="24"/><line x1="3" y1="14" x2="20" y2="14"/><line x1="20" y1="14" x2="20" y2="28"/><line x1="10" y1="4" x2="10" y2="14"/></svg>
+                  Plan · 4.50 × 3.90 m
+                </span>
+                <a href="#booking" class="more">
+                  View case study
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- KIT 05 — SCANDINAVIAN A -->
+          <article class="kit-panel" data-kit="scandinavian">
+            <div class="kit-panel__image-well">
+              <img src="assets/kits/scandinavian/1.webp" alt="Scandinavian kitchen — Khayal case study board" loading="lazy" />
+              <div class="kit-panel__big-num">CASE&nbsp;/&nbsp;<b>05</b> · SCANDINAVIAN</div>
+            </div>
+            <div class="kit-panel__info">
+              <div class="kit-panel__head">
+                <span class="idx">/ 05 of 09</span>
+                <span>6th of October · 2025</span>
+              </div>
+              <h3 class="kit-panel__name">
+                Scandinavian
+                <span class="ital">Quiet daylight.</span>
+              </h3>
+              <p class="kit-panel__desc">
+                Natural oak panels, terrazzo counters, a sage-green base and matte black accents. A studio in three textures — warmth, soft daylight, restraint. The kitchen reads as a calm room first, a workspace second.
+              </p>
+              <div class="kit-panel__pal">
+                <span class="kit-panel__pal-label">Materials &amp; Finishes</span>
+                <div class="kit-panel__swatches">
+                  <span class="kit-panel__swatch" style="--c:#5f6a4f" data-label="Sage"></span>
+                  <span class="kit-panel__swatch" style="--c:#c8a674" data-label="Oak"></span>
+                  <span class="kit-panel__swatch" style="--c:#a08d6e" data-label="Terrazzo"></span>
+                  <span class="kit-panel__swatch" style="--c:#dfd5b8" data-label="Beige"></span>
+                  <span class="kit-panel__swatch" style="--c:#1a1a1a" data-label="Black"></span>
+                  <span class="kit-panel__swatch" style="--c:#766049" data-label="Rattan"></span>
+                </div>
+              </div>
+              <div class="kit-panel__cta">
+                <span class="kit-panel__floor">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="4" width="26" height="24"/><line x1="3" y1="14" x2="20" y2="14"/><line x1="20" y1="14" x2="20" y2="28"/><line x1="10" y1="4" x2="10" y2="14"/></svg>
+                  Plan · 4.80 × 3.30 m
+                </span>
+                <a href="#booking" class="more">
+                  View case study
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- KIT 06 — SCANDINAVIAN B -->
+          <article class="kit-panel" data-kit="scandinavian">
+            <div class="kit-panel__image-well">
+              <img src="assets/kits/scandinavian/2.webp" alt="Scandinavian kitchen — second case study board" loading="lazy" />
+              <div class="kit-panel__big-num">CASE&nbsp;/&nbsp;<b>06</b> · SCANDINAVIAN</div>
+            </div>
+            <div class="kit-panel__info">
+              <div class="kit-panel__head">
+                <span class="idx">/ 06 of 09</span>
+                <span>6th of October · 2026</span>
+              </div>
+              <h3 class="kit-panel__name">
+                Scandinavian
+                <span class="ital">Open air.</span>
+              </h3>
+              <p class="kit-panel__desc">
+                Pale oak across more elevation, an open shelf wall replacing one bank of upper cabinets, broader terrazzo island. Daylight is louder here — the matte black retreats to thin accents.
+              </p>
+              <div class="kit-panel__pal">
+                <span class="kit-panel__pal-label">Materials &amp; Finishes</span>
+                <div class="kit-panel__swatches">
+                  <span class="kit-panel__swatch" style="--c:#c8a674" data-label="Oak"></span>
+                  <span class="kit-panel__swatch" style="--c:#dfd5b8" data-label="Beige"></span>
+                  <span class="kit-panel__swatch" style="--c:#a08d6e" data-label="Terrazzo"></span>
+                  <span class="kit-panel__swatch" style="--c:#5f6a4f" data-label="Sage"></span>
+                  <span class="kit-panel__swatch" style="--c:#1a1a1a" data-label="Black"></span>
+                  <span class="kit-panel__swatch" style="--c:#bfb19a" data-label="Linen"></span>
+                </div>
+              </div>
+              <div class="kit-panel__cta">
+                <span class="kit-panel__floor">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="4" width="26" height="24"/><line x1="3" y1="14" x2="20" y2="14"/><line x1="20" y1="14" x2="20" y2="28"/><line x1="10" y1="4" x2="10" y2="14"/></svg>
+                  Plan · 4.60 × 3.20 m
+                </span>
+                <a href="#booking" class="more">
+                  View case study
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- KIT 07 — MINIMAL A -->
+          <article class="kit-panel" data-kit="minimal">
+            <div class="kit-panel__image-well">
+              <img src="assets/kits/minimal/1.webp" alt="Minimal kitchen — Khayal case study board" loading="lazy" />
+              <div class="kit-panel__big-num">CASE&nbsp;/&nbsp;<b>07</b> · MINIMAL</div>
+            </div>
+            <div class="kit-panel__info">
+              <div class="kit-panel__head">
+                <span class="idx">/ 07 of 09</span>
+                <span>6th of October · 2025</span>
+              </div>
+              <h3 class="kit-panel__name">
+                Minimal
+                <span class="ital">Functional hush.</span>
+              </h3>
+              <p class="kit-panel__desc">
+                Light grey matte fronts, dark walnut, concrete-look tile, soft LED reveals. A reduced palette where the room is built around its daylight and a single working axis. Almost no decoration, every surface earned.
+              </p>
+              <div class="kit-panel__pal">
+                <span class="kit-panel__pal-label">Materials &amp; Finishes</span>
+                <div class="kit-panel__swatches">
+                  <span class="kit-panel__swatch" style="--c:#d5cfc2" data-label="Light grey"></span>
+                  <span class="kit-panel__swatch" style="--c:#5e4636" data-label="Walnut"></span>
+                  <span class="kit-panel__swatch" style="--c:#574c40" data-label="Dark stone"></span>
+                  <span class="kit-panel__swatch" style="--c:#cdc0a8" data-label="Concrete"></span>
+                  <span class="kit-panel__swatch" style="--c:#1a1a1a" data-label="Black"></span>
+                  <span class="kit-panel__swatch" style="--c:#bdb4a4" data-label="Micro"></span>
+                </div>
+              </div>
+              <div class="kit-panel__cta">
+                <span class="kit-panel__floor">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="4" width="26" height="24"/><line x1="3" y1="14" x2="20" y2="14"/><line x1="20" y1="14" x2="20" y2="28"/><line x1="10" y1="4" x2="10" y2="14"/></svg>
+                  Plan · 4.50 × 3.70 m
+                </span>
+                <a href="#booking" class="more">
+                  View case study
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- KIT 08 — MINIMAL B -->
+          <article class="kit-panel" data-kit="minimal">
+            <div class="kit-panel__image-well">
+              <img src="assets/kits/minimal/2.webp" alt="Minimal kitchen — second case study board" loading="lazy" />
+              <div class="kit-panel__big-num">CASE&nbsp;/&nbsp;<b>08</b> · MINIMAL</div>
+            </div>
+            <div class="kit-panel__info">
+              <div class="kit-panel__head">
+                <span class="idx">/ 08 of 09</span>
+                <span>6th of October · 2026</span>
+              </div>
+              <h3 class="kit-panel__name">
+                Minimal
+                <span class="ital">Pure planes.</span>
+              </h3>
+              <p class="kit-panel__desc">
+                Same grammar refined further: full-height handle-less cabinetry, single-slab counter, hidden appliances, indirect cove lighting. The light is the décor.
+              </p>
+              <div class="kit-panel__pal">
+                <span class="kit-panel__pal-label">Materials &amp; Finishes</span>
+                <div class="kit-panel__swatches">
+                  <span class="kit-panel__swatch" style="--c:#d5cfc2" data-label="Light grey"></span>
+                  <span class="kit-panel__swatch" style="--c:#5e4636" data-label="Walnut"></span>
+                  <span class="kit-panel__swatch" style="--c:#574c40" data-label="Dark stone"></span>
+                  <span class="kit-panel__swatch" style="--c:#cdc0a8" data-label="Concrete"></span>
+                  <span class="kit-panel__swatch" style="--c:#1a1a1a" data-label="Black"></span>
+                  <span class="kit-panel__swatch" style="--c:#bdb4a4" data-label="Micro"></span>
+                </div>
+              </div>
+              <div class="kit-panel__cta">
+                <span class="kit-panel__floor">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="4" width="26" height="24"/><line x1="3" y1="14" x2="20" y2="14"/><line x1="20" y1="14" x2="20" y2="28"/><line x1="10" y1="4" x2="10" y2="14"/></svg>
+                  Plan · 4.20 × 3.50 m
+                </span>
+                <a href="#booking" class="more">
+                  View case study
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- KIT 09 — MINIMAL C -->
+          <article class="kit-panel" data-kit="minimal">
+            <div class="kit-panel__image-well">
+              <img src="assets/kits/minimal/3.webp" alt="Minimal kitchen — third case study board" loading="lazy" />
+              <div class="kit-panel__big-num">CASE&nbsp;/&nbsp;<b>09</b> · MINIMAL</div>
+            </div>
+            <div class="kit-panel__info">
+              <div class="kit-panel__head">
+                <span class="idx">/ 09 of 09</span>
+                <span>6th of October · 2026</span>
+              </div>
+              <h3 class="kit-panel__name">
+                Minimal
+                <span class="ital">Light grain.</span>
+              </h3>
+              <p class="kit-panel__desc">
+                Open-plan kitchen-living, soft oak panel framing the working wall, micro-cement floor, a single low travertine island. Most relaxed of the three minimal projects — built for a couple who cook a lot.
+              </p>
+              <div class="kit-panel__pal">
+                <span class="kit-panel__pal-label">Materials &amp; Finishes</span>
+                <div class="kit-panel__swatches">
+                  <span class="kit-panel__swatch" style="--c:#d5cfc2" data-label="Light grey"></span>
+                  <span class="kit-panel__swatch" style="--c:#c8a674" data-label="Oak"></span>
+                  <span class="kit-panel__swatch" style="--c:#cdc0a8" data-label="Micro-cement"></span>
+                  <span class="kit-panel__swatch" style="--c:#dccdb0" data-label="Travertine"></span>
+                  <span class="kit-panel__swatch" style="--c:#5e4636" data-label="Walnut"></span>
+                  <span class="kit-panel__swatch" style="--c:#bdb4a4" data-label="Linen"></span>
+                </div>
+              </div>
+              <div class="kit-panel__cta">
+                <span class="kit-panel__floor">
+                  <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="4" width="26" height="24"/><line x1="3" y1="14" x2="20" y2="14"/><line x1="20" y1="14" x2="20" y2="28"/><line x1="10" y1="4" x2="10" y2="14"/></svg>
+                  Plan · 4.40 × 3.60 m
+                </span>
+                <a href="#booking" class="more">
+                  View case study
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="portfolio__rail-labels">
+          <b><span id="railName">Modern · 01 of 04</span></b>
+          <span>Pin · scroll to advance</span>
+        </div>
+        <div class="portfolio__rail" aria-hidden="true">
+          <div class="portfolio__rail-fill" id="railFill"></div>
+        </div>
+      </div>
+
+      <!-- outro -->
+      <div class="portfolio__outro">
+        <h3>Don't see your <span class="ital">grammar?</span></h3>
+        <div>
+          <p>
+            Every project begins with a brief. Our kits are starting points — material systems we know how to draw, build and supervise. The room itself is yours.
+          </p>
+          <div class="cta-row">
+            <a href="#booking" class="btn btn-ghost-light">
+              Start a brief
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </a>
+            <a href="#process" class="ghost-link">How we build</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FURNITURE ====== -->
+    <section id="furniture" class="furniture surface-light" data-rail="furniture">
+      <div class="furniture__intro">
+        <div>
+          <span class="eyebrow">06 — Custom Furniture</span>
+          <h2>Made by <span class="ital">hand,</span> drawn first.</h2>
+        </div>
+        <div>
+          <p>
+            Each piece is drawn in our studio, mocked at full scale, and built by the cabinetmakers and metalworkers we have worked with for years. Solid materials, joinery you can read, finishes that age into the room.
+          </p>
+        </div>
+      </div>
+
+      <article class="furn-piece">
+        <div class="furn-piece__image">
+          <img src="assets/furniture/furn-01.webp" alt="Camel leather lounge chair with walnut and stone side table" loading="lazy" />
+          <span class="frame" aria-hidden="true"></span>
+          <span class="tag"><b>F-01</b>&nbsp;·&nbsp;Lounge Pair</span>
+        </div>
+        <div class="furn-piece__info">
+          <span class="idx">/ Piece 01 of 02</span>
+          <h3>Halgado <span class="ital">lounge chair</span></h3>
+          <p>
+            A sculptural lounge in full-grain camel leather, set on slim brushed-brass legs. Paired with the <em>Stilla</em> side table — solid walnut frame, single stone slab on top. Drawn for an Egyptian living room with afternoon light from the left.
+          </p>
+          <div class="furn-piece__specs">
+            <div class="furn-piece__spec"><span>Frame</span><b>Solid walnut</b></div>
+            <div class="furn-piece__spec"><span>Upholstery</span><b>Camel leather</b></div>
+            <div class="furn-piece__spec"><span>Legs</span><b>Brushed brass</b></div>
+            <div class="furn-piece__spec"><span>Lead time</span><b>~ 2 weeks</b></div>
+          </div>
+          <a href="#booking" class="furn-piece__cta">
+            Commission this piece
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="furn-piece">
+        <div class="furn-piece__image">
+          <img src="assets/furniture/furn-02.webp" alt="Travertine round dining table with cream linen chairs and brass pendant" loading="lazy" />
+          <span class="frame" aria-hidden="true"></span>
+          <span class="tag"><b>F-02</b>&nbsp;·&nbsp;Dining Suite</span>
+        </div>
+        <div class="furn-piece__info">
+          <span class="idx">/ Piece 02 of 04</span>
+          <h3>Mathaba <span class="ital">dining suite</span></h3>
+          <p>
+            Sculpted travertine round table, four-legged cluster base. Paired with low-back oak chairs upholstered in raw cream linen. Hung above: the <em>Linea</em> brass pendant — a single line of warm direct light.
+          </p>
+          <div class="furn-piece__specs">
+            <div class="furn-piece__spec"><span>Table</span><b>Solid travertine</b></div>
+            <div class="furn-piece__spec"><span>Chairs</span><b>Oak + linen</b></div>
+            <div class="furn-piece__spec"><span>Pendant</span><b>Brushed brass</b></div>
+            <div class="furn-piece__spec"><span>Lead time</span><b>~ 3 weeks</b></div>
+          </div>
+          <a href="#booking" class="furn-piece__cta">
+            Commission this suite
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="furn-piece">
+        <div class="furn-piece__image">
+          <img src="assets/furniture/furn-03.webp" alt="Fluted walnut sideboard with stoneware vase" loading="lazy" />
+          <span class="frame" aria-hidden="true"></span>
+          <span class="tag"><b>F-03</b>&nbsp;·&nbsp;Sideboard</span>
+        </div>
+        <div class="furn-piece__info">
+          <span class="idx">/ Piece 03 of 04</span>
+          <h3>Halgado <span class="ital">sideboard</span></h3>
+          <p>
+            A hand-fluted walnut sideboard on a slim brass plinth. Two large vertical-fluted doors with a single sculptural brass pull. Drawn for an entryway, a dining room, or a low piece in a long living space.
+          </p>
+          <div class="furn-piece__specs">
+            <div class="furn-piece__spec"><span>Body</span><b>Fluted walnut</b></div>
+            <div class="furn-piece__spec"><span>Pull</span><b>Solid brass</b></div>
+            <div class="furn-piece__spec"><span>Base</span><b>Powder-coated steel</b></div>
+            <div class="furn-piece__spec"><span>Lead time</span><b>~ 2 weeks</b></div>
+          </div>
+          <a href="#booking" class="furn-piece__cta">
+            Commission this piece
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="furn-piece">
+        <div class="furn-piece__image">
+          <img src="assets/furniture/furn-04.webp" alt="Low walnut platform bed with curved boucle headboard and warm sconces" loading="lazy" />
+          <span class="frame" aria-hidden="true"></span>
+          <span class="tag"><b>F-04</b>&nbsp;·&nbsp;Platform Bed</span>
+        </div>
+        <div class="furn-piece__info">
+          <span class="idx">/ Piece 04 of 04</span>
+          <h3>Mutmainna <span class="ital">platform bed</span></h3>
+          <p>
+            A low solid-walnut platform with a curved oat-toned boucle headboard. Detail: the boucle wraps under the rail to soften the floor line. Designed to live with low warm light from a pair of cylindrical fabric sconces.
+          </p>
+          <div class="furn-piece__specs">
+            <div class="furn-piece__spec"><span>Frame</span><b>Solid walnut</b></div>
+            <div class="furn-piece__spec"><span>Headboard</span><b>Wool boucle</b></div>
+            <div class="furn-piece__spec"><span>Finish</span><b>Hand-rubbed oil</b></div>
+            <div class="furn-piece__spec"><span>Lead time</span><b>~ 3 weeks</b></div>
+          </div>
+          <a href="#booking" class="furn-piece__cta">
+            Commission this piece
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <!-- ====== INTERIOR DESIGN ====== -->
+    <section id="interior" class="interior surface-paper" data-rail="interior">
+      <div class="interior__intro">
+        <span class="eyebrow">07 — Interior Design</span>
+        <h2>Beyond the kitchen — <span class="ital">whole rooms,</span> whole homes.</h2>
+        <p>
+          The kitchen is only one room. Bedrooms, bathrooms, lounges, libraries — drawn as a continuous palette across the home. The same studio hand on every reveal, every fixture, every threshold.
+        </p>
+      </div>
+
+      <div class="interior__grid">
+        <article class="int-card">
+          <div class="int-card__image">
+            <span class="meta"><span>Bedroom Suite</span><span><b>R-01</b>&nbsp;·&nbsp;6th of October City</span></span>
+            <img src="assets/interior/int-01.webp" alt="Warm bedroom interior with cream linen bed, brass sconces, sheer curtains" loading="lazy" />
+          </div>
+          <div class="int-card__body">
+            <span class="big-no">01</span>
+            <div>
+              <h4>The bedroom as <span class="ital">a long quiet.</span></h4>
+              <p>Low platform bed in warm walnut, hand-loomed wool rug, brass wall sconces casting soft pools. Sheer linen curtains for filtered morning light. A sculptural reading chair waits in the corner.</p>
+              <div class="int-card__tags">
+                <span>Plaster · Taupe</span>
+                <span>Linen</span>
+                <span>Brass</span>
+                <span>Walnut</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="int-card">
+          <div class="int-card__image">
+            <span class="meta"><span>Master Bath</span><span><b>R-02</b>&nbsp;·&nbsp;6th of October City</span></span>
+            <img src="assets/interior/int-02.webp" alt="Stone bath in tadelakt plaster bathroom with olive branch and standing mirror" loading="lazy" />
+          </div>
+          <div class="int-card__body">
+            <span class="big-no">02</span>
+            <div>
+              <h4>A bathroom as <span class="ital">a stone room.</span></h4>
+              <p>Monolithic travertine tub, single brass tap, heated micro-cement floor. Walls in warm tadelakt plaster. One standing mirror, one olive branch. Spa-quiet, daily.</p>
+              <div class="int-card__tags">
+                <span>Travertine</span>
+                <span>Tadelakt</span>
+                <span>Brass</span>
+                <span>Micro-cement</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="int-card">
+          <div class="int-card__image">
+            <span class="meta"><span>Private Library</span><span><b>R-03</b>&nbsp;·&nbsp;6th of October City</span></span>
+            <img src="assets/interior/int-03.webp" alt="Warm library with full walnut shelves, chesterfield sofa and brass library lamp" loading="lazy" />
+          </div>
+          <div class="int-card__body">
+            <span class="big-no">03</span>
+            <div>
+              <h4>A library as <span class="ital">a long evening.</span></h4>
+              <p>Floor-to-ceiling solid walnut shelves, a cognac chesterfield, a vintage brass library lamp on a low side table. Persian rug, soft warm glow. Built for the books first — and the one chair you actually read in.</p>
+              <div class="int-card__tags">
+                <span>Walnut shelving</span>
+                <span>Leather</span>
+                <span>Brass lamp</span>
+                <span>Wool rug</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="int-card">
+          <div class="int-card__image">
+            <span class="meta"><span>Dining Lounge</span><span><b>R-04</b>&nbsp;·&nbsp;6th of October City</span></span>
+            <img src="assets/interior/int-04.webp" alt="Vaulted dining room with travertine table and sage velvet chairs" loading="lazy" />
+          </div>
+          <div class="int-card__body">
+            <span class="big-no">04</span>
+            <div>
+              <h4>A dining room <span class="ital">for the long table.</span></h4>
+              <p>Vaulted exposed-beam ceiling, hand-troweled walls in pale beige, a travertine plank for a table. Eight sage velvet chairs. An arched window opening to the garden. Built for the dinners that go past midnight.</p>
+              <div class="int-card__tags">
+                <span>Travertine</span>
+                <span>Sage velvet</span>
+                <span>Exposed beams</span>
+                <span>Oak floor</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====== 3D MODEL SHOWCASE ====== -->
+    <section id="showcase" class="showcase surface-dark" data-rail="showcase">
+
+      <div class="showcase__intro">
+        <div>
+          <span class="eyebrow">08 — 3D Visualisation</span>
+          <h2>See the room <span class="ital">before</span> we build it.</h2>
+        </div>
+        <div>
+          <p>
+            Every project is drawn in photoreal 3D before a single trade is briefed. Walk the room, judge the daylight, change a finish — all on screen, with no surprises on site.
+          </p>
+          <div class="specs">
+            <div><span>Engine</span><b>Photoreal CGI</b></div>
+            <div><span>Materials</span><b>1:1 swatched</b></div>
+            <div><span>Daylight</span><b>Geo-accurate</b></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project tabs -->
+      <div class="showcase__tabs" role="tablist">
+        <button class="showcase__tab is-active" data-pane="p1" role="tab">
+          <span class="num">/ Project 01 · Living</span>
+          <span class="ttl">Villa <span class="ital">Halgado</span></span>
+          <span class="sub">Parallax · Material hotspots</span>
+        </button>
+        <button class="showcase__tab" data-pane="p2" role="tab">
+          <span class="num">/ Project 02 · Kitchen</span>
+          <span class="ttl">Mathaba <span class="ital">kitchen</span></span>
+          <span class="sub">Before / after slider</span>
+        </button>
+        <button class="showcase__tab" data-pane="p3" role="tab">
+          <span class="num">/ Project 03 · Bedroom</span>
+          <span class="ttl">Mutmainna <span class="ital">suite</span></span>
+          <span class="sub">Day / night toggle</span>
+        </button>
+      </div>
+
+      <div class="showcase__panes">
+
+        <!-- ===== Pane 01 — Parallax + hotspots (existing) ===== -->
+        <div class="showcase__pane is-active" id="pane-p1" role="tabpanel">
+          <div class="showcase__viewer">
+
+            <div class="showcase__stage" id="showcaseStage" data-tilt="true">
+              <div class="showcase__layer" id="showcaseLayer">
+                <img src="assets/showcase/showcase-01.webp" alt="Photoreal 3D render of a luxury living room" />
+              </div>
+
+              <div class="showcase__spots" id="showcaseSpots">
+                <button class="showcase__spot" style="left:14%; top:62%;" data-spot="floor">
+                  <span class="ring"></span><span class="core"></span>
+                  <div class="pop">
+                    <span class="lbl">/ 01 · Material</span>
+                    <h5>Dark walnut floor</h5>
+                    <p>Wide-plank solid walnut, oil-rubbed, hand-installed.</p>
+                  </div>
+                </button>
+                <button class="showcase__spot" style="left:24%; top:36%;" data-spot="plaster">
+                  <span class="ring"></span><span class="core"></span>
+                  <div class="pop">
+                    <span class="lbl">/ 02 · Material</span>
+                    <h5>Warm hand-troweled plaster</h5>
+                    <p>Three-layer lime plaster in pale taupe. Catches afternoon light.</p>
+                  </div>
+                </button>
+                <button class="showcase__spot" style="left:50%; top:64%;" data-spot="stone">
+                  <span class="ring"></span><span class="core"></span>
+                  <div class="pop">
+                    <span class="lbl">/ 03 · Material</span>
+                    <h5>Travertine coffee table</h5>
+                    <p>Round solid travertine, vein-cut, sealed matte.</p>
+                  </div>
+                </button>
+                <button class="showcase__spot flip" style="left:35%; top:50%;" data-spot="velvet">
+                  <span class="ring"></span><span class="core"></span>
+                  <div class="pop">
+                    <span class="lbl">/ 04 · Upholstery</span>
+                    <h5>Sage velvet armchair</h5>
+                    <p>Italian wool-cotton velvet, dyed in studio. Sage 612.</p>
+                  </div>
+                </button>
+                <button class="showcase__spot flip" style="left:62%; top:58%;" data-spot="linen">
+                  <span class="ring"></span><span class="core"></span>
+                  <div class="pop">
+                    <span class="lbl">/ 05 · Upholstery</span>
+                    <h5>Oat linen sectional</h5>
+                    <p>Belgian linen, oat tone, hand-tailored slipcover.</p>
+                  </div>
+                </button>
+                <button class="showcase__spot flip" style="left:30%; top:28%;" data-spot="brass">
+                  <span class="ring"></span><span class="core"></span>
+                  <div class="pop">
+                    <span class="lbl">/ 06 · Fixture</span>
+                    <h5>Brass floor lamp</h5>
+                    <p>Solid brushed brass, hand-soldered joint, warm 2700K LED.</p>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <div class="showcase__bar">
+              <span class="name">Project · <b>Villa Halgado</b> · Living Room</span>
+              <span class="hint"><b>Move the cursor</b> to rotate · click dots to inspect</span>
+              <button class="reset" id="showcaseReset" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-3-6.7M21 3v5h-5"/></svg>
+                Reset view
+              </button>
+            </div>
+          </div>
+
+          <div class="showcase__materials">
+            <h4>Materials <span class="ital">used.</span></h4>
+            <div class="showcase__chips">
+              <button class="showcase__chip is-active" data-target="floor"><span class="sw" style="--c:#3a2a1f"></span> Walnut floor</button>
+              <button class="showcase__chip" data-target="plaster"><span class="sw" style="--c:#cfbfa3"></span> Hand plaster</button>
+              <button class="showcase__chip" data-target="stone"><span class="sw" style="--c:#dccdb0"></span> Travertine</button>
+              <button class="showcase__chip" data-target="velvet"><span class="sw" style="--c:#7a8b6c"></span> Sage velvet</button>
+              <button class="showcase__chip" data-target="linen"><span class="sw" style="--c:#c8baa3"></span> Oat linen</button>
+              <button class="showcase__chip" data-target="brass"><span class="sw" style="--c:#a78443"></span> Brushed brass</button>
+            </div>
+          </div>
+
+          <div class="proj-meta">
+            <div><span class="lbl">Project</span><b>Villa Halgado</b></div>
+            <div><span class="lbl">Type</span><b>Full residence</b></div>
+            <div><span class="lbl">Area</span><b>340 m²</b></div>
+            <div><span class="lbl">Status</span><b>Delivered · 2026</b></div>
+          </div>
+        </div>
+
+        <!-- ===== Pane 02 — Before/After Slider ===== -->
+        <div class="showcase__pane" id="pane-p2" role="tabpanel">
+          <div class="compare">
+            <div class="compare__stage" id="compareStage">
+              <!-- AFTER (under layer) -->
+              <div class="compare__img compare__after">
+                <img src="assets/showcase/sc-02-kitchen.webp" alt="Photoreal 3D render of the finished kitchen" />
+              </div>
+              <!-- BEFORE (clipped to left of handle) -->
+              <div class="compare__img compare__before" id="compareBeforeLayer">
+                <img src="assets/showcase/sc-02-wireframe.webp" alt="Wireframe blueprint of the kitchen" />
+              </div>
+              <span class="compare__label before">/ Blueprint</span>
+              <span class="compare__label after">/ Finished</span>
+              <div class="compare__handle" id="compareHandle" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                <span class="grip">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 6l-4 6 4 6M16 6l4 6-4 6"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div class="compare__caption">
+              <span class="name">Project · <b>Mathaba Kitchen</b></span>
+              <span class="hint"><b>Drag the handle</b> to compare drafted blueprint to delivered render</span>
+              <span class="pct"><b id="compareValue">50</b>%</span>
+            </div>
+          </div>
+
+          <div class="proj-meta">
+            <div><span class="lbl">Project</span><b>Mathaba Kitchen</b></div>
+            <div><span class="lbl">Type</span><b>Kitchen + dining</b></div>
+            <div><span class="lbl">Area</span><b>48 m²</b></div>
+            <div><span class="lbl">Status</span><b>Delivered · 2025</b></div>
+          </div>
+        </div>
+
+        <!-- ===== Pane 03 — Day/Night Toggle ===== -->
+        <div class="showcase__pane" id="pane-p3" role="tabpanel">
+          <div class="dn">
+            <div class="dn__stage" id="dnStage">
+              <div class="dn__img is-active" data-mode="day">
+                <img src="assets/showcase/sc-03-day.webp" alt="Bedroom suite in morning light" />
+              </div>
+              <div class="dn__img" data-mode="night">
+                <img src="assets/showcase/sc-03-night.webp" alt="Same bedroom suite in evening warm lamp light" />
+              </div>
+              <span class="dn__sun" id="dnSun" aria-hidden="true"></span>
+              <span class="dn__overlay" aria-hidden="true"></span>
+            </div>
+
+            <div class="dn__caption">
+              <span class="name">Project · <b>Mutmainna Bedroom</b></span>
+              <span class="hint"><b>Drag the slider</b> to walk a full day in this room</span>
+              <span class="pct"><b id="dnTime">07:00</b></span>
+            </div>
+
+            <div class="dn__slider">
+              <span class="lbl is-active" id="dnLblDay">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5.6 5.6L4.2 4.2M19.8 19.8l-1.4-1.4M5.6 18.4l-1.4 1.4M19.8 4.2l-1.4 1.4"/></svg>
+                Morning
+              </span>
+              <div class="dn__track" id="dnTrack" style="--p:0%;">
+                <div class="dn__ticks"><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="dn__knob" id="dnKnob" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+              </div>
+              <span class="lbl" id="dnLblNight">
+                <svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                Evening
+              </span>
+            </div>
+          </div>
+
+          <div class="proj-meta">
+            <div><span class="lbl">Project</span><b>Mutmainna Suite</b></div>
+            <div><span class="lbl">Type</span><b>Master bedroom</b></div>
+            <div><span class="lbl">Area</span><b>32 m²</b></div>
+            <div><span class="lbl">Status</span><b>In construction · 2026</b></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====== PROCESS — ARCHITECTURAL BLUEPRINT ====== -->
+    <section id="process" class="process surface-paper" data-rail="process">
+      <div class="process__brackets" aria-hidden="true"><b></b><b></b><b></b><b></b></div>
+
+      <div class="process__intro">
+        <div>
+          <span class="eyebrow">04 — Execution System</span>
+          <h2>How we <span class="ital">build</span> a room.</h2>
+        </div>
+        <div>
+          <p>
+            A drawn process from first call to handed-back keys. Five disciplined stages, supervised in-house. No subcontracted creative direction. No reactive site decisions.
+          </p>
+          <div class="legend">
+            <span>Drawing&nbsp;·&nbsp;<b>KHY-PRC-01</b></span>
+            <span class="scalebar"><i></i> Scale&nbsp;·&nbsp;<b>1 : 50</b></span>
+            <span>Rev.&nbsp;·&nbsp;<b>05</b></span>
+            <span>Plotted&nbsp;·&nbsp;<b>2026.05</b></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="process__diagram" id="processDiagram">
+        <span class="process__draft-label">Project Axis · A — A'</span>
+
+        <div class="stages">
+
+          <!-- 01 — Consultation -->
+          <div class="stage" data-stage="1">
+            <div class="stage__top">
+              <span class="stage__no">/ 01</span>
+              <h4 class="stage__name">Consultation <span class="ital">&amp; brief</span></h4>
+              <span class="stage__dur">~ 3 days</span>
+            </div>
+            <div class="stage__marker">
+              <span class="vline"></span>
+              <span class="dot"></span>
+              <span class="coord">A1 · 00.00</span>
+            </div>
+            <div class="stage__bottom">
+              <ul class="stage__deliverables">
+                <li><b>Site survey</b> — dimensions, light, structural notes</li>
+                <li><b>Brief gathering</b> — lifestyle, rhythm, non-negotiables</li>
+                <li><b>Budget banding</b> — material tier, scope</li>
+                <li><b>Studio fit</b> — both sides decide</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 02 — Concept -->
+          <div class="stage" data-stage="2">
+            <div class="stage__top">
+              <span class="stage__no">/ 02</span>
+              <h4 class="stage__name">Concept <span class="ital">&amp; plan</span></h4>
+              <span class="stage__dur">~ 4 days</span>
+            </div>
+            <div class="stage__marker">
+              <span class="vline"></span>
+              <span class="dot"></span>
+              <span class="coord">A2 · 04.30</span>
+            </div>
+            <div class="stage__bottom">
+              <ul class="stage__deliverables">
+                <li><b>Concept direction</b> — palette, mood, references</li>
+                <li><b>Plan studies</b> — walls, daylight, circulation</li>
+                <li><b>Style fit</b> — Modern, Classic, Scandi or Minimal</li>
+                <li><b>Sign-off</b> — drawn-board review</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 03 — Drawings -->
+          <div class="stage" data-stage="3">
+            <div class="stage__top">
+              <span class="stage__no">/ 03</span>
+              <h4 class="stage__name">Drawings <span class="ital">&amp; 3D</span></h4>
+              <span class="stage__dur">~ 7 days</span>
+            </div>
+            <div class="stage__marker">
+              <span class="vline"></span>
+              <span class="dot"></span>
+              <span class="coord">A3 · 08.60</span>
+            </div>
+            <div class="stage__bottom">
+              <ul class="stage__deliverables">
+                <li><b>Shop drawings</b> — every joint, every reveal</li>
+                <li><b>3D visualisation</b> — photoreal verification</li>
+                <li><b>Materials library</b> — physical samples on table</li>
+                <li><b>Specification set</b> — schedule of finishes</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 04 — Build -->
+          <div class="stage" data-stage="4">
+            <div class="stage__top">
+              <span class="stage__no">/ 04</span>
+              <h4 class="stage__name">Build <span class="ital">&amp; supervise</span></h4>
+              <span class="stage__dur">~ 3 weeks</span>
+            </div>
+            <div class="stage__marker">
+              <span class="vline"></span>
+              <span class="dot"></span>
+              <span class="coord">A4 · 14.40</span>
+            </div>
+            <div class="stage__bottom">
+              <ul class="stage__deliverables">
+                <li><b>Trades briefed</b> to our drawings, not to a moodboard</li>
+                <li><b>Weekly site walks</b> with photo record</li>
+                <li><b>Mock-up sign-off</b> for joinery, stone, plaster</li>
+                <li><b>QA register</b> — every detail tracked to closure</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 05 — Handover -->
+          <div class="stage" data-stage="5">
+            <div class="stage__top">
+              <span class="stage__no">/ 05</span>
+              <h4 class="stage__name">Handover <span class="ital">&amp; keying</span></h4>
+              <span class="stage__dur">~ 3 days</span>
+            </div>
+            <div class="stage__marker">
+              <span class="vline"></span>
+              <span class="dot"></span>
+              <span class="coord">A5 · 20.00</span>
+            </div>
+            <div class="stage__bottom">
+              <ul class="stage__deliverables">
+                <li><b>Punch list</b> closed before handover</li>
+                <li><b>Final styling</b> — linens, books, the kitchen pots</li>
+                <li><b>Walk-through</b> with manuals and warranties</li>
+                <li><b>The keys</b> — placed in your hand, no checklist</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drawn axis (SVG) — sits behind stage markers -->
+        <svg class="process__axis-svg" id="axisSvg" viewBox="0 0 1000 64" preserveAspectRatio="none" aria-hidden="true">
+          <path class="axis-main" id="axisPath" d="M 0 32 L 1000 32" />
+          <polygon class="axis-arrow" id="axisArrow" points="996,28 1004,32 996,36" opacity="0" />
+        </svg>
+
+        <!-- Bottom dimension band -->
+        <div class="process__dims" aria-hidden="true">
+          <svg class="process__dims-svg" id="dimSvg" viewBox="0 0 1000 50" preserveAspectRatio="none">
+            <!-- ticks at 0/100/300/500/700/900/1000 (relative positions for 5 cols) -->
+            <path class="dim-tick" d="M 0 6 L 0 18 M 100 6 L 100 18 M 300 6 L 300 18 M 500 6 L 500 18 M 700 6 L 700 18 M 900 6 L 900 18 M 1000 6 L 1000 18" />
+            <path class="dim-line" id="dimLineMain" d="M 0 12 L 1000 12" />
+            <polygon class="dim-arrow" points="0,12 8,8 8,16" />
+            <polygon class="dim-arrow" points="1000,12 992,8 992,16" />
+          </svg>
+          <div class="process__dims-row">
+            <span>D1&nbsp;·&nbsp;<b>3 days</b></span>
+            <span>D2&nbsp;·&nbsp;<b>4 days</b></span>
+            <span>D3&nbsp;·&nbsp;<b>7 days</b></span>
+            <span>D4&nbsp;·&nbsp;<b>3 weeks</b></span>
+            <span>D5&nbsp;·&nbsp;<b>3 days</b></span>
+          </div>
+        </div>
+
+        <div class="process__total">
+          <span>TOTAL · DOOR TO KEYS</span>
+          <span class="big">~ 6 <span class="ital">weeks</span></span>
+          <span><b>One studio</b>&nbsp;·&nbsp;Drawn → Built</span>
+        </div>
+      </div>
+
+      <!-- Outro tri-cell — what to expect at handover -->
+      <div class="process__outro">
+        <article class="process__outro-cell">
+          <span class="lbl">/ Document</span>
+          <h5>Specification set</h5>
+          <p>A bound book of every finish, every reveal, every supplier. Yours to keep — and the only document the trades work from.</p>
+        </article>
+        <article class="process__outro-cell">
+          <span class="lbl">/ Practice</span>
+          <h5>Weekly site walk</h5>
+          <p>The same studio hand on site every week. Photos in a shared log, decisions in writing, no surprises.</p>
+        </article>
+        <article class="process__outro-cell">
+          <span class="lbl">/ Promise</span>
+          <h5>One signature</h5>
+          <p>The person who drew your plan is the person walking the floor on the day the joinery lands. End to end.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====== CINEMATIC INTERLUDE #2 ====== -->
+    <section class="cinematic surface-dark" data-rail="process" aria-label="Handover interlude">
+      <div class="cinematic__media" aria-hidden="true">
+        <img src="assets/hero/handover-atmosphere.webp" alt="" decoding="async" loading="lazy" />
+      </div>
+      <div class="cinematic__brackets" aria-hidden="true"><b></b><b></b><b></b><b></b></div>
+      <div class="cinematic__inner">
+        <span class="cinematic__index">/ Interlude · 02</span>
+        <p class="cinematic__quote">
+          <span class="word"><span>The</span></span> <span class="word"><span>moment</span></span> <span class="word"><span>we</span></span> <span class="word"><span>step</span></span> <span class="word"><span>out,</span></span> <span class="word"><span>the</span></span> <span class="word"><span>room</span></span> <span class="word"><span>begins.</span></span>
+        </p>
+        <div class="cinematic__attr">
+          <span class="dot"></span>
+          <span>On Handover</span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== BOOKING ====== -->
+    <section id="booking" class="booking surface-dark" data-rail="booking">
+      <div class="booking__intro">
+        <div>
+          <span class="eyebrow">05 — Book a consultation</span>
+          <h2>Begin a <span class="ital">brief.</span></h2>
+        </div>
+        <div>
+          <p>
+            A 45-minute conversation. We listen to what you have in mind, your site, your timeline. By the end of the call, you'll know whether Khayal is the right studio for your project. Either answer is fine.
+          </p>
+          <ul class="promise">
+            <li><span>Studio call&nbsp;·&nbsp;<b>45 min</b></span></li>
+            <li><span>No fee, no obligation&nbsp;·&nbsp;<b>discovery only</b></span></li>
+            <li><span>Held by&nbsp;<b>Ebrahim · studio principal</b></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="booking__panel">
+
+        <!-- CALENDAR -->
+        <aside class="cal" aria-label="Select a date">
+          <div class="cal__head">
+            <span class="lbl">/ Calendar</span>
+            <div class="cal__nav">
+              <button id="calPrev" aria-label="Previous month">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M15 6l-6 6 6 6"/></svg>
+              </button>
+              <span class="month" id="calMonth">May <b>2026</b></span>
+              <button id="calNext" aria-label="Next month">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M9 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="cal__weekdays">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div class="cal__grid" id="calGrid" role="grid"></div>
+
+          <div class="cal__slots" id="calSlots">
+            <div class="cal__slots-label"><b>Select a date</b> to see available studio times.</div>
+            <div class="cal__placeholder">— — : — —</div>
+          </div>
+        </aside>
+
+        <!-- FORM -->
+        <form class="bf" id="bookingForm" novalidate>
+          <div class="bf__head">
+            <span class="lbl">/ Details</span>
+            <span class="step">02 · of 02</span>
+          </div>
+
+          <div class="bf__row">
+            <div class="bf__field">
+              <label for="bf-name">Full Name <b>*</b></label>
+              <input id="bf-name" name="name" type="text" autocomplete="name" placeholder="Ahmed Hosny" required />
+            </div>
+            <div class="bf__field">
+              <label for="bf-phone">Phone <b>*</b></label>
+              <input id="bf-phone" name="phone" type="tel" autocomplete="tel" placeholder="+20 102 706 6772" required />
+            </div>
+          </div>
+
+          <div class="bf__field">
+            <label for="bf-email">Email <b>*</b></label>
+            <input id="bf-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="bf__row">
+            <div class="bf__field bf__field-select">
+              <label for="bf-type">Project Type</label>
+              <select id="bf-type" name="type">
+                <option>Full residence</option>
+                <option>Kitchen only</option>
+                <option>Living areas</option>
+                <option>Hospitality / commercial</option>
+                <option>Consultation only</option>
+              </select>
+            </div>
+            <div class="bf__field">
+              <label for="bf-loc">Location / city</label>
+              <input id="bf-loc" name="location" type="text" placeholder="6th of October City" />
+            </div>
+          </div>
+
+          <div class="bf__field">
+            <label for="bf-msg">A few lines about your project</label>
+            <textarea id="bf-msg" name="message" rows="3" placeholder="Square meters, the rooms you have in mind, your timeline, any references…"></textarea>
+          </div>
+
+          <div class="bf__summary is-empty" id="bfSummary">
+            <div class="row"><span>Selected date</span><b id="sumDate">— — — —</b></div>
+            <div class="row"><span>Selected time</span><b id="sumTime">—  —</b></div>
+          </div>
+
+          <button class="bf__submit" id="bfSubmit" type="submit">
+            Send brief via WhatsApp
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.5.7.3 1.2.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.5.2-.7.2-1.4.2-1.5-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.5.8 3.1 1.2 4.9 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/>
+            </svg>
+          </button>
+
+          <div class="bf__alt">
+            <span>Or write us directly</span>
+            <a href="mailto:ziady5420@gmail.com">ziady5420@gmail.com</a>
+          </div>
+        </form>
+
+      </div>
+
+      <!-- Confirmation modal -->
+      <div class="bf__confirm" id="bfConfirm" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Booking confirmed">
+        <div class="bf__confirm-card">
+          <span class="mark">/ Brief received</span>
+          <h3>Your <span class="ital">consultation</span> is held.</h3>
+          <p>We'll be in touch within one studio day to confirm the call. A small calendar invite will follow with the studio link.</p>
+          <div class="summary" id="confirmSummary"></div>
+          <button class="close" id="bfClose">Close · return to site</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer surface-dark">
+    <div class="footer__main">
+      <div class="footer__brand">
+        <div class="mark">
+          <img class="footer-brand-img" src="assets/brand/khayal-mark.svg" alt="Khayal Designs" />
+          <h4 class="footer-wm">Khayal <span class="ar">خيال</span></h4>
+        </div>
+        <p>An interior atelier turning architectural intent into livable, executed space. One studio, drawn line to keyed door.</p>
+        <div class="tagline">"Crafting spaces beyond imagination."</div>
+      </div>
+
+      <div class="footer__col">
+        <h5>/ Work</h5>
+        <ul>
+          <li><a href="#styles">Kitchens <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          <li><a href="#furniture">Furniture <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          <li><a href="#interior">Interiors <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          <li><a href="#showcase">3D Visualisation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          <li><a href="#process">Process <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h5>/ Contact</h5>
+        <ul>
+          <li><a href="mailto:ziady5420@gmail.com">ziady5420@gmail.com</a></li>
+          <li><a href="tel:+201027066772">+20 102 706 6772</a></li>
+          <li><a href="#">6th of October City</a></li>
+          <li><a href="#">Egypt · Giza Governorate</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h5>/ Follow</h5>
+        <ul>
+          <li><a href="https://www.instagram.com/khayal.designs/" target="_blank" rel="noopener noreferrer">@khayal.designs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__mega" aria-hidden="true">
+      <div class="footer__mega-text">Khayal <span class="ital">Designs</span></div>
+    </div>
+
+    <div class="footer__bottom">
+      <span class="copy">© <b>Khayal</b> Designs · MMXX — MMXXVI</span>
+      <span>Studio practice · 6th of October City</span>
+      <span class="built">Drawn · Built · Handed back</span>
+    </div>
+  </footer>
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/hero.js" defer></script>
+  <script src="js/portfolio.js" defer></script>
+  <script src="js/process.js" defer></script>
+  <script src="js/extras.js" defer></script>
+  <script src="js/booking.js" defer></script>
+</body>
+</html>

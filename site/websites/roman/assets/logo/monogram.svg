@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 140" role="img" aria-label="RD Monogram">
+  <defs>
+    <filter id="nodeGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g stroke="#FFFFFF" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.85">
+    <!-- R letter structural lines -->
+    <line x1="30"  y1="25"  x2="30"  y2="115"/>
+    <line x1="30"  y1="25"  x2="78"  y2="25"/>
+    <line x1="78"  y1="25"  x2="88"  y2="50"/>
+    <line x1="88"  y1="50"  x2="78"  y2="68"/>
+    <line x1="78"  y1="68"  x2="30"  y2="68"/>
+    <line x1="58"  y1="68"  x2="90"  y2="115"/>
+
+    <!-- D letter structural lines -->
+    <line x1="140" y1="25"  x2="140" y2="115"/>
+    <line x1="140" y1="25"  x2="180" y2="32"/>
+    <line x1="180" y1="32"  x2="205" y2="60"/>
+    <line x1="205" y1="60"  x2="205" y2="80"/>
+    <line x1="205" y1="80"  x2="180" y2="108"/>
+    <line x1="180" y1="108" x2="140" y2="115"/>
+  </g>
+
+  <!-- Connection nodes (R) -->
+  <g fill="#FFFFFF" filter="url(#nodeGlow)">
+    <circle cx="30"  cy="25"  r="3.4"/>
+    <circle cx="30"  cy="68"  r="3.4"/>
+    <circle cx="30"  cy="115" r="3.4"/>
+    <circle cx="78"  cy="25"  r="3.4"/>
+    <circle cx="88"  cy="50"  r="3.4"/>
+    <circle cx="78"  cy="68"  r="3.4"/>
+    <circle cx="58"  cy="68"  r="2.6"/>
+    <circle cx="90"  cy="115" r="3.4"/>
+  </g>
+
+  <!-- Connection nodes (D) -->
+  <g fill="#FFFFFF" filter="url(#nodeGlow)">
+    <circle cx="140" cy="25"  r="3.4"/>
+    <circle cx="140" cy="70"  r="3.4"/>
+    <circle cx="140" cy="115" r="3.4"/>
+    <circle cx="180" cy="32"  r="3.4"/>
+    <circle cx="205" cy="60"  r="3.4"/>
+    <circle cx="205" cy="80"  r="3.4"/>
+    <circle cx="180" cy="108" r="3.4"/>
+  </g>
+
+  <!-- Accent violet sub-glow on key nodes -->
+  <g fill="#5B2EFF" opacity="0.55">
+    <circle cx="88"  cy="50"  r="6"/>
+    <circle cx="205" cy="60"  r="6"/>
+  </g>
+</svg>

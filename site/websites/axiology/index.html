@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Axiology — Beauty in every bottle.</title>
+  <meta name="description" content="Egyptian natural cosmetics rooted in ritual. Frankincense, coconut, rose — single-origin botanicals worn as a ritual." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Preload critical hero asset so banner 1 renders without delay -->
+  <link rel="preload" as="image" href="assets/hero-A.png" fetchpriority="high" />
+
+  <!-- OG / social share -->
+  <meta property="og:title" content="Axiology — Beauty in every bottle." />
+  <meta property="og:description" content="Egyptian natural cosmetics rooted in ritual. Single-origin frankincense, coconut, and rose — hand-blended in Cairo." />
+  <meta property="og:image" content="assets/hero-A.png" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#7B1F30" />
+
+  <script>
+    // Enables JS-only motion hide-states. Removed by main.js if libraries fail.
+    document.documentElement.classList.add('js-motion');
+    // Safety net: if GSAP doesn't init within 4s, drop the class so content shows.
+    setTimeout(function(){ if (!window.gsap) document.documentElement.classList.remove('js-motion'); }, 4000);
+  </script>
+</head>
+<body>
+
+  <noscript>
+    <div style="position:fixed;inset:0;background:#FBEFE0;display:flex;align-items:center;justify-content:center;padding:32px;text-align:center;z-index:9999;font-family:Georgia,serif;color:#7B1F30;">
+      <div>
+        <p style="font-size:38px;font-style:italic;margin:0 0 14px;">Axiology</p>
+        <p style="font-size:15px;color:#1C1410;max-width:42ch;line-height:1.6;">This experience uses JavaScript to bring the brand to life. Please enable JS in your browser to view the site, or browse our shop directly at axiologycg.com</p>
+      </div>
+    </div>
+  </noscript>
+
+  <!-- ============================================== LOADER -->
+  <div class="loader" data-loader>
+    <img class="loader__logo" src="assets/logo.webp" alt="Axiology — Beauty in every bottle" />
+    <div class="loader__bar"><span></span></div>
+  </div>
+
+  <!-- ============================================== AMBIENT PARTICLES -->
+  <canvas class="ambient-particles" data-ambient-particles aria-hidden="true"></canvas>
+
+  <!-- ============================================== SCROLL PROGRESS -->
+  <div class="scroll-progress" data-scroll-progress><span></span></div>
+
+  <!-- ============================================== CURSOR -->
+  <div class="cursor" data-cursor></div>
+  <div class="cursor__trail" data-cursor-trail></div>
+  <div class="cursor__drop" data-cursor-drop aria-hidden="true">
+    <svg viewBox="0 0 40 60" width="20" height="30"><defs><radialGradient id="cdg" cx="50%" cy="35%" r="60%"><stop offset="0%" stop-color="#FAD58A"/><stop offset="60%" stop-color="#C89A4F"/><stop offset="100%" stop-color="#7B5722"/></radialGradient></defs><path d="M20 4 C 30 22, 36 36, 20 56 C 4 36, 10 22, 20 4 Z" fill="url(#cdg)"/></svg>
+  </div>
+
+  <!-- ============================================== NAV -->
+  <header class="nav" data-nav>
+    <div class="nav__inner">
+      <div class="nav__left">
+        <a href="#products" class="nav__link" data-i18n="nav.shop">Shop</a>
+        <a href="#rituals" class="nav__link" data-i18n="nav.rituals">Rituals</a>
+      </div>
+      <a href="#top" class="nav__mark" aria-label="Axiology home">
+        <img src="assets/logo.webp" alt="Axiology" class="nav__logo" />
+      </a>
+      <div class="nav__right">
+        <a href="#story" class="nav__link" data-i18n="nav.story">Story</a>
+        <a href="#journal" class="nav__link" data-i18n="nav.journal">Journal</a>
+        <button class="nav__lang" data-lang-toggle aria-label="Switch language">
+          <span class="lang-en">EN</span><i>·</i><span class="lang-ar">عر</span>
+        </button>
+        <a href="#cart" class="nav__cart">
+          <span data-i18n="nav.cart">Cart</span> <sup>1</sup>
+        </a>
+      </div>
+      <button class="nav__burger" data-menu-toggle aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================== MOBILE DRAWER -->
+  <div class="drawer" data-drawer>
+    <div class="drawer__inner">
+      <a href="#products" class="drawer__link" data-i18n="nav.shop">Shop</a>
+      <a href="#rituals"  class="drawer__link" data-i18n="nav.rituals">Rituals</a>
+      <a href="#story"    class="drawer__link" data-i18n="nav.story">Story</a>
+      <a href="#journal"  class="drawer__link" data-i18n="nav.journal">Journal</a>
+      <a href="#cart"     class="drawer__link" data-i18n="nav.cart">Cart</a>
+      <button class="drawer__lang" data-lang-toggle>
+        <span class="lang-en">EN</span><i>·</i><span class="lang-ar">عربي</span>
+      </button>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ============================================== 01 HERO CAROUSEL -->
+    <section class="hero" data-section="hero" data-hero data-active-slide="0">
+
+      <!-- SLIDE 01 -->
+      <article class="hero__slide is-active" data-slide="0">
+        <div class="hero__media" style="background-image:url('assets/hero-A.png')" data-hero-media></div>
+        <canvas class="hero__canvas" data-hero-canvas></canvas>
+        <img class="hero__source" data-hero-source src="assets/hero-A.png" alt="Axiology Frankincense Oil suspended in liquid gold" style="display:none" />
+        <div class="hero__veil"></div>
+        <div class="hero__content" data-3d>
+          <div class="hero__eyebrow">
+            <span data-i18n="hero.est">EST.</span><em data-i18n="hero.tagline">Cairo · Rooted in Africa</em>
+          </div>
+          <h1 class="hero__title" data-split-letters data-i18n-html="hero.title">
+            <span class="line">Beauty in every</span>
+            <span class="line"><em>bottle.</em></span>
+          </h1>
+          <p class="hero__lede" data-i18n="hero.lede">Single-origin frankincense, coconut, and rose — hand-blended in Cairo, worn as a ritual.</p>
+          <div class="hero__cta-row">
+            <a href="#products" class="btn" data-magnetic>
+              <span data-i18n="hero.cta">Begin the ritual</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#story" class="hero__secondary" data-magnetic data-i18n="hero.secondary">Watch our story</a>
+          </div>
+          <div class="hero__support-row">
+            <span class="hero__support" data-i18n="hero.support">Free shipping across Egypt</span>
+            <span class="hero__divider"></span>
+            <span class="hero__support" data-i18n="hero.guarantee">14-day promise</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- SLIDE 02 -->
+      <article class="hero__slide" data-slide="1">
+        <div class="hero__media" style="background-image:url('assets/hero-banner-2.png')" data-hero-media></div>
+        <div class="hero__veil"></div>
+        <div class="hero__content" data-3d>
+          <div class="hero__eyebrow">
+            <span data-i18n="hero.est">EST.</span><em data-i18n="hero.tagline">Cairo · Rooted in Africa</em>
+          </div>
+          <h1 class="hero__title" data-split-letters>
+            <span class="line">Sourced where</span>
+            <span class="line"><em>the earth breathes.</em></span>
+          </h1>
+          <p class="hero__lede" data-i18n="hero.lede2">Wild-harvested resin from Oman. Cold-pressed coconut from the African coast. Egyptian rose, in season only.</p>
+          <div class="hero__cta-row">
+            <a href="#story" class="btn" data-magnetic>
+              <span data-i18n="hero.cta2">Discover the origin</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#rituals" class="hero__secondary" data-magnetic data-i18n="hero.secondary2">View the ingredients</a>
+          </div>
+          <div class="hero__support-row">
+            <span class="hero__support" data-i18n="hero.support">Free shipping across Egypt</span>
+            <span class="hero__divider"></span>
+            <span class="hero__support" data-i18n="hero.guarantee">14-day promise</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- SLIDE 03 -->
+      <article class="hero__slide" data-slide="2">
+        <div class="hero__media" style="background-image:url('assets/hero-banner-3.png')" data-hero-media></div>
+        <div class="hero__veil"></div>
+        <div class="hero__content" data-3d>
+          <div class="hero__eyebrow">
+            <span data-i18n="hero.est">EST.</span><em data-i18n="hero.tagline">Cairo · Rooted in Africa</em>
+          </div>
+          <h1 class="hero__title" data-split-letters>
+            <span class="line">Worn as</span>
+            <span class="line"><em>a ritual.</em></span>
+          </h1>
+          <p class="hero__lede" data-i18n="hero.lede3">Three drops, every morning. The hands that mix it understand the skin that wears it.</p>
+          <div class="hero__cta-row">
+            <a href="#rituals" class="btn" data-magnetic>
+              <span data-i18n="hero.cta3">See the ritual</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#products" class="hero__secondary" data-magnetic data-i18n="hero.secondary3">Shop the bundle</a>
+          </div>
+          <div class="hero__support-row">
+            <span class="hero__support" data-i18n="hero.support">Free shipping across Egypt</span>
+            <span class="hero__divider"></span>
+            <span class="hero__support" data-i18n="hero.guarantee">14-day promise</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- SLIDE 04 -->
+      <article class="hero__slide" data-slide="3">
+        <div class="hero__media" style="background-image:url('assets/hero-banner-4.png')" data-hero-media></div>
+        <div class="hero__veil"></div>
+        <div class="hero__content" data-3d>
+          <div class="hero__eyebrow">
+            <span data-i18n="hero.est">EST.</span><em data-i18n="hero.tagline">Cairo · Rooted in Africa</em>
+          </div>
+          <h1 class="hero__title" data-split-letters>
+            <span class="line">Wake the</span>
+            <span class="line"><em>glow.</em></span>
+          </h1>
+          <p class="hero__lede" data-i18n="hero.lede4">Rose-infused exfoliation. The Pink Puff ritual — three minutes, twice a week, lifelong glow.</p>
+          <div class="hero__cta-row">
+            <a href="#products" class="btn" data-magnetic>
+              <span data-i18n="hero.cta4">Shop Pink Puff</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#rituals" class="hero__secondary" data-magnetic data-i18n="hero.secondary4">The scrub ritual</a>
+          </div>
+          <div class="hero__support-row">
+            <span class="hero__support" data-i18n="hero.support">Free shipping across Egypt</span>
+            <span class="hero__divider"></span>
+            <span class="hero__support" data-i18n="hero.guarantee">14-day promise</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- CAROUSEL CONTROLS -->
+      <div class="hero__nav">
+        <button class="hero__pager-btn is-active" data-go-slide="0" aria-label="Slide 1" aria-current="true">
+          <span class="hero__pager-num">01</span>
+          <span class="hero__pager-label">Liquid Gold</span>
+        </button>
+        <button class="hero__pager-btn" data-go-slide="1" aria-label="Slide 2">
+          <span class="hero__pager-num">02</span>
+          <span class="hero__pager-label">Earth-Rooted</span>
+        </button>
+        <button class="hero__pager-btn" data-go-slide="2" aria-label="Slide 3">
+          <span class="hero__pager-num">03</span>
+          <span class="hero__pager-label">The Ritual</span>
+        </button>
+        <button class="hero__pager-btn" data-go-slide="3" aria-label="Slide 4">
+          <span class="hero__pager-num">04</span>
+          <span class="hero__pager-label">Pink Puff</span>
+        </button>
+        <div class="hero__progress" aria-hidden="true"><span data-progress-fill></span></div>
+        <button class="hero__playpause" data-carousel-toggle aria-label="Pause carousel">
+          <svg class="ico-play" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 1 L11 6 L2 11 Z" fill="currentColor"/></svg>
+          <svg class="ico-pause" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><rect x="2" y="1" width="3" height="10" fill="currentColor"/><rect x="7" y="1" width="3" height="10" fill="currentColor"/></svg>
+        </button>
+      </div>
+
+      <!-- LIQUID MORPH SVG MASK -->
+      <svg class="hero__liquid-svg" aria-hidden="true">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"/>
+            <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+          </filter>
+        </defs>
+      </svg>
+
+      <!-- LIQUID TRANSITION CANVAS -->
+      <canvas class="hero__transition-canvas" data-hero-transition aria-hidden="true"></canvas>
+
+      <div class="hero__scroll">
+        <span data-i18n="hero.scroll">Scroll</span>
+        <i></i>
+      </div>
+    </section>
+
+    <!-- ============================================== 02 MARQUEE -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span class="marquee__item" data-i18n-html="marquee.items">100% Natural <i></i> No Fillers <i></i> Cruelty-Free <i></i> Made in Egypt <i></i> Rooted in Africa <i></i></span>
+        <span class="marquee__item" data-i18n-html="marquee.items">100% Natural <i></i> No Fillers <i></i> Cruelty-Free <i></i> Made in Egypt <i></i> Rooted in Africa <i></i></span>
+      </div>
+    </section>
+
+    <!-- ============================================== 03 PRODUCTS -->
+    <section class="products" data-section="products" id="products">
+      <div class="products__head">
+        <h2 class="products__title" data-i18n-html="products.title">You make<br/><em>skin look good.</em></h2>
+        <p class="products__sub" data-i18n="products.sub">Four signature rituals, hand-blended in Cairo from single-origin botanicals. Dark spots, dryness, dullness — handled.</p>
+      </div>
+
+      <div class="products__grid">
+        <!-- FEATURED 2x2 -->
+        <a class="product-card product-card--feat" href="#" data-card>
+          <div class="product-card__media">
+            <span class="product-card__badge" data-i18n="badge.bestseller">Bestseller</span>
+            <img src="assets/products/6.jpg" alt="Axiology Pure Skin Bundle" loading="lazy" />
+            <div class="product-card__quick" data-i18n="card.quick">Quick add</div>
+          </div>
+          <div class="product-card__info">
+            <div class="product-card__cat" data-i18n="card.cat.bundle">Complete Routine</div>
+            <div class="product-card__name" data-i18n="card.name.bundle">Pure Skin Bundle</div>
+            <div class="product-card__price">LE 870 <s>LE 1,096</s></div>
+          </div>
+        </a>
+
+        <a class="product-card" href="#" data-card>
+          <div class="product-card__media">
+            <span class="product-card__badge" data-i18n="badge.sale">Sale</span>
+            <img src="assets/products/5.jpg" alt="Axiology Pink Puff set" loading="lazy" />
+            <div class="product-card__quick" data-i18n="card.quick">Quick add</div>
+          </div>
+          <div class="product-card__info">
+            <div class="product-card__cat" data-i18n="card.cat.scrub">Body Scrub Set</div>
+            <div class="product-card__name" data-i18n="card.name.puff">Pink Puff Set</div>
+            <div class="product-card__price">LE 659 <s>LE 783</s></div>
+          </div>
+        </a>
+
+        <a class="product-card" href="#" data-card>
+          <div class="product-card__media">
+            <img src="assets/products/3.jpg" alt="Axiology Frankincense Oil 75ml" loading="lazy" />
+            <div class="product-card__quick" data-i18n="card.quick">Quick add</div>
+          </div>
+          <div class="product-card__info">
+            <div class="product-card__cat" data-i18n="card.cat.frank">Natural Oil · 75ml</div>
+            <div class="product-card__name" data-i18n="card.name.frank">Frankincense Oil</div>
+            <div class="product-card__price">LE 299</div>
+          </div>
+        </a>
+
+        <a class="product-card" href="#" data-card>
+          <div class="product-card__media">
+            <span class="product-card__badge" data-i18n="badge.sale">Sale</span>
+            <img src="assets/products/2.jpg" alt="Axiology Coconut Oil 150g" loading="lazy" />
+            <div class="product-card__quick" data-i18n="card.quick">Quick add</div>
+          </div>
+          <div class="product-card__info">
+            <div class="product-card__cat" data-i18n="card.cat.coco">Natural Oil · 150g</div>
+            <div class="product-card__name" data-i18n="card.name.coco">Coconut Oil</div>
+            <div class="product-card__price">LE 199 <s>LE 249</s></div>
+          </div>
+        </a>
+
+        <a class="product-card" href="#" data-card>
+          <div class="product-card__media">
+            <img src="assets/products/11.jpg" alt="Axiology Frankincense Cream" loading="lazy" />
+            <div class="product-card__quick" data-i18n="card.quick">Quick add</div>
+          </div>
+          <div class="product-card__info">
+            <div class="product-card__cat">Face Cream · 50g</div>
+            <div class="product-card__name">Frankincense Cream</div>
+            <div class="product-card__price">LE 299</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================== 03b INFINITE SHOP STRIP -->
+    <section class="shopstrip" data-section="shopstrip" aria-label="All products">
+      <div class="shopstrip__track" data-shopstrip-track>
+        <a class="shopstrip__item" href="#"><img src="assets/products/1.jpg"  alt="Castor Oil"/><span>Castor Oil</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/2.jpg"  alt="Coconut Oil"/><span>Coconut Oil</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/3.jpg"  alt="Frankincense Oil"/><span>Frankincense Oil</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/10.jpg" alt="Frankincense Myrrh Serum"/><span>F&amp;M Serum</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/11.jpg" alt="Frankincense Cream"/><span>Frank. Cream</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/13.jpg" alt="Frankincense Soap"/><span>Frank. Soap</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/14.jpg" alt="Rosemary Hair Toner"/><span>Rosemary Toner</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/15.jpg" alt="Rose Water Toner"/><span>Rose Toner</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/12.jpg" alt="Glow Mie Set"/><span>Glow Mie Set</span></a>
+        <!-- Duplicated for seamless loop -->
+        <a class="shopstrip__item" href="#"><img src="assets/products/1.jpg"  alt="Castor Oil"/><span>Castor Oil</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/2.jpg"  alt="Coconut Oil"/><span>Coconut Oil</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/3.jpg"  alt="Frankincense Oil"/><span>Frankincense Oil</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/10.jpg" alt="Frankincense Myrrh Serum"/><span>F&amp;M Serum</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/11.jpg" alt="Frankincense Cream"/><span>Frank. Cream</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/13.jpg" alt="Frankincense Soap"/><span>Frank. Soap</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/14.jpg" alt="Rosemary Hair Toner"/><span>Rosemary Toner</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/15.jpg" alt="Rose Water Toner"/><span>Rose Toner</span></a>
+        <a class="shopstrip__item" href="#"><img src="assets/products/12.jpg" alt="Glow Mie Set"/><span>Glow Mie Set</span></a>
+      </div>
+    </section>
+
+    <!-- ============================================== 04 COLLECTIONS -->
+    <section class="collections" data-section="collections">
+      <div class="collections__head">
+        <span class="eyebrow" data-i18n="collections.eyebrow">The Apothecary</span>
+        <h2 class="collections__title" data-i18n-html="collections.title">Explore <em>by ritual.</em></h2>
+      </div>
+
+      <div class="collections__grid">
+        <a class="collection-tile collection-tile--feat-1" href="#">
+          <img src="assets/products/10.jpg" alt="" />
+          <span class="collection-tile__more">↗</span>
+          <span class="collection-tile__label" data-i18n="col.face">Face Care</span>
+        </a>
+        <a class="collection-tile collection-tile--small" href="#">
+          <img src="assets/products/2.jpg" alt="" />
+          <span class="collection-tile__more">↗</span>
+          <span class="collection-tile__label" data-i18n="col.body">Body Care</span>
+        </a>
+        <a class="collection-tile collection-tile--small" href="#">
+          <img src="assets/products/1.jpg" alt="" />
+          <span class="collection-tile__more">↗</span>
+          <span class="collection-tile__label" data-i18n="col.hair">Hair Care</span>
+        </a>
+        <a class="collection-tile collection-tile--wide" href="#">
+          <img src="assets/products/15.jpg" alt="" />
+          <span class="collection-tile__more">↗</span>
+          <span class="collection-tile__label" data-i18n="col.toner">Natural Toners</span>
+        </a>
+        <a class="collection-tile collection-tile--small" href="#">
+          <img src="assets/products/13.jpg" alt="" />
+          <span class="collection-tile__more">↗</span>
+          <span class="collection-tile__label" data-i18n="col.soap">Natural Soaps</span>
+        </a>
+        <a class="collection-tile collection-tile--small" href="#">
+          <img src="assets/products/12.jpg" alt="" />
+          <span class="collection-tile__more">↗</span>
+          <span class="collection-tile__label" data-i18n="col.bundle">Bundles</span>
+        </a>
+        <a class="collection-tile collection-tile--feat-2" href="#">
+          <img src="assets/products/5.jpg" alt="" />
+          <span class="collection-tile__more">↗</span>
+          <span class="collection-tile__label" data-i18n="col.scrub">The Scrub Club</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================== 04b THREE.JS 3D BOTTLE -->
+    <section class="bottle3d" data-section="bottle3d" id="craft">
+      <div class="bottle3d__bg"></div>
+      <div class="bottle3d__stage">
+        <canvas class="bottle3d__canvas" data-bottle3d-canvas></canvas>
+        <div class="bottle3d__hint" data-i18n="bottle.hint">Drag to spin · Scroll to zoom</div>
+      </div>
+      <div class="bottle3d__copy">
+        <span class="eyebrow eyebrow--light" data-i18n="bottle.eyebrow">Crafted, drop by drop</span>
+        <h2 class="bottle3d__title" data-i18n-html="bottle.title">Every bottle.<br/><em>Held in two hands.</em></h2>
+        <p class="bottle3d__body" data-i18n="bottle.body">No assembly lines. No fillers. Just slow hands in a Cairo workshop, decanting cold-pressed oil into glass — three drops at a time.</p>
+        <ul class="bottle3d__list">
+          <li><span class="num">01</span> <span data-i18n="bottle.l1">Single-origin frankincense from Oman</span></li>
+          <li><span class="num">02</span> <span data-i18n="bottle.l2">Hand-poured in Cairo workshop</span></li>
+          <li><span class="num">03</span> <span data-i18n="bottle.l3">Recyclable glass, refillable in store</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================== 05 STORY (NEW) -->
+    <section class="story" data-section="story" id="story">
+      <div class="story__bg" data-story-bg></div>
+      <div class="story__veil"></div>
+
+      <div class="story__copy">
+        <span class="eyebrow eyebrow--light" data-i18n="story.eyebrow">Our Story</span>
+        <h2 class="story__title" data-i18n-html="story.title">From a small Cairo apothecary,<br/><em>to your morning ritual.</em></h2>
+        <p class="story__body" data-i18n="story.body">Axiology began with a quiet conviction — that skincare should be sourced from where the earth breathes, not synthesized in a lab. We blend single-origin frankincense, cold-pressed coconut, and Egyptian rose in small batches, by hand, the old way.</p>
+        <a href="#" class="link-underline link-underline--light" data-i18n="story.link">Read the full story →</a>
+      </div>
+
+      <div class="story__signature">
+        <span class="eyebrow eyebrow--light">Founder</span>
+        <span class="story__sig-name">— Ebrahim, Cairo</span>
+      </div>
+    </section>
+
+    <!-- ============================================== 06 BIG FEATURE -->
+    <section class="feature" data-section="feature" id="rituals">
+      <div class="feature__media">
+        <img src="assets/products/6.jpg" alt="Axiology Pure Skin Bundle — Complete Radiance Routine" />
+      </div>
+      <div class="feature__copy">
+        <span class="eyebrow" data-i18n="feature.eyebrow">The Complete Routine</span>
+        <h2 class="feature__title" data-i18n-html="feature.title">Pure Skin <em>Bundle.</em></h2>
+        <p class="feature__body" data-i18n="feature.body">The signature four-step ritual — frankincense water toner, frankincense &amp; myrrh serum, frankincense cream, and our cult frankincense soap. Hand-blended in Cairo, worn as a ritual.</p>
+        <div class="feature__meta">
+          <span class="price">LE 870 <s>LE 1,096</s></span>
+          <span class="size" data-i18n="feature.size">Complete · 4-step</span>
+        </div>
+        <a href="#" class="btn btn--lg" data-magnetic>
+          <span data-i18n="feature.cta">Add the bundle</span>
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================== 06b HORIZONTAL SCROLL — APOTHECARY WALK -->
+    <section class="hscroll" data-section="hscroll" data-hscroll>
+      <div class="hscroll__pin">
+        <div class="hscroll__head">
+          <span class="eyebrow" data-i18n="hscroll.eyebrow">The Walk-Through</span>
+          <h2 class="hscroll__title" data-i18n-html="hscroll.title">A side-step through<br/><em>our apothecary shelf.</em></h2>
+        </div>
+
+        <div class="hscroll__track" data-hscroll-track>
+          <article class="hscroll__panel" style="background-image:url('assets/products/3.jpg')">
+            <div class="hscroll__caption">
+              <span class="hscroll__num">01</span>
+              <h3>Frankincense Oil</h3>
+              <p>Wild-harvested resin, distilled cold. The skin's quietest hero.</p>
+              <span class="hscroll__price">LE 299 · 75ml</span>
+            </div>
+          </article>
+          <article class="hscroll__panel" style="background-image:url('assets/products/2.jpg')">
+            <div class="hscroll__caption">
+              <span class="hscroll__num">02</span>
+              <h3>Coconut Oil</h3>
+              <p>Cold-pressed from the African coast. Skin food and hair feast.</p>
+              <span class="hscroll__price">LE 199 · 150g</span>
+            </div>
+          </article>
+          <article class="hscroll__panel" style="background-image:url('assets/products/10.jpg')">
+            <div class="hscroll__caption">
+              <span class="hscroll__num">03</span>
+              <h3>Frankincense &amp; Myrrh</h3>
+              <p>Two ancients in one bottle. For skin that's seen seasons.</p>
+              <span class="hscroll__price">LE 499 · 50ml</span>
+            </div>
+          </article>
+          <article class="hscroll__panel" style="background-image:url('assets/products/15.jpg')">
+            <div class="hscroll__caption">
+              <span class="hscroll__num">04</span>
+              <h3>Rose Water Toner</h3>
+              <p>Pure Egyptian rose, distilled in season. Honest mist.</p>
+              <span class="hscroll__price">LE 165 · 250ml</span>
+            </div>
+          </article>
+          <article class="hscroll__panel" style="background-image:url('assets/products/1.jpg')">
+            <div class="hscroll__caption">
+              <span class="hscroll__num">05</span>
+              <h3>Castor Oil</h3>
+              <p>For lashes, brows, and the ends of long hair.</p>
+              <span class="hscroll__price">LE 119 · 75ml</span>
+            </div>
+          </article>
+          <article class="hscroll__panel" style="background-image:url('assets/products/11.jpg')">
+            <div class="hscroll__caption">
+              <span class="hscroll__num">06</span>
+              <h3>Frankincense Cream</h3>
+              <p>Whipped daily moisture. Twelve hours of softness.</p>
+              <span class="hscroll__price">LE 299 · 50g</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="hscroll__progress" aria-hidden="true"><span data-hscroll-fill></span></div>
+      </div>
+    </section>
+
+    <!-- ============================================== 06c PINNED NARRATIVE -->
+    <section class="narrative" data-section="narrative" data-narrative>
+      <div class="narrative__pin">
+        <div class="narrative__visual">
+          <div class="narrative__frame" data-narrative-frame="1" style="background-image:url('assets/products/3.jpg')"></div>
+          <div class="narrative__frame" data-narrative-frame="2" style="background-image:url('assets/hero-banner-2.png')"></div>
+          <div class="narrative__frame" data-narrative-frame="3" style="background-image:url('assets/story-bg.png')"></div>
+          <div class="narrative__frame" data-narrative-frame="4" style="background-image:url('assets/hero-banner-3.png')"></div>
+        </div>
+
+        <div class="narrative__track">
+          <div class="narrative__chapter" data-narrative-chapter="1">
+            <span class="narrative__num">01</span>
+            <h3>Harvested at dawn.</h3>
+            <p>Boswellia trees in the highlands of Oman. We wait for the right season, then nick the bark by hand and let the resin bleed slowly into the sun.</p>
+          </div>
+          <div class="narrative__chapter" data-narrative-chapter="2">
+            <span class="narrative__num">02</span>
+            <h3>Distilled, never extracted.</h3>
+            <p>No solvents. No shortcuts. Steam carries the oil out of the resin, the way it's been done for two thousand years — only the volume is smaller.</p>
+          </div>
+          <div class="narrative__chapter" data-narrative-chapter="3">
+            <span class="narrative__num">03</span>
+            <h3>Blended in Cairo.</h3>
+            <p>A small workshop in Heliopolis. Three of us, two scales, one quiet music playlist. Every batch is small enough to remember by name.</p>
+          </div>
+          <div class="narrative__chapter" data-narrative-chapter="4">
+            <span class="narrative__num">04</span>
+            <h3>Worn on your skin.</h3>
+            <p>Three drops on a fingertip, pressed in upward strokes. Then breathe. The skin meets the oil — and a thousand years of ritual continues.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== 07 RITUAL -->
+    <section class="ritual" data-section="ritual">
+      <div class="ritual__head">
+        <span class="eyebrow" data-i18n="ritual.eyebrow">How African Cosmetics Works</span>
+        <h2 class="ritual__title" data-i18n-html="ritual.title">From worry<br/><em>to wellness.</em></h2>
+        <p class="ritual__sub" data-i18n="ritual.sub">A four-step transformation, designed for Egyptian skin. Real ingredients. Real results.</p>
+      </div>
+
+      <div class="ritual__grid">
+        <div class="ritual-item">
+          <div class="ritual-item__num">01</div>
+          <h3 class="ritual-item__title" data-i18n="ritual.1.title">Powerful naturals</h3>
+          <p class="ritual-item__body" data-i18n="ritual.1.body">Turmeric, frankincense, and plant oils that actually benefit your skin — sourced single-origin from Egypt and Africa.</p>
+        </div>
+        <div class="ritual-item">
+          <div class="ritual-item__num">02</div>
+          <h3 class="ritual-item__title" data-i18n="ritual.2.title">Targets skin issues</h3>
+          <p class="ritual-item__body" data-i18n="ritual.2.body">Helps with acne, dark spots, and uneven texture. Made for the climate, the water, and the skin we actually live in.</p>
+        </div>
+        <div class="ritual-item">
+          <div class="ritual-item__num">03</div>
+          <h3 class="ritual-item__title" data-i18n="ritual.3.title">Visible difference</h3>
+          <p class="ritual-item__body" data-i18n="ritual.3.body">95% of customers report visibly clearer skin within 4 weeks of starting the ritual. Backed by results, not promises.</p>
+        </div>
+        <div class="ritual-item">
+          <div class="ritual-item__num">04</div>
+          <h3 class="ritual-item__title" data-i18n="ritual.4.title">Made to last</h3>
+          <p class="ritual-item__body" data-i18n="ritual.4.body">No fillers, no fragrance, no compromise. Clean formulas in glass and recyclable packaging. Daily care, lifetime impact.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== 08 PRESS (NEW) -->
+    <section class="press" data-section="press">
+      <span class="press__eyebrow" data-i18n="press.eyebrow">As seen in</span>
+      <div class="press__row">
+        <span class="press__name">Vogue Arabia</span><i></i>
+        <span class="press__name">Marie Claire ME</span><i></i>
+        <span class="press__name">ELLE Arabia</span><i></i>
+        <span class="press__name">Cairo Scene</span><i></i>
+        <span class="press__name">Harper's Bazaar</span>
+      </div>
+    </section>
+
+    <!-- ============================================== 08b REVERSE MARQUEE -->
+    <section class="marquee marquee--reverse" aria-hidden="true">
+      <div class="marquee__track marquee__track--reverse">
+        <span class="marquee__item">Frankincense <i></i> Coconut <i></i> Egyptian Rose <i></i> Castor <i></i> Turmeric <i></i> Eucalyptus <i></i> Rosemary <i></i></span>
+        <span class="marquee__item">Frankincense <i></i> Coconut <i></i> Egyptian Rose <i></i> Castor <i></i> Turmeric <i></i> Eucalyptus <i></i> Rosemary <i></i></span>
+      </div>
+    </section>
+
+    <!-- ============================================== 09 TRUST -->
+    <section class="trust" data-section="trust">
+      <div class="trust__head">
+        <h2 class="trust__title" data-i18n-html="trust.title">Trusted by <em>5,000+ </em>women across Egypt.</h2>
+        <p class="trust__body" data-i18n="trust.body">Built quietly out of Cairo. Loved publicly by chefs, presenters, and women who simply want better skin — without the marketing noise.</p>
+      </div>
+
+      <div class="trust__metrics">
+        <div class="metric"><div class="metric__num" data-count="5000">5,000<em>+</em></div><div class="metric__label" data-i18n="trust.m1">Happy customers</div></div>
+        <div class="metric"><div class="metric__num" data-count="95">95<em>%</em></div><div class="metric__label" data-i18n="trust.m2">Satisfying treatment</div></div>
+        <div class="metric"><div class="metric__num" data-count="100">100<em>%</em></div><div class="metric__label" data-i18n="trust.m3">Natural origin</div></div>
+      </div>
+    </section>
+
+    <!-- ============================================== 10 TESTIMONIALS -->
+    <section class="testimonials" data-section="testimonials">
+      <span class="eyebrow testimonials__eyebrow" data-i18n="test.eyebrow">Worn as a Ritual</span>
+
+      <div class="testimonials__stage">
+        <figure class="portrait portrait--left">
+          <div class="portrait__img" style="background-image:url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&auto=format')"></div>
+          <figcaption>
+            <strong>Sara Abdelsalam</strong><span data-i18n="test.role1">Chef</span>
+            <div class="stars">★ ★ ★ ★ ★</div>
+          </figcaption>
+        </figure>
+
+        <blockquote class="pullquote">
+          <span class="mark">&#8220;</span>
+          <p data-i18n-html="test.quote">It changed my skin.<br/><em>It changed my mornings.</em></p>
+        </blockquote>
+
+        <figure class="portrait portrait--right">
+          <div class="portrait__img" style="background-image:url('https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80&auto=format')"></div>
+          <figcaption>
+            <strong>Sally Fouad</strong><span data-i18n="test.role2">TV Presenter</span>
+            <div class="stars">★ ★ ★ ★ ★</div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================================== 11 NEWSLETTER (NEW) -->
+    <section class="newsletter" data-section="newsletter">
+      <div class="newsletter__media" data-newsletter-bg></div>
+      <div class="newsletter__copy">
+        <span class="eyebrow" data-i18n="news.eyebrow">Join the ritual</span>
+        <h2 class="newsletter__title" data-i18n-html="news.title">Get 10% off your<br/><em>first ritual.</em></h2>
+        <p class="newsletter__body" data-i18n="news.body">Quiet emails about new launches, founder notes, and the occasional ingredient story. No noise — just the things worth knowing.</p>
+
+        <form class="newsletter__form" data-newsletter onsubmit="return false;">
+          <input type="email" class="newsletter__input" placeholder="your@email.com" required data-i18n-attr="placeholder|news.placeholder" />
+          <button type="submit" class="newsletter__btn" data-magnetic>
+            <span data-i18n="news.btn">Subscribe</span>
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M1 8H15M15 8L9 2M15 8L9 14" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+        <p class="newsletter__fineprint" data-i18n="news.fine">No spam, ever. Unsubscribe in one click.</p>
+      </div>
+    </section>
+
+    <!-- ============================================== 12 CTA -->
+    <section class="cta" data-section="cta">
+      <div class="cta__drop" aria-hidden="true">
+        <svg viewBox="0 0 40 60" width="40" height="60"><defs><radialGradient id="g" cx="50%" cy="35%" r="60%"><stop offset="0%" stop-color="#FAD58A"/><stop offset="60%" stop-color="#C89A4F"/><stop offset="100%" stop-color="#7B5722"/></radialGradient></defs><path d="M20 4 C 30 22, 36 36, 20 56 C 4 36, 10 22, 20 4 Z" fill="url(#g)"/></svg>
+      </div>
+
+      <span class="eyebrow cta__eyebrow" data-i18n="cta.eyebrow">Begin</span>
+      <h2 class="cta__title" data-i18n-html="cta.title">Begin your <em>ritual.</em></h2>
+      <a href="#products" class="btn btn--lg" data-magnetic>
+        <span data-i18n="cta.btn">Shop the collection</span>
+        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p class="cta__support" data-i18n="cta.support">Free shipping across Egypt · 14-day promise</p>
+    </section>
+
+  </main>
+
+  <!-- ============================================== FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <a href="#top" class="footer__mark" aria-label="Axiology home">
+        <img src="assets/logo.webp" alt="Axiology" class="footer__logo" />
+      </a>
+      <nav class="footer__nav">
+        <a href="#products" data-i18n="nav.shop">Shop</a><i>·</i>
+        <a href="#story" data-i18n="nav.story">Story</a><i>·</i>
+        <a href="#journal" id="journal" data-i18n="nav.journal">Journal</a><i>·</i>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="TikTok">TT</a>
+      </div>
+    </div>
+    <div class="footer__credit" data-i18n="footer.credit">© 2026 Axiology Cosmetics · Beauty in every bottle</div>
+  </footer>
+
+  <!-- ============================================== LIBS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+
+  <script src="i18n.js"></script>
+  <script src="fluid-hero.js"></script>
+  <script src="hero-carousel.js"></script>
+  <script src="particles.js"></script>
+  <script type="module" src="bottle3d.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

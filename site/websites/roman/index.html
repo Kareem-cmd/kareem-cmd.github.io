@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roman Dahy — Brand Identity System v1.0</title>
+  <meta name="description" content="The complete brand identity system for Roman Dahy. Logo, color, typography, motifs, composition, and applications." />
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- jsPDF for client-side PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+</head>
+<body data-section="cover">
+
+  <!-- Atmosphere overlays -->
+  <div class="grain" aria-hidden="true"></div>
+  <canvas class="stars" id="stars" aria-hidden="true"></canvas>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <!-- ============== HEADER ============== -->
+  <header class="nav" id="nav">
+    <a href="#cover" class="nav-logo" aria-label="Roman Dahy">
+      <img src="assets/logo/signature.svg" alt="Roman Dahy" />
+      <span class="nav-version">v1.0</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#manifesto"   data-section="manifesto"><span class="num">00</span> Manifesto</a>
+      <a href="#logo"        data-section="logo"><span class="num">01</span> Logo</a>
+      <a href="#color"       data-section="color"><span class="num">02</span> Color</a>
+      <a href="#typography"  data-section="typography"><span class="num">03</span> Type</a>
+      <a href="#motifs"      data-section="motifs"><span class="num">04</span> Motifs</a>
+      <a href="#composition" data-section="composition"><span class="num">05</span> Layout</a>
+      <a href="#rules"       data-section="rules"><span class="num">06</span> Rules</a>
+      <a href="#applications" data-section="applications"><span class="num">07</span> Apps</a>
+      <a href="#library"      data-section="library"><span class="num">08</span> Library</a>
+      <a href="#downloads"   data-section="downloads"><span class="num">09</span> Files</a>
+    </nav>
+
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Sticky progress indicator -->
+  <aside class="progress" aria-hidden="true">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">COVER</div>
+  </aside>
+
+  <!-- ============== COVER ============== -->
+  <section class="cover" id="cover">
+    <div class="cover-frame">
+      <div class="cover-corners">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+      </div>
+
+      <div class="cover-top">
+        <div class="cover-meta">
+          <span class="mono-tiny">// BRAND IDENTITY SYSTEM</span>
+          <span class="mono-tiny">v1.0 · MAY 2026</span>
+        </div>
+        <div class="cover-meta cover-meta-r">
+          <span class="mono-tiny">// CONFIDENTIAL · EDITION 01</span>
+          <span class="mono-tiny">رومان داهي</span>
+        </div>
+      </div>
+
+      <div class="cover-center">
+        <div class="eyebrow reveal">// CLIENT OPENMIND · LETS BREAKDOWN THE INTERNET</div>
+
+        <h1 class="cover-title">
+          <span class="cover-script reveal" style="--d:.1s">Roman Dahy</span>
+          <span class="cover-sub reveal" style="--d:.3s">
+            <span class="italic">Brand</span> Identity System
+          </span>
+        </h1>
+
+        <p class="cover-tagline reveal" style="--d:.5s">
+          The complete visual, verbal, and emotional grammar of <strong>Roman Dahy</strong>.
+          A living document of how we look, sound, and feel — in any medium, on any surface.
+        </p>
+
+        <div class="cover-stats reveal" style="--d:.7s">
+          <div class="cs"><div class="cs-num">10</div><div class="cs-lbl">// SECTIONS</div></div>
+          <div class="cs"><div class="cs-num">06</div><div class="cs-lbl">// COLORS</div></div>
+          <div class="cs"><div class="cs-num">04</div><div class="cs-lbl">// FONTS</div></div>
+          <div class="cs"><div class="cs-num">11</div><div class="cs-lbl">// ASSETS</div></div>
+        </div>
+      </div>
+
+      <div class="cover-bottom">
+        <span class="mono-tiny">// SCROLL TO BEGIN</span>
+        <span class="cover-arrow">↓</span>
+        <span class="mono-tiny">// PAGE 001 / 010</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== MANIFESTO ============== -->
+  <section class="section section-manifesto" id="manifesto" data-section-num="00">
+    <div class="section-head">
+      <div class="section-num-row">
+        <span class="mono-tiny">// SECTION 00</span>
+        <span class="mono-tiny">MANIFESTO · WHY WE EXIST</span>
+      </div>
+      <h2 class="section-h reveal">
+        We exist to make the invisible <span class="italic violet-glow">visible.</span>
+      </h2>
+    </div>
+
+    <div class="manifesto-body reveal">
+      <p class="lede">
+        The internet is the greatest illusion we have ever built — a planetary
+        machine that hides its workings behind glass and gloss. Roman Dahy exists
+        to take it apart, slowly and cinematically, until the magic reveals itself
+        as something better: <em>understanding.</em>
+      </p>
+
+      <div class="manifesto-grid">
+        <div class="mg">
+          <div class="mg-num">01</div>
+          <h4>Curious, never condescending</h4>
+          <p>We open the hood with you, not for you. The viewer is a peer, never a student.</p>
+        </div>
+        <div class="mg">
+          <div class="mg-num">02</div>
+          <h4>Cinematic, not corporate</h4>
+          <p>Every frame should feel composed. Every word, deliberate. No filler. No noise.</p>
+        </div>
+        <div class="mg">
+          <div class="mg-num">03</div>
+          <h4>Bilingual by nature</h4>
+          <p>EN &amp; AR. Latin script &amp; Naskh. Two minds, one signal. Always inspiring.</p>
+        </div>
+        <div class="mg">
+          <div class="mg-num">04</div>
+          <h4>Tech is human</h4>
+          <p>Every protocol has a story. Every packet has a journey. We honor both.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== LOGO ============== -->
+  <section class="section section-logo" id="logo" data-section-num="01">
+    <div class="section-head">
+      <div class="section-num-row">
+        <span class="mono-tiny">// SECTION 01</span>
+        <span class="mono-tiny">LOGO SYSTEM · MARKS &amp; USAGE</span>
+      </div>
+      <h2 class="section-h reveal">The <span class="italic violet-glow">mark.</span></h2>
+      <p class="section-lede reveal">
+        Three marks. One identity. Use the right one for the surface — never invent a fourth.
+      </p>
+    </div>
+
+    <!-- Primary signature -->
+    <div class="logo-spec reveal">
+      <div class="logo-spec-head">
+        <span class="mono-tiny">01.A · PRIMARY SIGNATURE</span>
+        <span class="mono-tiny">USE: HERO MOMENTS · DOCUMENTS · SIGN-OFFS</span>
+      </div>
+      <div class="logo-stage logo-stage-tall">
+        <img src="assets/logo/signature.svg" alt="Roman Dahy signature" />
+      </div>
+      <div class="logo-spec-foot">
+        <div>
+          <span class="mono-tiny">FILE</span>
+          <span>signature.svg</span>
+        </div>
+        <div>
+          <span class="mono-tiny">FORMAT</span>
+          <span>SVG · scalable</span>
+        </div>
+        <div>
+          <span class="mono-tiny">FONT</span>
+          <span>Allura · 160pt</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monogram + Favicon side by side -->
+    <div class="logo-pair">
+      <div class="logo-spec reveal">
+        <div class="logo-spec-head">
+          <span class="mono-tiny">01.B · MONOGRAM</span>
+          <span class="mono-tiny">USE: APPS · AVATARS · WATERMARKS</span>
+        </div>
+        <div class="logo-stage">
+          <img src="assets/logo/monogram.svg" alt="RD monogram" />
+        </div>
+        <div class="logo-spec-foot">
+          <div><span class="mono-tiny">FILE</span><span>monogram.svg</span></div>
+          <div><span class="mono-tiny">STYLE</span><span>Neural Nodes</span></div>
+        </div>
+      </div>
+
+      <div class="logo-spec reveal" style="--d:.1s">
+        <div class="logo-spec-head">
+          <span class="mono-tiny">01.C · FAVICON / ICON</span>
+          <span class="mono-tiny">USE: FAVICON · APP ICON · SOCIAL</span>
+        </div>
+        <div class="logo-stage logo-stage-icon">
+          <img src="assets/logo/favicon.svg" alt="Roman Dahy icon" class="favicon-large" />
+        </div>
+        <div class="logo-spec-foot">
+          <div><span class="mono-tiny">FILE</span><span>favicon.svg</span></div>
+          <div><span class="mono-tiny">SIZE</span><span>64×64 · scalable</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clear space & min size -->
+    <div class="logo-pair">
+      <div class="logo-spec reveal">
+        <div class="logo-spec-head">
+          <span class="mono-tiny">01.D · CLEAR SPACE</span>
+          <span class="mono-tiny">MIN 1X PADDING ALL SIDES</span>
+        </div>
+        <div class="logo-stage">
+          <div class="clear-space-demo">
+            <span class="cs-mark cs-tl">1x</span>
+            <span class="cs-mark cs-tr">1x</span>
+            <span class="cs-mark cs-bl">1x</span>
+            <span class="cs-mark cs-br">1x</span>
+            <img src="assets/logo/signature.svg" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="logo-spec reveal" style="--d:.1s">
+        <div class="logo-spec-head">
+          <span class="mono-tiny">01.E · MINIMUM SIZE</span>
+          <span class="mono-tiny">NEVER BELOW 32PX HEIGHT</span>
+        </div>
+        <div class="logo-stage min-size-stage">
+          <div class="ms-row"><img src="assets/logo/signature.svg" style="height:72px" alt=""><span class="mono-tiny">72px</span></div>
+          <div class="ms-row"><img src="assets/logo/signature.svg" style="height:48px" alt=""><span class="mono-tiny">48px</span></div>
+          <div class="ms-row"><img src="assets/logo/signature.svg" style="height:32px" alt=""><span class="mono-tiny">32px ·  MIN</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color variants -->
+    <div class="logo-spec reveal">
+      <div class="logo-spec-head">
+        <span class="mono-tiny">01.F · COLOR VARIANTS</span>
+        <span class="mono-tiny">THREE APPROVED BACKGROUNDS</span>
+      </div>
+      <div class="variants-grid">
+        <div class="variant variant-dark">
+          <img src="assets/logo/signature.svg" alt="" />
+          <span class="mono-tiny">// ON VOID BLACK · DEFAULT</span>
+        </div>
+        <div class="variant variant-violet">
+          <img src="assets/logo/signature.svg" alt="" />
+          <span class="mono-tiny">// ON ELECTRIC VIOLET · ACCENT</span>
+        </div>
+        <div class="variant variant-light">
+          <img src="assets/logo/signature.svg" alt="" class="invert" />
+          <span class="mono-tiny">// ON WHITE · PRINT FALLBACK</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Don'ts -->
+    <div class="logo-spec reveal">
+      <div class="logo-spec-head">
+        <span class="mono-tiny">01.G · INCORRECT USAGE</span>
+        <span class="mono-tiny">NEVER DO THIS</span>
+      </div>
+      <div class="donts-grid">
+        <div class="dont">
+          <div class="dont-stage" style="transform: scaleX(1.6)"><img src="assets/logo/signature.svg" alt=""></div>
+          <span class="x">✗</span>
+          <span class="mono-tiny">DO NOT STRETCH</span>
+        </div>
+        <div class="dont">
+          <div class="dont-stage" style="transform: rotate(-12deg)"><img src="assets/logo/signature.svg" alt=""></div>
+          <span class="x">✗</span>
+          <span class="mono-tiny">DO NOT ROTATE</span>
+        </div>
+        <div class="dont">
+          <div class="dont-stage" style="opacity:.35"><img src="assets/logo/signature.svg" alt=""></div>
+          <span class="x">✗</span>
+          <span class="mono-tiny">DO NOT LOW CONTRAST</span>
+        </div>
+        <div class="dont">
+          <div class="dont-stage" style="filter: drop-shadow(0 6px 12px rgba(0,0,0,.8))"><img src="assets/logo/signature.svg" alt=""></div>
+          <span class="x">✗</span>
+          <span class="mono-tiny">DO NOT ADD EFFECTS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== COLOR ============== -->
+  <section class="section section-color" id="color" data-section-num="02">
+    <div class="section-head">
+      <div class="section-num-row">
+        <span class="mono-tiny">// SECTION 02</span>
+        <span class="mono-tiny">COLOR SYSTEM · PALETTE &amp; USAGE</span>
+      </div>
+      <h2 class="section-h reveal">Six colors. <span class="italic violet-glow">One mood.</span></h2>
+      <p class="section-lede reveal">Click any swatch to copy its hex code. Use the 70/20/8/2 rule.</p>
+    </div>
+
+    <!-- Interactive palette -->
+    <div class="palette-grid">
+      <button class="swatch swatch-hero reveal" data-hex="#5B2EFF" style="background:#5B2EFF">
+        <div class="sw-top">
+          <span class="sw-name">Electric Violet</span>
+          <span class="sw-role">// HERO</span>
+        </div>
+        <div class="sw-bottom">
+          <span class="sw-hex">#5B2EFF</span>
+          <span class="sw-rgb">RGB 91 · 46 · 255</span>
+        </div>
+        <span class="sw-copy">CLICK TO COPY</span>
+      </button>
+
+      <button class="swatch reveal" data-hex="#07050D" style="background:#07050D">
+        <div class="sw-top">
+          <span class="sw-name">Void Black</span>
+          <span class="sw-role">// BASE</span>
+        </div>
+        <div class="sw-bottom">
+          <span class="sw-hex">#07050D</span>
+          <span class="sw-rgb">RGB 7 · 5 · 13</span>
+        </div>
+        <span class="sw-copy">CLICK TO COPY</span>
+      </button>
+
+      <button class="swatch reveal" data-hex="#0F0A1F" style="background:#0F0A1F">
+        <div class="sw-top">
+          <span class="sw-name">Cosmos Deep</span>
+          <span class="sw-role">// LAYER</span>
+        </div>
+        <div class="sw-bottom">
+          <span class="sw-hex">#0F0A1F</span>
+          <span class="sw-rgb">RGB 15 · 10 · 31</span>
+        </div>
+        <span class="sw-copy">CLICK TO COPY</span>
+      </button>
+
+      <button class="swatch reveal" data-hex="#8B5CF6" style="background:#8B5CF6">
+        <div class="sw-top">
+          <span class="sw-name">Neon Purple</span>
+          <span class="sw-role">// GLOW</span>
+        </div>
+        <div class="sw-bottom">
+          <span class="sw-hex">#8B5CF6</span>
+          <span class="sw-rgb">RGB 139 · 92 · 246</span>
+        </div>
+        <span class="sw-copy">CLICK TO COPY</span>
+      </button>
+
+      <button class="swatch swatch-light reveal" data-hex="#FFFFFF" style="background:#FFFFFF">
+        <div class="sw-top">
+          <span class="sw-name">Pure White</span>
+          <span class="sw-role">// TYPE</span>
+        </div>
+        <div class="sw-bottom">
+          <span class="sw-hex">#FFFFFF</span>
+          <span class="sw-rgb">RGB 255 · 255 · 255</span>
+        </div>
+        <span class="sw-copy">CLICK TO COPY</span>
+      </button>
+
+      <button class="swatch swatch-light reveal" data-hex="#F5C84C" style="background:#F5C84C">
+        <div class="sw-top">
+          <span class="sw-name">Insight Gold</span>
+          <span class="sw-role">// 2% RARE</span>
+        </div>
+        <div class="sw-bottom">
+          <span class="sw-hex">#F5C84C</span>
+          <span class="sw-rgb">RGB 245 · 200 · 76</span>
+        </div>
+        <span class="sw-copy">CLICK TO COPY</span>
+      </button>
+    </div>
+
+    <!-- Usage ratio -->
+    <div class="ratio-block reveal">
+      <div class="logo-spec-head">
+        <span class="mono-tiny">02.B · USAGE RATIO</span>
+        <span class="mono-tiny">70/20/8/2 RULE</span>
+      </div>
+      <div class="ratio-bar">
+        <div class="ratio-seg" style="flex:70; background: linear-gradient(90deg, #07050D, #0F0A1F);">
+          <span class="ratio-pct">70%</span>
+          <span class="mono-tiny">VOID + COSMOS</span>
+        </div>
+        <div class="ratio-seg" style="flex:20; background: linear-gradient(90deg, #5B2EFF, #8B5CF6);">
+          <span class="ratio-pct">20%</span>
+          <span class="mono-tiny">VIOLET</span>
+        </div>
+        <div class="ratio-seg" style="flex:8; background:#FFFFFF; color:#07050D">
+          <span class="ratio-pct">8%</span>
+          <span class="mono-tiny">WHITE</span>
+        </div>
+        <div class="ratio-seg" style="flex:2; background:#F5C84C; color:#07050D">
+          <span class="ratio-pct">2%</span>
+          <span class="mono-tiny">GOLD</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contrast pairs -->
+    <div class="contrast-block reveal">
+      <div class="logo-spec-head">
+        <span class="mono-tiny">02.C · CONTRAST PAIRS</span>
+        <span class="mono-tiny">WCAG AAA · APPROVED COMBINATIONS</span>
+      </div>
+      <div class="contrast-grid">
+        <div class="cp" style="background:#07050D; color:#FFFFFF"><span class="cp-aa">Aa</span><span class="mono-tiny">WHITE / VOID · 21:1 · AAA</span></div>
+        <div class="cp" style="background:#07050D; color:#5B2EFF"><span class="cp-aa">Aa</span><span class="mono-tiny">VIOLET / VOID · 8.2:1 · AAA</span></div>
+        <div class="cp" style="background:#5B2EFF; color:#FFFFFF"><span class="cp-aa">Aa</span><span class="mono-tiny">WHITE / VIOLET · 4.5:1 · AA</span></div>
+        <div class="cp" style="background:#07050D; color:#F5C84C"><span class="cp-aa">Aa</span><span class="mono-tiny">GOLD / VOID · 12.5:1 · AAA</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== TYPOGRAPHY ============== -->
+  <section class="section section-type" id="typography" data-section-num="03">
+    <div class="section-head">
+      <div class="section-num-row">
+        <span class="mono-tiny">// SECTION 03</span>
+        <span class="mono-tiny">TYPOGRAPHY · TYPE SYSTEM</span>
+      </div>
+      <h2 class="section-h reveal">Four families. <span class="italic violet-glow">One voice.</span></h2>
+      <p class="section-lede reveal">Type the playground below to preview the whole system live.</p>
+    </div>
+
+    <!-- Type playground -->
+    <div class="type-playground reveal">
+      <label class="mono-tiny" for="typeInput">// TYPE TO PREVIEW</label>
+      <input type="text" id="typeInput" maxlength="48" value="Let's Breakdown The Internet" autocomplete="off"/>
+    </div>
+
+    <!-- Font specimens -->
+    <div class="font-spec reveal">
+      <div class="fs-meta">
+        <span class="mono-tiny">03.A · DISPLAY</span>
+        <span class="mono-tiny">INTER / GEIST · 800 WEIGHT · -2% TRACKING</span>
+      </div>
+      <div class="fs-sample fs-display" data-target="display">Let's Breakdown The Internet</div>
+    </div>
+
+    <div class="font-spec reveal">
+      <div class="fs-meta">
+        <span class="mono-tiny">03.B · SIGNATURE</span>
+        <span class="mono-tiny">ALLURA · ONE PER COMPOSITION</span>
+      </div>
+      <div class="fs-sample fs-script" data-target="script">Let's Breakdown The Internet</div>
+    </div>
+
+    <div class="font-spec reveal">
+      <div class="fs-meta">
+        <span class="mono-tiny">03.C · MONO</span>
+        <span class="mono-tiny">JETBRAINS MONO · UI LABELS · CODE</span>
+      </div>
+      <div class="fs-sample fs-mono" data-target="mono">// LETS BREAKDOWN THE INTERNET</div>
+    </div>
+
+    <div class="font-spec reveal">
+      <div class="fs-meta">
+        <span class="mono-tiny">03.D · ARABIC</span>
+        <span class="mono-tiny">AMIRI · BILINGUAL CONTENT</span>
+      </div>
+      <div class="fs-sample fs-arabic" data-target="arabic" dir="rtl">فهم الإنترنت بعمق</div>
+    </div>
+
+    <!-- Type scale -->
+    <div class="type-scale reveal">
+      <div class="fs-meta">
+        <span class="mono-tiny">03.E · TYPE SCALE</span>
+        <span class="mono-tiny">1.5 RATIO · 6 LEVELS</span>
+      </div>
+      <div class="scale-rows">
+        <div class="sr"><span class="sr-tag mono-tiny">H1 · 96pt</span><span class="sr-sample" style="font-size: 96px">Aa</span></div>
+        <div class="sr"><span class="sr-tag mono-tiny">H2 · 64pt</span><span class="sr-sample" style="font-size: 64px">Aa</span></div>
+        <div class="sr"><span class="sr-tag mono-tiny">H3 · 40pt</span><span class="sr-sample" style="font-size: 40px">Aa</span></div>
+        <div class="sr"><span class="sr-tag mono-tiny">H4 · 24pt</span><span class="sr-sample" style="font-size: 24px">Aa</span></div>
+        <div class="sr"><span class="sr-tag mono-tiny">H5 · 16pt</span><span class="sr-sample" style="font-size: 16px">Aa</span></div>
+        <div class="sr"><span class="sr-tag mono-tiny">H6 · 12pt</span><span class="sr-sample" style="font-size: 12px">Aa</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== MOTIFS ============== -->
+  <section class="section section-motifs" id="motifs" data-section-num="04">
+    <div class="section-head">
+      <div class="section-num-row">
+        <span class="mono-tiny">// SECTION 04</span>
+        <span class="mono-tiny">VISUAL MOTIFS · SYMBOLIC LIBRARY</span>
+      </div>
+      <h2 class="section-h reveal">Six motifs. <span class="italic violet-glow">One world.</span></h2>
+      <p class="section-lede reveal">Each motif carries a specific meaning. Use one per composition — never all at once.</p>
+    </div>
+
+    <div class="motif-grid">
+      <article class="motif motif-brain reveal">
+        <div class="motif-vis"></div>
+        <div class="motif-meta">
+          <div class="motif-num mono-tiny">04.A</div>
+          <h3>Chrome Brain</h3>
+          <p>Thinking. Open mind. The act of breaking something down. Use as hero motif for deep-dives.</p>
+        </div>
+      </article>
+
+      <article class="motif motif-sphere reveal" style="--d:.05s">
+        <div class="motif-vis"></div>
+        <div class="motif-meta">
+          <div class="motif-num mono-tiny">04.B</div>
+          <h3>Chrome Sphere</h3>
+          <p>Reflection. Insight. The moment understanding solidifies. Use as supporting hero or accent.</p>
+        </div>
+      </article>
+
+      <article class="motif motif-bulb reveal" style="--d:.1s">
+        <div class="motif-vis"></div>
+        <div class="motif-meta">
+          <div class="motif-num mono-tiny">04.C</div>
+          <h3>Insight Bulb</h3>
+          <p>The aha moment. Golden — use sparingly. Only for genuine breakthroughs. Never decoration.</p>
+        </div>
+      </article>
+
+      <article class="motif motif-nodes reveal" style="--d:.15s">
+        <div class="motif-vis">
+          <svg viewBox="0 0 200 120" preserveAspectRatio="xMidYMid meet">
+            <g stroke="#5B2EFF" stroke-width="1" fill="none">
+              <line x1="20" y1="20"  x2="80" y2="40"/><line x1="80"  y1="40"  x2="160" y2="20"/>
+              <line x1="20" y1="20"  x2="40" y2="80"/><line x1="80"  y1="40"  x2="120" y2="80"/>
+              <line x1="40" y1="80"  x2="120" y2="80"/><line x1="120" y1="80"  x2="180" y2="100"/>
+              <line x1="160" y1="20" x2="180" y2="100"/>
+            </g>
+            <g fill="#FFF">
+              <circle cx="20"  cy="20"  r="3"/><circle cx="80"  cy="40"  r="3"/>
+              <circle cx="160" cy="20"  r="3"/><circle cx="40"  cy="80"  r="3"/>
+              <circle cx="120" cy="80"  r="3"/><circle cx="180" cy="100" r="3"/>
+            </g>
+          </svg>
+        </div>
+        <div class="motif-meta">
+          <div class="motif-num mono-tiny">04.D</div>
+          <h3>Neural Nodes</h3>
+          <p>The network. The internet. The pattern of connection. Use as pattern, background, or accent.</p>
+        </div>
+      </article>
+
+      <article class="motif motif-grid reveal" style="--d:.2s">
+        <div class="motif-vis">
+          <div class="motif-synth"></div>
+        </div>
+        <div class="motif-meta">
+          <div class="motif-num mono-tiny">04.E</div>
+          <h3>Synthwave Grid</h3>
+          <p>The foundation. The plane on which ideas live. Use as floor in hero and atmospheric scenes.</p>
+        </div>
+      </article>
+
+      <article class="motif motif-stars reveal" style="--d:.25s">
+        <div class="motif-vis">
+          <div class="motif-stars-vis"></div>
+        </div>
+        <div class="motif-meta">
+          <div class="motif-num mono-tiny">04.F</div>
+          <h3>Star Dust</h3>
+          <p>Atmosphere. Depth. The sense of cosmic space. Use as ambient layer behind everything.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============== COMPOSITION ============== -->
+  <section class="section section-composition" id="composition" data-section-num="05">
+    <div class="section-head">
+      <div class="section-num-row">
+        <span class="mono-tiny">// SECTION 05</span>
+        <span class="mono-tiny">COMPOSITION · LAYOUT PRINCIPLES</span>
+      </div>
+      <h2 class="section-h reveal">Layered. <span class="italic violet-glow">Quiet.</span> Intentional.</h2>
+      <p class="section-lede reveal">Every composition follows the same three-layer logic. Respect the negative space.</p>
+    </div>
+
+    <div class="comp-layers reveal">
+      <div class="layer layer-3">
+        <div class="layer-stage layer-stage-grain"></div>
+        <div class="layer-tag">
+          <span class="mono-tiny">LAYER 03</span>
+          <h4>Background</h4>
+          <p>Void black + film grain + star particles. Always.</p>
+        </div>
+      </div>
+
+      <div class="layer layer-2">
+        <div class="layer-stage layer-stage-motif">
+          <div class="layer-sphere"></div>
+        </div>
+        <div class="layer-tag">
+          <span class="mono-tiny">LAYER 02</span>
+          <h4>Motif</h4>
+          <p>One 3D object — brain, sphere, or bulb. Centered. Photoreal.</p>
+        </div>
+      </div>
+
+      <div class="layer layer-1">
+        <div class="layer-stage layer-stage-type">
+          <span class="layer-display">Let's</span>
+          <span class="layer-display layer-italic">Breakdown</span>
+        </div>
+        <div class="layer-tag">
+          <span class="mono-tiny">LAYER 01</span>
+          <h4>Typography</h4>
+          <p>Flat, sharp, sans + script. No 3D treatment on type.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="principles-grid">
+      <div class="principle reveal">
+        <div class="mono-tiny">PRINCIPLE 01</div>
+        <h4>Negative space wins</h4>
+        <p>Empty is not empty — it is breath. Reserve at least 40% of every composition for stillness.</p>
+      </div>
+      <div class="principle reveal" style="--d:.1s">
+        <div class="mono-tiny">PRINCIPLE 02</div>
+        <h4>One hero per frame</h4>
+        <p>One headline. One image. One mood. If two elements compete, cut one.</p>
+      </div>
+      <div class="principle reveal" style="--d:.2s">
+        <div class="mono-tiny">PRINCIPLE 03</div>
+        <h4>Asymmetry breathes</h4>
+        <p>Center is for sacred moments. Default to off-center, weighted, intentional.</p>
+      </div>
+      <div class="principle reveal" style="--d:.3s">
+        <div class="mono-tiny">PRINCIPLE 04</div>
+        <h4>Grain is non-negotiable</h4>
+        <p>Every surface gets 12% film grain. It is what makes the digital feel analog.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== RULES (Do/Don't) ============== -->
+  <section class="section section-rules" id="rules" data-section-num="06">
+    <div class="section-head">
+      <div class="section-num-row">
+        <span class="mono-tiny">// SECTION 06</span>
+        <span class="mono-tiny">RULES · DOS &amp; DONTS</span>
+      </div>
+      <h2 class="section-h reveal">Discipline is the <span class="italic violet-glow">style.</span></h2>
+    </div>
+
+    <div class="rules-grid">
+      <div class="rule reveal">
+        <div class="rule-pair">
+          <div class="rule-do"><span class="check">✓</span><div class="rule-vis rv-color-good"></div></div>
+          <div class="rule-dont"><span class="x">✗</span><div class="rule-vis rv-color-bad"></div></div>
+        </div>
+        <div class="rule-meta">
+          <h4>Color discipline</h4>
+          <p>Stick to the six. Never introduce rainbow accents.</p>
+        </div>
+      </div>
+
+      <div class="rule reveal" style="--d:.1s">
+        <div class="rule-pair">
+          <div class="rule-do"><span class="check">✓</span><div class="rule-vis rv-type-good">Aa Aa</div></div>
+          <div class="rule-dont"><span class="x">✗</span><div class="rule-vis rv-type-bad">Aa Aa Aa Aa</div></div>
+        </div>
+        <div class="rule-meta">
+          <h4>Type discipline</h4>
+          <p>Max three fonts per composition. One hero, one support, one mono.</p>
+        </div>
+      </div>
+
+      <div class="rule reveal" style="--d:.2s">
+        <div class="rule-pair">
+          <div class="rule-do"><span class="check">✓</span><div class="rule-vis rv-space-good"><div class="vs"></div></div></div>
+          <div class="rule-dont"><span class="x">✗</span><div class="rule-vis rv-space-bad"><div class="vs"></div><div class="vs"></div><div class="vs"></div><div class="vs"></div></div></div>
+        </div>
+        <div class="rule-meta">
+          <h4>Space discipline</h4>
+          <p>One subject in frame. Resist the urge to fill.</p>
+        </div>
+      </div>
+
+      <div class="rule reveal" style="--d:.3s">
+        <div class="rule-pair">
+          <div class="rule-do"><span class="check">✓</span><div class="rule-vis rv-motif-good"></div></div>
+          <div class="rule-dont"><span class="x">✗</span><div class="rule-vis rv-motif-bad"></div></div>
+        </div>
+        <div class="rule-meta">
+          <h4>Motif discipline</h4>
+          <p>One motif per composition. Brain OR sphere — never both.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== APPLICATIONS ============== -->
+  <section class="section section-apps" id="applications" data-section-num="07">
+    <div class="section-head">
+      <div class="section-num-row">
+        <span class="mono-tiny">// SECTION 07</span>
+        <span class="mono-tiny">APPLICATIONS · BRAND IN THE WILD</span>
+      </div>
+      <h2 class="section-h reveal">The system <span class="italic violet-glow">in motion.</span></h2>
+      <p class="section-lede reveal">How the identity behaves across YouTube, social, print, and physical surfaces.</p>
+    </div>
+
+    <div class="apps-grid">
+      <div class="app reveal app-wide">
+        <div class="app-meta">
+          <span class="mono-tiny">07.A · YOUTUBE THUMBNAIL · 1280×720</span>
+          <h4>The thumbnail formula</h4>
+          <p>Bold display headline left, hero motif right, signature bottom-left, episode mono top-left.</p>
+        </div>
+        <div class="app-stage app-stage-youtube">
+          <div class="yt-thumb">
+            <div class="yt-bg"></div>
+            <div class="yt-orb"></div>
+            <div class="yt-grid"></div>
+            <div class="yt-content">
+              <div class="yt-ep mono-tiny">// EP. 14</div>
+              <div class="yt-title">HOW<br/>DNS REALLY<br/>WORKS</div>
+              <div class="yt-sign">Roman Dahy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="app reveal">
+        <div class="app-meta">
+          <span class="mono-tiny">07.B · INSTAGRAM · 1080×1080</span>
+          <h4>Square post</h4>
+          <p>Centered motif, headline overlay, signature footer.</p>
+        </div>
+        <div class="app-stage app-stage-square">
+          <div class="ig-post">
+            <div class="ig-motif"></div>
+            <div class="ig-text">CLIENT<br/>OPENMIND</div>
+            <div class="ig-sig">Roman Dahy</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="app reveal" style="--d:.1s">
+        <div class="app-meta">
+          <span class="mono-tiny">07.C · INSTAGRAM STORY · 1080×1920</span>
+          <h4>Vertical story</h4>
+          <p>Grid floor, single bulb, headline top.</p>
+        </div>
+        <div class="app-stage app-stage-vertical">
+          <div class="ig-story">
+            <div class="ig-story-title">TODAYS<br/>INSIGHT</div>
+            <div class="ig-story-bulb"></div>
+            <div class="ig-story-grid"></div>
+            <div class="ig-story-cta mono-tiny">// SWIPE UP</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="app reveal app-wide">
+        <div class="app-meta">
+          <span class="mono-tiny">07.D · LINKEDIN BANNER · 1584×396</span>
+          <h4>Profile banner</h4>
+          <p>Wide horizontal — neural nodes pattern + signature + mono tagline.</p>
+        </div>
+        <div class="app-stage app-stage-banner">
+          <div class="li-banner">
+            <div class="li-nodes">
+              <svg viewBox="0 0 400 100" preserveAspectRatio="none">
+                <g stroke="#5B2EFF" stroke-width=".5" fill="none">
+                  <line x1="20"  y1="20" x2="80"  y2="50"/><line x1="80"  y1="50" x2="160" y2="30"/>
+                  <line x1="160" y1="30" x2="240" y2="60"/><line x1="240" y1="60" x2="320" y2="40"/>
+                  <line x1="320" y1="40" x2="380" y2="70"/>
+                </g>
+                <g fill="#fff"><circle cx="20" cy="20" r="2"/><circle cx="80" cy="50" r="2"/><circle cx="160" cy="30" r="2"/><circle cx="240" cy="60" r="2"/><circle cx="320" cy="40" r="2"/><circle cx="380" cy="70" r="2"/></g>
+              </svg>
+            </div>
+            <img src="assets/logo/signature.svg" alt="" class="li-sign"/>
+            <div class="li-tag mono-tiny">// I BREAKDOWN THE INTERNET · FOLLOW FOR DEEP DIVES</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="app reveal" style="--d:.2s">
+        <div class="app-meta">
+          <span class="mono-tiny">07.E · BUSINESS CARD · 85×55MM</span>
+          <h4>Print card</h4>
+          <p>Front: signature on void. Back: violet block, mono contact.</p>
+        </div>
+        <div class="app-stage app-stage-card">
+          <div class="bc bc-front"><img src="assets/logo/signature.svg" alt=""></div>
+          <div class="bc bc-back">
+            <div class="mono-tiny">ROMAN DAHY</div>
+            <div class="mono-tiny">// HELLO@ROMANDAHY.COM</div>
+            <div class="mono-tiny">// ROMANDAHY.COM</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="app reveal" style="--d:.3s">
+        <div class="app-meta">
+          <span class="mono-tiny">07.F · FAVICON · 32×32</span>
+          <h4>Browser tab</h4>
+          <p>The smallest brand surface. Must still feel premium.</p>
+        </div>
+        <div class="app-stage app-stage-favicon">
+          <div class="browser-bar">
+            <div class="browser-dots"><span></span><span></span><span></span></div>
+            <div class="browser-tab">
+              <img src="assets/logo/favicon.svg" alt=""/>
+              <span>Roman Dahy</span>
+              <span class="close">×</span>
+            </div>
+            <div class="browser-url mono-tiny">https://romandahy.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== VISUAL LIBRARY ============== -->
+  <section class="section section-library" id="library" data-section-num="08">
+    <div class="section-head">
+      <div class="section-num-row">
+        <span class="mono-tiny">// SECTION 08</span>
+        <span class="mono-tiny">VISUAL LIBRARY · GENERATED ASSETS</span>
+      </div>
+      <h2 class="section-h reveal">The full <span class="italic violet-glow">archive.</span></h2>
+      <p class="section-lede reveal">
+        Every visual generated for this identity. Click any image to view full-size, or download the original file.
+        All 11 assets, hand-directed and AI-rendered, ready to use.
+      </p>
+    </div>
+
+    <!-- Brand Boards -->
+    <div class="lib-group reveal">
+      <div class="lib-group-head">
+        <span class="mono-tiny">A · BRAND GUIDELINE BOARDS · 7 PAGES</span>
+        <span class="mono-tiny">2K RESOLUTION · 4:3 ASPECT · ~5 MB EACH</span>
+      </div>
+
+      <div class="lib-boards">
+
+        <figure class="lib-board lib-board-wide" data-src="assets/boards/roman-dahy-brandbook-01-overview.png" data-title="Board 01 — Overview Master Board">
+          <img src="assets/boards/roman-dahy-brandbook-01-overview.png" alt="Brand Book Board 01 — Overview" loading="lazy"/>
+          <figcaption>
+            <div class="lib-cap-meta">
+              <span class="mono-tiny">01 / MASTER OVERVIEW</span>
+              <a href="assets/boards/roman-dahy-brandbook-01-overview.png" download class="lib-dl-btn" aria-label="Download">↓</a>
+            </div>
+            <h4>Overview Master Board</h4>
+            <p>3×3 grid covering logo, monogram, color, type, motifs, applications. The cover page of the entire system.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="lib-board" data-src="assets/boards/roman-dahy-brandbook-02-logo-system.png" data-title="Board 02 — Logo & Signature System">
+          <img src="assets/boards/roman-dahy-brandbook-02-logo-system.png" alt="Brand Book Board 02 — Logo System" loading="lazy"/>
+          <figcaption>
+            <div class="lib-cap-meta">
+              <span class="mono-tiny">02 / LOGO SYSTEM</span>
+              <a href="assets/boards/roman-dahy-brandbook-02-logo-system.png" download class="lib-dl-btn">↓</a>
+            </div>
+            <h4>Logo &amp; Signature System</h4>
+            <p>Primary signature, monogram, avatar, clear space, min size, color variants, and incorrect usage examples.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="lib-board" data-src="assets/boards/roman-dahy-brandbook-03-color.png" data-title="Board 03 — Color System Deep-Dive">
+          <img src="assets/boards/roman-dahy-brandbook-03-color.png" alt="Brand Book Board 03 — Color System" loading="lazy"/>
+          <figcaption>
+            <div class="lib-cap-meta">
+              <span class="mono-tiny">03 / COLOR SYSTEM</span>
+              <a href="assets/boards/roman-dahy-brandbook-03-color.png" download class="lib-dl-btn">↓</a>
+            </div>
+            <h4>Color System Deep-Dive</h4>
+            <p>Hero violet, full palette, 70/20/8/2 usage, WCAG contrast pairs, gradient logic, gold rules, forbidden combos.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="lib-board" data-src="assets/boards/roman-dahy-brandbook-04-typography.png" data-title="Board 04 — Typography Specimen">
+          <img src="assets/boards/roman-dahy-brandbook-04-typography.png" alt="Brand Book Board 04 — Typography" loading="lazy"/>
+          <figcaption>
+            <div class="lib-cap-meta">
+              <span class="mono-tiny">04 / TYPOGRAPHY</span>
+              <a href="assets/boards/roman-dahy-brandbook-04-typography.png" download class="lib-dl-btn">↓</a>
+            </div>
+            <h4>Typography Specimen</h4>
+            <p>Display, Signature, Mono, Arabic. Type scale, weight ladder, pairing examples, tracking rules, in-context demo.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="lib-board" data-src="assets/boards/roman-dahy-brandbook-05-motifs.png" data-title="Board 05 — Visual Motifs Library">
+          <img src="assets/boards/roman-dahy-brandbook-05-motifs.png" alt="Brand Book Board 05 — Motifs" loading="lazy"/>
+          <figcaption>
+            <div class="lib-cap-meta">
+              <span class="mono-tiny">05 / MOTIFS</span>
+              <a href="assets/boards/roman-dahy-brandbook-05-motifs.png" download class="lib-dl-btn">↓</a>
+            </div>
+            <h4>Visual Motifs &amp; 3D Library</h4>
+            <p>Chrome brain, chrome sphere, golden lightbulb, neural nodes, synthwave grid, star dust, code fragments, film grain.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="lib-board" data-src="assets/boards/roman-dahy-brandbook-06-dos-donts.png" data-title="Board 06 — Do's &amp; Don'ts">
+          <img src="assets/boards/roman-dahy-brandbook-06-dos-donts.png" alt="Brand Book Board 06 — Rules" loading="lazy"/>
+          <figcaption>
+            <div class="lib-cap-meta">
+              <span class="mono-tiny">06 / DOS &amp; DONTS</span>
+              <a href="assets/boards/roman-dahy-brandbook-06-dos-donts.png" download class="lib-dl-btn">↓</a>
+            </div>
+            <h4>Do's &amp; Don'ts</h4>
+            <p>Side-by-side comparisons for logo, color, type, imagery, space, and motif discipline. Discipline is the style.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="lib-board lib-board-wide" data-src="assets/boards/roman-dahy-brandbook-07-applications.png" data-title="Board 07 — Applications & Mockups">
+          <img src="assets/boards/roman-dahy-brandbook-07-applications.png" alt="Brand Book Board 07 — Applications" loading="lazy"/>
+          <figcaption>
+            <div class="lib-cap-meta">
+              <span class="mono-tiny">07 / APPLICATIONS</span>
+              <a href="assets/boards/roman-dahy-brandbook-07-applications.png" download class="lib-dl-btn">↓</a>
+            </div>
+            <h4>Applications &amp; Mockups</h4>
+            <p>YouTube · Instagram · Story · LinkedIn · Web · X · Business card · Hoodie · Laptop sticker — the brand in the wild.</p>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+
+    <!-- Wallpapers + Hero + Templates -->
+    <div class="lib-group reveal">
+      <div class="lib-group-head">
+        <span class="mono-tiny">B · CINEMATIC ASSETS · 4 FILES</span>
+        <span class="mono-tiny">2K · CHROME 3D · GRAIN · PHOTOREALISTIC</span>
+      </div>
+
+      <div class="lib-cine">
+
+        <figure class="lib-cine-item lib-cine-wide" data-src="assets/hero/hero-chrome-brain.png" data-title="Hero Visual — Chrome Brain & Synthwave">
+          <img src="assets/hero/hero-chrome-brain.png" alt="Hero visual" loading="lazy"/>
+          <figcaption>
+            <div class="lib-cap-meta">
+              <span class="mono-tiny">01 / HERO · 16:9</span>
+              <a href="assets/hero/hero-chrome-brain.png" download class="lib-dl-btn">↓</a>
+            </div>
+            <h4>Hero Visual</h4>
+            <p>Chrome brain levitating above the synthwave grid. The signature frame of the brand.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="lib-cine-item" data-src="assets/wallpapers/desktop-1920x1080.png" data-title="Desktop Wallpaper 1920×1080">
+          <img src="assets/wallpapers/desktop-1920x1080.png" alt="Desktop wallpaper" loading="lazy"/>
+          <figcaption>
+            <div class="lib-cap-meta">
+              <span class="mono-tiny">02 / DESKTOP · 1920×1080</span>
+              <a href="assets/wallpapers/desktop-1920x1080.png" download class="lib-dl-btn">↓</a>
+            </div>
+            <h4>Desktop Wallpaper</h4>
+            <p>Single chrome sphere · distant grid horizon · cosmic minimalism.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="lib-cine-item lib-cine-vertical" data-src="assets/wallpapers/mobile-1080x1920.png" data-title="Mobile Wallpaper 1080×1920">
+          <img src="assets/wallpapers/mobile-1080x1920.png" alt="Mobile wallpaper" loading="lazy"/>
+          <figcaption>
+            <div class="lib-cap-meta">
+              <span class="mono-tiny">03 / MOBILE · 9:16</span>
+              <a href="assets/wallpapers/mobile-1080x1920.png" download class="lib-dl-btn">↓</a>
+            </div>
+            <h4>Mobile Wallpaper</h4>
+            <p>Golden lightbulb · synthwave grid · the insight moment.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="lib-cine-item lib-cine-wide" data-src="assets/thumbnails/templates-set.png" data-title="YouTube Thumbnail Templates">
+          <img src="assets/thumbnails/templates-set.png" alt="YouTube thumbnails" loading="lazy"/>
+          <figcaption>
+            <div class="lib-cap-meta">
+              <span class="mono-tiny">04 / YOUTUBE · TEMPLATES</span>
+              <a href="assets/thumbnails/templates-set.png" download class="lib-dl-btn">↓</a>
+            </div>
+            <h4>YouTube Thumbnail Set</h4>
+            <p>Two production-ready thumbnail templates — brain hero &amp; grid hero variants.</p>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+
+    <!-- Total stats -->
+    <div class="lib-totals reveal">
+      <div class="lib-stat">
+        <div class="lib-stat-num">11</div>
+        <div class="mono-tiny">// TOTAL ASSETS</div>
+      </div>
+      <div class="lib-stat">
+        <div class="lib-stat-num">~60<span style="font-size:0.5em">MB</span></div>
+        <div class="mono-tiny">// TOTAL FILE SIZE</div>
+      </div>
+      <div class="lib-stat">
+        <div class="lib-stat-num">2K</div>
+        <div class="mono-tiny">// RESOLUTION</div>
+      </div>
+      <div class="lib-stat">
+        <button id="pdfExportBtn" class="lib-stat-cta lib-pdf-cta" onclick="generateBrandBookPDF()">
+          <span class="pdf-default">
+            <span class="pdf-icon">⎙</span>
+            <span class="pdf-label">EXPORT PDF</span>
+            <span class="arrow">↓</span>
+          </span>
+          <span class="pdf-loading">
+            <span class="pdf-spinner"></span>
+            <span class="pdf-progress" id="pdfProgress">0 / 7</span>
+          </span>
+          <span class="pdf-done">
+            <span>✓</span>
+            <span>READY</span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== DOWNLOADS ============== -->
+  <section class="section section-downloads" id="downloads" data-section-num="09">
+    <div class="section-head">
+      <div class="section-num-row">
+        <span class="mono-tiny">// SECTION 09</span>
+        <span class="mono-tiny">DOWNLOADS · QUICK ACCESS</span>
+      </div>
+      <h2 class="section-h reveal">Take the <span class="italic violet-glow">system.</span></h2>
+      <p class="section-lede reveal">Every approved file. SVGs · PNGs · CSS tokens · brand boards. Use responsibly. Respect the rules.</p>
+    </div>
+
+    <div class="dl-grid">
+      <a href="#" class="dl dl-featured reveal" onclick="event.preventDefault(); generateBrandBookPDF();">
+        <div class="dl-icon">⎙</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">00 · COMPLETE BOOK</span>
+          <h4>Brand Book PDF</h4>
+          <p>All 7 boards + cover page · 8-page PDF · click to generate.</p>
+        </div>
+        <span class="dl-badge mono-tiny">FEATURED</span>
+      </a>
+
+      <a href="assets/logo/signature.svg" download class="dl reveal">
+        <div class="dl-icon">↓</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">01 · LOGO</span>
+          <h4>Signature SVG</h4>
+          <p>Primary script wordmark. Scalable. 668 bytes.</p>
+        </div>
+      </a>
+
+      <a href="assets/logo/monogram.svg" download class="dl reveal" style="--d:.05s">
+        <div class="dl-icon">↓</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">02 · LOGO</span>
+          <h4>Monogram SVG</h4>
+          <p>Neural-node RD mark. 2 KB.</p>
+        </div>
+      </a>
+
+      <a href="assets/logo/favicon.svg" download class="dl reveal" style="--d:.1s">
+        <div class="dl-icon">↓</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">03 · LOGO</span>
+          <h4>Favicon SVG</h4>
+          <p>Browser icon. 1.6 KB.</p>
+        </div>
+      </a>
+
+      <a href="assets/wallpapers/desktop-1920x1080.png" download class="dl reveal" style="--d:.15s">
+        <div class="dl-icon">↓</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">04 · WALLPAPER</span>
+          <h4>Desktop 1920×1080</h4>
+          <p>Chrome sphere · cosmic floor.</p>
+        </div>
+      </a>
+
+      <a href="assets/wallpapers/mobile-1080x1920.png" download class="dl reveal" style="--d:.2s">
+        <div class="dl-icon">↓</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">05 · WALLPAPER</span>
+          <h4>Mobile 1080×1920</h4>
+          <p>Golden bulb · synthwave grid.</p>
+        </div>
+      </a>
+
+      <a href="assets/hero/hero-chrome-brain.png" download class="dl reveal" style="--d:.25s">
+        <div class="dl-icon">↓</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">06 · HERO</span>
+          <h4>Hero Visual 16:9</h4>
+          <p>Chrome brain + synthwave grid.</p>
+        </div>
+      </a>
+
+      <a href="assets/thumbnails/templates-set.png" download class="dl reveal" style="--d:.3s">
+        <div class="dl-icon">↓</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">07 · TEMPLATES</span>
+          <h4>YouTube Thumbnails</h4>
+          <p>Brain hero · grid hero · template set.</p>
+        </div>
+      </a>
+
+      <a href="#" class="dl reveal" style="--d:.35s" onclick="event.preventDefault(); copyAll();">
+        <div class="dl-icon">⧉</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">08 · TOKENS</span>
+          <h4>CSS Variables</h4>
+          <p>Copy all 6 brand colors as CSS custom properties.</p>
+        </div>
+      </a>
+
+      <a href="assets/boards/roman-dahy-brandbook-01-overview.png" download class="dl reveal" style="--d:.4s">
+        <div class="dl-icon">↓</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">09 · BOARD</span>
+          <h4>Board 01 · Overview</h4>
+          <p>Master 3×3 brand overview · 5.5 MB · 2K.</p>
+        </div>
+      </a>
+
+      <a href="assets/boards/roman-dahy-brandbook-02-logo-system.png" download class="dl reveal" style="--d:.45s">
+        <div class="dl-icon">↓</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">10 · BOARD</span>
+          <h4>Board 02 · Logo</h4>
+          <p>Signature · monogram · variants · don'ts. 5.4 MB.</p>
+        </div>
+      </a>
+
+      <a href="assets/boards/roman-dahy-brandbook-03-color.png" download class="dl reveal" style="--d:.5s">
+        <div class="dl-icon">↓</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">11 · BOARD</span>
+          <h4>Board 03 · Color</h4>
+          <p>Palette · ratios · contrast · gradients. 5.1 MB.</p>
+        </div>
+      </a>
+
+      <a href="assets/boards/roman-dahy-brandbook-04-typography.png" download class="dl reveal" style="--d:.55s">
+        <div class="dl-icon">↓</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">12 · BOARD</span>
+          <h4>Board 04 · Type</h4>
+          <p>Display · script · mono · arabic · scale. 5.0 MB.</p>
+        </div>
+      </a>
+
+      <a href="assets/boards/roman-dahy-brandbook-05-motifs.png" download class="dl reveal" style="--d:.6s">
+        <div class="dl-icon">↓</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">13 · BOARD</span>
+          <h4>Board 05 · Motifs</h4>
+          <p>Brain · sphere · bulb · nodes · grid · stars. 6.0 MB.</p>
+        </div>
+      </a>
+
+      <a href="assets/boards/roman-dahy-brandbook-06-dos-donts.png" download class="dl reveal" style="--d:.65s">
+        <div class="dl-icon">↓</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">14 · BOARD</span>
+          <h4>Board 06 · Rules</h4>
+          <p>Do's vs don'ts · 6 comparison spreads. 5.8 MB.</p>
+        </div>
+      </a>
+
+      <a href="assets/boards/roman-dahy-brandbook-07-applications.png" download class="dl reveal" style="--d:.7s">
+        <div class="dl-icon">↓</div>
+        <div class="dl-meta">
+          <span class="mono-tiny">15 · BOARD</span>
+          <h4>Board 07 · Apps</h4>
+          <p>YouTube · IG · LinkedIn · merch · web. 5.7 MB.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============== LIGHTBOX ============== -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+    <div class="lightbox-stage">
+      <img id="lightboxImg" src="" alt="" />
+      <div class="lightbox-meta">
+        <span id="lightboxTitle" class="mono-tiny"></span>
+        <a id="lightboxDl" href="#" download class="lightbox-dl">
+          <span>DOWNLOAD ORIGINAL</span>
+          <span class="arrow">↓</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/logo/signature.svg" alt="Roman Dahy" class="footer-logo" />
+        <p class="footer-tag">Brand Identity System · v1.0</p>
+        <p class="footer-tag-ar">رومان داهي · نظام الهوية البصرية</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>// SYSTEM</h5>
+        <a href="#manifesto">Manifesto</a>
+        <a href="#logo">Logo</a>
+        <a href="#color">Color</a>
+        <a href="#typography">Typography</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>// VISUAL</h5>
+        <a href="#motifs">Motifs</a>
+        <a href="#composition">Composition</a>
+        <a href="#rules">Rules</a>
+        <a href="#applications">Applications</a>
+      </div>
+
+      <div class="footer-col">
+        <h5>// ASSETS</h5>
+        <a href="#downloads">Downloads</a>
+        <a href="assets/logo/signature.svg" download>Signature.svg</a>
+        <a href="assets/logo/monogram.svg" download>Monogram.svg</a>
+        <a href="assets/wallpapers/desktop-1920x1080.png" download>Wallpaper</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>// © 2026 ROMAN DAHY · BRAND IDENTITY SYSTEM v1.0 · ALL RIGHTS RESERVED</span>
+      <span class="footer-mono">PAGE 010 / 010 · END OF DOCUMENT · دَوْماً</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

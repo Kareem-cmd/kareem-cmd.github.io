@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project — KIRA</title>
+<meta name="description" content="A selected project from KIRA — a cinematic studio for marketing, visual content and media production.">
+<meta name="theme-color" content="#0d0a0b">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="KIRA">
+<meta property="og:title" content="Project — KIRA">
+<meta property="og:description" content="A selected project from KIRA Studio.">
+<meta property="og:image" content="https://kira.studio/Assets/og-cover.svg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/studio.css">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="css/motion.css">
+</head>
+<body>
+
+<div class="site-header-bar">
+  <header class="container site-header">
+    <a href="index.html" class="site-header__logo" aria-label="KIRA — home"><img src="Assets/Main%20Logo.svg" alt="KIRA"></a>
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <a href="work.html" class="nav-link" aria-current="page">Work</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="studio.html" class="nav-link">Studio</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="site-header__actions"><a href="contact.html" class="btn btn--primary btn--sm">Start a project</a></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </header>
+</div>
+
+<main>
+  <section class="page-hero">
+    <img class="page-hero__apple" src="Assets/Asset%2017.svg" alt="" aria-hidden="true">
+    <div class="container">
+      <div class="page-hero__inner">
+        <a class="project-back" href="work.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>All work
+        </a>
+        <p class="eyebrow" id="pCat"></p>
+        <h1 id="pTitle"></h1>
+        <p class="page-hero__sub lede" id="pDesc"></p>
+        <p class="project-meta" id="pMeta"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-gallery">
+    <div class="container">
+      <div class="shots" id="shots"></div>
+    </div>
+  </section>
+
+  <nav class="project-foot" aria-label="Project navigation">
+    <div class="container project-foot__row">
+      <a class="project-foot__all" href="work.html">All projects</a>
+      <a class="project-foot__next" id="pNext" href="work.html">
+        <span class="project-foot__lbl">Next project</span>
+        <span class="project-foot__name" id="pNextName"></span>
+      </a>
+    </div>
+  </nav>
+
+  <section class="s-contact">
+    <img class="cta__apple" src="Assets/Asset%2017.svg" alt="" aria-hidden="true">
+    <div class="container">
+      <div class="cta__inner" style="max-width:none">
+        <span class="eyebrow">Start a project</span>
+        <h2>Got something that deserves <em>this</em>?</h2>
+        <p class="s-contact__sub">Tell us what you're making. We reply within two working days.</p>
+        <div class="s-contact__actions"><a href="contact.html" class="btn btn--primary btn--lg">Start a project</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="container">
+  <footer class="site-footer">
+    <div class="site-footer__top">
+      <div class="site-footer__brand"><img src="Assets/Main%20Logo.svg" alt="KIRA"><p>A cinematic studio for marketing, visual content and media production.</p></div>
+      <div class="footer-col"><h4>Studio</h4><a href="work.html">Work</a><a href="services.html">Services</a><a href="studio.html">About</a></div>
+      <div class="footer-col"><h4>Services</h4><a href="services.html">Media Production</a><a href="services.html">Visual Content</a><a href="services.html">Marketing</a></div>
+      <div class="footer-col"><h4>Connect</h4><a href="#">Instagram</a><a href="#">Vimeo</a><a href="contact.html">Contact</a></div>
+    </div>
+    <div class="site-footer__bottom"><span>© 2026 KIRA Studio. All rights reserved.</span><span>Film · Visuals · Marketing</span></div>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var header = document.querySelector('.site-header'), toggle = document.getElementById('navToggle'), nav = document.getElementById('siteNav');
+    toggle.addEventListener('click', function () { var o = header.classList.toggle('is-open'); toggle.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+    nav.addEventListener('click', function (e) { if (e.target.classList.contains('nav-link')) { header.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); } });
+  })();
+</script>
+<script src="js/projects.js"></script>
+<script>
+  (function () {
+    var P = window.KIRA_PROJECTS || {}, keys = Object.keys(P);
+    var slug = '';
+    try { slug = new URLSearchParams(location.search).get('p') || ''; } catch (e) { slug = ''; }
+    var p = P[slug];
+    if (!p) { location.replace('work.html'); return; }
+
+    var DESC = {
+      Branding: 'Brand identity & art direction.',
+      Identity: 'Visual identity system.',
+      Packaging: 'Packaging design & art direction.',
+      Social: 'Social-media content & art direction.',
+      'Social media': 'Social-media content & art direction.',
+      Art: 'Original artwork & illustration.'
+    };
+
+    document.getElementById('pCat').textContent = p.cat;
+    document.getElementById('pTitle').textContent = p.title;
+    document.getElementById('pDesc').textContent = DESC[p.cat] || '';
+    document.title = p.title + ' — KIRA';
+    var meta = document.querySelector('meta[name="description"]'); if (meta) meta.setAttribute('content', p.title + ' — ' + (DESC[p.cat] || '') + ' KIRA Studio.');
+
+    var n = p.images.length;
+    document.getElementById('pMeta').textContent = n > 1 ? (n + ' visuals') : '';
+
+    var shots = document.getElementById('shots');
+    if (n === 1) shots.classList.add('shots--solo');
+    shots.innerHTML = p.images.map(function (src, i) {
+      var alt = (p.title + ' — ' + (i + 1)).replace(/"/g, '&quot;');
+      return '<figure class="shot"><img src="' + src + '" alt="' + alt + '" loading="' + (i < 3 ? 'eager' : 'lazy') + '"></figure>';
+    }).join('');
+
+    var idx = keys.indexOf(slug);
+    var nextSlug = keys[(idx + 1) % keys.length], nx = P[nextSlug];
+    var nextEl = document.getElementById('pNext');
+    nextEl.href = 'project.html?p=' + encodeURIComponent(nextSlug);
+    document.getElementById('pNextName').textContent = nx ? nx.title : 'All work';
+    window.scrollTo(0, 0);
+  })();
+</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/motion.js"></script>
+</body>
+</html>

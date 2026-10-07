@@ -1,0 +1,167 @@
+/* ===================================================================
+   KHAYAL DESIGNS — design tokens  (OFFICIAL identity)
+   خيال · حيث يأخذ الخيال شكله — Crafting spaces beyond imagination
+   Palette (exact): Black #111 · Warm Ivory #F5F2EC · Champagne Gold
+   #D6C4A2 (max 10%) · Architectural Gray #7D7D7D · Deep Taupe #8A7B6A.
+   Proportion 60/30/10 (ivory / black / gold).
+   Type: Regale (display) · The Year of The Camel (body + Arabic).
+   NB: original SDC variable NAMES kept (--copper, --ink …) — only the
+   VALUES are re-tuned to the official system.
+   =================================================================== */
+
+/* ---- Brand fonts (local) ---- */
+@font-face {
+  font-family: 'Regale';
+  src: url('../assets/fonts/Regale.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'The Year of The Camel';
+  src: url('../assets/fonts/TheYearofTheCamel-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'The Year of The Camel';
+  src: url('../assets/fonts/TheYearofTheCamel-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'The Year of The Camel';
+  src: url('../assets/fonts/TheYearofTheCamel-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'The Year of The Camel';
+  src: url('../assets/fonts/TheYearofTheCamel-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'The Year of The Camel';
+  src: url('../assets/fonts/TheYearofTheCamel-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'The Year of The Camel';
+  src: url('../assets/fonts/TheYearofTheCamel-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* === Dark surfaces — true black, warm-neutral lifts (NO green) === */
+  --ink:           #111111;   /* Primary Black — body/hero base */
+  --charcoal:      #11111180; /* black, semi-transparent overlay */
+  --charcoal-1:    #181613;   /* warm near-black — elevated panels */
+  --charcoal-2:    #201e1a;   /* warm dark — cards */
+  --stone:         #2a2824;   /* raised warm-dark */
+  --line-dark:     #2f2c27;   /* hairline on dark */
+  --line-dark-2:   #38352d;   /* hairline (lighter) */
+
+  /* === Champagne Gold accent (was "copper") — use sparingly, max 10% === */
+  --copper:        #d6c4a2;   /* Champagne Gold — accent on dark */
+  --copper-hi:     #e7dcc4;   /* light champagne — highlights */
+  --copper-lo:     #a88950;   /* deep gold — for accents on light bg */
+  --copper-shadow: rgba(214,196,162,.18);
+
+  /* === Light surfaces (ivory, linen, paper) === */
+  --bone:          #f5f2ec;   /* Warm Ivory — dominant light bg */
+  --linen:         #ece5d6;   /* deeper ivory/linen */
+  --paper:         #faf8f4;   /* lightest */
+  --line-light:    #1111110a; /* hairline on light */
+  --line-light-2:  #11111118;
+
+  /* === Text === */
+  --text-dim:      #8a7b6a;   /* Deep Taupe — muted */
+  --text-soft:     #cfc8bc;   /* soft text on dark */
+  --text-on-dark:  #f5f2ec;   /* ivory — primary on dark */
+  --text-on-light: #111111;   /* black — primary on light */
+  --text-mute-dk:  #7d7d7d;   /* Architectural Gray — muted on dark */
+  --text-mute-lt:  #6e685e;   /* muted on light (taupe-gray) */
+
+  /* === Official palette aliases (same values, KHAYAL names) === */
+  --black:         #111111;
+  --ivory:         #f5f2ec;
+  --gold:          #d6c4a2;
+  --gold-hi:       #e7dcc4;
+  --gold-lo:       #a88950;
+  --gray:          #7d7d7d;
+  --taupe:         #8a7b6a;
+  --walnut:        #6e5443;
+  --gold-shadow:   rgba(214,196,162,.18);
+
+  /* === Type scale ===
+     Display/headings: Regale (exclusively).
+     Body + Arabic + secondary: The Year of The Camel. */
+  --f-display:   'Regale', 'Cormorant Garamond', Georgia, serif;
+  --f-brand:     'Regale', 'Cormorant Garamond', Georgia, serif;
+  --f-sans:      'The Year of The Camel', 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --f-editorial: 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
+  --f-arabic:    'The Year of The Camel', 'Amiri', 'Noto Naskh Arabic', serif;
+  --f-mono:      'JetBrains Mono', 'Geist Mono', ui-monospace, monospace;
+
+  --fs-eyebrow: 11px;
+  --fs-body:    16px;
+  --fs-lead:    19px;
+  --fs-h4:      clamp(20px, 1.4vw, 24px);
+  --fs-h3:      clamp(28px, 2.4vw, 40px);
+  --fs-h2:      clamp(40px, 4.6vw, 80px);
+  --fs-h1:      clamp(54px, 7.8vw, 140px);
+  --fs-mega:    clamp(80px, 14vw, 240px);
+
+  --tracking-eyebrow: .32em;
+  --tracking-tight:   -.02em;
+  --tracking-tighter: -.04em;
+
+  /* === Motion (slow, elegant) === */
+  --ease-out:   cubic-bezier(.16,1,.3,1);
+  --ease-soft:  cubic-bezier(.65,.05,.36,1);
+  --ease-strong: cubic-bezier(.86,0,.07,1);
+
+  --d-fast:  .28s;
+  --d-base:  .6s;
+  --d-slow:  1.1s;
+  --d-cine:  1.8s;
+
+  /* === Layout === */
+  --container:  1480px;
+  --gutter:     clamp(20px, 4vw, 64px);
+  --section-y:  clamp(96px, 14vw, 200px);
+  --radius-sm:  4px;
+  --radius:    14px;
+  --radius-lg: 28px;
+
+  /* === Shadows === */
+  --shadow-dark: 0 30px 80px -30px rgba(0,0,0,.6), 0 4px 20px -8px rgba(0,0,0,.35);
+  --shadow-light: 0 24px 60px -28px rgba(17,17,17,.16), 0 4px 18px -10px rgba(17,17,17,.07);
+  --shadow-copper: 0 30px 80px -28px rgba(214,196,162,.3);
+
+  color-scheme: dark;
+}
+
+::selection {
+  background: var(--copper);
+  color: var(--ink);
+}
+
+/* Reduced motion safety */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

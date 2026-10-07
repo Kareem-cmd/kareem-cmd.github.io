@@ -1,0 +1,204 @@
+/* ============================================================
+   KIRA STUDIO — Homepage layout
+   Page-specific section styles. Reuses tokens + base + components.
+   ============================================================ */
+
+/* ── Sticky header bar ── */
+.site-header-bar {
+  position: sticky; top: 0; z-index: var(--z-header);
+  background: var(--bg); border-bottom: var(--border-width) solid var(--border);
+}
+
+/* ── Generic section rhythm ── */
+.section { padding-block: var(--section-y); }
+.section--tight { padding-block: var(--space-8); }
+.section__head { max-width: 760px; margin-bottom: var(--space-8); }
+.section__head h2 { font-size: var(--text-3xl); margin-top: var(--space-4); }
+.section__head p { color: var(--text-muted); margin-top: var(--space-4); font-size: var(--text-md); max-width: 60ch; }
+.section__head--center { margin-inline: auto; text-align: center; }
+.section__head--center .eyebrow { justify-content: center; }
+
+/* ── Hero ── */
+.hero { position: relative; min-height: 92vh; display: grid; align-items: center;
+  overflow: hidden; border-bottom: var(--border-width) solid var(--border); }
+.hero::before { content: ""; position: absolute; top: 50%; right: 2%; transform: translateY(-50%);
+  width: min(42vw, 520px); aspect-ratio: 1; border-radius: 50%; z-index: 0; pointer-events: none;
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 10%, transparent), transparent 56%); }
+.hero__apple { position: absolute; right: -8%; top: 0; bottom: 0; margin-block: auto; z-index: 1;
+  width: min(66vw, 800px); height: auto; opacity: 0.1; pointer-events: none; user-select: none; }
+.hero__inner { position: relative; z-index: 2; max-width: 70ch; padding-block: var(--space-9); }
+.hero__title { font-family: var(--font-display); font-weight: var(--weight-regular);
+  font-size: clamp(2.5rem, 1.5rem + 4vw, 4.4rem); line-height: 1.08; letter-spacing: 0.005em; }
+.hero__title em { font-style: italic; color: var(--primary-text); }
+.hero__sub { margin-top: var(--space-6); max-width: 52ch; }
+/* Hero headline word-mask reveal (set up by motion.js) */
+.hero__title .w { display: inline-block; overflow: hidden; vertical-align: top;
+  padding-bottom: 0.12em; margin-bottom: -0.12em; }
+.hero__title .wi { display: inline-block; }
+.hero__title .w-em { font-family: var(--font-serif); font-style: italic; color: var(--primary-text); }
+
+/* ───────────── Preloader ───────────── */
+.preloader { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center;
+  background: var(--bg); animation: preFailSafe 0.6s linear 5s forwards; }
+.preloader[hidden] { display: none; }
+.preloader__inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-5); }
+.preloader__applewrap { position: relative; width: 116px; height: 116px; }
+.preloader__apple { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.preloader__apple--ghost { opacity: 0.22; }
+.preloader__apple--fill { opacity: 1; filter: drop-shadow(0 0 30px var(--glow-crimson));
+  clip-path: inset(100% 0 0 0); }
+.preloader__word { display: flex; align-items: baseline; gap: 0.12em;
+  font-family: var(--font-display); font-weight: var(--weight-regular);
+  font-size: clamp(2.4rem, 8vw, 4rem); line-height: 1; color: var(--text); }
+.preloader__word .l { display: block; }
+.preloader__bar { width: 170px; height: 2px; overflow: hidden;
+  background: color-mix(in srgb, var(--text) 12%, transparent); }
+.preloader__bar > span { display: block; width: 100%; height: 100%; background: var(--primary);
+  transform: scaleX(0); transform-origin: left; }
+.preloader__tag { font-family: var(--font-sans); font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-muted); }
+@keyframes preFailSafe { to { opacity: 0; visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .preloader { animation: preFailSafe 0.3s linear 0.2s forwards; } }
+.hero__cta { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-7); }
+.hero__scroll { position: absolute; left: var(--gutter); bottom: var(--space-6);
+  display: flex; align-items: center; gap: var(--space-3);
+  font-family: var(--font-sans); font-size: var(--text-2xs); letter-spacing: var(--tracking-label);
+  text-transform: uppercase; color: var(--text-muted); }
+.hero__scroll::before { content: ""; width: 36px; height: 1px; background: var(--primary); }
+
+/* ── Studio intro ── */
+.intro { display: grid; grid-template-columns: 1fr 1.25fr; gap: var(--space-8); align-items: start; }
+.intro h2 { font-size: var(--text-2xl); margin-top: var(--space-4); }
+.intro__body { font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--text-secondary); }
+.intro__body p + p { margin-top: var(--space-5); }
+.intro__body .dropcap::first-letter { font-family: var(--font-blackletter); font-size: 4em;
+  float: left; line-height: 0.72; padding-right: 0.1em; color: var(--primary-text); }
+@media (max-width: 860px) { .intro { grid-template-columns: 1fr; gap: var(--space-6); } }
+
+/* ── Services (the trio) ── */
+.services__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+@media (max-width: 860px) { .services__grid { grid-template-columns: 1fr; } }
+
+/* ── Selected work ── */
+.work__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+.work__foot { margin-top: var(--space-7); display: flex; justify-content: center; }
+@media (max-width: 760px) { .work__grid { grid-template-columns: 1fr; } }
+
+/* ── Stats band ── */
+.stats-band { border-block: var(--border-width) solid var(--border); background: var(--bg-raised); }
+.stats-band__inner { display: grid; grid-template-columns: 1.3fr 2fr; gap: var(--space-8); align-items: center; }
+.stats-band h2 { font-size: var(--text-2xl); }
+.stats-band__row { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
+@media (max-width: 860px) {
+  .stats-band__inner { grid-template-columns: 1fr; gap: var(--space-7); }
+  .stats-band__row { grid-template-columns: repeat(2, 1fr); gap: var(--space-7); }
+}
+
+/* ── Testimonial / quote ── */
+.quote { text-align: center; position: relative; overflow: hidden; }
+.quote__inner { position: relative; z-index: 1; max-width: 36ch; margin-inline: auto; }
+.quote__mark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -56%);
+  font-family: var(--font-blackletter); font-size: clamp(11rem, 32vw, 26rem); line-height: 1;
+  color: var(--primary-text); opacity: 0.06; z-index: 0; margin: 0; pointer-events: none; }
+.quote__inner > *:not(.quote__mark) { position: relative; z-index: 1; }
+.quote blockquote { font-family: var(--font-serif); font-style: italic;
+  font-size: clamp(2.1rem, 1.1rem + 4vw, 4.2rem); line-height: 1.12; letter-spacing: var(--tracking-tight); }
+.quote__by { margin-top: var(--space-6); font-family: var(--font-sans); font-size: var(--text-sm);
+  letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted); }
+.quote__by b { color: var(--text-secondary); font-weight: 600; }
+
+/* ── Contact CTA ── */
+.cta { position: relative; overflow: hidden; text-align: center;
+  padding-block: var(--space-10); border-top: var(--border-width) solid var(--border); }
+.cta__apple { position: absolute; inset: 0; margin: auto;
+  width: min(54vw, 560px); height: min(54vw, 560px); opacity: 0.06; pointer-events: none; }
+.cta__inner { position: relative; max-width: 56ch; margin-inline: auto; }
+.cta h2 { font-size: clamp(2.2rem, 1.6rem + 2.6vw, 3.4rem); line-height: 1.08; }
+.cta h2 em { font-style: italic; color: var(--primary-text); }
+.cta__sub { color: var(--text-muted); margin-top: var(--space-5); font-size: var(--text-md); }
+.cta__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); justify-content: center; margin-top: var(--space-7); }
+
+/* ── Footer wrapper ── */
+.site-footer { padding-bottom: var(--space-8); }
+
+/* ── Giant section index (editorial big-type) ── */
+.indexed { position: relative; }
+.indexed > .container { position: relative; z-index: 1; }
+.indexed::before { content: attr(data-index); position: absolute; top: clamp(1rem, 3vw, 2.5rem); right: var(--gutter);
+  font-family: var(--font-display); font-weight: var(--weight-regular); font-size: clamp(5.5rem, 15vw, 13rem);
+  line-height: 0.8; color: var(--text); opacity: 0.045; z-index: 0; pointer-events: none; user-select: none; }
+@media (max-width: 700px) { .indexed::before { font-size: clamp(4rem, 22vw, 7rem); top: var(--space-4); } }
+
+/* ── Shared inner-page hero (verdict, doctrine, circle…) ── */
+.page-hero { position: relative; overflow: hidden;
+  padding-block: var(--space-10) var(--space-9); border-bottom: var(--border-width) solid var(--border); }
+.page-hero__apple { position: absolute; right: -6%; top: 0; bottom: 0; margin-block: auto;
+  width: min(48vw, 560px); height: auto; opacity: 0.07; pointer-events: none; user-select: none; }
+.page-hero__inner { position: relative; max-width: 66ch; }
+.page-hero h1 { font-family: var(--font-display); font-weight: var(--weight-regular);
+  font-size: clamp(2.4rem, 1.6rem + 3.2vw, 3.9rem); line-height: 1.1;
+  letter-spacing: 0.005em; margin-top: var(--space-4); }
+.page-hero h1 em { font-style: italic; color: var(--primary-text); }
+.page-hero__ar { margin-top: var(--space-4); font-family: "Reem Kufi", "Noto Naskh Arabic", serif;
+  font-size: var(--text-lg); color: var(--primary-text); }
+.page-hero__sub { margin-top: var(--space-5); max-width: 56ch; }
+.page-hero__cta { margin-top: var(--space-7); display: flex; flex-wrap: wrap; gap: var(--space-4); }
+
+/* ── Full-bleed band + asymmetric layout enhancements ── */
+.section--band { background: var(--bg-raised); border-block: var(--border-width) solid var(--border); }
+.edge__market, .edge__kira { font-size: clamp(1.2rem, 0.85rem + 1.5vw, 2rem); line-height: 1.2; }
+.edge__row { padding-block: var(--space-6); }
+@media (min-width: 861px) {
+  .services__grid > :nth-child(2) { margin-top: 36px; }
+  .services__grid > :nth-child(3) { margin-top: 72px; }
+}
+
+/* ── Mobile nav dropdown ── */
+@media (max-width: 860px) {
+  .site-header { position: relative; }
+  .site-nav { position: absolute; top: 100%; left: calc(var(--gutter) * -1); right: calc(var(--gutter) * -1);
+    flex-direction: column; align-items: stretch; gap: 0; display: none;
+    padding: var(--space-2) var(--gutter) var(--space-4); background: var(--bg);
+    border-bottom: var(--border-width) solid var(--border); box-shadow: var(--shadow-lg); }
+  .site-header.is-open .site-nav { display: flex; }
+  .site-nav .nav-link { width: 100%; padding: var(--space-3) 0; font-size: var(--text-md); }
+  .site-nav .nav-link::after { display: none; }
+}
+
+/* ============================================================
+   KIRA persona sections — the Judge
+   ============================================================ */
+
+/* ── Hero Arabic slogan accent ── */
+.hero__ar { margin-top: var(--space-5); font-family: "Reem Kufi", "Noto Naskh Arabic", serif;
+  font-weight: 600; font-size: var(--text-xl); line-height: 1.6; color: var(--primary-text); }
+
+/* ── The Edge (market vs KIRA contrasts) ── */
+.edge__list { border-top: var(--border-width) solid var(--border); }
+.edge__row { display: grid; grid-template-columns: 1fr auto 1fr; gap: var(--space-6); align-items: center;
+  padding-block: var(--space-5); border-bottom: var(--border-width) solid var(--border); }
+.edge__market { text-align: right; font-family: var(--font-serif); font-size: var(--text-lg); color: var(--text-muted); }
+.edge__vs { font-family: var(--font-sans); font-size: var(--text-2xs); text-transform: uppercase;
+  letter-spacing: var(--tracking-label); color: var(--text-muted); opacity: 0.6; }
+.edge__kira { font-family: var(--font-serif); font-style: italic; font-size: var(--text-lg); color: var(--primary-text); }
+@media (max-width: 720px) {
+  .edge__row { grid-template-columns: 1fr; gap: var(--space-2); text-align: left; padding-block: var(--space-4); }
+  .edge__market { text-align: left; }
+  .edge__vs { display: none; }
+}
+
+/* ── CTA scarcity note + Arabic accent in quote ── */
+.cta__note { margin-top: var(--space-5); font-family: var(--font-sans); font-size: var(--text-2xs);
+  text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--text-muted); opacity: 0.7; }
+.quote__ar { margin-top: var(--space-4); font-family: "Reem Kufi", "Noto Naskh Arabic", serif;
+  font-size: var(--text-xl); color: var(--primary-text); }
+
+/* ── The Circle (community) ── */
+.circle { border-top: var(--border-width) solid var(--border); background: var(--bg-raised); }
+.circle__inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center; }
+.circle__form { display: flex; gap: var(--space-3); margin-top: var(--space-5); }
+.circle__form .input { flex: 1; }
+.circle__hint { margin-top: var(--space-3); font-family: var(--font-sans); font-size: var(--text-xs);
+  color: var(--text-muted); opacity: 0.8; }
+@media (max-width: 860px) { .circle__inner { grid-template-columns: 1fr; gap: var(--space-6); } }
+@media (max-width: 480px) { .circle__form { flex-direction: column; } }
