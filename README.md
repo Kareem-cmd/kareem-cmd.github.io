@@ -1,21 +1,17 @@
-# Kareem Abdelaziz — Portfolio
+# Kareem Abdelaziz - Portfolio
 
 Live portfolio: https://kareem-cmd.github.io/
 
 Graphic design, brand identity, campaigns and selected creative work.
-The site uses Three.js for the paper gallery and GSAP for transitions, with dark and light themes.
+Built with Three.js and GSAP, with dark/light themes and an updated downloadable CV.
 
-## Website files
+## Updating the website
 
-The complete website lives in `site/`. Edit `site/index.html`, `site/style.css`,
-`site/app.js` and `site/data.json`; images and videos are kept inside `site/` too.
-Push changes to `main` to publish them with GitHub Pages.
+The complete source is in `site/`. Edit its HTML, CSS, JavaScript, project data and assets,
+then push to `main` to automatically publish through GitHub Pages.
+For local preview: `python -m http.server 8000 --directory site`.
 
-To preview locally, run `python -m http.server 8000 --directory site`,
-then open http://localhost:8000.
-
-The initial import downloads the owner's existing public portfolio and verifies
-every file against `site-manifest.json`. After import, the website is stored in
-this repository and does not depend on the previous hosting provider.
+The initial import extracts the original portfolio archive and verifies all files against
+`site-manifest.json`. After import, the website is fully independent of the old host.
 
 All portfolio artwork and personal branding remain the property of their respective owners.
