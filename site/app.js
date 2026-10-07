@@ -89,7 +89,16 @@ function renderAbout(){return `<div class="about-top"><div class="about-label">A
 function galleryMedia(p,i){const m=p.media[i];return m.kind==='video'?`<video controls playsinline preload="metadata" src="${m.src}" aria-label="${esc(p.title)} project video"></video>`:`<figure><a href="${m.src}" target="_blank" rel="noopener" aria-label="Open image ${i+1} in full"><img src="${m.src}" alt="${esc(p.title)} — project image ${i+1}" loading="${i<2?'eager':'lazy'}" decoding="async" width="${m.width}" height="${m.height}"></a></figure>`}
 function galleryBlock(p,b){const style=`padding-top:${b.top||0}px;padding-bottom:${b.bottom||0}px;width:${b.width||100}%;`;
  if(b.type==='media')return `<div class="gallery-block" style="${style}">${galleryMedia(p,b.index)}</div>`;
- if(b.type==='grid')return `<div class="gallery-block gallery-grid" style="${style}">${b.items.map(i=>{const m=p.media[i],ratio=m.width/m.height||1;return `<div class="gallery-tile" style="flex-grow:${ratio};flex-basis:${260*ratio}px">${galleryMedia(p,i)}</div>`}).join('')}</div>`;
+ if(b.type==='grid'){
+  // Keep authored groups of 2-4 images together on phones. Larger collections
+  // split into balanced rows, in source order, without oversized orphan images.
+  const rowCount=Math.ceil(b.items.length/4),rows=[];let offset=0;
+  for(let row=0;row<rowCount;row++){
+   const count=Math.ceil((b.items.length-offset)/(rowCount-row));
+   rows.push(b.items.slice(offset,offset+count));offset+=count;
+  }
+  return `<div class="gallery-block gallery-grid" style="${style}">${rows.map(items=>`<div class="gallery-row">${items.map(i=>{const m=p.media[i],ratio=m.width/m.height||1;return `<div class="gallery-tile" style="flex-grow:${ratio};flex-basis:${260*ratio}px">${galleryMedia(p,i)}</div>`}).join('')}</div>`).join('')}</div>`;
+ }
  if(b.type==='columns')return `<div class="gallery-block gallery-columns" style="${style}">${b.columns.map(c=>`<div style="flex:${c.grow};min-width:0">${c.blocks.map(x=>galleryBlock(p,x)).join('')}</div>`).join('')}</div>`;
  if(b.type==='film')return `<div class="gallery-block gallery-film" style="${style}"><a href="${esc(b.url)}" target="_blank" rel="noopener">▶ WATCH PROJECT FILM ON VIMEO</a></div>`;
  if(b.type==='compare')return `<div class="gallery-block gallery-compare" style="${style}"><img src="${p.media[b.before].src}" alt="Before" loading="lazy"><img class="compare-after" src="${p.media[b.after].src}" alt="After" loading="lazy"><span class="compare-divider" aria-hidden="true">↔</span><input type="range" min="0" max="100" value="50" aria-label="Compare before and after"></div>`;
