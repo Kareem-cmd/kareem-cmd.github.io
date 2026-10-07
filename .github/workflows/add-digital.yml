@@ -1,0 +1,56 @@
+name: Add digital portfolio
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['digital-portfolio.zip', '.github/workflows/add-digital.yml']
+permissions:
+  contents: read
+concurrency:
+  group: portfolio-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install the separate digital edition
+        if: hashFiles('digital-portfolio.zip') != ''
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, zipfile
+          archive=Path('digital-portfolio.zip')
+          assert hashlib.sha256(archive.read_bytes()).hexdigest() == 'fff318b2b1eacfc3d7365301a20a89757b5e2f8735d1f74f6e9840d55ce9cd6f'
+          destination=Path('site/portfolio').resolve()
+          with zipfile.ZipFile(archive) as z:
+              for name in z.namelist():
+                  assert (destination/name).resolve().is_relative_to(destination)
+              z.extractall(destination)
+          assert (destination/'index.html').is_file()
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/portfolio
+          git rm digital-portfolio.zip
+          git commit -m "Add independent portfolio with nine web and UI case studies"
+          git push
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish both portfolio editions
+        id: deployment
+        uses: actions/deploy-pages@v4
