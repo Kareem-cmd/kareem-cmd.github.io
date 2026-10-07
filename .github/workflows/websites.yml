@@ -1,0 +1,64 @@
+name: Publish website collection
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/websites.yml']
+permissions:
+  contents: read
+concurrency:
+  group: portfolio-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: Import verified website collection
+        if: hashFiles('websites.zip.*') != ''
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,zipfile
+          parts=sorted(Path('.').glob('websites.zip.*'))
+          assert len(parts)==27
+          archive=Path('/tmp/websites.zip')
+          with archive.open('wb') as output:
+              for part in parts:
+                  output.write(part.read_bytes())
+          assert hashlib.sha256(archive.read_bytes()).hexdigest()=='02210fcd6bccfc6495df5225b75da7a1f4adc802dbefb2c6180ac6ee9f0f07ca'
+          root=Path('site').resolve()
+          with zipfile.ZipFile(archive) as z:
+              for name in z.namelist():
+                  assert name.split('/')[0] in ['portfolio','websites']
+                  assert (root/name).resolve().is_relative_to(root)
+              z.extractall(root)
+          css=root/'portfolio/style.css'
+          css.write_text(css.read_text()+'\n@media(max-width:700px){#archive .page-heading h1{font-size:clamp(42px,15vw,64px)}.archive-card{min-width:0}.archive-card h2{overflow-wrap:anywhere}}\n\nhtml[data-theme=light] .visit-website,html[data-theme=light] .work-switch>a,html[data-theme=light] .category-filters a[aria-current=page],html[data-theme=light] .category-filters a[aria-current=page]:hover{color:#fff!important}\n')
+          for name in ['aam','axiology','jilbada','khayal','kira','pexel','pvx','roman','wasel']:
+              assert (root/'websites'/name/'index.html').is_file()
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/portfolio site/websites
+          git rm websites.zip.*
+          git commit -m "Publish nine live websites and enriched portfolio case studies"
+          git push
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
