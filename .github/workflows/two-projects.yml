@@ -1,0 +1,62 @@
+name: Publish CHICK and Convert X
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/two-projects.yml']
+permissions:
+  contents: read
+concurrency:
+  group: portfolio-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: Import verified website collection
+        if: hashFiles('two-projects.zip.*') != ''
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,zipfile
+          parts=sorted(Path('.').glob('two-projects.zip.*'))
+          assert len(parts)==2
+          archive=Path('/tmp/two-projects.zip')
+          with archive.open('wb') as output:
+              for part in parts:
+                  output.write(part.read_bytes())
+          assert hashlib.sha256(archive.read_bytes()).hexdigest()=='e71439b9f7432c38d23be9afdc496f719dd497b1fbabec6d7c6b226fcfc47ef1'
+          root=Path('site').resolve()
+          with zipfile.ZipFile(archive) as z:
+              for name in z.namelist():
+                  assert name.split('/')[0] in ['portfolio','media','covers','index.html','app.js','data.json']
+                  assert (root/name).resolve().is_relative_to(root)
+              z.extractall(root)
+          assert (root/'media/chick-fried-chicken/053.webp').is_file()
+          assert (root/'media/convert-x-branding/010.webp').is_file()
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/index.html site/app.js site/data.json site/portfolio site/media/chick-fried-chicken site/media/convert-x-branding site/covers/chick-fried-chicken.webp site/covers/convert-x-branding.webp
+          git rm two-projects.zip.*
+          git commit -m "Add CHICK and Convert X with original project layouts to both portfolios"
+          git push
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
