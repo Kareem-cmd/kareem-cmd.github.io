@@ -97,3 +97,43 @@ html[data-theme=light] .visit-website,html[data-theme=light] .work-switch>a,html
 /* Keep the decorative clock from intercepting collection links. */
 .shell .header-time,.shell .header-time *{pointer-events:none}
 
+/* A quiet, interactive layer underneath the paper gallery. */
+.brand-mist{position:absolute;inset:18% 0 10%;overflow:hidden;display:flex;flex-direction:column;justify-content:space-around;pointer-events:none;isolation:isolate;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mist-row{height:112px;flex-shrink:0;position:relative}
+.mist-track{display:flex;width:max-content;animation:brand-drift calc(125s + var(--row)*17s) linear infinite;will-change:transform}
+.mist-row:nth-child(even) .mist-track{animation-direction:reverse}
+.mist-set{display:flex;gap:44px;padding-right:44px;flex-shrink:0}
+.mist-logo{width:158px;height:108px;display:grid;place-items:center;flex:none;border-radius:22px;filter:grayscale(1) blur(5px);opacity:.18;transform:translateZ(0) scale(.92);transition:filter .65s,opacity .65s,transform .65s,background .65s;pointer-events:none}
+.mist-logo img{width:90%;height:82%;object-fit:contain}
+.mist-logo.is-clear,.mist-logo:focus-visible{filter:none;opacity:1;transform:translateZ(0) scale(1.06);background:#faf9f1;box-shadow:0 0 36px #d2df3b20}
+.mist-row.is-held .mist-track,.brand-mist.is-paused .mist-track,.brand-mist.is-inactive .mist-track{animation-play-state:paused}
+.mist-controls{position:absolute;z-index:8;right:28px;bottom:70px;display:flex;align-items:center;gap:10px;font-size:8px;letter-spacing:1px;color:#9b9d92}
+.mist-controls button{display:grid;place-items:center;width:30px;height:30px;border:1px solid #ffffff30;border-radius:50%;font-size:12px;color:var(--accent)}
+.impact-metrics{margin:80px 0 95px;padding:50px 0;border-block:1px solid #ffffff25}
+.impact-heading{display:flex;justify-content:space-between;gap:30px;align-items:flex-start;margin-bottom:50px}
+.impact-heading h2{font-family:Georgia,serif;font-size:clamp(30px,4vw,58px);font-weight:400;line-height:1.04;margin:0;width:66%}
+.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.metric-card{min-width:0;border-left:1px solid #ffffff25;padding-left:24px}
+.metric-number{font-size:clamp(58px,8vw,112px);line-height:1.05;letter-spacing:-.065em;font-weight:500;font-variant-numeric:tabular-nums;color:#d2df3b;white-space:nowrap}
+.metric-card:nth-child(2) .metric-number{color:#e53798}
+.metric-number sup{font-size:.4em;vertical-align:top;display:inline-block;margin:10px 0 0 6px;letter-spacing:0}
+.metric-card p{font-size:13px;color:#a6a89d;margin:18px 0 0}
+.metric-card.is-counting .metric-number{background:linear-gradient(100deg,#d2df3b 15%,#e53798 55%,#d2df3b 90%);background-size:220% auto;background-clip:text;-webkit-text-fill-color:transparent;animation:metric-color 1.5s linear infinite}
+html[data-theme=light] .mist-logo{opacity:.22}
+html[data-theme=light] .mist-logo.is-clear,html[data-theme=light] .mist-logo:focus-visible{opacity:1}
+html[data-theme=light] .impact-metrics,html[data-theme=light] .metric-card{border-color:#16181125}
+html[data-theme=light] .metric-number{color:#677408}
+html[data-theme=light] .metric-card:nth-child(2) .metric-number{color:#ad1265}
+html[data-theme=light] .metric-card p,html[data-theme=light] .mist-controls{color:#5f6157}
+html[data-theme=light] .mist-controls button{border-color:#16181130}
+@keyframes brand-drift{to{transform:translateX(-50%)}}
+@keyframes metric-color{to{background-position:220% center}}
+@media(max-width:700px){
+ .brand-mist{inset:24% 0 15%}.mist-row{height:72px}.mist-logo{width:100px;height:70px;filter:grayscale(1) blur(3px);opacity:.21}.mist-set{gap:22px;padding-right:22px}
+ .mist-controls{right:16px;bottom:55px;font-size:7px;letter-spacing:.5px}.mist-controls span{max-width:120px;text-align:right}.mist-controls button{width:28px;height:28px}
+ .impact-metrics{margin:45px 0;padding:30px 0}.impact-heading{display:block;margin-bottom:28px}.impact-heading h2{width:auto;margin-top:18px;font-size:38px}
+ .metric-grid{gap:12px}.metric-card{padding-left:10px}.metric-number{font-size:clamp(38px,12vw,76px)}.metric-number sup{margin:4px 0 0 2px}.metric-card p{font-size:10px;line-height:1.5;margin-top:10px}
+}
+@media(prefers-reduced-motion:reduce){.mist-track,.metric-card.is-counting .metric-number{animation:none}.mist-logo{transition:none}.mist-controls{display:none}}
+
+.mist-logo[data-tone=dark].is-clear,.mist-logo[data-tone=dark]:focus-visible{background:#242522}

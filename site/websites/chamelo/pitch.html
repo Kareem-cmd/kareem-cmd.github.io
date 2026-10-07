@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chamelo — Engagement Proposal</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@300;400;500;600;700&family=VT323&family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+@font-face{font-family:'Smart Chameleon';src:url('assets/fonts/Smart-Chameleon.ttf') format('truetype');font-display:swap}
+@font-face{font-family:'K_Digi Eliya';src:url('assets/fonts/K-Digi-Eliya.ttf') format('truetype');font-display:swap}
+:root{
+  --bg:#080808;--surf:#15110f;--surf2:#1c1715;--line:rgba(214,207,192,.14);
+  --t1:#f4f0e7;--t2:#d6cfc0;--t3:#a89e8a;
+  --red:#d2221c;--red-deep:#ae0000;--red-soft:rgba(210,34,28,.16);--glow:rgba(210,34,28,.35);
+  --brand:'Smart Chameleon','Cormorant Garamond',serif;--serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;--pixel:'VT323',monospace;--ar:'K_Digi Eliya','Amiri',serif;--ar-body:'Tajawal',sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+:root[data-theme="light"]{
+  --bg:#f5f1e8;--surf:#fffdf8;--surf2:#ece6d7;--line:rgba(20,17,15,.12);
+  --t1:#14110f;--t2:#33291f;--t3:#6b5f4f;--red:#c01a14;--red-deep:#8f0a05;--red-soft:rgba(192,26,20,.09);--glow:rgba(192,26,20,.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg);scroll-padding-top:70px;scroll-snap-type:y proximity}
+@media(max-width:760px){html{scroll-snap-type:none}}
+body{background:var(--bg);color:var(--t2);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .5s var(--ease),color .5s var(--ease)}
+html[lang="ar"] body{font-family:var(--ar-body)}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.en-only{display:inline}.ar-only{display:none}
+html[lang="ar"] .en-only{display:none}html[lang="ar"] .ar-only{display:inline}
+html[lang="ar"] :is(.btn,.nav__meta,.eyebrow,.rule .t,.rule .n,.tl__phase,.tl__when,.step__n,.tier__per,.stats .l,.cur,.tlx__phase,.tlx__when,.tlx__n,.seg,.cmp th,.cmp td,.offerbar__t,.offerbar__c,.navm a,.tier__save,.proj3__meta){font-family:var(--ar)}
+
+/* OFFER COUNTDOWN SIDE BAR */
+.offerbar{position:fixed;inset-inline-start:14px;bottom:16px;z-index:88;display:flex;align-items:center;gap:11px;background:var(--surf);border:1px solid var(--red);border-radius:9px;padding:9px 14px;box-shadow:0 12px 34px rgba(0,0,0,.4)}
+.offerbar__dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.offerbar__t{font-family:var(--pixel);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3)}
+.offerbar__c{font-family:var(--pixel);font-size:19px;letter-spacing:.08em;color:var(--red);font-variant-numeric:tabular-nums}
+.offerbar__x{background:none;border:none;color:var(--t3);cursor:pointer;font-size:15px;line-height:1;padding:0 0 0 4px}
+@media(max-width:520px){.offerbar{inset-inline:10px;bottom:10px;justify-content:center;padding:8px 12px}}
+
+/* progress */
+.prog{position:fixed;top:0;inset-inline:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:0 50%;z-index:95;box-shadow:0 0 10px var(--red)}
+html[dir="rtl"] .prog{transform-origin:100% 50%}
+
+/* NAV */
+.nav{position:fixed;top:0;inset-inline:0;height:62px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0 clamp(14px,3.5vw,44px);z-index:90;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav__brand{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+.nav__brand .mark{height:25px}.nav__brand .word{height:13px;filter:invert(1) brightness(1.15)}
+:root[data-theme="light"] .nav__brand .word{filter:none}
+.navm{display:flex;gap:18px;margin-inline:auto}
+.navm a{font-family:var(--pixel);font-size:16px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);position:relative;transition:color .3s}
+.navm a:hover,.navm a.act{color:var(--t1)}
+.navm a::after{content:"";position:absolute;inset-inline:0;bottom:-4px;height:1px;background:var(--red);transform:scaleX(0);transition:transform .3s var(--ease)}
+.navm a:hover::after,.navm a.act::after{transform:scaleX(1)}
+.nav__tools{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.seg-cur{display:flex;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.seg-cur button{font-family:var(--pixel);font-size:14px;letter-spacing:.06em;padding:5px 9px;background:none;border:none;color:var(--t3);cursor:pointer;transition:.25s}
+.seg-cur button.act{background:var(--red);color:#fff}
+.icon-btn{width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;background:none;color:var(--t2);cursor:pointer;transition:.3s}
+.icon-btn:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
+.icon-btn svg{width:17px;height:17px}.lang-btn{width:auto;padding:0 11px;font-family:var(--pixel);font-size:15px;border-radius:18px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--pixel);font-size:15px;letter-spacing:.14em;text-transform:uppercase;padding:9px 16px;border-radius:4px;border:1px solid var(--red);color:var(--t1);background:var(--red-soft);transition:background .3s,transform .3s var(--ease),box-shadow .3s;cursor:pointer}
+.btn:hover{background:var(--red);color:#fff;transform:translateY(-2px);box-shadow:0 10px 26px var(--glow)}
+.btn:active{transform:scale(.97)}.btn--ghost{border-color:var(--line);background:none}.btn--ghost:hover{border-color:var(--t1);color:var(--t1);background:none;box-shadow:none}
+html[lang="ar"] .btn{font-family:var(--ar)}
+@media(max-width:980px){.navm{display:none}}
+@media(max-width:560px){.nav__brand .word{display:none}.seg-cur button{padding:5px 7px;font-size:13px}}
+
+/* SECTION */
+section{position:relative;padding:84px clamp(20px,5vw,72px);border-top:1px solid var(--line);scroll-snap-align:start;scroll-snap-stop:normal}
+.inner{max-width:1180px;margin:0 auto;position:relative;z-index:2}
+.rule{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.rule .n{font-family:var(--pixel);font-size:16px;letter-spacing:.3em;color:var(--red)}
+.rule .t{font-family:var(--pixel);font-size:16px;letter-spacing:.3em;text-transform:uppercase;color:var(--t1)}
+.rule .ln{flex:1;height:1px;background:linear-gradient(90deg,var(--red),transparent);opacity:.5}
+html[dir="rtl"] .rule .ln{background:linear-gradient(270deg,var(--red),transparent)}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5vw,58px);color:var(--t1);line-height:1.05}
+html[lang="ar"] :is(h2,.tier__name,.appr h3,.svc__name,.tlx__title,.step h4,.cal__title,.slots h4,.proj3__title){font-family:var(--ar)}
+.sub{color:var(--t3);max-width:60ch;margin-top:8px}
+.rv{opacity:0;transform:translateY(28px)}
+.eyebrow{font-family:var(--pixel);font-size:16px;letter-spacing:.32em;text-transform:uppercase;color:var(--red);display:inline-flex;align-items:center;gap:10px}
+.dotg{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}
+.glow{transition:border-color .4s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease)}
+.glow:hover{border-color:var(--red);transform:translateY(-6px) scale(1.03);box-shadow:0 20px 50px rgba(0,0,0,.35),0 0 30px var(--red-soft)}
+
+/* COVER */
+.cover{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-top:0;overflow:hidden}
+.cover__glow{position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 50% 42%,var(--red-soft),transparent 56%)}
+.cover__ghost{position:absolute;inset-inline-end:-6%;top:0;height:100%;opacity:.05;z-index:0;pointer-events:none}
+.cover .inner{display:flex;flex-direction:column;align-items:center}
+.cover__mark{height:clamp(104px,13vw,170px);margin:0 auto 18px;filter:drop-shadow(0 0 42px var(--glow))}
+.cover__word{height:clamp(48px,7.6vw,104px);margin:0 auto;filter:invert(1) brightness(1.18)}
+:root[data-theme="light"] .cover__word{filter:none}
+.cover__tag{font-family:var(--serif);font-style:italic;font-size:clamp(22px,3vw,38px);color:var(--t2);margin-top:18px}
+.cover__meta{font-family:var(--pixel);font-size:16px;letter-spacing:.3em;text-transform:uppercase;color:var(--t3);margin-top:22px}
+.cover__cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.scrollcue{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-family:var(--pixel);font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:var(--t3);animation:bob 1.8s var(--ease) infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+
+/* APPROACH */
+.appr{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:14px}
+.appr .c{border:1px solid var(--line);border-radius:6px;padding:26px 24px;background:var(--surf)}
+.appr .ic{color:var(--red);margin-bottom:10px}.appr .ic svg{width:32px;height:32px}
+.appr .num{font-family:var(--brand);font-size:30px;color:var(--red)}
+.appr h3{font-family:var(--serif);font-weight:500;font-size:27px;color:var(--t1);margin:4px 0 8px}.appr p{font-size:14px;color:var(--t3)}
+
+/* BILLING SEG */
+.billing{display:flex;align-items:center;gap:12px;margin:14px 0 4px;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--surf)}
+.seg button{font-family:var(--pixel);font-size:15px;letter-spacing:.12em;text-transform:uppercase;padding:9px 18px;background:none;border:none;color:var(--t3);cursor:pointer;transition:.25s}
+.seg button.act{background:var(--red);color:#fff}
+.billing__save{font-family:var(--pixel);font-size:14px;letter-spacing:.1em;color:var(--red)}
+
+/* TIERS */
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px;align-items:stretch}
+.tier{border:1px solid var(--line);border-radius:8px;background:var(--surf);padding:24px 20px;display:flex;flex-direction:column;position:relative}
+.tier--feat{border-color:var(--red);box-shadow:0 0 44px var(--red-soft)}
+.tier__badge{position:absolute;top:-11px;inset-inline-start:20px;font-family:var(--pixel);font-size:13px;letter-spacing:.16em;text-transform:uppercase;background:var(--red);color:#fff;padding:3px 11px;border-radius:3px}
+.tier__name{font-family:var(--brand);font-size:30px;color:var(--t1);line-height:1}
+.tier__tag{font-size:12px;color:var(--t3);margin-top:4px;min-height:30px}
+.tier__price{margin:14px 0 2px;display:flex;align-items:baseline;gap:5px;flex-wrap:wrap}
+.tier__price .v{font-family:var(--serif);font-weight:500;font-size:40px;color:var(--t1);line-height:1;font-variant-numeric:tabular-nums}
+.tier__price .cur{font-family:var(--pixel);font-size:15px;color:var(--red)}
+.tier__per{font-family:var(--pixel);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:2px}
+.tier__save{font-family:var(--pixel);font-size:13px;letter-spacing:.08em;color:var(--red);margin-bottom:14px;visibility:hidden}
+.stats{display:flex;gap:6px;margin:0 0 16px;border-block:1px solid var(--line);padding:12px 0}
+.stats .st{flex:1;text-align:center}
+.stats .st .n{font-family:var(--brand);font-size:30px;color:var(--red);line-height:.9;font-variant-numeric:tabular-nums}
+.stats .st .l{font-family:var(--pixel);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-top:3px;display:block}
+.tier ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:18px;flex:1}
+.tier li{position:relative;padding-inline-start:20px;font-size:13px;color:var(--t2)}
+.tier li::before{content:"";position:absolute;inset-inline-start:0;top:6px;width:8px;height:8px;border:1.5px solid var(--red);border-radius:50%}
+.tier li.no{color:var(--t3);opacity:.65}.tier li.no::before{border-style:dotted}
+.tier .btn{width:100%;justify-content:center}
+
+/* COMPARISON — sticky first column, highlighted Growth, hidden scrollbar */
+.cmp-wrap{margin-top:26px;border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative}
+.cmp-scroll{overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch}
+.cmp-scroll::-webkit-scrollbar{display:none;width:0;height:0}
+.cmp-wrap.is-scrollable .cmp-scroll{cursor:grab}
+.cmp{width:100%;border-collapse:collapse;font-size:13.5px}
+.cmp th,.cmp td{padding:13px 16px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap}
+.cmp thead th{font-family:var(--pixel);font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--t1);background:var(--surf2)}
+.cmp td:first-child,.cmp th:first-child{text-align:start;color:var(--t2);position:sticky;inset-inline-start:0;background:var(--surf);z-index:2;min-width:158px}
+.cmp thead th:first-child{z-index:3}
+.cmp td:nth-child(4),.cmp th:nth-child(4){background:var(--red-soft)}
+.cmp thead th:nth-child(4){color:var(--red)}
+.cmp tbody tr:last-child td{border-bottom:none}
+.cmp tbody tr:hover td{background:color-mix(in srgb,var(--red-soft) 55%,transparent)}
+.cmp tbody tr:hover td:first-child{background:var(--surf)}
+.cmp tbody tr:hover td:nth-child(4){background:var(--red-soft)}
+.cmp .yes{color:var(--red)}
+.cmp .yes svg{width:19px;height:19px;display:inline-block;vertical-align:middle}
+.cmp .no{color:var(--t3);opacity:.5;font-size:16px}
+.cmp-fade{position:absolute;top:1px;bottom:1px;inset-inline-end:0;width:46px;pointer-events:none;background:linear-gradient(to left,var(--surf),transparent);opacity:0;transition:opacity .3s}
+html[dir="rtl"] .cmp-fade{background:linear-gradient(to right,var(--surf),transparent)}
+.cmp-wrap.is-scrollable .cmp-fade{opacity:1}
+@media(max-width:680px){.cmp{min-width:620px}.cmp td:first-child,.cmp th:first-child{min-width:140px}}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
+.svc{border:1px solid var(--line);border-radius:6px;background:var(--surf);padding:22px;display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.svc__name{font-family:var(--serif);font-weight:600;font-size:21px;color:var(--t1)}
+.svc__desc{font-size:13px;color:var(--t3);margin-top:4px}
+.svc__price{font-family:var(--serif);font-weight:500;font-size:27px;color:var(--t1);white-space:nowrap}
+.svc__price .v{font-variant-numeric:tabular-nums}.svc__price .cur{font-family:var(--pixel);font-size:13px;color:var(--red);margin-inline-start:3px}
+
+/* TIMELINE — compact accordion (expand/collapse) */
+.tlx{position:relative;margin-top:20px;padding-inline-start:30px;border-inline-start:2px solid var(--line)}
+.tlx__item{position:relative;border:1px solid var(--line);border-radius:10px;background:var(--surf);margin-bottom:10px;overflow:hidden;transition:border-color .3s var(--ease)}
+.tlx__item::before{content:"";position:absolute;inset-inline-start:-31px;top:22px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--red);box-shadow:0 0 10px var(--glow);transition:transform .3s var(--ease)}
+.tlx__item.open{border-color:var(--red)}
+.tlx__item.open::before{transform:scale(1.3)}
+.tlx__item--feat{border-color:var(--red)}
+.tlx__head{width:100%;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;padding:14px 18px;background:none;border:0;cursor:pointer;text-align:start;color:inherit;font-family:inherit;transition:background .25s}
+.tlx__head:hover{background:var(--red-soft)}
+.tlx__n{font-family:var(--brand);font-size:27px;color:var(--red);line-height:1;font-variant-numeric:tabular-nums}
+.tlx__main{display:flex;flex-direction:column;gap:3px;min-width:0}
+.tlx__phase{font-family:var(--pixel);font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--red)}
+.tlx__when{color:var(--t3)}
+.tlx__title{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--t1);line-height:1.15}
+.tlx__chev{color:var(--t3);display:grid;place-items:center;transition:transform .35s var(--ease),color .3s}
+.tlx__chev svg{width:18px;height:18px;display:block}
+.tlx__item.open .tlx__chev{transform:rotate(180deg);color:var(--red)}
+.tlx__body{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.tlx__body-in{padding:2px 18px 16px}
+.tlx__body p{font-size:14px;color:var(--t2);margin-bottom:10px}
+.tlx__body ul{list-style:none;display:grid;gap:6px}
+.tlx__body li{position:relative;padding-inline-start:16px;font-size:13px;color:var(--t3)}
+.tlx__body li::before{content:"";position:absolute;inset-inline-start:0;top:7px;width:5px;height:5px;background:var(--red);border-radius:50%}
+@media(max-width:600px){.tlx{padding-inline-start:20px}.tlx__item::before{inset-inline-start:-21px;width:9px;height:9px}.tlx__head{gap:11px;padding:13px 14px}.tlx__n{font-size:23px}.tlx__title{font-size:17px}}
+
+/* STEP STRIP */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:22px}
+.step{border:1px solid var(--line);border-radius:6px;background:var(--surf);padding:20px 18px}
+.step__n{font-family:var(--pixel);font-size:15px;letter-spacing:.18em;color:var(--red)}
+.step__ic{color:var(--red);margin:10px 0 8px}.step__ic svg{width:26px;height:26px}
+.step h4{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--t1);margin-bottom:5px}.step p{font-size:12.5px;color:var(--t3)}
+
+/* PROJECTS (stacked) */
+.proj3{display:flex;flex-direction:column;gap:14px;margin-top:22px}
+.proj3__card{display:flex;align-items:stretch;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surf)}
+.proj3__img{flex:0 0 38%;max-width:38%;overflow:hidden;background:var(--surf2)}
+.proj3__img img{width:100%;height:100%;object-fit:cover;min-height:150px;transition:transform .5s var(--ease)}
+.proj3__card:hover .proj3__img img{transform:scale(1.05)}
+.proj3__body{flex:1;padding:22px 24px;display:flex;flex-direction:column;justify-content:center}
+.proj3__code{font-family:var(--pixel);font-size:14px;letter-spacing:.2em;color:var(--red)}
+.proj3__title{font-family:var(--serif);font-weight:600;font-size:26px;color:var(--t1);margin:4px 0}
+.proj3__meta{font-family:var(--pixel);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3)}
+.proj3__all{display:flex;justify-content:center;margin-top:24px}
+@media(max-width:600px){.proj3__card{flex-direction:column}.proj3__img,.proj3__img{max-width:100%;flex-basis:auto}.proj3__img img{min-height:180px}}
+
+/* PAYMENTS */
+.pays{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.pay{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:6px;padding:13px 18px;background:var(--surf)}
+.pay svg{width:21px;height:21px;color:var(--red)}.pay b{font-size:14px;color:var(--t1)}
+html[lang="ar"] .pay b{font-family:var(--ar-body)}
+
+/* CALENDAR + FORM */
+.cal-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;margin-top:22px}
+.cal,.slots{border:1px solid var(--line);border-radius:8px;background:var(--surf);padding:20px}
+.cal__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal__title{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--t1)}
+.cal__nav{display:flex;gap:8px}.cal__nav button{width:30px;height:30px;border:1px solid var(--line);border-radius:6px;background:none;color:var(--t2);cursor:pointer;font-size:15px;transition:.3s}.cal__nav button:hover{border-color:var(--red);color:var(--red)}
+.cal__grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal__dow{font-family:var(--pixel);font-size:13px;text-transform:uppercase;color:var(--t3);text-align:center;padding:3px 0}
+.cal__day{aspect-ratio:1;display:grid;place-items:center;border:1px solid transparent;border-radius:6px;font-size:14px;color:var(--t2);cursor:pointer;font-variant-numeric:tabular-nums;transition:.2s}
+.cal__day:hover:not(.is-dis){border-color:var(--red);color:var(--red)}
+.cal__day.is-dis{color:var(--t3);opacity:.3;cursor:not-allowed}.cal__day.is-sel{background:var(--red);color:#fff;border-color:var(--red)}
+.slots h4{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--t1);margin-bottom:4px}
+.slots .picked{font-family:var(--pixel);font-size:14px;color:var(--red);min-height:20px;margin-bottom:12px}
+.slot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.slot{border:1px solid var(--line);border-radius:6px;padding:10px;text-align:center;font-family:var(--pixel);font-size:15px;color:var(--t2);cursor:pointer;transition:.2s}
+.slot:hover{border-color:var(--red);color:var(--red)}.slot.is-sel{background:var(--red);color:#fff;border-color:var(--red)}
+.bform{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.bform label{font-family:var(--pixel);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+.bform input,.bform textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px;color:var(--t1);font-family:inherit;font-size:14px;resize:vertical}
+.bform input:focus,.bform textarea:focus{outline:none;border-color:var(--red)}
+#calConfirm{margin-top:6px;width:100%;justify-content:center}#calConfirm[disabled]{opacity:.4;pointer-events:none}
+@media(max-width:860px){.cal-wrap{grid-template-columns:1fr}}
+
+/* CTA */
+.cta{text-align:center;background:radial-gradient(circle at 50% 60%,var(--red-soft),transparent 60%)}
+.cta__mark{height:76px;margin:0 auto 18px;filter:drop-shadow(0 0 26px var(--glow))}
+.cta h2 .it{font-style:italic;color:var(--red)}.cta p{color:var(--t2);margin:14px 0 24px}
+.cta__row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.note{font-family:var(--pixel);font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-top:20px}
+html[lang="ar"] .note{font-family:var(--ar)}
+.foot{margin-top:28px;font-family:var(--pixel);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3)}
+
+@media(max-width:900px){.tiers{grid-template-columns:repeat(2,1fr)}.appr{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.tiers,.svc-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.slot-grid{grid-template-columns:repeat(3,1fr)}}
+.red{color:var(--red)}
+/* PROJECT GALLERY — fanned, draggable; the CARD grows on hover/drag */
+.gsub{text-align:center;font-family:var(--pixel);font-size:14px;letter-spacing:.28em;text-transform:uppercase;color:var(--t3);margin-top:6px}
+.gallery{position:relative;height:410px;display:flex;align-items:center;justify-content:center;margin-top:18px;transition:height .5s var(--ease)}
+.gallery__pile{position:relative;width:250px;height:250px}
+.gphoto{position:absolute;left:50%;top:50%;width:230px;height:230px;transform:translate(-50%,-50%);cursor:grab;transition:transform .85s var(--ease);transition-delay:calc(var(--i,0)*0.12s);will-change:transform;touch-action:none;user-select:none}
+.gallery.settled .gphoto{transition:transform .5s var(--ease);transition-delay:0s}
+.gphoto__inner{position:relative;width:100%;height:100%;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 18px 40px rgba(0,0,0,.45);transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s;transform-origin:center}
+.gphoto img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.gphoto:hover .gphoto__inner,.gphoto.dragging .gphoto__inner{transform:scale(1.08);box-shadow:0 30px 72px rgba(0,0,0,.6),0 0 40px var(--glow);border-color:var(--red)}
+.gphoto__cap{position:absolute;inset-inline:0;bottom:0;padding:26px 14px 12px;font-family:var(--serif);font-weight:600;font-size:18px;color:#fff;background:linear-gradient(0deg,rgba(0,0,0,.85),transparent);pointer-events:none}
+.gphoto__open{position:absolute;top:9px;inset-inline-end:9px;width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--red);color:#fff;font-size:15px;cursor:pointer;z-index:3}
+.gallery__tools{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:14px}
+.gallery__hint{font-family:var(--pixel);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3)}
+@media(max-width:760px){.gallery{height:300px}}
+/* English display headings use the brand font (Smart Chameleon) — Arabic overrides to K_Digi Eliya above */
+h2,.appr h3,.svc__name,.tlx__title,.step h4,.slots h4{font-family:var(--brand)}
+.cover__tag{font-family:var(--serif)}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.scrollcue,.offerbar__dot{animation:none}.gphoto{transition:none}}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+
+<div class="offerbar" id="offerBar">
+  <span class="offerbar__dot"></span>
+  <span class="offerbar__t" data-en="Offer expires" data-ar="ينتهي العرض">Offer expires</span>
+  <span class="offerbar__c" id="offerC">—</span>
+  <button class="offerbar__x" id="offerX" aria-label="dismiss">✕</button>
+</div>
+
+<header class="nav">
+  <a href="#s0" class="nav__brand"><img class="mark" src="assets/logo-mark.png" alt="Chamelo"><img class="word" src="assets/logo-horizontal.png" alt="Chamelo"></a>
+  <nav class="navm">
+    <a href="#s2" data-en="Plans" data-ar="الباقات">Plans</a>
+    <a href="#s4" data-en="Process" data-ar="التنفيذ">Process</a>
+    <a href="#work" data-en="Work" data-ar="الأعمال">Work</a>
+    <a href="#pay" data-en="Pay" data-ar="الدفع">Pay</a>
+    <a href="#book" data-en="Book" data-ar="احجز">Book</a>
+  </nav>
+  <div class="nav__tools">
+    <div class="seg-cur" id="curSeg"><button data-cur="egp" class="act">EGP</button><button data-cur="sar">SAR</button><button data-cur="usd">USD</button></div>
+    <button class="icon-btn" id="themeBtn" aria-label="Theme"></button>
+    <button class="icon-btn lang-btn" id="langBtn">عربي</button>
+  </div>
+</header>
+
+<!-- COVER -->
+<section class="cover" id="s0">
+  <div class="cover__glow"></div><img class="cover__ghost" src="assets/method-move.webp" alt="">
+  <div class="inner">
+    <img class="cover__mark rv" src="assets/logo-mark.png" alt="">
+    <img class="cover__word rv" src="assets/logo-horizontal.png" alt="Chamelo">
+    <div class="cover__tag rv" data-en="The Art of Adaptability." data-ar="The Art of Adaptability.">The Art of Adaptability.</div>
+    <div class="cover__meta rv" data-en="Engagement Proposal · MENA · 2026" data-ar="عرض تعاقد · الشرق الأوسط · ٢٠٢٦">Engagement Proposal · MENA · 2026</div>
+    <div class="cover__cta rv"><a href="#s2" class="btn"><span data-en="View Plans" data-ar="شوف الباقات">View Plans</span></a><a href="#book" class="btn btn--ghost"><span data-en="Book a Call" data-ar="احجز مكالمة">Book a Call</span></a></div>
+  </div>
+  <div class="scrollcue" data-en="Scroll ↓" data-ar="انزل ↓">Scroll ↓</div>
+</section>
+
+<!-- HOW WE WORK -->
+<section id="s1"><div class="inner">
+  <div class="rule rv"><span class="n">01</span><span class="ln"></span><span class="t" data-en="How We Work" data-ar="منهجنا">How We Work</span></div>
+  <h2 class="rv" data-en="A position. Not just posts." data-ar="موقعٌ في السوق. لا مجرّد منشورات.">A position. Not just posts.</h2>
+  <p class="sub rv" data-en="We diagnose the terrain, build the system, then run the movement — never improvised." data-ar="نُشخّص الميدان، نبني النظام، ثم نُدير الحركة — بلا ارتجال.">We diagnose the terrain, build the system, then run the movement — never improvised.</p>
+  <div class="appr">
+    <div class="c glow rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><div class="num">I</div><h3 data-en="Diagnose" data-ar="نُشخّص">Diagnose</h3><p data-en="Brand audit · market mapping · audience research · gap report." data-ar="تدقيق البراند · رسم السوق · بحث الجمهور · تقرير الفجوات.">Brand audit · market mapping · audience research · gap report.</p></div>
+    <div class="c glow rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div><div class="num">II</div><h3 data-en="Structure" data-ar="نُهيكِل">Structure</h3><p data-en="Brand system · content pillars · growth model · 90-day playbook." data-ar="نظام البراند · ركائز المحتوى · نموذج النمو · خطة ٩٠ يومًا.">Brand system · content pillars · growth model · 90-day playbook.</p></div>
+    <div class="c glow rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></svg></div><div class="num">III</div><h3 data-en="Execute" data-ar="نُنفّذ">Execute</h3><p data-en="Production · publishing · paid media · measurement." data-ar="إنتاج · نشر · إعلانات · قياس.">Production · publishing · paid media · measurement.</p></div>
+  </div>
+</div></section>
+
+<!-- SMM PLANS + BILLING + COMPARISON -->
+<section id="s2"><div class="inner">
+  <div class="rule rv"><span class="n">02</span><span class="ln"></span><span class="t" data-en="Social Media · Plans" data-ar="السوشيال ميديا · باقات">Social Media · Plans</span></div>
+  <h2 class="rv" data-en="Retainer plans" data-ar="باقات شهرية">Retainer plans</h2>
+  <div class="billing rv">
+    <div class="seg" id="billSeg"><button data-bill="m" class="act" data-en="Monthly" data-ar="شهري">Monthly</button><button data-bill="q" data-en="Quarterly" data-ar="كل ٣ شهور">Quarterly</button></div>
+    <span class="billing__save" data-en="Quarterly saves 10%" data-ar="ربع سنوي يوفّر ١٠٪">Quarterly saves 10%</span>
+  </div>
+  <div class="tiers">
+    <div class="tier glow rv">
+      <div class="tier__name">Essential</div><div class="tier__tag" data-en="Presence, kept consistent." data-ar="حضور ثابت.">Presence, kept consistent.</div>
+      <div class="tier__price"><span class="v" data-recur data-egp="9000">9,000</span><span class="cur">EGP</span></div>
+      <div class="tier__per" data-en="per month" data-ar="شهريًا">per month</div><div class="tier__save"></div>
+      <div class="stats"><div class="st"><div class="n" data-count="12">0</div><span class="l" data-en="Posts" data-ar="بوست">Posts</span></div><div class="st"><div class="n">0</div><span class="l" data-en="Reels" data-ar="ريلز">Reels</span></div><div class="st"><div class="n">1</div><span class="l" data-en="Platform" data-ar="منصة">Platform</span></div></div>
+      <ul><li data-en="Design + copy" data-ar="تصميم + كتابة">Design + copy</li><li class="no" data-en="No scheduling" data-ar="بدون جدولة">No scheduling</li><li class="no" data-en="No ads · no manager" data-ar="بدون إعلانات · بدون مدير">No ads · no manager</li></ul>
+      <a class="btn btn--ghost plan-cta" data-plan="Essential" target="_blank" rel="noopener"><span data-en="Choose" data-ar="اختر">Choose</span></a>
+    </div>
+    <div class="tier glow rv">
+      <div class="tier__name">Basic</div><div class="tier__tag" data-en="A steady, managed presence." data-ar="حضور مُدار ومنتظم.">A steady, managed presence.</div>
+      <div class="tier__price"><span class="v" data-recur data-egp="16499">16,499</span><span class="cur">EGP</span></div>
+      <div class="tier__per" data-en="per month" data-ar="شهريًا">per month</div><div class="tier__save"></div>
+      <div class="stats"><div class="st"><div class="n" data-count="15">0</div><span class="l" data-en="Posts" data-ar="بوست">Posts</span></div><div class="st"><div class="n" data-count="4">0</div><span class="l" data-en="Reels" data-ar="ريلز">Reels</span></div><div class="st"><div class="n" data-count="2">0</div><span class="l" data-en="Platforms" data-ar="منصات">Platforms</span></div></div>
+      <ul><li data-en="12–15 posts · 3–4 reels" data-ar="١٢–١٥ بوست · ٣–٤ ريلز">12–15 posts · 3–4 reels</li><li data-en="3–4 flash posts" data-ar="٣–٤ فلاش">3–4 flash posts</li><li data-en="Ads management" data-ar="إدارة إعلانات">Ads management</li></ul>
+      <a class="btn btn--ghost plan-cta" data-plan="Basic" target="_blank" rel="noopener"><span data-en="Choose" data-ar="اختر">Choose</span></a>
+    </div>
+    <div class="tier tier--feat glow rv">
+      <span class="tier__badge" data-en="Most Popular" data-ar="الأكثر طلبًا">Most Popular</span>
+      <div class="tier__name">Growth</div><div class="tier__tag" data-en="Built to gain ground." data-ar="مبنية لكسب الأرض.">Built to gain ground.</div>
+      <div class="tier__price"><span class="v" data-recur data-egp="19849">19,849</span><span class="cur">EGP</span></div>
+      <div class="tier__per" data-en="per month" data-ar="شهريًا">per month</div><div class="tier__save"></div>
+      <div class="stats"><div class="st"><div class="n" data-count="20">0</div><span class="l" data-en="Posts" data-ar="بوست">Posts</span></div><div class="st"><div class="n" data-count="7">0</div><span class="l" data-en="Reels" data-ar="ريلز">Reels</span></div><div class="st"><div class="n" data-count="3">0</div><span class="l" data-en="Platforms" data-ar="منصات">Platforms</span></div></div>
+      <ul><li data-en="18–20 posts · 5–7 reels" data-ar="١٨–٢٠ بوست · ٥–٧ ريلز">18–20 posts · 5–7 reels</li><li data-en="7–8 flash posts" data-ar="٧–٨ فلاش">7–8 flash posts</li><li data-en="Ads management" data-ar="إدارة إعلانات">Ads management</li></ul>
+      <a class="btn plan-cta" data-plan="Growth" target="_blank" rel="noopener"><span data-en="Choose" data-ar="اختر">Choose</span></a>
+    </div>
+    <div class="tier glow rv">
+      <div class="tier__name">Premium</div><div class="tier__tag" data-en="The full operating system." data-ar="نظام التشغيل الكامل.">The full operating system.</div>
+      <div class="tier__price"><span class="v" data-recur data-egp="25950">25,950</span><span class="cur">EGP</span></div>
+      <div class="tier__per" data-en="per month" data-ar="شهريًا">per month</div><div class="tier__save"></div>
+      <div class="stats"><div class="st"><div class="n" data-count="30">0</div><span class="l" data-en="Posts" data-ar="بوست">Posts</span></div><div class="st"><div class="n" data-count="12">0</div><span class="l" data-en="Reels" data-ar="ريلز">Reels</span></div><div class="st"><div class="n" data-count="3">0</div><span class="l" data-en="Platforms" data-ar="منصات">Platforms</span></div></div>
+      <ul><li data-en="25–30 posts · 9–12 reels" data-ar="٢٥–٣٠ بوست · ٩–١٢ ريلز">25–30 posts · 9–12 reels</li><li data-en="10–12 flash · ads mgmt" data-ar="١٠–١٢ فلاش · إعلانات">10–12 flash · ads mgmt</li><li data-en="Strategy + competitor analysis" data-ar="استراتيجية + تحليل منافسين">Strategy + competitor analysis</li></ul>
+      <a class="btn btn--ghost plan-cta" data-plan="Premium" target="_blank" rel="noopener"><span data-en="Choose" data-ar="اختر">Choose</span></a>
+    </div>
+  </div>
+
+  <!-- COMPARISON -->
+  <p class="sub rv" style="margin-top:30px" data-en="Compare what’s included — Growth is our most-picked plan." data-ar="قارن المُتضمَّن — «جروث» الأكثر اختيارًا.">Compare what’s included — Growth is our most-picked plan.</p>
+  <div class="cmp-wrap rv">
+    <div class="cmp-scroll">
+    <table class="cmp">
+      <thead><tr><th data-en="Feature" data-ar="الميزة">Feature</th><th>Essential</th><th>Basic</th><th>Growth</th><th>Premium</th></tr></thead>
+      <tbody>
+      <tr><td data-en="Posts / month" data-ar="بوست / شهر">Posts / month</td><td>12</td><td>12–15</td><td>18–20</td><td>25–30</td></tr>
+      <tr><td data-en="Reels" data-ar="ريلز">Reels</td><td class="no">—</td><td>3–4</td><td>5–7</td><td>9–12</td></tr>
+      <tr><td data-en="Platforms" data-ar="المنصات">Platforms</td><td>1</td><td>1–2</td><td>3</td><td>3</td></tr>
+      <tr><td data-en="Flash posts" data-ar="فلاش بوست">Flash posts</td><td class="no">—</td><td>3–4</td><td>7–8</td><td>10–12</td></tr>
+      <tr><td data-en="Ads management" data-ar="إدارة الإعلانات">Ads management</td><td class="no">—</td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></td></tr>
+      <tr><td data-en="Marketing strategy" data-ar="استراتيجية تسويق">Marketing strategy</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></td></tr>
+      <tr><td data-en="Competitor analysis" data-ar="تحليل المنافسين">Competitor analysis</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="cmp-fade" aria-hidden="true"></div>
+  </div>
+</div></section>
+
+<!-- SERVICES -->
+<section id="s3"><div class="inner">
+  <div class="rule rv"><span class="n">03</span><span class="ln"></span><span class="t" data-en="À-la-carte Services" data-ar="خدمات منفصلة">À-la-carte Services</span></div>
+  <h2 class="rv" data-en="Branding · Content · Performance · AI" data-ar="هوية · محتوى · أداء · ذكاء اصطناعي">Branding · Content · Performance · AI</h2>
+  <div class="svc-grid">
+    <div class="svc glow rv"><div><div class="svc__name" data-en="Full Brand Identity" data-ar="هوية بصرية كاملة">Full Brand Identity</div><div class="svc__desc" data-en="Logo, type, colour &amp; guidelines." data-ar="شعار، خطوط، ألوان ودليل.">Logo, type, colour &amp; guidelines.</div></div><span class="svc__price"><span class="v" data-egp="25000">25,000</span><span class="cur">EGP</span></span></div>
+    <div class="svc glow rv"><div><div class="svc__name" data-en="Logo Design Only" data-ar="تصميم شعار فقط">Logo Design Only</div><div class="svc__desc" data-en="A standalone, considered mark." data-ar="علامة مستقلة مدروسة.">A standalone, considered mark.</div></div><span class="svc__price"><span class="v" data-egp="4000">4,000</span><span class="cur">EGP</span></span></div>
+    <div class="svc glow rv"><div><div class="svc__name" data-en="Performance Strategy" data-ar="استراتيجية أداء">Performance Strategy</div><div class="svc__desc" data-en="6-month plan — strategy only." data-ar="خطة ٦ شهور — استراتيجية فقط.">6-month plan — strategy only.</div></div><span class="svc__price"><span class="v" data-egp="18000">18,000</span><span class="cur">EGP</span></span></div>
+    <div class="svc glow rv"><div><div class="svc__name" data-en="Media Buying · monthly" data-ar="شراء إعلانات · شهري">Media Buying · monthly</div><div class="svc__desc" data-en="Ad operations &amp; scaling." data-ar="تشغيل الإعلانات والتوسيع.">Ad operations &amp; scaling.</div></div><span class="svc__price"><span class="v" data-egp="5500">5,500</span><span class="cur">EGP</span></span></div>
+    <div class="svc glow rv"><div><div class="svc__name" data-en="AI Visuals · Starter" data-ar="فيجوالز AI · ستارتر">AI Visuals · Starter</div><div class="svc__desc" data-en="12 AI photos · no video." data-ar="١٢ صورة AI · بدون فيديو.">12 AI photos · no video.</div></div><span class="svc__price"><span class="v" data-egp="5999">5,999</span><span class="cur">EGP</span></span></div>
+    <div class="svc glow rv"><div><div class="svc__name" data-en="AI Visuals · Growth" data-ar="فيجوالز AI · جروث">AI Visuals · Growth</div><div class="svc__desc" data-en="20 AI photos + 1 video." data-ar="٢٠ صورة AI + فيديو.">20 AI photos + 1 video.</div></div><span class="svc__price"><span class="v" data-egp="13999">13,999</span><span class="cur">EGP</span></span></div>
+  </div>
+</div></section>
+
+<!-- VERTICAL TIMELINE -->
+<section id="s4"><div class="inner">
+  <div class="rule rv"><span class="n">04</span><span class="ln"></span><span class="t" data-en="Execution Flow" data-ar="مسار التنفيذ">Execution Flow</span></div>
+  <h2 class="rv" data-en="How it ships" data-ar="كيف يتم التنفيذ">How it ships</h2>
+  <p class="sub rv" data-en="Six phases — tap any phase to expand the details." data-ar="ست مراحل — اضغط أي مرحلة لعرض تفاصيلها.">Six phases — tap any phase to expand the details.</p>
+  <div class="tlx">
+    <div class="tlx__item open"><button class="tlx__head" aria-expanded="true"><span class="tlx__n">00</span><span class="tlx__main"><span class="tlx__phase"><span data-en="Phase 00 · Onboarding" data-ar="مرحلة ٠٠ · البداية">Phase 00 · Onboarding</span> <span class="tlx__when" data-en="· Days 1–3" data-ar="· يوم ١–٣">· Days 1–3</span></span><span class="tlx__title" data-en="Kickoff &amp; access" data-ar="انطلاق ووصول">Kickoff &amp; access</span></span><span class="tlx__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="tlx__body"><div class="tlx__body-in"><p data-en="Kickoff call, brand questionnaire, asset &amp; channel handover." data-ar="مكالمة بداية، استبيان البراند، تسليم الأصول والحسابات.">Kickoff call, brand questionnaire, asset &amp; channel handover.</p><ul><li data-en="Kickoff &amp; goals alignment" data-ar="مكالمة بداية ومحاذاة الأهداف">Kickoff &amp; goals alignment</li><li data-en="Access to channels &amp; assets" data-ar="الوصول للحسابات والأصول">Access to channels &amp; assets</li><li data-en="Success metrics defined" data-ar="تحديد مؤشرات النجاح">Success metrics defined</li></ul></div></div></div>
+    <div class="tlx__item"><button class="tlx__head" aria-expanded="false"><span class="tlx__n">01</span><span class="tlx__main"><span class="tlx__phase"><span data-en="Phase 01 · Diagnose" data-ar="مرحلة ٠١ · التشخيص">Phase 01 · Diagnose</span> <span class="tlx__when" data-en="· Week 1–2" data-ar="· أسبوع ١–٢">· Week 1–2</span></span><span class="tlx__title" data-en="Audit &amp; mapping" data-ar="تدقيق ورسم">Audit &amp; mapping</span></span><span class="tlx__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="tlx__body"><div class="tlx__body-in"><p data-en="Brand audit, market &amp; competitor mapping, audience research." data-ar="تدقيق البراند، رسم السوق والمنافسين، بحث الجمهور.">Brand audit, market &amp; competitor mapping, audience research.</p><ul><li data-en="Brand &amp; channel audit" data-ar="تدقيق البراند والقنوات">Brand &amp; channel audit</li><li data-en="Competitor &amp; market map" data-ar="خريطة المنافسين والسوق">Competitor &amp; market map</li><li data-en="Gap report delivered" data-ar="تسليم تقرير الفجوات">Gap report delivered</li></ul></div></div></div>
+    <div class="tlx__item"><button class="tlx__head" aria-expanded="false"><span class="tlx__n">02</span><span class="tlx__main"><span class="tlx__phase"><span data-en="Phase 02 · Structure" data-ar="مرحلة ٠٢ · الهيكلة">Phase 02 · Structure</span> <span class="tlx__when" data-en="· Week 2–4" data-ar="· أسبوع ٢–٤">· Week 2–4</span></span><span class="tlx__title" data-en="System &amp; strategy" data-ar="نظام واستراتيجية">System &amp; strategy</span></span><span class="tlx__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="tlx__body"><div class="tlx__body-in"><p data-en="Brand system, content pillars, growth model &amp; 90-day playbook." data-ar="نظام البراند، ركائز المحتوى، نموذج النمو وخطة ٩٠ يومًا.">Brand system, content pillars, growth model &amp; 90-day playbook.</p><ul><li data-en="Brand &amp; content system" data-ar="نظام البراند والمحتوى">Brand &amp; content system</li><li data-en="Growth model" data-ar="نموذج النمو">Growth model</li><li data-en="90-day playbook" data-ar="خطة ٩٠ يومًا">90-day playbook</li></ul></div></div></div>
+    <div class="tlx__item"><button class="tlx__head" aria-expanded="false"><span class="tlx__n">03</span><span class="tlx__main"><span class="tlx__phase"><span data-en="Phase 03 · Produce" data-ar="مرحلة ٠٣ · الإنتاج">Phase 03 · Produce</span> <span class="tlx__when" data-en="· Week 3–5" data-ar="· أسبوع ٣–٥">· Week 3–5</span></span><span class="tlx__title" data-en="Content &amp; creative" data-ar="محتوى وإبداع">Content &amp; creative</span></span><span class="tlx__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="tlx__body"><div class="tlx__body-in"><p data-en="Calendar, design &amp; copy, shoots, photo sessions, AI visuals." data-ar="تقويم، تصميم وكتابة، تصوير، جلسات، فيجوالز AI.">Calendar, design &amp; copy, shoots, photo sessions, AI visuals.</p><ul><li data-en="Content calendar" data-ar="تقويم المحتوى">Content calendar</li><li data-en="Reel/video shoots" data-ar="تصوير ريلز/فيديو">Reel/video shoots</li><li data-en="Design, copy &amp; AI visuals" data-ar="تصميم وكتابة وفيجوالز AI">Design, copy &amp; AI visuals</li></ul></div></div></div>
+    <div class="tlx__item"><button class="tlx__head" aria-expanded="false"><span class="tlx__n">04</span><span class="tlx__main"><span class="tlx__phase"><span data-en="Phase 04 · Execute" data-ar="مرحلة ٠٤ · الإطلاق">Phase 04 · Execute</span> <span class="tlx__when" data-en="· Week 5–6" data-ar="· أسبوع ٥–٦">· Week 5–6</span></span><span class="tlx__title" data-en="Launch &amp; go live" data-ar="إطلاق وتشغيل">Launch &amp; go live</span></span><span class="tlx__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="tlx__body"><div class="tlx__body-in"><p data-en="Publishing live, scheduling set, ad campaigns launch." data-ar="بدء النشر، ضبط الجدولة، إطلاق الحملات.">Publishing live, scheduling set, ad campaigns launch.</p><ul><li data-en="Go-live &amp; scheduling" data-ar="التشغيل والجدولة">Go-live &amp; scheduling</li><li data-en="Paid campaigns launch" data-ar="إطلاق الحملات المدفوعة">Paid campaigns launch</li><li data-en="Tracking set up" data-ar="إعداد التتبّع">Tracking set up</li></ul></div></div></div>
+    <div class="tlx__item tlx__item--feat"><button class="tlx__head" aria-expanded="false"><span class="tlx__n">05</span><span class="tlx__main"><span class="tlx__phase"><span data-en="Phase 05 · Optimise" data-ar="مرحلة ٠٥ · التحسين">Phase 05 · Optimise</span> <span class="tlx__when" data-en="· Monthly · ongoing" data-ar="· شهري · مستمر">· Monthly · ongoing</span></span><span class="tlx__title" data-en="Measure &amp; scale" data-ar="قياس وتوسيع">Measure &amp; scale</span></span><span class="tlx__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="tlx__body"><div class="tlx__body-in"><p data-en="Reporting, measurement vs KPIs, iteration — double down on what works." data-ar="تقارير، قياس مقابل المؤشرات، تحسين — نضاعف ما ينجح.">Reporting, measurement vs KPIs, iteration — double down on what works.</p><ul><li data-en="Monthly reporting" data-ar="تقارير شهرية">Monthly reporting</li><li data-en="KPI review &amp; iteration" data-ar="مراجعة المؤشرات والتحسين">KPI review &amp; iteration</li><li data-en="Scale what works" data-ar="توسيع ما ينجح">Scale what works</li></ul></div></div></div>
+  </div></div>
+</section>
+
+<!-- BRANDING PROCESS -->
+<section id="s5"><div class="inner">
+  <div class="rule rv"><span class="n">05</span><span class="ln"></span><span class="t" data-en="Branding Process" data-ar="مسار الهوية">Branding Process</span></div>
+  <h2 class="rv" data-en="How we build an identity" data-ar="كيف نبني الهوية">How we build an identity</h2>
+  <div class="steps">
+    <div class="step glow rv"><div class="step__n">01</div><div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/></svg></div><h4 data-en="Discovery" data-ar="اكتشاف">Discovery</h4><p data-en="Read the company &amp; audience. Define the brief." data-ar="قراءة الشركة والجمهور وتحديد البريف.">Read the company &amp; audience.</p></div>
+    <div class="step glow rv"><div class="step__n">02</div><div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21l3-1 11-11-2-2L4 18z"/><path d="M14 7l3 3"/></svg></div><h4 data-en="Sketches" data-ar="اسكتشات">Sketches</h4><p data-en="Hand sketches &amp; 3 directions." data-ar="اسكتشات + ٣ اتجاهات.">Hand sketches &amp; 3 directions.</p></div>
+    <div class="step glow rv"><div class="step__n">03</div><div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="12" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="13" r="2.5"/><path d="M12 22a8 8 0 010-16"/></svg></div><h4 data-en="Moodboard" data-ar="مود بورد">Moodboard</h4><p data-en="Colour, type &amp; visual world." data-ar="ألوان وخطوط وعالم بصري.">Colour, type &amp; visual world.</p></div>
+    <div class="step glow rv"><div class="step__n">04</div><div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><h4 data-en="Build the system" data-ar="بناء النظام">Build the system</h4><p data-en="Logo, system &amp; guidelines." data-ar="شعار ونظام ودليل.">Logo, system &amp; guidelines.</p></div>
+    <div class="step glow rv"><div class="step__n">05</div><div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg></div><h4 data-en="Delivery" data-ar="التسليم">Delivery</h4><p data-en="Brand book + all files." data-ar="دليل البراند وكل الملفات.">Brand book + all files.</p></div>
+  </div>
+</div></section>
+
+<!-- PHOTOGRAPHY PROCESS -->
+<section id="s6"><div class="inner">
+  <div class="rule rv"><span class="n">06</span><span class="ln"></span><span class="t" data-en="Photography Process" data-ar="مسار التصوير">Photography Process</span></div>
+  <h2 class="rv" data-en="From brief to final frame" data-ar="من البريف للّقطة النهائية">From brief to final frame</h2>
+  <div class="steps">
+    <div class="step glow rv"><div class="step__n">01</div><div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div><h4 data-en="Brief &amp; concept" data-ar="بريف وكونسبت">Brief &amp; concept</h4><p data-en="Goals, references &amp; direction." data-ar="أهداف ومراجع واتجاه.">Goals, references &amp; direction.</p></div>
+    <div class="step glow rv"><div class="step__n">02</div><div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></div><h4 data-en="Pre-production" data-ar="ما قبل التصوير">Pre-production</h4><p data-en="Shot list, styling &amp; location." data-ar="قائمة لقطات، تنسيق وموقع.">Shot list, styling &amp; location.</p></div>
+    <div class="step glow rv"><div class="step__n">03</div><div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div><h4 data-en="Shoot day" data-ar="يوم التصوير">Shoot day</h4><p data-en="On-set capture — photos &amp; reels." data-ar="تصوير — صور وريلز.">On-set capture — photos &amp; reels.</p></div>
+    <div class="step glow rv"><div class="step__n">04</div><div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><h4 data-en="Select &amp; retouch" data-ar="اختيار ومعالجة">Select &amp; retouch</h4><p data-en="Best frames, graded &amp; edited." data-ar="أفضل اللقطات، تدرّج وتعديل.">Best frames, graded &amp; edited.</p></div>
+    <div class="step glow rv"><div class="step__n">05</div><div class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/></svg></div><h4 data-en="Delivery" data-ar="التسليم">Delivery</h4><p data-en="Final set — print &amp; web ready." data-ar="مجموعة نهائية — للطباعة والويب.">Final set — print &amp; web ready.</p></div>
+  </div>
+</div></section>
+
+<!-- PORTFOLIO — fanned, draggable, openable pile -->
+<section id="work"><div class="inner">
+  <div class="rule rv"><span class="n">07</span><span class="ln"></span><span class="t" data-en="Selected Work" data-ar="مختارات الأعمال">Selected Work</span></div>
+  <p class="gsub rv" data-en="A journey through our work" data-ar="رحلة في أعمالنا">A journey through our work</p>
+  <h2 class="rv" style="text-align:center"><span data-en="Welcome to our " data-ar="أهلًا بك في ">Welcome to our </span><span class="red" data-en="Stories" data-ar="قصصنا">Stories</span></h2>
+  <div class="gallery" id="gallery">
+    <div class="gallery__pile" id="gpile">
+      <div class="gphoto" style="--i:0" data-x="-330" data-y="16" data-r="-5" data-href="https://kareemabdelaziz.myportfolio.com/drax"><div class="gphoto__inner"><img src="assets/work/cf-04.webp" alt="Drax — Clean Cut, Wild Soul" loading="lazy" draggable="false"><span class="gphoto__open" aria-label="Open project">↗</span><span class="gphoto__cap">Drax</span></div></div>
+      <div class="gphoto" style="--i:1" data-x="-220" data-y="40" data-r="4" data-href="https://kareemabdelaziz.myportfolio.com/fork-agency-branding"><div class="gphoto__inner"><img src="assets/work/cf-03.webp" alt="Fork — Marketing Agency" loading="lazy" draggable="false"><span class="gphoto__open" aria-label="Open project">↗</span><span class="gphoto__cap">Fork</span></div></div>
+      <div class="gphoto" style="--i:2" data-x="-110" data-y="8" data-r="-2" data-href="https://kareemabdelaziz.myportfolio.com/nano-shield"><div class="gphoto__inner"><img src="assets/work/cf-09.webp" alt="Nano Shield — Ceramic Eco Films" loading="lazy" draggable="false"><span class="gphoto__open" aria-label="Open project">↗</span><span class="gphoto__cap">Nano Shield</span></div></div>
+      <div class="gphoto" style="--i:3" data-x="0" data-y="34" data-r="2" data-href="https://kareemabdelaziz.myportfolio.com/areeza-cosmetics"><div class="gphoto__inner"><img src="assets/work/cf-21.webp" alt="Areeza — Your glow starts within" loading="lazy" draggable="false"><span class="gphoto__open" aria-label="Open project">↗</span><span class="gphoto__cap">Areeza</span></div></div>
+      <div class="gphoto" style="--i:4" data-x="110" data-y="14" data-r="-3" data-href="https://kareemabdelaziz.myportfolio.com/meow-shop-social-media-vol"><div class="gphoto__inner"><img src="assets/work/cf-06.webp" alt="Meow Shop — Food &amp; Accessories" loading="lazy" draggable="false"><span class="gphoto__open" aria-label="Open project">↗</span><span class="gphoto__cap">Meow Shop</span></div></div>
+      <div class="gphoto" style="--i:5" data-x="220" data-y="44" data-r="5" data-href="https://kareemabdelaziz.myportfolio.com/vlora"><div class="gphoto__inner"><img src="assets/work/cf-05.webp" alt="Vlora — sustainable tech growth" loading="lazy" draggable="false"><span class="gphoto__open" aria-label="Open project">↗</span><span class="gphoto__cap">Vlora</span></div></div>
+      <div class="gphoto" style="--i:6" data-x="330" data-y="22" data-r="-3" data-href="https://kareemabdelaziz.myportfolio.com/linepack-branding"><div class="gphoto__inner"><img src="assets/work/cf-02.webp" alt="Linepack — packaging branding" loading="lazy" draggable="false"><span class="gphoto__open" aria-label="Open project">↗</span><span class="gphoto__cap">Linepack</span></div></div>
+    </div>
+  </div>
+  <div class="gallery__tools rv">
+    <button id="gSpread" class="btn btn--ghost"><span data-en="Spread / stack" data-ar="افرد / اجمع">Spread / stack</span></button>
+    <span class="gallery__hint" data-en="Drag to explore · tap ↗ to open · use Spread to fan the cards" data-ar="اسحب للاستكشاف · اضغط ↗ للفتح · استخدم «افرد» لفرد الكروت">Drag to explore · tap ↗ to open · use Spread to fan the cards</span>
+  </div>
+  <div class="proj3__all rv"><a class="btn" href="https://kareemabdelaziz.myportfolio.com" target="_blank" rel="noopener"><span data-en="View all projects →" data-ar="شوف كل المشاريع ←">View all projects →</span></a></div>
+</div></section>
+
+<!-- PAYMENTS -->
+<section id="pay"><div class="inner">
+  <div class="rule rv"><span class="n">08</span><span class="ln"></span><span class="t" data-en="Payment Methods" data-ar="وسائل الدفع">Payment Methods</span></div>
+  <h2 class="rv" data-en="Easy ways to pay" data-ar="طرق دفع سهلة">Easy ways to pay</h2>
+  <p class="sub rv" data-en="50% to start, 50% on delivery for projects · monthly &amp; quarterly retainers billed up front." data-ar="٥٠٪ مقدّم و٥٠٪ عند التسليم للمشاريع · الباقات الشهرية والربع سنوية تُدفع مقدّمًا.">50% to start, 50% on delivery for projects · monthly &amp; quarterly retainers billed up front.</p>
+  <div class="pays">
+    <span class="pay glow rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg><b>InstaPay</b></span>
+    <span class="pay glow rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M11 18h2"/></svg><b>Vodafone Cash</b></span>
+    <span class="pay glow rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><b>RedotPay</b></span>
+    <span class="pay glow rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg><b>Western Union</b></span>
+    <span class="pay glow rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg><b><span data-en="Bank Transfer" data-ar="تحويل بنكي">Bank Transfer</span></b></span>
+  </div>
+</div></section>
+
+<!-- BOOK -->
+<section id="book"><div class="inner">
+  <div class="rule rv"><span class="n">09</span><span class="ln"></span><span class="t" data-en="Book a Brief Call" data-ar="احجز بريف كول">Book a Brief Call</span></div>
+  <h2 class="rv" data-en="Pick a day &amp; time" data-ar="اختر يوم ووقت">Pick a day &amp; time</h2>
+  <p class="sub rv" data-en="A free 20-minute call. Choose a slot, add a quick brief — we confirm on WhatsApp." data-ar="مكالمة مجانية ٢٠ دقيقة. اختر موعدًا، أضف بريف سريع — والتأكيد على واتساب.">A free 20-minute call. Choose a slot, add a quick brief — we confirm on WhatsApp.</p>
+  <div class="cal-wrap rv">
+    <div class="cal">
+      <div class="cal__head"><span class="cal__title" id="calTitle">—</span><div class="cal__nav"><button id="calPrev" aria-label="prev">‹</button><button id="calNext" aria-label="next">›</button></div></div>
+      <div class="cal__grid" id="calGrid"></div>
+    </div>
+    <div class="slots">
+      <h4 data-en="Available times" data-ar="المواعيد المتاحة">Available times</h4>
+      <div class="picked" id="calPicked"></div>
+      <div class="slot-grid" id="slotGrid"></div>
+      <form class="bform" id="bform" onsubmit="return false">
+        <div><label data-en="Website or social link" data-ar="رابط الموقع أو السوشيال">Website or social link</label><input id="fLink" type="text" placeholder="https://"></div>
+        <div><label data-en="Quick brief about your business" data-ar="نبذة سريعة عن نشاطك">Quick brief about your business</label><textarea id="fBrief" rows="2"></textarea></div>
+        <div><label data-en="Your biggest challenge right now" data-ar="أكبر تحدٍّ تواجهه حاليًا">Your biggest challenge right now</label><textarea id="fProblem" rows="2"></textarea></div>
+      </form>
+      <a id="calConfirm" class="btn" disabled href="#"><span data-en="Confirm on WhatsApp →" data-ar="أكّد على واتساب ←">Confirm on WhatsApp →</span></a>
+    </div>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="cta" id="s9"><div class="inner">
+  <img class="cta__mark rv" src="assets/logo-mark.png" alt="Chamelo">
+  <h2 class="rv" data-en="Ready to hunt right?" data-ar="جاهز تصطاد صح؟">Ready to hunt right?</h2>
+  <p class="rv" data-en="Pick a package — or tell us the goal and we'll scope it." data-ar="اختر باقة — أو قول لنا الهدف ونحدّده لك.">Pick a package — or tell us the goal and we'll scope it.</p>
+  <div class="cta__row rv"><a href="https://wa.me/201013239544?text=Hi%20Chamelo" target="_blank" rel="noopener" class="btn"><span data-en="WhatsApp Us →" data-ar="واتساب ←">WhatsApp Us →</span></a><a href="#book" class="btn btn--ghost"><span data-en="Book a Call" data-ar="احجز مكالمة">Book a Call</span></a></div>
+  <p class="note rv" data-en="Offer valid for 7 days from issue date." data-ar="العرض صالح لمدة ٧ أيام من تاريخ الإصدار.">Offer valid for 7 days from issue date.</p>
+  <div class="foot rv">Chamelo® · شاميلو · +20 101 323 9544 · chameloagency@gmail.com</div>
+</div></section>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var root=document.documentElement, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var SUN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4.5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3M4 4l2 2M18 18l2 2M20 4l-2 2M6 18l-2 2"/></svg>';
+  var MOON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>';
+  var LS=function(k,v){try{return v===undefined?localStorage.getItem(k):localStorage.setItem(k,v)}catch(e){return null}};
+
+  /* move payment methods to the very end (after the CTA), footer stays last */
+  (function(){var pay=document.getElementById('pay'),cta=document.getElementById('s9');if(pay&&cta){cta.parentNode.insertBefore(pay,cta.nextSibling);var f=cta.querySelector('.foot');if(f&&pay.querySelector('.inner'))pay.querySelector('.inner').appendChild(f);}})();
+
+  /* THEME */
+  function applyTheme(t){root.setAttribute('data-theme',t);LS('cp-theme',t);var b=document.getElementById('themeBtn');if(b)b.innerHTML=t==='dark'?SUN:MOON;}
+  applyTheme(LS('cp-theme')||'dark');
+  document.getElementById('themeBtn').onclick=function(){applyTheme(root.getAttribute('data-theme')==='dark'?'light':'dark');};
+
+  /* CURRENCY + BILLING */
+  var RATES={egp:1,sar:1/13.3,usd:1/50}, UNIT={egp:'EGP',sar:'SAR',usd:'USD'};
+  var cur=LS('cp-cur')||'egp', bill=LS('cp-bill')||'m';
+  function fmt(n,c){ if(c==='usd') return Math.round(n).toLocaleString('en-US'); return Math.round(n).toLocaleString('en-US'); }
+  function renderPrices(){
+    document.querySelectorAll('.v[data-egp]').forEach(function(el){
+      var base=+el.getAttribute('data-egp'); var recur=el.hasAttribute('data-recur');
+      var mult=(recur && bill==='q')?3*0.9:1;
+      el.textContent=fmt(base*mult*RATES[cur],cur);
+    });
+    document.querySelectorAll('.cur').forEach(function(el){el.textContent=UNIT[cur];});
+    var perM=root.getAttribute('lang')==='ar'?'شهريًا':'per month', perQ=root.getAttribute('lang')==='ar'?'كل ٣ شهور':'per 3 months';
+    document.querySelectorAll('.tier__per').forEach(function(el){el.textContent=bill==='q'?perQ:perM;});
+    document.querySelectorAll('.tier').forEach(function(t){
+      var s=t.querySelector('.tier__save'); if(!s) return;
+      if(bill==='q'){ var v=t.querySelector('.v[data-recur]'); if(v){ var base=+v.getAttribute('data-egp'); var save=Math.round(base*3*0.1*RATES[cur]); s.textContent=(root.getAttribute('lang')==='ar'?'وفّرت ':'You save ')+fmt(save,cur)+' '+UNIT[cur]; s.style.visibility='visible'; } }
+      else { s.textContent=''; s.style.visibility='hidden'; }
+    });
+    document.querySelectorAll('#curSeg button').forEach(function(b){b.classList.toggle('act',b.dataset.cur===cur);});
+    document.querySelectorAll('#billSeg button').forEach(function(b){b.classList.toggle('act',b.dataset.bill===bill);});
+  }
+  document.getElementById('curSeg').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;cur=b.dataset.cur;LS('cp-cur',cur);renderPrices();});
+  document.getElementById('billSeg').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;bill=b.dataset.bill;LS('cp-bill',bill);renderPrices();});
+
+  /* PLAN CTA links */
+  function updatePlanLinks(){ document.querySelectorAll('.plan-cta').forEach(function(a){ var p=a.dataset.plan; var b=bill==='q'?' (quarterly)':' (monthly)'; a.href='https://wa.me/201013239544?text='+encodeURIComponent('Interested in the SMM '+p+' plan'+b); }); }
+
+  /* LANGUAGE */
+  function applyLang(l){
+    root.setAttribute('lang',l);root.setAttribute('dir',l==='ar'?'rtl':'ltr');
+    document.querySelectorAll('[data-en]').forEach(function(el){var v=l==='ar'?el.getAttribute('data-ar'):el.getAttribute('data-en');if(v!=null)el.textContent=v;});
+    var lb=document.getElementById('langBtn');if(lb)lb.textContent=l==='ar'?'EN':'عربي';
+    LS('cp-lang',l); renderPrices(); buildCalendar();
+    if(window.__tlxMeasure)setTimeout(window.__tlxMeasure,30);
+    if(window.ScrollTrigger)try{ScrollTrigger.refresh()}catch(e){}
+  }
+  document.getElementById('langBtn').onclick=function(){applyLang(root.getAttribute('lang')==='ar'?'en':'ar');};
+
+  /* PROGRESS */
+  var prog=document.getElementById('prog');
+  addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-innerHeight;prog.style.transform='scaleX('+(h>0?scrollY/h:0)+')';},{passive:true});
+
+  /* NAV active */
+  var navLinks=[].slice.call(document.querySelectorAll('.navm a'));
+  var secMap=navLinks.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  var navIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var i=secMap.indexOf(e.target);navLinks.forEach(function(a,k){a.classList.toggle('act',k===i);});}});},{threshold:.4});
+  secMap.forEach(function(s){if(s)navIO.observe(s);});
+
+  /* OFFER COUNTDOWN (7 days from first visit) */
+  var issued=+(LS('cp-issued')||0); if(!issued){issued=Date.now();LS('cp-issued',issued);}
+  var expiry=issued+7*24*3600*1000;
+  function tickOffer(){
+    var d=expiry-Date.now(), el=document.getElementById('offerC');
+    if(!el)return;
+    if(d<=0){ el.textContent=root.getAttribute('lang')==='ar'?'انتهى':'expired'; return; }
+    var dd=Math.floor(d/86400000),hh=Math.floor(d%86400000/3600000),mm=Math.floor(d%3600000/60000),ss=Math.floor(d%60000/1000);
+    el.textContent=dd+'d '+(hh<10?'0':'')+hh+'h '+(mm<10?'0':'')+mm+'m '+(ss<10?'0':'')+ss+'s';
+  }
+  tickOffer(); setInterval(tickOffer,1000);
+  document.getElementById('offerX').onclick=function(){document.getElementById('offerBar').style.display='none';};
+
+  /* CALENDAR + FORM */
+  var calRef=new Date();calRef.setDate(1);var selDate=null,selTime=null;
+  var SLOTS=['11:00','13:00','15:00','17:00','19:00','21:00'];
+  function pad(n){return(n<10?'0':'')+n;}
+  function buildCalendar(){
+    var grid=document.getElementById('calGrid');if(!grid)return;var lang=root.getAttribute('lang');
+    var mEn=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var mAr=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+    var dEn=['Su','Mo','Tu','We','Th','Fr','Sa'],dAr=['أحد','إثن','ثلا','أرب','خمي','جمع','سبت'];
+    var y=calRef.getFullYear(),m=calRef.getMonth();
+    document.getElementById('calTitle').textContent=(lang==='ar'?mAr[m]:mEn[m])+' '+y;
+    var first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate(),today=new Date();today.setHours(0,0,0,0);
+    var h='';(lang==='ar'?dAr:dEn).forEach(function(x){h+='<div class="cal__dow">'+x+'</div>';});
+    for(var i=0;i<first;i++)h+='<div></div>';
+    for(var dnum=1;dnum<=days;dnum++){var dt=new Date(y,m,dnum);var dis=dt<today||dt.getDay()===5;var iso=y+'-'+pad(m+1)+'-'+pad(dnum);h+='<div class="cal__day'+(dis?' is-dis':'')+(selDate===iso?' is-sel':'')+'" '+(dis?'':'data-d="'+iso+'"')+'>'+dnum+'</div>';}
+    grid.innerHTML=h;
+    grid.querySelectorAll('.cal__day[data-d]').forEach(function(c){c.onclick=function(){selDate=c.dataset.d;selTime=null;buildCalendar();buildSlots();upd();};});
+    buildSlots();upd();
+  }
+  function buildSlots(){var sg=document.getElementById('slotGrid');if(!sg)return;sg.innerHTML=SLOTS.map(function(t){return '<div class="slot'+(selTime===t?' is-sel':'')+(selDate?'':' is-dis')+'" '+(selDate?'data-t="'+t+'"':'')+'>'+t+'</div>';}).join('');sg.querySelectorAll('.slot[data-t]').forEach(function(s){s.onclick=function(){selTime=s.dataset.t;buildSlots();upd();};});}
+  function upd(){
+    var p=document.getElementById('calPicked'),c=document.getElementById('calConfirm'),lang=root.getAttribute('lang');
+    if(selDate&&selTime){
+      p.textContent=(lang==='ar'?'مختار: ':'Selected: ')+selDate+' · '+selTime;c.removeAttribute('disabled');
+    }else{p.textContent=(lang==='ar'?'اختر يوم ووقت':'Choose a day & time');c.setAttribute('disabled','');}
+  }
+  document.getElementById('calConfirm').addEventListener('click',function(e){
+    if(this.hasAttribute('disabled')){e.preventDefault();return;}
+    var lang=root.getAttribute('lang');
+    var link=document.getElementById('fLink').value.trim(),brief=document.getElementById('fBrief').value.trim(),prob=document.getElementById('fProblem').value.trim();
+    var msg=(lang==='ar'?'مرحبًا Chamelo، حابب أحجز بريف كول يوم ':'Hi Chamelo, I\'d like to book a brief call on ')+selDate+(lang==='ar'?' الساعة ':' at ')+selTime;
+    if(link)msg+=(lang==='ar'?'\nالموقع/السوشيال: ':'\nLink: ')+link;
+    if(brief)msg+=(lang==='ar'?'\nنبذة: ':'\nBrief: ')+brief;
+    if(prob)msg+=(lang==='ar'?'\nالتحدي: ':'\nChallenge: ')+prob;
+    this.href='https://wa.me/201013239544?text='+encodeURIComponent(msg);
+  });
+  document.getElementById('calPrev').onclick=function(){calRef.setMonth(calRef.getMonth()-1);buildCalendar();};
+  document.getElementById('calNext').onclick=function(){calRef.setMonth(calRef.getMonth()+1);buildCalendar();};
+
+  /* TIMELINE accordion (expand / collapse) */
+  window.__tlxMeasure=function(){document.querySelectorAll('.tlx__item.open .tlx__body').forEach(function(b){b.style.maxHeight=b.scrollHeight+'px';});};
+  (function(){
+    [].slice.call(document.querySelectorAll('.tlx__item')).forEach(function(it){
+      var head=it.querySelector('.tlx__head'),body=it.querySelector('.tlx__body');
+      if(!head||!body)return;
+      if(it.classList.contains('open'))body.style.maxHeight=body.scrollHeight+'px';
+      head.addEventListener('click',function(){
+        var open=it.classList.toggle('open');
+        head.setAttribute('aria-expanded',open?'true':'false');
+        body.style.maxHeight=open?(body.scrollHeight+'px'):'0px';
+      });
+    });
+    addEventListener('resize',function(){if(window.__tlxMeasure)window.__tlxMeasure();});
+  })();
+
+  /* COMPARISON — hidden scrollbar, drag-to-scroll (mouse) + edge-fade hint */
+  (function(){
+    var wrap=document.querySelector('.cmp-wrap'); if(!wrap)return;
+    var sc=wrap.querySelector('.cmp-scroll'); if(!sc)return;
+    function chk(){wrap.classList.toggle('is-scrollable',sc.scrollWidth>sc.clientWidth+4);}
+    chk(); addEventListener('resize',chk); sc.addEventListener('scroll',chk,{passive:true});
+    var down=false,sx=0,sl=0;
+    sc.addEventListener('pointerdown',function(e){down=true;sx=e.clientX;sl=sc.scrollLeft;try{sc.setPointerCapture(e.pointerId)}catch(x){}sc.style.cursor='grabbing';});
+    sc.addEventListener('pointermove',function(e){if(!down)return;sc.scrollLeft=sl-(e.clientX-sx);});
+    function up(){down=false;sc.style.cursor='';}
+    sc.addEventListener('pointerup',up);sc.addEventListener('pointercancel',up);sc.addEventListener('pointerleave',up);
+  })();
+
+  /* PROJECT GALLERY — fanned, draggable; the CARD grows on hover/drag; slow staggered fan-in */
+  (function(){
+    var g=document.getElementById('gallery'), pile=document.getElementById('gpile'); if(!g||!pile)return;
+    var cards=[].slice.call(pile.querySelectorAll('.gphoto')), n=cards.length;
+    var mob=function(){return matchMedia('(max-width:760px)').matches;};
+    function z(i){return g.classList.contains('spread')?(10+i):(n-i);}
+    function base(i){ if(g.classList.contains('spread')){ if(mob())return{x:0,y:(i-(n-1)/2)*150,r:0}; return{x:+cards[i].dataset.x,y:+cards[i].dataset.y,r:+cards[i].dataset.r}; } return{x:i*5,y:i*5,r:0}; }
+    function layout(){ cards.forEach(function(c,i){ var b=base(i); c._b=b; if(!c._drag){ c.style.transform='translate(-50%,-50%) translate('+b.x+'px,'+b.y+'px) rotate('+b.r+'deg)'; } c.style.zIndex=z(i); }); g.style.height=(g.classList.contains('spread')&&mob())?(n*150+140)+'px':''; }
+    var settleT;
+    function spread(){ if(g.classList.contains('spread'))return; g.classList.remove('settled'); g.classList.add('spread'); layout(); clearTimeout(settleT); settleT=setTimeout(function(){g.classList.add('settled');},1700); }
+    layout();
+    if(!mob()){
+      var gio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){spread();gio.disconnect();}});},{threshold:.25});
+      gio.observe(g);
+      setTimeout(spread,2400); /* fallback if observer never fires */
+    }
+    var sp=document.getElementById('gSpread'); if(sp)sp.onclick=function(){g.classList.add('settled');g.classList.toggle('spread');layout();};
+    addEventListener('resize',layout);
+    cards.forEach(function(c){
+      var sx,sy,down=false,moved=false;
+      c.addEventListener('pointerenter',function(){if(down||c._drag)return;c.style.zIndex=9000;});
+      c.addEventListener('pointerleave',function(){if(down||c._drag)return;c.style.zIndex=z(cards.indexOf(c));});
+      c.addEventListener('pointerdown',function(e){if(e.target.classList.contains('gphoto__open'))return;down=true;moved=false;c._drag=true;sx=e.clientX;sy=e.clientY;c.style.transition='none';c.style.zIndex=9999;c.classList.add('dragging');try{c.setPointerCapture(e.pointerId)}catch(x){}});
+      c.addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-sx,dy=e.clientY-sy;if(Math.abs(dx)>4||Math.abs(dy)>4)moved=true;var b=c._b||base(cards.indexOf(c));c.style.transform='translate(-50%,-50%) translate('+(b.x+dx)+'px,'+(b.y+dy)+'px) rotate('+b.r+'deg)';});
+      function up(){if(!down)return;down=false;c._drag=false;c.classList.remove('dragging');c.style.transition='';layout();if(!moved){if(mob()&&!g.classList.contains('spread')){var i=cards.indexOf(c);cards.splice(i,1);cards.push(c);layout();}else{var h=c.dataset.href;if(h)window.open(h,'_blank','noopener');}}}
+      c.addEventListener('pointerup',up);c.addEventListener('pointercancel',up);
+      var ob=c.querySelector('.gphoto__open'); if(ob)ob.addEventListener('click',function(e){e.stopPropagation();var h=c.dataset.href;if(h)window.open(h,'_blank','noopener');});
+    });
+  })();
+
+  /* INIT lang/prices */
+  applyLang(LS('cp-lang')||'en'); updatePlanLinks();
+  document.getElementById('curSeg').addEventListener('click',updatePlanLinks);
+  document.getElementById('billSeg').addEventListener('click',updatePlanLinks);
+
+  /* ANIMATIONS */
+  function safety(){document.querySelectorAll('.rv').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*1.15&&r.bottom>0&&+getComputedStyle(el).opacity<0.05){el.style.opacity=1;el.style.transform='none';}});document.querySelectorAll('[data-count]').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*1.15&&r.bottom>0&&el.textContent.trim()==='0')el.textContent=el.dataset.count;});}
+  if(reduce||typeof gsap==='undefined'){
+    document.querySelectorAll('.rv').forEach(function(el){el.style.opacity=1;el.style.transform='none';});
+    document.querySelectorAll('[data-count]').forEach(function(el){el.textContent=el.dataset.count;});
+  }else{
+    gsap.registerPlugin(ScrollTrigger);
+    document.querySelectorAll('section').forEach(function(s){var its=s.querySelectorAll('.rv');if(its.length)gsap.to(its,{opacity:1,y:0,duration:.7,ease:'power3.out',stagger:.05,scrollTrigger:{trigger:s,start:'top 74%'}});});
+    document.querySelectorAll('[data-count]').forEach(function(el){var to=+el.dataset.count,o={v:0};ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:function(){gsap.to(o,{v:to,duration:1.1,ease:'power2.out',onUpdate:function(){el.textContent=Math.round(o.v);}});}});});
+    setTimeout(safety,1500);addEventListener('load',function(){try{ScrollTrigger.refresh()}catch(e){}setTimeout(safety,400);});
+  }
+})();
+</script>
+</body>
+</html>
