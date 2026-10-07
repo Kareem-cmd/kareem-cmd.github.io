@@ -93,3 +93,7 @@ html[data-theme=light] .work-switch{background:#f4f3eee8}html[data-theme=light] 
 @media(max-width:700px){#archive .page-heading h1{font-size:clamp(42px,15vw,64px)}.archive-card{min-width:0}.archive-card h2{overflow-wrap:anywhere}}
 
 html[data-theme=light] .visit-website,html[data-theme=light] .work-switch>a,html[data-theme=light] .category-filters a[aria-current=page],html[data-theme=light] .category-filters a[aria-current=page]:hover{color:#fff!important}
+
+/* Keep the decorative clock from intercepting collection links. */
+.shell .header-time,.shell .header-time *{pointer-events:none}
+
