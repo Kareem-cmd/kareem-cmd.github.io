@@ -1,143 +1,143 @@
-import * as THREE from './vendor/three.module.js';
-const $=s=>document.querySelector(s),gsap=window.gsap;
-const themeButton=$('#theme-toggle');
-function setTheme(theme){document.documentElement.dataset.theme=theme;const light=theme==='light';document.querySelectorAll('.wordmark img,.loader-mark img').forEach(img=>img.src=light?'brand/kareem-icon-dark.png':'brand/kareem-icon.png');themeButton.setAttribute('aria-pressed',String(light));themeButton.setAttribute('aria-label',light?'Switch to dark mode':'Switch to light mode');themeButton.querySelector('.theme-label').textContent=light?'DARK':'LIGHT';document.querySelector('meta[name="theme-color"]').content=light?'#f4f3ee':'#111210';try{localStorage.setItem('kareem-theme',theme)}catch(e){}}
-themeButton.onclick=()=>setTheme(document.documentElement.dataset.theme==='light'?'dark':'light');setTheme(document.documentElement.dataset.theme||'dark');
-const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const projects=await fetch('./data.json?v=two-projects1').then(r=>{if(!r.ok)throw Error('Project data unavailable');return r.json()});
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const total=projects.length,wrap=n=>(n%total+total)%total;
-let active=0,target=0,position=0,currentView='work',renderer,scene,camera,planes=[],textures=new Map(),raf,dragging=false,downY=0,lastY=0,moved=false,ready=false;
-const stage=$('#stage');
-const intro={spread:reduced?1:0,turn:reduced?0:10};
-function caption(p){return p.category==='Brand identity'?'An exploration of identity, form and the way a brand is remembered.':p.category==='Social & campaigns'?'Visual stories shaped for campaigns, conversation and everyday encounters.':'Ideas in type, image and expression. A space to see things differently.'}
-function updateInfo(index,animate=true){active=wrap(index);const p=projects[active];$('#discipline').textContent=p.category;$('#year').textContent=p.year;$('#category').textContent=p.category;$('#project-title').textContent=p.title;$('#project-caption').textContent=caption(p);$('#project-link').href='#project/'+p.slug;$('#cover-details-link').href='#project/'+p.slug;$('#current').textContent=String(active+1).padStart(2,'0');$('#palette').innerHTML=p.colors.map(c=>`<i style="background:${c}"></i>`).join('');$('#fallback-cover').src=p.cover;$('#fallback-cover').alt=p.title;if(animate&&!reduced){gsap.fromTo('.project-info > *',{opacity:.2,y:18,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.8,stagger:.018,overwrite:true,ease:'power3.out'});gsap.fromTo('#current,.project-meta p',{filter:'blur(10px)',opacity:.4},{filter:'blur(0px)',opacity:1,duration:.85,overwrite:true})}const prev=projects[wrap(active-1)],next=projects[wrap(active+1)];$('#neighbor-before').textContent=prev.title;$('#neighbor-after').textContent=next.title;}
-const loader=new THREE.TextureLoader();
-function texture(i){i=wrap(i);if(textures.has(i))return textures.get(i);const t=loader.load(projects[i].cover,()=>{t.colorSpace=THREE.SRGBColorSpace;t.needsUpdate=true});t.colorSpace=THREE.SRGBColorSpace;t.repeat.x=-1;t.offset.x=1;textures.set(i,t);return t;}
-let lastFrame=0,snapTimer,layout,album,pointerX=0,parallax=0;
-let hoverIndex=-1,mouseInside=false,mouseX=0,mouseY=0;
-const hoverRay=new THREE.Raycaster(),mouseNdc=new THREE.Vector2(),hoverCenter=new THREE.Vector3(),hoverVertex=new THREE.Vector3(),screenBasis=new THREE.Quaternion(),inverseBasis=new THREE.Quaternion(),hoverRotation=new THREE.Quaternion(),tiltEuler=new THREE.Euler(),hoverOffset=new THREE.Vector3();
-const hint=$('.stage-hint');
-function pickCover(x,y){if(!renderer)return null;const r=stage.getBoundingClientRect();mouseNdc.set((x-r.left)/r.width*2-1,-(y-r.top)/r.height*2+1);hoverRay.setFromCamera(mouseNdc,camera);return hoverRay.intersectObjects(planes.filter(p=>p.visible))[0]||null}
-function clearHover(){mouseInside=false;hoverIndex=-1;stage.classList.remove('cover-hover');hint.setAttribute('aria-hidden','true')}
-function updateHover(){const allowed=mouseInside&&!dragging&&ready&&!$('#contact').open&&!$('#navigation').classList.contains('open');const hit=allowed?pickCover(mouseX,mouseY):null;hoverIndex=hit?hit.object.userData.projectIndex:-1;stage.classList.toggle('cover-hover',hoverIndex>=0);hint.setAttribute('aria-hidden',String(hoverIndex<0));if(hit){hint.textContent='CLICK TO VIEW PROJECT ↗';hint.style.left=Math.min(stage.clientWidth-225,Math.max(12,mouseX+18))+'px';hint.style.top=Math.min(stage.clientHeight-60,mouseY+22)+'px';stage.dataset.hoverProject=hit.object.userData.slug}else delete stage.dataset.hoverProject}
-
-const smooth=(a,b,x)=>{const t=THREE.MathUtils.clamp((x-a)/(b-a),0,1);return t*t*(3-2*t)};
-function resize(){if(!renderer)return;const w=stage.clientWidth,h=stage.clientHeight,compact=w<=700,portrait=w/h<1;
- layout={compact,width:compact?3:4.492,height:compact?2.25:3.658,gap:compact?2.2:3.1};
- const span=compact?Math.max(8.4,4.1*h/w):portrait?12.5:10.8;
- camera.left=-span*w/h/2;camera.right=-camera.left;camera.top=span/2;camera.bottom=-span/2;camera.updateProjectionMatrix();
- renderer.setSize(w,h);album.position.set(compact?3.8:4.3,2.1,5.1);
-}
-function initScene(){try{renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));renderer.setClearColor(0x111210,0);stage.prepend(renderer.domElement);scene=new THREE.Scene();camera=new THREE.OrthographicCamera(-8,8,5.4,-5.4,.1,1000);camera.position.set(20,12.1,16.6);camera.lookAt(-7,-2.1,1.3);album=new THREE.Group();album.rotation.set(-.0215,2.2884,.2884);scene.add(album);
- for(let i=0;i<total;i++){const geometry=new THREE.PlaneGeometry(1,1,32,20);geometry.userData.base=geometry.attributes.position.array.slice();geometry.setAttribute("color",new THREE.BufferAttribute(new Float32Array(geometry.attributes.position.count*3).fill(1),3));const plane=new THREE.Mesh(geometry,new THREE.MeshBasicMaterial({side:THREE.DoubleSide,transparent:true,vertexColors:true}));plane.frustumCulled=false;plane.userData.projectIndex=i;plane.userData.slug=projects[i].slug;const shadow=new THREE.Mesh(geometry.clone(),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.12,depthWrite:false,side:THREE.DoubleSide}));shadow.frustumCulled=false;plane.userData.shadow=shadow;album.add(shadow);album.add(plane);planes.push(plane)}resize();addEventListener('resize',resize);tick();}catch(e){console.warn('Using accessible image gallery',e);$('#fallback-cover').hidden=false;stage.classList.add('fallback');}}
-const vertex=new THREE.Vector3(),focusMatrix=new THREE.Matrix4(),rx=new THREE.Matrix4(),ry=new THREE.Matrix4(),rz=new THREE.Matrix4();
-function tick(now=0){raf=requestAnimationFrame(tick);const dt=Math.min(.05,Math.max(.001,(now-lastFrame)/1000||1/60));lastFrame=now;if(currentView!=='work'||document.hidden)return;
- const old=position;position+=reduced?target-position:(1-Math.exp(-(dragging?13:6.2)*dt))*(target-position);if(Math.abs(target-position)<.0001)position=target;
- const speed=reduced?0:(position-old)/dt/60,nearest=Math.round(position);if(wrap(nearest)!==active)updateInfo(nearest);
- parallax+=(pointerX-parallax)*(1-Math.exp(-3*dt));album.rotation.y=2.2884+(layout.compact||reduced?0:parallax*.035);
- updateHover();
- screenBasis.copy(album.quaternion).invert().multiply(camera.quaternion);inverseBasis.copy(screenBasis).invert();
- const {width:w,height:h,gap}=layout;
- planes.forEach((plane,index)=>{const d=((index-position-intro.turn+total/2)%total+total)%total-total/2;plane.visible=Math.abs(d)<12;plane.userData.shadow.visible=plane.visible;if(!plane.visible)return;
- const tex=texture(index);if(plane.material.map!==tex){plane.material.map=tex;plane.material.needsUpdate=true}
- const focus=smooth(0,1,1-smooth(0,.8,Math.abs(d)));
- focusMatrix.copy(rz.makeRotationZ(-.51318*focus)).multiply(ry.makeRotationY(.36331*focus)).multiply(rx.makeRotationX(-.06681*focus));
- const z=d*(.12+.88*intro.spread)+Math.sign(d)*smooth(.1,.9,Math.abs(d))*gap*intro.spread;plane.material.opacity=(1-smooth(7,12,Math.abs(d)))*(.4+.6*intro.spread);
- const attr=plane.geometry.attributes.position,base=plane.geometry.userData.base,colors=plane.geometry.attributes.color;
- // A moving curl travels from the bound edge to the free edge, then relaxes.
- const turning=(1-smooth(.5,3.5,Math.abs(d)))*THREE.MathUtils.clamp(speed*11,-1.15,1.15);
- plane.userData.curl=(plane.userData.curl||0)+(turning-(plane.userData.curl||0))*(1-Math.exp(-9*dt));
- const curl=reduced?0:plane.userData.curl;
- for(let i=0;i<attr.count;i++){const x=base[i*3]*w,y=base[i*3+1]*h,u=x/w+.5,v=y/h;
- const k=curl*(1.15+v*.28),angle=k*u;
- const paperX=Math.abs(k)>.0001?w*(Math.sin(angle)/k-.5):x;
- const bend=Math.abs(k)>.0001?w*(1-Math.cos(angle))/k:0;
- const lift=Math.sin(u*Math.PI)*curl*.11;
- vertex.set(z-bend-w*.5,y+lift,-paperX-w*.5-1).applyMatrix4(focusMatrix);vertex.x+=w*.5;attr.setXYZ(i,vertex.x,vertex.y,vertex.z);
- const shade=1-Math.abs(Math.sin(angle))*.23-Math.abs(curl)*.045*(1-u);colors.setXYZ(i,shade,shade,shade);
- }
- colors.needsUpdate=true;
- const state=plane.userData;const hovered=index===hoverIndex;const easing=1-Math.exp(-10*dt);
- state.hover=(state.hover||0)+((hovered&&!reduced?1:0)-(state.hover||0))*easing;
- state.tiltX=(state.tiltX||0)+((hovered?mouseNdc.x:0)-(state.tiltX||0))*easing;
- state.tiltY=(state.tiltY||0)+((hovered?mouseNdc.y:0)-(state.tiltY||0))*easing;
- if(state.hover>.0001){hoverCenter.set(0,0,0);for(let i=0;i<attr.count;i++)hoverCenter.add(hoverVertex.fromBufferAttribute(attr,i));hoverCenter.divideScalar(attr.count);
- tiltEuler.set(-state.tiltY*.065*state.hover,state.tiltX*.085*state.hover,0);hoverRotation.copy(screenBasis).multiply(new THREE.Quaternion().setFromEuler(tiltEuler)).multiply(inverseBasis);
- hoverOffset.set(state.tiltX*.09*state.hover,(.32+state.tiltY*.08)*state.hover,.12*state.hover).applyQuaternion(screenBasis);
- for(let i=0;i<attr.count;i++){hoverVertex.fromBufferAttribute(attr,i).sub(hoverCenter).multiplyScalar(1+.055*state.hover).applyQuaternion(hoverRotation).add(hoverCenter).add(hoverOffset);attr.setXYZ(i,hoverVertex.x,hoverVertex.y,hoverVertex.z)}}
- attr.needsUpdate=true;plane.geometry.computeBoundingSphere();
- const shadow=plane.userData.shadow,shadowAttr=shadow.geometry.attributes.position;
- for(let i=0;i<attr.count;i++)shadowAttr.setXYZ(i,attr.getX(i)+.045,attr.getY(i)-.055,attr.getZ(i)-.045);
- shadowAttr.needsUpdate=true;shadow.material.opacity=plane.material.opacity*(.075+Math.abs(curl)*.06);
- });renderer.render(scene,camera);
-}
-function snap(){clearTimeout(snapTimer);target=Math.round(target);if(!renderer){position=target;updateInfo(target)}}
-function step(delta){if(!ready||transitioning)return;clearTimeout(snapTimer);target=Math.round(target)+delta;if(!renderer){position=target;updateInfo(target)}}
-stage.addEventListener('wheel',e=>{if(currentView!=='work'||!ready||transitioning)return;e.preventDefault();const pixels=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?innerHeight:1);target-=THREE.MathUtils.clamp(pixels,-160,160)*.006;clearTimeout(snapTimer);snapTimer=setTimeout(snap,180);if(!renderer)updateInfo(Math.round(target));},{passive:false});
-let downX=0,lastX=0,dragAxis=null;
-stage.addEventListener('pointerdown',e=>{if(e.button!==0||!ready||transitioning)return;clearTimeout(snapTimer);dragging=true;moved=false;downY=lastY=e.clientY;downX=lastX=e.clientX;dragAxis=null;stage.setPointerCapture(e.pointerId)});
-stage.addEventListener('pointermove',e=>{pointerX=e.clientX/Math.max(1,stage.clientWidth)*2-1;mouseX=e.clientX;mouseY=e.clientY;mouseInside=e.pointerType!=='touch';if(!dragging)return;const dx=e.clientX-downX,dy=e.clientY-downY;if(!dragAxis&&Math.hypot(dx,dy)>7){dragAxis=Math.abs(dy)>=Math.abs(dx)?'y':'x';moved=true}if(dragAxis){target-=(dragAxis==='y'?lastY-e.clientY:lastX-e.clientX)/Math.max(90,Math.min(stage.clientWidth,stage.clientHeight)*.27)}lastY=e.clientY;lastX=e.clientX;if(!renderer)updateInfo(Math.round(target));});
-stage.addEventListener('pointerleave',()=>{pointerX=0;clearHover()});
-stage.addEventListener('pointerup',e=>{if(!dragging)return;dragging=false;snap();if(!moved){if(renderer){const rect=stage.getBoundingClientRect(),ray=new THREE.Raycaster();ray.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),camera);const hit=ray.intersectObjects(planes.filter(p=>p.visible))[0];if(hit){clearHover();location.hash='project/'+hit.object.userData.slug;}}else location.hash='project/'+projects[active].slug;}});
-stage.addEventListener('pointercancel',()=>{dragging=false;snap()});
-$('#previous').onclick=()=>step(-1);$('#next').onclick=()=>step(1);$('#index-toggle').onclick=()=>location.hash='archive';
-addEventListener('keydown',e=>{if(currentView!=='work'||$('#contact').open||$('#navigation').classList.contains('open'))return;if(['ArrowDown','ArrowRight','PageDown'].includes(e.key)){e.preventDefault();step(1)}if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();step(-1)}});
-function footer(){return '<footer class="site-footer"><span>KAREEM ABDELAZIZ © '+new Date().getFullYear()+'</span><span>IDENTITY. IMAGE. IMPACT.</span><a href="#work">BACK TO WORK</a></footer>'}
-function renderArchive(){return `<div class="page-heading"><h1>Playground.</h1><p>${total} projects across brand identity,<br>campaigns and visual exploration.<br>2022 — 2026</p></div><div class="archive-grid">${projects.map((p,i)=>`<a class="archive-card" href="#project/${p.slug}"><div class="image-wrap"><img src="${p.cover}" alt="${esc(p.title)}" loading="lazy" width="700" height="525"></div><h2>${esc(p.title)}</h2><div class="card-meta"><span>${esc(p.category)}</span><span>${p.year} / ${String(i+1).padStart(2,'0')}</span></div></a>`).join('')}</div>${footer()}`}
-function renderAbout(){return `<div class="about-top"><div class="about-label">ABOUT<br>KAREEM ABDELAZIZ<img class="portrait" src="portrait.webp" alt="Kareem Abdelaziz" width="1000" height="1000"></div><div><h1>Ideas with purpose.<br><em>Design with<br>character.</em></h1><p class="intro">I’m Kareem Abdelaziz, a Cairo-based senior graphic designer and creative team leader with over six years of experience in branding, visual identity, advertising campaigns and digital design.</p><p class="about-bio">I work across Egypt, Saudi Arabia and the UAE, helping brands in retail, food, beauty, healthcare, technology and e-commerce communicate through a consistent visual language. My practice combines hands-on design, creative direction and team leadership with advanced generative AI. I build MCP-enabled content automation and develop, test and deploy web experiences using AI-assisted coding.</p><a class="cv-download" href="Kareem-Abdelaziz-CV.pdf" download>DOWNLOAD CV ↗</a></div></div><div class="about-details"><div><h2>EXPERTISE</h2><p>Branding & visual identity<br>Advertising & social campaigns<br>Creative direction<br>Team leadership<br>Packaging & e-commerce design<br>Video editing & AI tools<br>MCP content automation<br>AI-assisted web development</p></div><div><h2>TOOLS</h2><p>Photoshop · Illustrator<br>InDesign · Acrobat<br>WordPress · CapCut<br>ChatGPT · Claude Code<br>Higgsfield · Magnific<br>Midjourney · Adobe Firefly<br>DALL-E · Stable Diffusion</p></div><div><h2>EDUCATION</h2><p>Bachelor of Engineering<br>Mechatronics Engineering<br>Mansoura University</p><h2>LANGUAGES</h2><p>Arabic — Native<br>English — Intermediate</p></div></div><section class="experience"><h2>Experience</h2><article><span>1 year</span><div><h3>Senior Graphic Designer · Zeed Agency</h3><p>Advertising creative production for a performance marketing agency serving brands in Saudi Arabia and the UAE.</p></div></article><article><span>2024 — Present</span><div><h3>Team Leader · Jayaad Agency</h3><p>Leading designers, video editors and motion specialists, coordinating client briefs and managing creative delivery through structured workflows and performance reviews.</p></div></article><article><span>Nov 2025 — Mar 2026</span><div><h3>General Manager · Glitch Adv</h3><p>Led rebranding, built operational and performance systems, improved the client journey and integrated AI services into the agency’s offering.</p></div></article><article><span>2024 — 2025</span><div><h3>Senior Graphic Designer · TAR Company</h3><p>Developed the visual identity and advertising campaigns in collaboration with marketing teams.</p></div></article><article><span>2023 — 2024</span><div><h3>Graphic Designer · ALMLOUK E-Commerce</h3><p>Created brand identities and digital visuals across medical, electronics, furniture, cosmetics and food projects.</p></div></article><article><span>2022 — 2024</span><div><h3>Graphic Designer · Glitch Adv</h3><p>Designed integrated campaigns, logos, social content and promotional videos for restaurants, clinics and retail brands.</p></div></article><article><span>Leadership</span><div><h3>UCCD · USAID-funded internship</h3><p>Managed a 15-member media committee, developed social media plans and coordinated events and enrollment support for approximately 100 students each week.</p></div></article><article><span>Workshop</span><div><h3>AI in Advertising Design · ART OF AI</h3><p>Led a three-hour workshop for designers, editors, motion artists and writers on AI tools for advertising and creative workflows.</p></div></article></section>${footer()}`}
-function galleryMedia(p,i){const m=p.media[i];return m.kind==='video'?`<video controls playsinline preload="metadata" src="${m.src}" aria-label="${esc(p.title)} project video"></video>`:`<figure><a href="${m.src}" target="_blank" rel="noopener" aria-label="Open image ${i+1} in full"><img src="${m.src}" alt="${esc(p.title)} — project image ${i+1}" loading="${i<2?'eager':'lazy'}" decoding="async" width="${m.width}" height="${m.height}"></a></figure>`}
-function galleryBlock(p,b){const style=`padding-top:${b.top||0}px;padding-bottom:${b.bottom||0}px;width:${b.width||100}%;`;
- if(b.type==='media')return `<div class="gallery-block" style="${style}">${galleryMedia(p,b.index)}</div>`;
- if(b.type==='grid'){
-  // Keep authored groups of 2-4 images together on phones. Larger collections
-  // split into balanced rows, in source order, without oversized orphan images.
-  const rowCount=Math.ceil(b.items.length/4),rows=[];let offset=0;
-  for(let row=0;row<rowCount;row++){
-   const count=Math.ceil((b.items.length-offset)/(rowCount-row));
-   rows.push(b.items.slice(offset,offset+count));offset+=count;
-  }
-  return `<div class="gallery-block gallery-grid" style="${style}">${rows.map(items=>`<div class="gallery-row">${items.map(i=>{const m=p.media[i],ratio=m.width/m.height||1;return `<div class="gallery-tile" style="flex-grow:${ratio};flex-basis:${260*ratio}px">${galleryMedia(p,i)}</div>`}).join('')}</div>`).join('')}</div>`;
- }
- if(b.type==='columns')return `<div class="gallery-block gallery-columns" style="${style}">${b.columns.map(c=>`<div style="flex:${c.grow};min-width:0">${c.blocks.map(x=>galleryBlock(p,x)).join('')}</div>`).join('')}</div>`;
- if(b.type==='film')return `<div class="gallery-block gallery-film" style="${style}"><a href="${esc(b.url)}" target="_blank" rel="noopener">▶ WATCH PROJECT FILM ON VIMEO</a></div>`;
- if(b.type==='compare')return `<div class="gallery-block gallery-compare" style="${style}"><img src="${p.media[b.before].src}" alt="Before" loading="lazy"><img class="compare-after" src="${p.media[b.after].src}" alt="After" loading="lazy"><span class="compare-divider" aria-hidden="true">↔</span><input type="range" min="0" max="100" value="50" aria-label="Compare before and after"></div>`;
- return b.text?`<div class="gallery-block gallery-text" style="${style}text-align:${b.align||'left'}"><p>${esc(b.text)}</p></div>`:'';
-}
-$('#project').addEventListener('input',e=>{if(e.target.matches('.gallery-compare input'))e.target.parentElement.style.setProperty('--compare',e.target.value+'%')});
-function renderProject(p){const index=projects.indexOf(p),next=projects[(index+1)%total];return `<div class="project-top"><aside class="project-summary"><a class="project-return" href="#work">BACK TO SELECTED WORK</a><span class="eyebrow">${esc(p.category)}</span><h1>${esc(p.title)}</h1>${p.text.length?p.text.map(t=>`<p>${esc(t)}</p>`).join(''):`<p>${caption(p)}</p>`}<div class="project-facts"><div><span class="eyebrow">Designer</span>Kareem Abdelaziz</div><div><span class="eyebrow">Year</span>${p.year}</div></div></aside><div class="project-gallery">${(p.layout||p.media.map((m,index)=>({type:'media',index}))).map(b=>galleryBlock(p,b)).join('')}</div></div><a class="next-project" href="#project/${next.slug}"><span class="eyebrow">NEXT PROJECT</span><h2>${esc(next.title)}</h2></a>${footer()}`}
-function applyRoute(){const route=location.hash.slice(1)||'work',parts=route.split('/');let view=parts[0];if(!['work','about','archive','project'].includes(view))view='work';if(view==='project'){const p=projects.find(p=>p.slug===parts[1]);if(!p){location.hash='archive';return;}active=projects.indexOf(p);target=position=active;updateInfo(active,false);$('#project').innerHTML=renderProject(p);document.title=p.title+' — Kareem Abdelaziz';}else{document.title='Kareem Abdelaziz — '+({work:'Selected work',about:'About',archive:'Playground'}[view]);if(view==='archive'&&!$('#archive').innerHTML)$('#archive').innerHTML=renderArchive();if(view==='about'&&!$('#about').innerHTML)$('#about').innerHTML=renderAbout();}clearHover();currentView=view;document.body.classList.toggle('home',view==='work');document.querySelectorAll('.view').forEach(v=>v.hidden=v.id!==view);document.querySelectorAll('[data-nav]').forEach(a=>{const on=a.dataset.nav===(view==='project'?'work':view);a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});$('#navigation').classList.remove('open');$('#menu-toggle').setAttribute('aria-expanded','false');$('#menu-toggle').setAttribute('aria-label','Open menu');window.scrollTo(0,0);if(view==='work')resize();setupScrollReveals();}
-let transitioning=false,routeTimeline;
-function routeTitle(){const parts=location.hash.slice(1).split('/');return parts[0]==='project'?(projects.find(p=>p.slug===parts[1])?.title||'Selected work'):({about:'About Kareem',archive:'Playground',work:'Selected work'}[parts[0]]||'Selected work')}
-addEventListener('hashchange',()=>{clearHover();if(reduced){applyRoute();return}routeTimeline?.kill();gsap.killTweensOf('#main');transitioning=true;const label=$('#transition-title');label.textContent=routeTitle();$('#transition').dataset.projectTitle=label.textContent;
- routeTimeline=gsap.timeline({onComplete:()=>{transitioning=false;gsap.set('#transition',{visibility:'hidden'});gsap.set('#main',{clearProps:'filter,opacity,transform'})}})
- .set('#transition',{visibility:'visible',y:0,yPercent:0,opacity:0}).set(label,{y:32,opacity:0,filter:'blur(18px)'})
- .to('#main',{opacity:0,filter:'blur(14px)',scale:.975,duration:.45,ease:'power2.inOut'},0)
- .to('#transition',{opacity:1,duration:.4},0)
- .to(label,{y:0,opacity:1,filter:'blur(0px)',duration:.65,ease:'power3.out'},.18)
- .call(applyRoute,[],.85)
- .to(label,{y:-24,opacity:0,filter:'blur(14px)',duration:.45,ease:'power2.in'},1.05)
- .to('#transition',{opacity:0,duration:.55},1.25)
- .fromTo('#main',{opacity:0,filter:'blur(12px)',scale:1.025},{opacity:1,filter:'blur(0px)',scale:1,duration:.85,ease:'power3.out'},1.25);
-});
-var revealObserver;
-function setupScrollReveals(){revealObserver?.disconnect();if(reduced)return;const elements=document.querySelectorAll('.view:not([hidden]) .project-gallery > .gallery-block,.view:not([hidden]) .archive-card,.view:not([hidden]) .experience article,.view:not([hidden]) .about-details>div');
- revealObserver=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){entry.target.classList.add('revealed');revealObserver.unobserve(entry.target)}}},{threshold:.07,rootMargin:'0px 0px -20px 0px'});elements.forEach(el=>{el.classList.add('scroll-reveal');revealObserver.observe(el)})}
-$('#menu-toggle').onclick=()=>{let open=$('#navigation').classList.toggle('open');$('#menu-toggle').setAttribute('aria-expanded',String(open));$('#menu-toggle').setAttribute('aria-label',open?'Close menu':'Open menu')};
-$('#contact-open').onclick=()=>{$('#contact').showModal();if(!reduced)gsap.fromTo('#contact',{y:30,opacity:0},{y:0,opacity:1,duration:.4})};$('.dialog-close').onclick=()=>$('#contact').close();$('#contact').addEventListener('click',e=>{if(e.target===$('#contact')){const r=$('#contact').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$('#contact').close()}});
-function clock(){$('#time').textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Cairo',hour:'2-digit',minute:'2-digit'}).format(new Date())+' / CAIRO'}clock();setInterval(clock,60000);
-updateInfo(0,false);applyRoute();initScene();
-async function runIntro(){const load=$('#loader');if(reduced){load.remove();ready=true;return}
- const progress={value:0};gsap.set('.shell,.project-info,.project-meta,.counter,.work-bottom',{opacity:0,filter:'blur(12px)',y:24});
- const paint=()=>{load.style.setProperty('--reveal',progress.value+'%');$('#loader-counter').textContent=String(Math.round(progress.value)).padStart(2,'0')};
- const minimum=gsap.timeline().to(progress,{value:30,duration:.65,onUpdate:paint,ease:'power2.inOut'}).to(progress,{value:60,duration:.72,delay:.16,onUpdate:paint,ease:'power2.inOut'});
- await Promise.all([minimum.then(),Promise.race([Promise.all(projects.slice(0,4).map(p=>new Promise(resolve=>{const im=new Image();im.onload=im.onerror=resolve;im.src=p.cover}))),new Promise(resolve=>setTimeout(resolve,3500))])]);
- gsap.timeline().to(progress,{value:100,duration:1.15,delay:.2,onUpdate:paint,ease:'power3.inOut'})
- .to('#loader-name',{filter:'blur(0px)',scale:1,duration:.6},'<')
- .to('#loader',{yPercent:100,duration:1.05,ease:'power3.inOut'},'+=.35')
- .to(intro,{spread:1,turn:0,duration:2.05,ease:'power4.out'},'-=.8')
- .to('.shell,.project-info,.project-meta,.counter,.work-bottom',{opacity:1,filter:'blur(0px)',y:0,duration:.95,stagger:.07,ease:'power3.out'},'-=1.05')
- .call(()=>{load.remove();ready=true;gsap.set('.shell,.project-info,.project-meta,.counter,.work-bottom',{clearProps:'filter,transform,opacity'})});
-}
-runIntro();
-addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#navigation').classList.contains('open')){$('#navigation').classList.remove('open');$('#menu-toggle').setAttribute('aria-expanded','false');$('#menu-toggle').setAttribute('aria-label','Open menu');$('#menu-toggle').focus()}});
+import * as THREE from './vendor/three.module.js';
+const $=s=>document.querySelector(s),gsap=window.gsap;
+const themeButton=$('#theme-toggle');
+function setTheme(theme){document.documentElement.dataset.theme=theme;const light=theme==='light';document.querySelectorAll('.wordmark img,.loader-mark img').forEach(img=>img.src=light?'brand/kareem-icon-dark.png':'brand/kareem-icon.png');themeButton.setAttribute('aria-pressed',String(light));themeButton.setAttribute('aria-label',light?'Switch to dark mode':'Switch to light mode');themeButton.querySelector('.theme-label').textContent=light?'DARK':'LIGHT';document.querySelector('meta[name="theme-color"]').content=light?'#f4f3ee':'#111210';try{localStorage.setItem('kareem-theme',theme)}catch(e){}}
+themeButton.onclick=()=>setTheme(document.documentElement.dataset.theme==='light'?'dark':'light');setTheme(document.documentElement.dataset.theme||'dark');
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const projects=await fetch('./data.json?v=graphic33').then(r=>{if(!r.ok)throw Error('Project data unavailable');return r.json()});
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const total=projects.length,wrap=n=>(n%total+total)%total;
+let active=0,target=0,position=0,currentView='work',renderer,scene,camera,planes=[],textures=new Map(),raf,dragging=false,downY=0,lastY=0,moved=false,ready=false;
+const stage=$('#stage');
+const intro={spread:reduced?1:0,turn:reduced?0:10};
+function caption(p){return p.category==='Brand identity'?'An exploration of identity, form and the way a brand is remembered.':p.category==='Social & campaigns'?'Visual stories shaped for campaigns, conversation and everyday encounters.':'Ideas in type, image and expression. A space to see things differently.'}
+function updateInfo(index,animate=true){active=wrap(index);const p=projects[active];$('#discipline').textContent=p.category;$('#year').textContent=p.year;$('#category').textContent=p.category;$('#project-title').textContent=p.title;$('#project-caption').textContent=caption(p);$('#project-link').href='#project/'+p.slug;$('#cover-details-link').href='#project/'+p.slug;$('#current').textContent=String(active+1).padStart(2,'0');$('#palette').innerHTML=p.colors.map(c=>`<i style="background:${c}"></i>`).join('');$('#fallback-cover').src=p.cover;$('#fallback-cover').alt=p.title;if(animate&&!reduced){gsap.fromTo('.project-info > *',{opacity:.2,y:18,filter:'blur(8px)'},{opacity:1,y:0,filter:'blur(0px)',duration:.8,stagger:.018,overwrite:true,ease:'power3.out'});gsap.fromTo('#current,.project-meta p',{filter:'blur(10px)',opacity:.4},{filter:'blur(0px)',opacity:1,duration:.85,overwrite:true})}const prev=projects[wrap(active-1)],next=projects[wrap(active+1)];$('#neighbor-before').textContent=prev.title;$('#neighbor-after').textContent=next.title;}
+const loader=new THREE.TextureLoader();
+function texture(i){i=wrap(i);if(textures.has(i))return textures.get(i);const t=loader.load(projects[i].cover,()=>{t.colorSpace=THREE.SRGBColorSpace;t.needsUpdate=true});t.colorSpace=THREE.SRGBColorSpace;t.repeat.x=-1;t.offset.x=1;textures.set(i,t);return t;}
+let lastFrame=0,snapTimer,layout,album,pointerX=0,parallax=0;
+let hoverIndex=-1,mouseInside=false,mouseX=0,mouseY=0;
+const hoverRay=new THREE.Raycaster(),mouseNdc=new THREE.Vector2(),hoverCenter=new THREE.Vector3(),hoverVertex=new THREE.Vector3(),screenBasis=new THREE.Quaternion(),inverseBasis=new THREE.Quaternion(),hoverRotation=new THREE.Quaternion(),tiltEuler=new THREE.Euler(),hoverOffset=new THREE.Vector3();
+const hint=$('.stage-hint');
+function pickCover(x,y){if(!renderer)return null;const r=stage.getBoundingClientRect();mouseNdc.set((x-r.left)/r.width*2-1,-(y-r.top)/r.height*2+1);hoverRay.setFromCamera(mouseNdc,camera);return hoverRay.intersectObjects(planes.filter(p=>p.visible))[0]||null}
+function clearHover(){mouseInside=false;hoverIndex=-1;stage.classList.remove('cover-hover');hint.setAttribute('aria-hidden','true')}
+function updateHover(){const allowed=mouseInside&&!dragging&&ready&&!$('#contact').open&&!$('#navigation').classList.contains('open');const hit=allowed?pickCover(mouseX,mouseY):null;hoverIndex=hit?hit.object.userData.projectIndex:-1;stage.classList.toggle('cover-hover',hoverIndex>=0);hint.setAttribute('aria-hidden',String(hoverIndex<0));if(hit){hint.textContent='CLICK TO VIEW PROJECT ↗';hint.style.left=Math.min(stage.clientWidth-225,Math.max(12,mouseX+18))+'px';hint.style.top=Math.min(stage.clientHeight-60,mouseY+22)+'px';stage.dataset.hoverProject=hit.object.userData.slug}else delete stage.dataset.hoverProject}
+
+const smooth=(a,b,x)=>{const t=THREE.MathUtils.clamp((x-a)/(b-a),0,1);return t*t*(3-2*t)};
+function resize(){if(!renderer)return;const w=stage.clientWidth,h=stage.clientHeight,compact=w<=700,portrait=w/h<1;
+ layout={compact,width:compact?3:4.492,height:compact?2.25:3.658,gap:compact?2.2:3.1};
+ const span=compact?Math.max(8.4,4.1*h/w):portrait?12.5:10.8;
+ camera.left=-span*w/h/2;camera.right=-camera.left;camera.top=span/2;camera.bottom=-span/2;camera.updateProjectionMatrix();
+ renderer.setSize(w,h);album.position.set(compact?3.8:4.3,2.1,5.1);
+}
+function initScene(){try{renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.8));renderer.setClearColor(0x111210,0);stage.prepend(renderer.domElement);scene=new THREE.Scene();camera=new THREE.OrthographicCamera(-8,8,5.4,-5.4,.1,1000);camera.position.set(20,12.1,16.6);camera.lookAt(-7,-2.1,1.3);album=new THREE.Group();album.rotation.set(-.0215,2.2884,.2884);scene.add(album);
+ for(let i=0;i<total;i++){const geometry=new THREE.PlaneGeometry(1,1,32,20);geometry.userData.base=geometry.attributes.position.array.slice();geometry.setAttribute("color",new THREE.BufferAttribute(new Float32Array(geometry.attributes.position.count*3).fill(1),3));const plane=new THREE.Mesh(geometry,new THREE.MeshBasicMaterial({side:THREE.DoubleSide,transparent:true,vertexColors:true}));plane.frustumCulled=false;plane.userData.projectIndex=i;plane.userData.slug=projects[i].slug;const shadow=new THREE.Mesh(geometry.clone(),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.12,depthWrite:false,side:THREE.DoubleSide}));shadow.frustumCulled=false;plane.userData.shadow=shadow;album.add(shadow);album.add(plane);planes.push(plane)}resize();addEventListener('resize',resize);tick();}catch(e){console.warn('Using accessible image gallery',e);$('#fallback-cover').hidden=false;stage.classList.add('fallback');}}
+const vertex=new THREE.Vector3(),focusMatrix=new THREE.Matrix4(),rx=new THREE.Matrix4(),ry=new THREE.Matrix4(),rz=new THREE.Matrix4();
+function tick(now=0){raf=requestAnimationFrame(tick);const dt=Math.min(.05,Math.max(.001,(now-lastFrame)/1000||1/60));lastFrame=now;if(currentView!=='work'||document.hidden)return;
+ const old=position;position+=reduced?target-position:(1-Math.exp(-(dragging?13:6.2)*dt))*(target-position);if(Math.abs(target-position)<.0001)position=target;
+ const speed=reduced?0:(position-old)/dt/60,nearest=Math.round(position);if(wrap(nearest)!==active)updateInfo(nearest);
+ parallax+=(pointerX-parallax)*(1-Math.exp(-3*dt));album.rotation.y=2.2884+(layout.compact||reduced?0:parallax*.035);
+ updateHover();
+ screenBasis.copy(album.quaternion).invert().multiply(camera.quaternion);inverseBasis.copy(screenBasis).invert();
+ const {width:w,height:h,gap}=layout;
+ planes.forEach((plane,index)=>{const d=((index-position-intro.turn+total/2)%total+total)%total-total/2;plane.visible=Math.abs(d)<12;plane.userData.shadow.visible=plane.visible;if(!plane.visible)return;
+ const tex=texture(index);if(plane.material.map!==tex){plane.material.map=tex;plane.material.needsUpdate=true}
+ const focus=smooth(0,1,1-smooth(0,.8,Math.abs(d)));
+ focusMatrix.copy(rz.makeRotationZ(-.51318*focus)).multiply(ry.makeRotationY(.36331*focus)).multiply(rx.makeRotationX(-.06681*focus));
+ const z=d*(.12+.88*intro.spread)+Math.sign(d)*smooth(.1,.9,Math.abs(d))*gap*intro.spread;plane.material.opacity=(1-smooth(7,12,Math.abs(d)))*(.4+.6*intro.spread);
+ const attr=plane.geometry.attributes.position,base=plane.geometry.userData.base,colors=plane.geometry.attributes.color;
+ // A moving curl travels from the bound edge to the free edge, then relaxes.
+ const turning=(1-smooth(.5,3.5,Math.abs(d)))*THREE.MathUtils.clamp(speed*11,-1.15,1.15);
+ plane.userData.curl=(plane.userData.curl||0)+(turning-(plane.userData.curl||0))*(1-Math.exp(-9*dt));
+ const curl=reduced?0:plane.userData.curl;
+ for(let i=0;i<attr.count;i++){const x=base[i*3]*w,y=base[i*3+1]*h,u=x/w+.5,v=y/h;
+ const k=curl*(1.15+v*.28),angle=k*u;
+ const paperX=Math.abs(k)>.0001?w*(Math.sin(angle)/k-.5):x;
+ const bend=Math.abs(k)>.0001?w*(1-Math.cos(angle))/k:0;
+ const lift=Math.sin(u*Math.PI)*curl*.11;
+ vertex.set(z-bend-w*.5,y+lift,-paperX-w*.5-1).applyMatrix4(focusMatrix);vertex.x+=w*.5;attr.setXYZ(i,vertex.x,vertex.y,vertex.z);
+ const shade=1-Math.abs(Math.sin(angle))*.23-Math.abs(curl)*.045*(1-u);colors.setXYZ(i,shade,shade,shade);
+ }
+ colors.needsUpdate=true;
+ const state=plane.userData;const hovered=index===hoverIndex;const easing=1-Math.exp(-10*dt);
+ state.hover=(state.hover||0)+((hovered&&!reduced?1:0)-(state.hover||0))*easing;
+ state.tiltX=(state.tiltX||0)+((hovered?mouseNdc.x:0)-(state.tiltX||0))*easing;
+ state.tiltY=(state.tiltY||0)+((hovered?mouseNdc.y:0)-(state.tiltY||0))*easing;
+ if(state.hover>.0001){hoverCenter.set(0,0,0);for(let i=0;i<attr.count;i++)hoverCenter.add(hoverVertex.fromBufferAttribute(attr,i));hoverCenter.divideScalar(attr.count);
+ tiltEuler.set(-state.tiltY*.065*state.hover,state.tiltX*.085*state.hover,0);hoverRotation.copy(screenBasis).multiply(new THREE.Quaternion().setFromEuler(tiltEuler)).multiply(inverseBasis);
+ hoverOffset.set(state.tiltX*.09*state.hover,(.32+state.tiltY*.08)*state.hover,.12*state.hover).applyQuaternion(screenBasis);
+ for(let i=0;i<attr.count;i++){hoverVertex.fromBufferAttribute(attr,i).sub(hoverCenter).multiplyScalar(1+.055*state.hover).applyQuaternion(hoverRotation).add(hoverCenter).add(hoverOffset);attr.setXYZ(i,hoverVertex.x,hoverVertex.y,hoverVertex.z)}}
+ attr.needsUpdate=true;plane.geometry.computeBoundingSphere();
+ const shadow=plane.userData.shadow,shadowAttr=shadow.geometry.attributes.position;
+ for(let i=0;i<attr.count;i++)shadowAttr.setXYZ(i,attr.getX(i)+.045,attr.getY(i)-.055,attr.getZ(i)-.045);
+ shadowAttr.needsUpdate=true;shadow.material.opacity=plane.material.opacity*(.075+Math.abs(curl)*.06);
+ });renderer.render(scene,camera);
+}
+function snap(){clearTimeout(snapTimer);target=Math.round(target);if(!renderer){position=target;updateInfo(target)}}
+function step(delta){if(!ready||transitioning)return;clearTimeout(snapTimer);target=Math.round(target)+delta;if(!renderer){position=target;updateInfo(target)}}
+stage.addEventListener('wheel',e=>{if(currentView!=='work'||!ready||transitioning)return;e.preventDefault();const pixels=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?innerHeight:1);target-=THREE.MathUtils.clamp(pixels,-160,160)*.006;clearTimeout(snapTimer);snapTimer=setTimeout(snap,180);if(!renderer)updateInfo(Math.round(target));},{passive:false});
+let downX=0,lastX=0,dragAxis=null;
+stage.addEventListener('pointerdown',e=>{if(e.button!==0||!ready||transitioning)return;clearTimeout(snapTimer);dragging=true;moved=false;downY=lastY=e.clientY;downX=lastX=e.clientX;dragAxis=null;stage.setPointerCapture(e.pointerId)});
+stage.addEventListener('pointermove',e=>{pointerX=e.clientX/Math.max(1,stage.clientWidth)*2-1;mouseX=e.clientX;mouseY=e.clientY;mouseInside=e.pointerType!=='touch';if(!dragging)return;const dx=e.clientX-downX,dy=e.clientY-downY;if(!dragAxis&&Math.hypot(dx,dy)>7){dragAxis=Math.abs(dy)>=Math.abs(dx)?'y':'x';moved=true}if(dragAxis){target-=(dragAxis==='y'?lastY-e.clientY:lastX-e.clientX)/Math.max(90,Math.min(stage.clientWidth,stage.clientHeight)*.27)}lastY=e.clientY;lastX=e.clientX;if(!renderer)updateInfo(Math.round(target));});
+stage.addEventListener('pointerleave',()=>{pointerX=0;clearHover()});
+stage.addEventListener('pointerup',e=>{if(!dragging)return;dragging=false;snap();if(!moved){if(renderer){const rect=stage.getBoundingClientRect(),ray=new THREE.Raycaster();ray.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),camera);const hit=ray.intersectObjects(planes.filter(p=>p.visible))[0];if(hit){clearHover();location.hash='project/'+hit.object.userData.slug;}}else location.hash='project/'+projects[active].slug;}});
+stage.addEventListener('pointercancel',()=>{dragging=false;snap()});
+$('#previous').onclick=()=>step(-1);$('#next').onclick=()=>step(1);$('#index-toggle').onclick=()=>location.hash='archive';
+addEventListener('keydown',e=>{if(currentView!=='work'||$('#contact').open||$('#navigation').classList.contains('open'))return;if(['ArrowDown','ArrowRight','PageDown'].includes(e.key)){e.preventDefault();step(1)}if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();step(-1)}});
+function footer(){return '<footer class="site-footer"><span>KAREEM ABDELAZIZ © '+new Date().getFullYear()+'</span><span>IDENTITY. IMAGE. IMPACT.</span><a href="#work">BACK TO WORK</a></footer>'}
+function renderArchive(){return `<div class="page-heading"><h1>Playground.</h1><p>${total} projects across brand identity,<br>campaigns and visual exploration.<br>2022 — 2026</p></div><div class="archive-grid">${projects.map((p,i)=>`<a class="archive-card" href="#project/${p.slug}"><div class="image-wrap"><img src="${p.cover}" alt="${esc(p.title)}" loading="lazy" width="700" height="525"></div><h2>${esc(p.title)}</h2><div class="card-meta"><span>${esc(p.category)}</span><span>${p.year} / ${String(i+1).padStart(2,'0')}</span></div></a>`).join('')}</div>${footer()}`}
+function renderAbout(){return `<div class="about-top"><div class="about-label">ABOUT<br>KAREEM ABDELAZIZ<img class="portrait" src="portrait.webp" alt="Kareem Abdelaziz" width="1000" height="1000"></div><div><h1>Ideas with purpose.<br><em>Design with<br>character.</em></h1><p class="intro">I’m Kareem Abdelaziz, a Cairo-based senior graphic designer and creative team leader with over six years of experience in branding, visual identity, advertising campaigns and digital design.</p><p class="about-bio">I work across Egypt, Saudi Arabia and the UAE, helping brands in retail, food, beauty, healthcare, technology and e-commerce communicate through a consistent visual language. My practice combines hands-on design, creative direction and team leadership with advanced generative AI. I build MCP-enabled content automation and develop, test and deploy web experiences using AI-assisted coding.</p><a class="cv-download" href="Kareem-Abdelaziz-CV.pdf" download>DOWNLOAD CV ↗</a></div></div><div class="about-details"><div><h2>EXPERTISE</h2><p>Branding & visual identity<br>Advertising & social campaigns<br>Creative direction<br>Team leadership<br>Packaging & e-commerce design<br>Video editing & AI tools<br>MCP content automation<br>AI-assisted web development</p></div><div><h2>TOOLS</h2><p>Photoshop · Illustrator<br>InDesign · Acrobat<br>WordPress · CapCut<br>ChatGPT · Claude Code<br>Higgsfield · Magnific<br>Midjourney · Adobe Firefly<br>DALL-E · Stable Diffusion</p></div><div><h2>EDUCATION</h2><p>Bachelor of Engineering<br>Mechatronics Engineering<br>Mansoura University</p><h2>LANGUAGES</h2><p>Arabic — Native<br>English — Intermediate</p></div></div><section class="experience"><h2>Experience</h2><article><span>1 year</span><div><h3>Senior Graphic Designer · Zeed Agency</h3><p>Advertising creative production for a performance marketing agency serving brands in Saudi Arabia and the UAE.</p></div></article><article><span>2024 — Present</span><div><h3>Team Leader · Jayaad Agency</h3><p>Leading designers, video editors and motion specialists, coordinating client briefs and managing creative delivery through structured workflows and performance reviews.</p></div></article><article><span>Nov 2025 — Mar 2026</span><div><h3>General Manager · Glitch Adv</h3><p>Led rebranding, built operational and performance systems, improved the client journey and integrated AI services into the agency’s offering.</p></div></article><article><span>2024 — 2025</span><div><h3>Senior Graphic Designer · TAR Company</h3><p>Developed the visual identity and advertising campaigns in collaboration with marketing teams.</p></div></article><article><span>2023 — 2024</span><div><h3>Graphic Designer · ALMLOUK E-Commerce</h3><p>Created brand identities and digital visuals across medical, electronics, furniture, cosmetics and food projects.</p></div></article><article><span>2022 — 2024</span><div><h3>Graphic Designer · Glitch Adv</h3><p>Designed integrated campaigns, logos, social content and promotional videos for restaurants, clinics and retail brands.</p></div></article><article><span>Leadership</span><div><h3>UCCD · USAID-funded internship</h3><p>Managed a 15-member media committee, developed social media plans and coordinated events and enrollment support for approximately 100 students each week.</p></div></article><article><span>Workshop</span><div><h3>AI in Advertising Design · ART OF AI</h3><p>Led a three-hour workshop for designers, editors, motion artists and writers on AI tools for advertising and creative workflows.</p></div></article></section>${footer()}`}
+function galleryMedia(p,i){const m=p.media[i];return m.kind==='video'?`<video controls playsinline preload="metadata" src="${m.src}" aria-label="${esc(p.title)} project video"></video>`:`<figure><a href="${m.src}" target="_blank" rel="noopener" aria-label="Open image ${i+1} in full"><img src="${m.src}" alt="${esc(p.title)} — project image ${i+1}" loading="${i<2?'eager':'lazy'}" decoding="async" width="${m.width}" height="${m.height}"></a></figure>`}
+function galleryBlock(p,b){const style=`padding-top:${b.top||0}px;padding-bottom:${b.bottom||0}px;width:${b.width||100}%;`;
+ if(b.type==='media')return `<div class="gallery-block" style="${style}">${galleryMedia(p,b.index)}</div>`;
+ if(b.type==='grid'){
+  // Keep authored groups of 2-4 images together on phones. Larger collections
+  // split into balanced rows, in source order, without oversized orphan images.
+  const rowCount=Math.ceil(b.items.length/4),rows=[];let offset=0;
+  for(let row=0;row<rowCount;row++){
+   const count=Math.ceil((b.items.length-offset)/(rowCount-row));
+   rows.push(b.items.slice(offset,offset+count));offset+=count;
+  }
+  return `<div class="gallery-block gallery-grid" style="${style}">${rows.map(items=>`<div class="gallery-row">${items.map(i=>{const m=p.media[i],ratio=m.width/m.height||1;return `<div class="gallery-tile" style="flex-grow:${ratio};flex-basis:${260*ratio}px">${galleryMedia(p,i)}</div>`}).join('')}</div>`).join('')}</div>`;
+ }
+ if(b.type==='columns')return `<div class="gallery-block gallery-columns" style="${style}">${b.columns.map(c=>`<div style="flex:${c.grow};min-width:0">${c.blocks.map(x=>galleryBlock(p,x)).join('')}</div>`).join('')}</div>`;
+ if(b.type==='film')return `<div class="gallery-block gallery-film" style="${style}"><a href="${esc(b.url)}" target="_blank" rel="noopener">▶ WATCH PROJECT FILM ON VIMEO</a></div>`;
+ if(b.type==='compare')return `<div class="gallery-block gallery-compare" style="${style}"><img src="${p.media[b.before].src}" alt="Before" loading="lazy"><img class="compare-after" src="${p.media[b.after].src}" alt="After" loading="lazy"><span class="compare-divider" aria-hidden="true">↔</span><input type="range" min="0" max="100" value="50" aria-label="Compare before and after"></div>`;
+ return b.text?`<div class="gallery-block gallery-text" style="${style}text-align:${b.align||'left'}"><p>${esc(b.text)}</p></div>`:'';
+}
+$('#project').addEventListener('input',e=>{if(e.target.matches('.gallery-compare input'))e.target.parentElement.style.setProperty('--compare',e.target.value+'%')});
+function renderProject(p){const index=projects.indexOf(p),next=projects[(index+1)%total];return `<div class="project-top"><aside class="project-summary"><a class="project-return" href="#work">BACK TO SELECTED WORK</a><span class="eyebrow">${esc(p.category)}</span><h1>${esc(p.title)}</h1>${p.text.length?p.text.map(t=>`<p>${esc(t)}</p>`).join(''):`<p>${caption(p)}</p>`}<div class="project-facts"><div><span class="eyebrow">Designer</span>Kareem Abdelaziz</div><div><span class="eyebrow">Year</span>${p.year}</div></div></aside><div class="project-gallery">${(p.layout||p.media.map((m,index)=>({type:'media',index}))).map(b=>galleryBlock(p,b)).join('')}</div></div><a class="next-project" href="#project/${next.slug}"><span class="eyebrow">NEXT PROJECT</span><h2>${esc(next.title)}</h2></a>${footer()}`}
+function applyRoute(){const route=location.hash.slice(1)||'work',parts=route.split('/');let view=parts[0];if(!['work','about','archive','project'].includes(view))view='work';if(view==='project'){const p=projects.find(p=>p.slug===parts[1]);if(!p){location.hash='archive';return;}active=projects.indexOf(p);target=position=active;updateInfo(active,false);$('#project').innerHTML=renderProject(p);document.title=p.title+' — Kareem Abdelaziz';}else{document.title='Kareem Abdelaziz — '+({work:'Selected work',about:'About',archive:'Playground'}[view]);if(view==='archive'&&!$('#archive').innerHTML)$('#archive').innerHTML=renderArchive();if(view==='about'&&!$('#about').innerHTML)$('#about').innerHTML=renderAbout();}clearHover();currentView=view;document.body.classList.toggle('home',view==='work');document.querySelectorAll('.view').forEach(v=>v.hidden=v.id!==view);document.querySelectorAll('[data-nav]').forEach(a=>{const on=a.dataset.nav===(view==='project'?'work':view);a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});$('#navigation').classList.remove('open');$('#menu-toggle').setAttribute('aria-expanded','false');$('#menu-toggle').setAttribute('aria-label','Open menu');window.scrollTo(0,0);if(view==='work')resize();setupScrollReveals();}
+let transitioning=false,routeTimeline;
+function routeTitle(){const parts=location.hash.slice(1).split('/');return parts[0]==='project'?(projects.find(p=>p.slug===parts[1])?.title||'Selected work'):({about:'About Kareem',archive:'Playground',work:'Selected work'}[parts[0]]||'Selected work')}
+addEventListener('hashchange',()=>{clearHover();if(reduced){applyRoute();return}routeTimeline?.kill();gsap.killTweensOf('#main');transitioning=true;const label=$('#transition-title');label.textContent=routeTitle();$('#transition').dataset.projectTitle=label.textContent;
+ routeTimeline=gsap.timeline({onComplete:()=>{transitioning=false;gsap.set('#transition',{visibility:'hidden'});gsap.set('#main',{clearProps:'filter,opacity,transform'})}})
+ .set('#transition',{visibility:'visible',y:0,yPercent:0,opacity:0}).set(label,{y:32,opacity:0,filter:'blur(18px)'})
+ .to('#main',{opacity:0,filter:'blur(14px)',scale:.975,duration:.45,ease:'power2.inOut'},0)
+ .to('#transition',{opacity:1,duration:.4},0)
+ .to(label,{y:0,opacity:1,filter:'blur(0px)',duration:.65,ease:'power3.out'},.18)
+ .call(applyRoute,[],.85)
+ .to(label,{y:-24,opacity:0,filter:'blur(14px)',duration:.45,ease:'power2.in'},1.05)
+ .to('#transition',{opacity:0,duration:.55},1.25)
+ .fromTo('#main',{opacity:0,filter:'blur(12px)',scale:1.025},{opacity:1,filter:'blur(0px)',scale:1,duration:.85,ease:'power3.out'},1.25);
+});
+var revealObserver;
+function setupScrollReveals(){revealObserver?.disconnect();if(reduced)return;const elements=document.querySelectorAll('.view:not([hidden]) .project-gallery > .gallery-block,.view:not([hidden]) .archive-card,.view:not([hidden]) .experience article,.view:not([hidden]) .about-details>div');
+ revealObserver=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){entry.target.classList.add('revealed');revealObserver.unobserve(entry.target)}}},{threshold:.07,rootMargin:'0px 0px -20px 0px'});elements.forEach(el=>{el.classList.add('scroll-reveal');revealObserver.observe(el)})}
+$('#menu-toggle').onclick=()=>{let open=$('#navigation').classList.toggle('open');$('#menu-toggle').setAttribute('aria-expanded',String(open));$('#menu-toggle').setAttribute('aria-label',open?'Close menu':'Open menu')};
+$('#contact-open').onclick=()=>{$('#contact').showModal();if(!reduced)gsap.fromTo('#contact',{y:30,opacity:0},{y:0,opacity:1,duration:.4})};$('.dialog-close').onclick=()=>$('#contact').close();$('#contact').addEventListener('click',e=>{if(e.target===$('#contact')){const r=$('#contact').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$('#contact').close()}});
+function clock(){$('#time').textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Cairo',hour:'2-digit',minute:'2-digit'}).format(new Date())+' / CAIRO'}clock();setInterval(clock,60000);
+updateInfo(0,false);applyRoute();initScene();
+async function runIntro(){const load=$('#loader');if(reduced){load.remove();ready=true;return}
+ const progress={value:0};gsap.set('.shell,.project-info,.project-meta,.counter,.work-bottom',{opacity:0,filter:'blur(12px)',y:24});
+ const paint=()=>{load.style.setProperty('--reveal',progress.value+'%');$('#loader-counter').textContent=String(Math.round(progress.value)).padStart(2,'0')};
+ const minimum=gsap.timeline().to(progress,{value:30,duration:.65,onUpdate:paint,ease:'power2.inOut'}).to(progress,{value:60,duration:.72,delay:.16,onUpdate:paint,ease:'power2.inOut'});
+ await Promise.all([minimum.then(),Promise.race([Promise.all(projects.slice(0,4).map(p=>new Promise(resolve=>{const im=new Image();im.onload=im.onerror=resolve;im.src=p.cover}))),new Promise(resolve=>setTimeout(resolve,3500))])]);
+ gsap.timeline().to(progress,{value:100,duration:1.15,delay:.2,onUpdate:paint,ease:'power3.inOut'})
+ .to('#loader-name',{filter:'blur(0px)',scale:1,duration:.6},'<')
+ .to('#loader',{yPercent:100,duration:1.05,ease:'power3.inOut'},'+=.35')
+ .to(intro,{spread:1,turn:0,duration:2.05,ease:'power4.out'},'-=.8')
+ .to('.shell,.project-info,.project-meta,.counter,.work-bottom',{opacity:1,filter:'blur(0px)',y:0,duration:.95,stagger:.07,ease:'power3.out'},'-=1.05')
+ .call(()=>{load.remove();ready=true;gsap.set('.shell,.project-info,.project-meta,.counter,.work-bottom',{clearProps:'filter,transform,opacity'})});
+}
+runIntro();
+addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#navigation').classList.contains('open')){$('#navigation').classList.remove('open');$('#menu-toggle').setAttribute('aria-expanded','false');$('#menu-toggle').setAttribute('aria-label','Open menu');$('#menu-toggle').focus()}});
