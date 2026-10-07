@@ -1,0 +1,61 @@
+name: Publish brand motion and Chamelo
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/mist.yml']
+permissions:
+  contents: read
+concurrency:
+  group: portfolio-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: Import verified website collection
+        if: hashFiles('mist-update.zip.*') != ''
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,zipfile
+          parts=sorted(Path('.').glob('mist-update.zip.*'))
+          assert len(parts)==3
+          archive=Path('/tmp/mist-update.zip')
+          with archive.open('wb') as output:
+              for part in parts:
+                  output.write(part.read_bytes())
+          assert hashlib.sha256(archive.read_bytes()).hexdigest()=='1ebc8844096760e801550195c0aacdbfd80347803791846afbae28e53d371e84'
+          root=Path('site').resolve()
+          with zipfile.ZipFile(archive) as z:
+              for name in z.namelist():
+                  assert name.split('/')[0] in ['portfolio','websites']
+                  assert (root/name).resolve().is_relative_to(root)
+              z.extractall(root)
+          assert (root/'websites/chamelo/index.html').is_file()
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/portfolio site/websites
+          git rm mist-update.zip.*
+          git commit -m "Add interactive brand wall, animated career metrics and Chamelo website"
+          git push
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
