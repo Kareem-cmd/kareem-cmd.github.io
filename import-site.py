@@ -1,36 +1,18 @@
-"""One-time import of the owner's published portfolio, verified against SHA-256."""
-from concurrent.futures import ThreadPoolExecutor
+"""Extract and verify the owner's original portfolio source."""
 from pathlib import Path
-from urllib.request import Request, urlopen
-from urllib.parse import quote
-import hashlib
-import json
-import time
-
-manifest = json.loads(Path('site-manifest.json').read_text(encoding='utf-8'))
-root = Path('site').resolve()
-
-def download(item):
-    target = (root / item['path']).resolve()
-    if not target.is_relative_to(root):
-        raise ValueError('Invalid site path')
-    url = manifest['origin'] + quote(item['path'], safe='/')
-    for attempt in range(4):
-        try:
-            request = Request(url, headers={'User-Agent': 'Kareem-Portfolio-Migration/1.0'})
-            with urlopen(request, timeout=90) as response:
-                data = response.read()
-            if hashlib.sha256(data).hexdigest() != item['sha256']:
-                raise ValueError('Content mismatch: ' + item['path'])
-            target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_bytes(data)
-            return
-        except Exception:
-            if attempt == 3:
-                raise
-            time.sleep(2 ** attempt)
-
-with ThreadPoolExecutor(max_workers=6) as pool:
-    list(pool.map(download, manifest['files']))
-(root / '.nojekyll').touch()
-print(f"Imported and verified {len(manifest['files'])} website files.")
+import hashlib,io,json,zipfile
+manifest=json.loads(Path('archive-manifest.json').read_text())
+data=b''.join(Path(p).read_bytes() for p in manifest['parts'])
+assert hashlib.sha256(data).hexdigest()==manifest['sha256'], 'Archive checksum mismatch'
+root=Path('site').resolve()
+with zipfile.ZipFile(io.BytesIO(data)) as archive:
+    for entry in archive.infolist():
+        target=(root/entry.filename).resolve()
+        if not target.is_relative_to(root):
+            raise ValueError('Invalid archive path')
+    archive.extractall(root)
+files=json.loads(Path('site-manifest.json').read_text())['files']
+for item in files:
+    assert hashlib.sha256((root/item['path']).read_bytes()).hexdigest()==item['sha256'], item['path']
+(root/'.nojekyll').touch()
+print(f'Imported and verified {len(files)} website files.')
