@@ -1,0 +1,94 @@
+{
+  "products": [
+    {
+      "name": "تعليقة ألماس سوليتير",
+      "url": "https://lomondjewelry.com/products/%D8%AF%D9%84%D8%A7%D9%8A%D8%A9-%D8%A3%D9%84%D9%85%D8%A7%D8%B3-%D8%B3%D9%88%D9%84%D9%8A%D8%AA%D9%8A%D8%B1",
+      "image": "https://media.zid.store/cdn-cgi/image/w=600,q=80,f=auto/https://media.zid.store/e2e8d8c2-3c18-47d1-a1a8-f91aff5dc836/4caa91dc-681f-471b-8db5-2ed21a1f7ea5.webp",
+      "price": 2100,
+      "local": "assets/product-0.img"
+    },
+    {
+      "name": "سلسال ألماس القلب",
+      "url": "https://lomondjewelry.com/products/%D8%B3%D9%84%D8%B3%D8%A7%D9%84-%D8%A7%D9%84%D9%85%D8%A7%D8%B3-%D8%A7%D9%84%D9%82%D9%84%D8%A8",
+      "image": "https://media.zid.store/cdn-cgi/image/w=600,q=80,f=auto/https://media.zid.store/e2e8d8c2-3c18-47d1-a1a8-f91aff5dc836/b5a11c5b-383f-4913-a00e-75857a034abf.png",
+      "price": 3400,
+      "local": "assets/product-1.img"
+    },
+    {
+      "name": "عقد ألماس بيضاوي",
+      "url": "https://lomondjewelry.com/products/%D8%B9%D9%82%D8%AF-%D8%A3%D9%84%D9%85%D8%A7%D8%B3-%D8%A8%D9%8A%D8%B6%D8%A7%D9%88%D9%8A",
+      "image": "https://media.zid.store/cdn-cgi/image/w=600,q=80,f=auto/https://media.zid.store/e2e8d8c2-3c18-47d1-a1a8-f91aff5dc836/9a14b87d-8ed6-4b88-b8f2-ed333b61426e.jpg",
+      "price": 2650,
+      "local": "assets/product-2.img"
+    },
+    {
+      "name": "تعليقة ألماس آرت ديكو",
+      "url": "https://lomondjewelry.com/products/%D8%AF%D9%84%D8%A7%D9%8A%D8%A9-%D8%A3%D9%84%D9%85%D8%A7%D8%B3-%D8%A8%D8%B7%D8%B1%D8%A7%D8%B2-%D8%A2%D8%B1%D8%AA-%D8%AF%D9%8A%D9%83%D9%88",
+      "image": "https://media.zid.store/cdn-cgi/image/w=600,q=80,f=auto/https://media.zid.store/e2e8d8c2-3c18-47d1-a1a8-f91aff5dc836/3c63d726-e87f-4b22-ab4e-f4fa53aa5ed0.webp",
+      "price": 2450,
+      "local": "assets/product-3.img"
+    }
+  ],
+  "categories": [
+    {
+      "name": "الفضة",
+      "url": "https://lomondjewelry.com/categories/1700646/%D8%A7%D9%84%D9%81%D8%B6%D8%A9"
+    },
+    {
+      "name": "الذهب عيار 18",
+      "url": "https://lomondjewelry.com/categories/1700647/%D8%A7%D9%84%D8%B0%D9%87%D8%A8-%D8%B9%D9%8A%D8%A7%D8%B1-18"
+    },
+    {
+      "name": "أطقم",
+      "url": "https://lomondjewelry.com/categories/1704005/%D8%A3%D8%B7%D9%82%D9%85"
+    },
+    {
+      "name": "سلاسل",
+      "url": "https://lomondjewelry.com/categories/1634764/%D8%B3%D9%84%D8%A7%D8%B3%D9%84"
+    },
+    {
+      "name": "الأقراط",
+      "url": "https://lomondjewelry.com/categories/1634763/%D8%A7%D9%84%D8%A3%D9%82%D8%B1%D8%A7%D8%B7"
+    },
+    {
+      "name": "أساور",
+      "url": "https://lomondjewelry.com/categories/1634766/%D8%A3%D8%B3%D8%A7%D9%88%D8%B1"
+    },
+    {
+      "name": "خواتم",
+      "url": "https://lomondjewelry.com/categories/1634765/%D8%AE%D9%88%D8%A7%D8%AA%D9%85"
+    },
+    {
+      "name": "جميع التصنيفات",
+      "url": "https://lomondjewelry.com/categories/"
+    },
+    {
+      "name": "الفضة",
+      "url": "https://lomondjewelry.com/categories/1700646/%D8%A7%D9%84%D9%81%D8%B6%D8%A9"
+    },
+    {
+      "name": "الذهب عيار 18",
+      "url": "https://lomondjewelry.com/categories/1700647/%D8%A7%D9%84%D8%B0%D9%87%D8%A8-%D8%B9%D9%8A%D8%A7%D8%B1-18"
+    },
+    {
+      "name": "أطقم",
+      "url": "https://lomondjewelry.com/categories/1704005/%D8%A3%D8%B7%D9%82%D9%85"
+    },
+    {
+      "name": "سلاسل",
+      "url": "https://lomondjewelry.com/categories/1634764/%D8%B3%D9%84%D8%A7%D8%B3%D9%84"
+    },
+    {
+      "name": "الأقراط",
+      "url": "https://lomondjewelry.com/categories/1634763/%D8%A7%D9%84%D8%A3%D9%82%D8%B1%D8%A7%D8%B7"
+    },
+    {
+      "name": "أساور",
+      "url": "https://lomondjewelry.com/categories/1634766/%D8%A3%D8%B3%D8%A7%D9%88%D8%B1"
+    },
+    {
+      "name": "خواتم",
+      "url": "https://lomondjewelry.com/categories/1634765/%D8%AE%D9%88%D8%A7%D8%AA%D9%85"
+    }
+  ]
+}
