@@ -13,3 +13,14 @@ window.PRODUCTS = [
  {id:10,name:'بن سنابل — الطباعة الخضراء',category:'coffee',weight:'الوزن عند التأكيد',brand:'سنابل',image:10,description:'كيس خيش بعلامة سنابل وطباعة خضراء. لا تكفي الصورة لاعتماد الوزن أو علاقة هذا الصنف بالعبوة الأخرى.',bulk:true},
  {id:8,name:'بن — عبوة خيش مربوطة',category:'coffee',weight:'تفاصيل العبوة عند التأكيد',brand:'المستنير',image:8,description:'عبوة خيش مربوطة كما وردت في صور التشكيلة. الاسم التجاري والوزن يحتاجان إلى تأكيد؛ لا تُفترض بيانات غير مقروءة.',bulk:true}
 ];
+
+// Deliberately fictional preview prices, authorized for this visual demo.
+// These values are not quotes, live prices, or inventory data.
+const demoPricesSAR = {
+  1: 225, 4: 210, 3: 595, 6: 35, 5: 575, 13: 1120, 11: 1190,
+  12: 925, 2: 185, 9: 195, 7: 875, 10: 895, 8: 945
+};
+window.PRODUCTS = window.PRODUCTS.map(product => ({
+  ...product,
+  demoPrice: demoPricesSAR[product.id]
+}));
