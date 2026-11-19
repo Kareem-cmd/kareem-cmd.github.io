@@ -5,3 +5,5 @@
 
 .product-price small,.category-rail small,.announcement{font-size:12px}
 
+
+.product-campaign{display:block;width:100%;padding:0;border:0;background:#fff;text-align:inherit;cursor:pointer}
