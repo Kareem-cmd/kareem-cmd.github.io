@@ -3,3 +3,5 @@
 @media(max-width:700px){.campaign img{aspect-ratio:1}.campaign{margin-bottom:22px}.campaign-hero{margin-bottom:0}.campaign:not(.campaign-hero){width:94%}}
 @media(max-width:600px){.section-heading h2{font-size:36px}.category-rail span{font-size:25px}.category-rail small{font-size:11px}.collection{padding-block:38px}.product-price strong{font-size:17px}.product-bottom{align-items:flex-start}.product-title{font-size:14px}.demo-price-note{font-size:12px;margin-bottom:20px}.wholesale-copy h2,.story h2,.faq h2{font-size:36px}.announcement{font-size:11px}}
 
+.product-price small,.category-rail small,.announcement{font-size:12px}
+
